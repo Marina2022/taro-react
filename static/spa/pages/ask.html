@@ -1,0 +1,26 @@
+<div class="astrologer-card" style="margin-bottom: 24px">
+    <!-- Изображение астролога -->
+    <div class="astrologer-image">
+        <img src="/static/spa/astrologist.png" alt="Астролог">
+    </div>
+
+    <!-- Текстовая информация -->
+    <div class="astrologer-info">
+        <h2 class="astrologer-name">Анна Таровна</h2>
+        <p class="astrologer-description">Время ответа: до 4 часов</p>
+    </div>
+
+    <!-- Декоратор справа -->
+    <div class="astrologer-decorator">
+    </div>
+</div>
+
+<p class="title-20">О чём вы хотите спросить?</p>
+
+<div class="input-group">
+    <label class="input-label">Сформулируйте ваш вопрос</label>
+    <textarea id="user-question" class="text-input text-area" style="height: 250px" placeholder="Введите текст" maxlength="400"></textarea>
+    <div class="char-counter">0/400</div>
+</div>
+
+<button onclick="submitQuestionForAstrologist()" class="button primary-button">Спросить</button>
