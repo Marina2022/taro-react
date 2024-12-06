@@ -11,9 +11,10 @@
 body {
     display: flex;
     justify-content: center;
-    align-items: center;
-    background-color: #D9D9D9; /* Фон вне блока контента */
+    align-items: start;
+    background: #421F47;
     color: #FFFFFF;
+    font-family: Inter;
     margin: 0;
     height: 100vh;
 }
@@ -29,13 +30,15 @@ body {
 }
 
 .container {
-    max-width: 700px;
-    width: 100%;
-    background-color: #421F47;
-    display: flex;
-    flex-direction: column;
+    /*max-width: 700px;*/
+    /*width: 100%;*/
+    /*background-color: #421F47;*/
+    /*display: flex;*/
+    /*flex-direction: column;*/
     height: 100vh;
     position: relative;
+    max-width: 100%;
+    padding: 40px 16px 0px 16px;
 }
 
 .header {
@@ -133,7 +136,7 @@ body {
 }
 
 .pisces {
-    background-image: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 12 12' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath style='clip-rule:nonzero;fill:none;stroke:%23FFB94C;stroke-width:.6;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1' d='M9.125 1.67a5 5 0 0 0 0 8.66m-6.25 0a5 5 0 0 0 0-8.66M1 5.998h10.003'/%3E%3C/svg%3E%0A");    
+    background-image: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 12 12' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath style='clip-rule:nonzero;fill:none;stroke:%23FFB94C;stroke-width:.6;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1' d='M9.125 1.67a5 5 0 0 0 0 8.66m-6.25 0a5 5 0 0 0 0-8.66M1 5.998h10.003'/%3E%3C/svg%3E%0A");
 }
 
 .sagittarius {
@@ -335,7 +338,7 @@ select.text-input {
     width: 16px;
     height: 16px;
     pointer-events: none;
-    width: 16px; 
+    width: 16px;
     height: 16px;
     background-repeat: no-repeat;
     background-position: center;
@@ -915,5 +918,175 @@ input[type="checkbox"], input[type="radio"] {
 }
 
 
+/* Стили регистрации */
 
 
+
+.steps-block {
+    display: flex;
+    flex-direction: column;
+}
+
+.steps-header {
+    color: #FFF;
+    font-family: Inter;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 32px; /* 133.333% */
+    margin:0;
+}
+
+.steps-subheader {
+    color: rgba(255, 255, 255, 0.80);
+    font-family: Inter;
+    margin: 8px 0 0 0;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 22px; /* 137.5% */
+}
+.step {
+    display: none;
+    flex-direction: column;
+    gap: 8px;
+    margin: 24px 0;
+}
+
+.step.active {
+    display: flex;
+}
+
+.step.active,
+.step.completed {
+    display: flex;
+}
+
+.step.completed {
+    opacity: 0.5; /* Можно использовать для визуального отличия завершенных шагов */
+}
+
+.step.completed input:disabled,
+.step.completed select:disabled {
+    color: #999; /* Цвет текста для отключенных полей */
+    pointer-events: none; /* Полное отключение взаимодействия */
+    cursor: not-allowed; /* Указатель в виде запрещающего знака */
+}
+
+/*.onboarding {*/
+/*    background: */
+/*}*/
+
+.onboarding-labels {
+    color: rgba(255, 255, 255, 0.80);
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 16px; /* 133.333% */
+}
+
+.step input,select {
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.10);
+    background: rgba(255, 255, 255, 0.10);
+    backdrop-filter: blur(3px);
+    padding: 16px;
+    color: #fff;
+    font-size: 16px;
+}
+
+.step input::placeholder {
+    color: #fff;
+}
+
+.button {
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.24);
+    background: #FFB94C;
+    backdrop-filter: blur(3px);
+}
+
+.button-back {
+    border-radius: 12px;
+    border: 1px solid rgba(255, 185, 76, 0.16);
+    background: rgba(255, 185, 76, 0.16);
+    backdrop-filter: blur(3px);
+    color: #FFB94C;
+
+}
+
+.gender-options {
+    display: flex;
+    justify-content: space-between;
+    border-radius: 12px;
+    gap: 8px;
+    padding: 4px;
+    background: rgba(255, 255, 255, 0.10);
+    backdrop-filter: blur(3px);
+}
+
+.gender-button {
+    width: 33%;
+    padding: 10px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    border-radius: 5px;
+    color: rgba(255, 255, 255, 0.64);
+    text-align: center;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 22px; /* 137.5% */
+}
+
+.gender-button.active {
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.10);
+    background: rgba(255, 255, 255, 0.24);
+    backdrop-filter: blur(3px);
+    color: #FFF;
+    text-align: center;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 22px; /* 137.5% */
+}
+
+.consent-container {
+    margin-top: 20px;
+}
+
+.consent-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+.consent-item input {
+    margin-right: 10px;
+}
+
+
+.buttons {
+    display: flex;
+    gap: 16px;
+}
+/* Скрываем заголовок на шагах 4 и 5 */
+#step-header {
+    display: block;
+}
+
+/* Стили для контейнеров шагов */
+.steps-container,
+.step-screen {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Скрываем кнопки "Назад" на первом шаге */
+.button-back {
+    display: none;
+}
