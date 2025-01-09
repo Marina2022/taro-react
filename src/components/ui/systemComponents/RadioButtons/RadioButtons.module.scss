@@ -1,0 +1,52 @@
+.radioBtnContainer {
+  display: flex;
+  gap: 8px;
+  position: relative;
+  font-size: 14px;
+  color: rgb(255 255 255 / 0.8);
+  line-height: 20px;
+  margin-bottom: 12px;
+}
+
+.unchecked {
+  cursor: pointer;
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
+  background-color: transparent;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  margin-right: 8px;
+  transition: background-color 0.3s, border-color 0.3s;
+  position: relative;
+  //top: 2px;
+}
+
+.checked {  flex-shrink: 0;
+  cursor: pointer;
+  width: 22px;
+  height: 22px;
+  background-color: transparent;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  margin-right: 8px;
+  transition: background-color 0.3s, border-color 0.3s;
+  //top: 2px;
+  background-color: #ffb94c;
+  border-color: #ffb94c;
+  position: relative;
+
+  &:after {
+    z-index: 1;
+    content: '';
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    width: 10px;
+    height: 10px;
+    background-image: url("data:image/svg+xml,%3Csvg%20version%3D%221.1%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20xmlns%3Axlink%3D%22http%3A//www.w3.org/1999/xlink%22%20width%3D%2210.0957%22%20height%3D%2210.3418%22%3E%20%3Cg%3E%20%3Crect%20height%3D%2210.3418%22%20opacity%3D%220%22%20width%3D%2210.0957%22%20x%3D%220%22%20y%3D%220%22/%3E%20%3Cpath%20d%3D%22M3.82031%2010.3418C4.07227%2010.3418%204.27148%2010.2305%204.41211%2010.0137L9.94922%201.29492C10.0547%201.125%2010.0957%200.996094%2010.0957%200.861328C10.0957%200.539062%209.88477%200.328125%209.5625%200.328125C9.32812%200.328125%209.19922%200.404297%209.05859%200.626953L3.79688%209.01172L1.06641%205.4375C0.919922%205.23242%200.773438%205.15039%200.5625%205.15039C0.228516%205.15039%200%205.37891%200%205.70117C0%205.83594%200.0585938%205.98828%200.169922%206.12891L3.21094%2010.002C3.38672%2010.2305%203.56836%2010.3418%203.82031%2010.3418Z%22%20fill%3D%22%23000000%22%20fill-opacity%3D%220.85%22/%3E%20%3C/g%3E%3C/svg%3E");
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+
+}

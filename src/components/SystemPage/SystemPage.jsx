@@ -13,6 +13,9 @@ import TextArea from "@/components/ui/systemComponents/TextArea/TextArea.jsx";
 import Button from "@/components/ui/systemComponents/Button/Button.jsx";
 import SecondaryButton from "@/components/ui/systemComponents/SecondaryButton/SecondaryButton.jsx";
 import Tabs from "@/components/ui/systemComponents/Tabs/Tabs.jsx";
+import Checkboxes from "@/components/ui/systemComponents/Checkboxes/Checkboxes.jsx";
+import RadioButtons from "@/components/ui/systemComponents/RadioButtons/RadioButtons.jsx";
+import ProgressBar from "@/components/ui/systemComponents/ProgressBar/ProgressBar.jsx";
 
 const SystemPage = () => {
 
@@ -28,8 +31,11 @@ const SystemPage = () => {
 
   const [nickname, setNickname] = useState('')
   const [email, setEmail] = useState('')
-    
+
   const [selectedTab, setSelectedTab] = useState(1)
+  const [checkboxCheckedValues, setCheckboxCheckedValues] = useState([2])
+
+  const [radioButtonsValue, setRadioButtonsValue] = useState(10)
 
   return (
     <div className={s.systemContainer}>
@@ -99,19 +105,65 @@ const SystemPage = () => {
 
       <div className={s.smallWidthWrapper}>
         <Tabs
-          selectedTab={selectedTab} 
+          selectedTab={selectedTab}
           setSelectedTab={setSelectedTab}
           tabs={
-          [
-            {value: 1, label: 'Значение 1'},
-            {value: 2, label: 'Значение 2'},
-            {value: 3, label: 'Значение 3'},
-          ]
-        }/>
+            [
+              {value: 1, label: 'Значение 1'},
+              {value: 2, label: 'Значение 2'},
+              {value: 3, label: 'Значение 3'},
+            ]
+          }/>
       </div>
 
-      <div className={s.smallWidthWrapper} >
-        ddd
+      <div className={s.smallWidthWrapper}>
+        <Checkboxes
+          checkboxCheckedValues={checkboxCheckedValues}
+          setCheckboxCheckedValues={setCheckboxCheckedValues}
+          checkboxes={
+            [
+              {value: 1, label: 'Значение 1'},
+              {value: 2, label: 'Значение 2'},
+              {
+                value: 3,
+                label: 'Текст на несколько строк текст на несколько строк текст на несколько строк'
+              },
+            ]
+          }
+        />
+      </div>
+
+      <div className={s.smallWidthWrapper}>
+        <RadioButtons
+          radioButtonsValue={radioButtonsValue}
+          setRadioButtonsValue={setRadioButtonsValue}
+          radioButtons={
+            [
+              {value: 10, label: 'Значение 10'},
+              {value: 20, label: 'Значение 20'},
+              {
+                value: 30,
+                label: 'Текст на несколько строк текст на несколько строк текст на несколько строк'
+              },
+            ]
+          }
+        />
+      </div>
+
+      <div className={s.smallWidthWrapper}>
+        <ProgressBar value={.3} low={.4} high={.6} label="Показатель красный"/>
+      </div>
+
+      <div className={s.smallWidthWrapper}>
+        <ProgressBar value={.5} low={.4} high={.6} label="Показатель желтый"/>
+      </div>
+
+      <div className={s.smallWidthWrapper}>
+        <ProgressBar value={.8} low={.4} high={.6} label="Показатель зеленый"/>
+      </div>    
+      
+      <div className={s.smallWidthWrapper}>
+        ..........
       </div>
 
     </div>

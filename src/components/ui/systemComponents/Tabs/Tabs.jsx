@@ -9,6 +9,7 @@ const Tabs = ({tabs, selectedTab, setSelectedTab}) => {
           tabs.map((tab, i) => {
             return (
               <li 
+                key={i}
                 onClick={()=>setSelectedTab(tab.value)}
                 className={ selectedTab === tab.value ? s.tabItemActive : s.tabItem}>
                 {tab.label}
@@ -17,7 +18,6 @@ const Tabs = ({tabs, selectedTab, setSelectedTab}) => {
           })
         }
       </ul>
-
     </div>
 
   );
