@@ -1,0 +1,75 @@
+.listItemButton {
+  display: flex;
+  align-items: center;
+  width: calc(100% + 32px);
+  padding: 16px 16px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  text-align: left;
+  color: inherit; /* Наследуем цвет */
+  transition: background-color 0.3s ease;
+  margin-left: -16px;
+  
+  &:hover {
+    background-color: rgba(255, 185, 76, 0.16);
+  }
+}
+
+.listItemIcon {
+  width: 45px;
+  height: 45px;
+  background-color: rgba(255, 185, 76, 0.1);
+  border-radius: 50%;
+  margin-right: 14px;
+  
+  img {
+    width: 45px;
+    height: 45px;
+    transform: scale(1.2);
+  }
+}
+
+.listItemText {
+  flex: 1;
+}
+
+.listItemTitle {
+  font-size: 16px;
+  font-weight: 500;
+  color: #ffffff;
+  margin-bottom: 4px;
+}
+
+.listItemDescription {
+  font-size: 14px;
+  color: #ffffff;
+  opacity: 0.8;
+}
+
+.listItemIndicator {
+  background-color: #ff4c4c;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 500;
+  padding: 4px 8px;
+  border-radius: 12px;
+  position: absolute;
+  top: 50%;
+  right: 40px; /* Отступ для стрелки */
+  transform: translateY(-50%);
+}
+
+.listItemChevron {
+  width: 16px;
+  height: 16px;
+  background-image: url("data:image/svg+xml, %3Csvg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='7.64062' height='13.5703'%3E%3Cg%3E%3Crect height='13.5703' opacity='0' width='7.64062' x='0' y='0'/%3E%3Cpath d='M7.64062 6.78125C7.64062 6.58594 7.5625 6.40625 7.41406 6.26562L1.22656 0.203125C1.08594 0.0703125 0.914062 0 0.710938 0C0.3125 0 0 0.304688 0 0.710938C0 0.90625 0.078125 1.08594 0.203125 1.21875L5.89062 6.78125L0.203125 12.3438C0.078125 12.4766 0 12.6484 0 12.8516C0 13.2578 0.3125 13.5625 0.710938 13.5625C0.914062 13.5625 1.08594 13.4922 1.22656 13.3516L7.41406 7.29688C7.5625 7.14844 7.64062 6.97656 7.64062 6.78125Z' fill='%23FFFFFF' fill-opacity='0.85'/%3E%3C/g%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  position: absolute;
+  right: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+}

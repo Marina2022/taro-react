@@ -1,0 +1,43 @@
+.quoteBlock {
+  display: flex;
+  align-items: center;
+  gap: 16px; /* Расстояние между украшением и текстом */
+  padding-bottom: 24px;
+  height: auto;
+}
+
+.quoteText {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #ffffff;
+  padding-block: 6px;
+}
+
+
+
+.quoteDecor {  
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  flex-shrink: 0;
+  
+}
+
+.quoteLine {
+  width: 1px;
+  background-color: #d8b573;
+  height: 100%;
+}
+
+.quoteIcon {
+  width: 7px;
+  height: 7px;
+  background-image: url("data:image/svg+xml, %3Csvg class='quote-icon' width='7' height='7' viewBox='0 0 7 7' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5.58989 3.58127C4.62841 3.76316 3.8827 4.4404 3.70857 5.29566C3.65505 5.55495 3.58706 5.80263 3.50021 6C3.41293 5.80263 3.34452 5.55496 3.29101 5.2918C3.11687 4.43654 2.36722 3.75931 1.40222 3.57742C1.16317 3.53098 1 3.50002 1 3.50002C1.16449 3.44197 1.34039 3.39554 1.52242 3.35297C2.44092 3.15173 3.12697 2.47833 3.30154 1.65789C3.3533 1.41022 3.41819 1.18189 3.50021 1C3.58136 1.18189 3.64717 1.41022 3.69893 1.65789C3.87307 2.47833 4.55951 3.15173 5.47801 3.35297C5.6596 3.39554 5.83595 3.44197 6 3.50002C6 3.50002 5.83421 3.53483 5.58989 3.58127Z' stroke='%23D8B573' stroke-miterlimit='10' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  display: block; /* Или inline-block, в зависимости от контекста */
+  flex-shrink: 0;
+}

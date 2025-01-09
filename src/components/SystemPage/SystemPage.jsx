@@ -16,6 +16,13 @@ import Tabs from "@/components/ui/systemComponents/Tabs/Tabs.jsx";
 import Checkboxes from "@/components/ui/systemComponents/Checkboxes/Checkboxes.jsx";
 import RadioButtons from "@/components/ui/systemComponents/RadioButtons/RadioButtons.jsx";
 import ProgressBar from "@/components/ui/systemComponents/ProgressBar/ProgressBar.jsx";
+import ButtonWithBeak from "@/components/ui/systemComponents/ButtonWithBeak/ButtonWithBeak.jsx";
+import SmallBar from "@/components/ui/systemComponents/SmallBar/SmallBar.jsx";
+import BigBar from "@/components/ui/systemComponents/BigBar/BigBar.jsx";
+import BigPictureCards from "@/components/ui/systemComponents/BigPictureCards/BigPictureCards.jsx";
+import SmallPictureCards from "@/components/ui/systemComponents/SmallPictureCards/SmallPictureCards.jsx";
+import QuoteBlock from "@/components/ui/systemComponents/QuoteBlock/QuoteBlock.jsx";
+import AstrologerCard from "@/components/ui/systemComponents/AstrologerCard/AstrologerCard.jsx";
 
 const SystemPage = () => {
 
@@ -150,23 +157,59 @@ const SystemPage = () => {
         />
       </div>
 
-      <div className={s.smallWidthWrapper}>
-        <ProgressBar value={.3} low={.4} high={.6} label="Показатель красный"/>
-      </div>
+      <div style={{height: 20}}></div>
+      <ProgressBar value={.3} low={.4} high={.6} label="Показатель красный"/>
 
-      <div className={s.smallWidthWrapper}>
-        <ProgressBar value={.5} low={.4} high={.6} label="Показатель желтый"/>
-      </div>
+      <div style={{height: 20}}></div>
+      <ProgressBar value={.5} low={.4} high={.6} label="Показатель желтый"/>
 
-      <div className={s.smallWidthWrapper}>
-        <ProgressBar value={.8} low={.4} high={.6} label="Показатель зеленый"/>
-      </div>    
+      <div style={{height: 20}}></div>
+      <ProgressBar value={.8} low={.4} high={.6} label="Показатель зеленый"/>
+
+      <div style={{height: 20}}></div>
+      <ButtonWithBeak
+        title="Заголовок"
+        description="Описание"
+        number={2}
+      />
+
+      <div style={{height: 20}}></div>
+
+      <SmallBar title="Заголовок"
+                description="Описание"
+                number={20}/>
+
+      <div style={{height: 20}}></div>
+
+      <BigBar title="Заголовок" description="Описание"/>
+
+      <div style={{height: 20}}></div>
+
+      <BigPictureCards/>
+
+      <div style={{height: 20}}></div>
+
+      <SmallPictureCards/>
+
+      <div style={{height: 20}}></div>
+
+      <QuoteBlock>
+        Натальная карта - это основа для трактовок личности и расшифровки положения звёзд. На основе этой информации
+        астролог сможет разбирать сложные ситуации и отвечать на вопросы.
+      </QuoteBlock>
+
+      <div style={{height: 20}}></div>
+
+      <AstrologerCard 
+        name="Александра Таровна"
+        description="Таро, Астрология"
+        imageUrl="/img/astrologist.png"
+      />
+
+      <div style={{height: 20}}></div>
       
-      <div className={s.smallWidthWrapper}>
-        ..........
-      </div>
-
     </div>
+
   )
     ;
 };
