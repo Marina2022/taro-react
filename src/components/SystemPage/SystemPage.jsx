@@ -275,7 +275,7 @@ const SystemPage = () => {
       <div style={{height: 20}}></div>
 
       {/* Диграмма  */}
-      <div style={{display: 'flex', gap: 10}}>
+      <div className={s.diagramWrapper}>
         <div style={{flex: 1}}>
           <InputLabel>С низким значением:</InputLabel>
           <RingChart value={0.3} low={0.4} high={0.6} classname/>

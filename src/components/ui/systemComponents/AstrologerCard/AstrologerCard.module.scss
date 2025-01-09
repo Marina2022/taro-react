@@ -1,3 +1,5 @@
+@use '@/assets/styles/mixins' as *;
+
 .astrologerCard {
   display: flex;
   align-items: center;
@@ -28,6 +30,10 @@
   font-weight: 600;
   color: #ffffff;
   margin-bottom: 4px;
+  
+  @include m {
+    font-size: 16px;
+  }
 }
 
 .astrologerDescription {
