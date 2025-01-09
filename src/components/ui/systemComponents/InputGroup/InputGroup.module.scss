@@ -9,6 +9,10 @@
   position: relative;
   height: 56px;
   color: #ffffffa3;
+
+  &:disabled {
+    opacity: .4;
+  }
   
   &::placeholder {
     color: #FFFFFF;

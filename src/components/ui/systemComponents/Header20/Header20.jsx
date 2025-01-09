@@ -6,5 +6,4 @@ const Header20 = ({children, classname=''}) => {
     </p>
   );
 };
-
 export default Header20;

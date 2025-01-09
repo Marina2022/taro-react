@@ -1,5 +1,4 @@
 import s from './QuoteBlock.module.scss';
-
 const QuoteBlock = ({children, classname=''}) => {
   return (
     <div className={`${s.quoteBlock} ${classname}`}>

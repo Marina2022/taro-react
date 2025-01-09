@@ -8,5 +8,4 @@ const SecondaryButton = ({children, classname='', onClick}) => {
     </Button>
   );
 };
-
 export default SecondaryButton;

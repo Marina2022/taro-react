@@ -1,5 +1,4 @@
 import s from './AstrologerCard.module.scss';
-
 const AstrologerCard = ({ name, description, imageUrl, classname}) => {
   return (
     <div className={`${s.astrologerCard} ${classname}`}>

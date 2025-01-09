@@ -1,5 +1,4 @@
 import s from './DataInput.module.scss';
-
 const DataInput = ({label, day, setDay, month, setMonth, year, setYear, classname=''}) => {
   return (
     <div className={`${s.wrapper} ${classname}`}>

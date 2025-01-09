@@ -1,8 +1,6 @@
 import s from './ButtonWithBeak.module.scss';
-
 const ButtonWithBeak = ({title, description, number, classname=''}) => {
-  return (
-    
+  return (    
     <button className={s.listItemButton}>
       <div className={s.listItemIcon}></div>
       <div className={s.listItemText}>
@@ -12,7 +10,6 @@ const ButtonWithBeak = ({title, description, number, classname=''}) => {
       {
         number > 0 && <div className={s.listItemIndicator}>2</div>
       }
-
       <div className={s.listItemChevron}></div>
     </button>
   );

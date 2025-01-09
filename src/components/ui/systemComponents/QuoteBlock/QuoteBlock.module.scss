@@ -14,15 +14,12 @@
   padding-block: 6px;
 }
 
-
-
 .quoteDecor {  
   align-self: stretch;
   display: flex;
   align-items: center;
   flex-direction: column;
-  flex-shrink: 0;
-  
+  flex-shrink: 0;  
 }
 
 .quoteLine {
@@ -38,6 +35,6 @@
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
-  display: block; /* Или inline-block, в зависимости от контекста */
+  display: block; 
   flex-shrink: 0;
 }

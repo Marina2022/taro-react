@@ -19,12 +19,14 @@
   padding: 16px;
   color: #fff;
   font-size: 16px;
-  color: #ffffffa3 !important;
-  
-  
+  color: #ffffffa3 !important;   
 
   &::placeholder {
     color: rgb(255 255 255 / 0.64) !important;
+  }
+  
+  &:disabled {
+    opacity: .4;
   }
 }
 
@@ -53,4 +55,14 @@
   line-height: 16px;
   margin-top: 0;
   color: #fff6;
+}
+
+
+.checkbox {
+  margin-top: 10px;
+
+  div {    
+    font-weight: 500;
+    color: #fff6;
+  }
 }

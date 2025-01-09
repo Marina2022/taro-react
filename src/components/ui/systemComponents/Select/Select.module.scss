@@ -1,7 +1,6 @@
 
 .inputIconContainer {
-  position: relative;
-  //width: 140px;
+  position: relative;  
   width: 100%;
   flex-shrink: 0;
   flex-grow: 1;
@@ -23,7 +22,6 @@
   width: 100%;
   flex-shrink: 0;
   
-
   & option {
     color: black;
     margin-bottom: 20px;    

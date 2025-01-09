@@ -1,22 +1,21 @@
 import s from './BigPictureCards.module.scss';
 
-const BigPictureCards = () => {
+const BigPictureCards = ({pictures}) => {
   return (
     <div className={s.cardRow}>
-      <div className={s.card}>
-        <img className={s.cardImage} src="/img/placeholder.png" alt="Placeholder"/>
-        <div className={s.cardText}>
-          <p className={s.cardTitle}>Заголовок</p>
-          <p className={s.cardDescription}>Описание</p>
-        </div>
-      </div>
-      <div className={s.card}>
-        <img className={s.cardImage} src="/img/placeholder.png" alt="Placeholder"/>        
-        <div className={s.cardText}>
-          <p className={s.cardTitle}>Заголовок</p>
-          <p className={s.cardDescription}>Описание</p>
-        </div>
-      </div>
+      {
+        pictures.map((picture, i) => {
+          return <div
+            key={i}
+            className={s.card}>
+            <img className={s.cardImage} src={picture.imageUrl} alt={picture.title}/>
+            <div className={s.cardText}>
+              <p className={s.cardTitle}>{picture.title}</p>
+              <p className={s.cardDescription}>{picture.description}</p>
+            </div>
+          </div>
+        })
+      }
     </div>
   );
 };

@@ -1,12 +1,10 @@
 import s from './RadioButtons.module.scss';
 
-
 const RadioButtons = ({radioButtons, radioButtonsValue, setRadioButtonsValue, classname}) => {
-  
-  const handleClick = (radioBtn)=>{
+  const handleClick = (radioBtn) => {
     setRadioButtonsValue(radioBtn.value)
   }
-  
+
   return (
     <ul>
       {

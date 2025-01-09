@@ -18,21 +18,16 @@
   text-align: center;
   padding: 12px;
   background-color: #4d2e52;
-
-  
 }
 
 .cardImage {
-  //width: 100%;
-  //height: 100%;
+  max-width: 100%;  
   object-fit: cover;
   border-radius: 12px;
-
   width: 80px;
   height: 80px;
   margin-bottom: 8px;
 }
-
 
 .cardText {
   flex: 1;
@@ -51,5 +46,4 @@
   color: #ffffff;
   opacity: 0.8;
 }
-
 

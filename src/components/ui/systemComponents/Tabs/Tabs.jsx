@@ -1,9 +1,9 @@
 import s from './Tabs.module.scss'
 
-const Tabs = ({tabs, selectedTab, setSelectedTab}) => {
+const Tabs = ({tabs, selectedTab, setSelectedTab, label}) => {
   return (
     <div>
-      <div className={s.label}>Лейбл для селекта</div>
+      <div className={s.label}>{label}</div>
       <ul className={s.tabsWrapper}>
         {
           tabs.map((tab, i) => {
@@ -19,8 +19,7 @@ const Tabs = ({tabs, selectedTab, setSelectedTab}) => {
         }
       </ul>
     </div>
-
-  );
-};
+  )
+}
 
 export default Tabs;

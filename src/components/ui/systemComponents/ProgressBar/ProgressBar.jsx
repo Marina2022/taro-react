@@ -1,17 +1,7 @@
 import s from './ProgressBar.module.scss';
 import InputLabel from "@/components/ui/systemComponents/InputLabel/InputLabel.jsx";
+import {getProgressBarColor} from "@/utils.js";
 const ProgressBar = ({value, low, high, label, classname = ''}) => {
-
-  function getProgressBarColor(value, low, high) {
-    // Определяем цвет на основе значений
-    if (value < low) {
-      return "#E63D52"; // Красный
-    } else if (value >= low && value < high) {
-      return "#FFB94C"; // Желтый
-    } else {
-      return "#39CB3F"; // Зеленый
-    }
-  }
 
   return (
     <div className={classname}>

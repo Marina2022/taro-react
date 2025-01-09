@@ -6,5 +6,4 @@ const Text12 = ({children, classname=''}) => {
     </p>
   );
 };
-
 export default Text12;

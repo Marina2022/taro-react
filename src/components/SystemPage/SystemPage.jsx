@@ -23,6 +23,8 @@ import BigPictureCards from "@/components/ui/systemComponents/BigPictureCards/Bi
 import SmallPictureCards from "@/components/ui/systemComponents/SmallPictureCards/SmallPictureCards.jsx";
 import QuoteBlock from "@/components/ui/systemComponents/QuoteBlock/QuoteBlock.jsx";
 import AstrologerCard from "@/components/ui/systemComponents/AstrologerCard/AstrologerCard.jsx";
+import RingChart from "@/components/ui/systemComponents/RingChart/RingChart.jsx";
+import InputLabel from "@/components/ui/systemComponents/InputLabel/InputLabel.jsx";
 
 const SystemPage = () => {
 
@@ -33,6 +35,7 @@ const SystemPage = () => {
   const [year, setYear] = useState('')
 
   const [time, setTime] = useState('')
+  const [dontKnowTime, setDontKnowTime] = useState([])
 
   const [selectedValue, setSelectedValue] = useState('')
 
@@ -46,8 +49,13 @@ const SystemPage = () => {
 
   return (
     <div className={s.systemContainer}>
+
+
+      {/*Заголовки*/}
       <Header24>Заголовок 24</Header24>
       <Header20>Второй заголовок 20</Header20>
+
+      {/*Основной контент*/}
       <Text14>
         Основной текст 16. Хороший день для дел, которые вы давно хотели сделать, но откладывали. Благоприятный день для
         любых механических или рутинных занятий, а так же путешествий, прогулок или отдыха на природе.
@@ -59,7 +67,7 @@ const SystemPage = () => {
         день для любых механических или рутинных занятий, а так же путешествий, прогулок или отдыха на природе.
       </Text12>
 
-
+      {/*Поле ввода*/}
       <div className={s.smallWidthWrapper}>
         <InputGroup
           label="Текстовый ввод"
@@ -69,6 +77,7 @@ const SystemPage = () => {
         />
       </div>
 
+      {/*Поле ввода даты*/}
       <div className={s.smallWidthWrapper}>
         <DataInput
           label="Ввод даты"
@@ -81,10 +90,12 @@ const SystemPage = () => {
         />
       </div>
 
+      {/*Поле ввода времени*/}
       <div className={s.smallWidthWrapper}>
-        <TimeInput label="Ввод времени"/>
+        <TimeInput label="Ввод времени" dontKnowTime={dontKnowTime} setDontKnowTime={setDontKnowTime}/>
       </div>
 
+      {/* Выбор из списка */}
       <div className={s.smallWidthWrapper}>
         <Select selectedValue={selectedValue} setSelectedValue={setSelectedValue} options={
           [
@@ -97,21 +108,26 @@ const SystemPage = () => {
         }/>
       </div>
 
+      {/*Поле для длинного текста с подсчетом символов*/}
       <div className={s.smallWidthWrapper}>
         <TextArea label="Поле для длинного текста" placeholder="Введите текст" maxLength={200}/>
       </div>
 
+      {/*Основная кнопка*/}
       <div className={s.smallWidthWrapper}>
         <Button onClick={() => console.log('click')}>Главная кнопка</Button>
       </div>
 
+      {/*Дополнительная кнопка*/}
       <div className={s.smallWidthWrapper}>
         <SecondaryButton onClick={() => console.log('click по дополнительной кнопке')}>Дополнительная
           кнопка</SecondaryButton>
       </div>
 
+      {/*Табы (вкладки)*/}
       <div className={s.smallWidthWrapper}>
         <Tabs
+          label="Лейбл для селекта"
           selectedTab={selectedTab}
           setSelectedTab={setSelectedTab}
           tabs={
@@ -123,6 +139,7 @@ const SystemPage = () => {
           }/>
       </div>
 
+      {/*Чекбоксы*/}
       <div className={s.smallWidthWrapper}>
         <Checkboxes
           checkboxCheckedValues={checkboxCheckedValues}
@@ -140,6 +157,7 @@ const SystemPage = () => {
         />
       </div>
 
+      {/*Радио-кнопки*/}
       <div className={s.smallWidthWrapper}>
         <RadioButtons
           radioButtonsValue={radioButtonsValue}
@@ -158,15 +176,22 @@ const SystemPage = () => {
       </div>
 
       <div style={{height: 20}}></div>
+
+      {/* Прогресс бары */}
+      {/* Низкое значение */}
       <ProgressBar value={.3} low={.4} high={.6} label="Показатель красный"/>
 
+      {/* Среднее значение */}
       <div style={{height: 20}}></div>
       <ProgressBar value={.5} low={.4} high={.6} label="Показатель желтый"/>
 
+      {/* Высокое значение */}
       <div style={{height: 20}}></div>
       <ProgressBar value={.8} low={.4} high={.6} label="Показатель зеленый"/>
 
       <div style={{height: 20}}></div>
+
+      {/*Кнопка с клювиком справа*/}
       <ButtonWithBeak
         title="Заголовок"
         description="Описание"
@@ -175,24 +200,64 @@ const SystemPage = () => {
 
       <div style={{height: 20}}></div>
 
+      {/*Маленькая плашка*/}
       <SmallBar title="Заголовок"
                 description="Описание"
                 number={20}/>
 
       <div style={{height: 20}}></div>
 
+      {/*Большая плашка*/}
       <BigBar title="Заголовок" description="Описание"/>
 
       <div style={{height: 20}}></div>
 
-      <BigPictureCards/>
+      {/*Карточка с изображением*/}
+      <BigPictureCards
+        pictures={
+          [
+            {
+              imageUrl: "/img/placeholder.png",
+              title: "Заголовок",
+              description: "Описание"
+            },
+            {
+              imageUrl: "/img/placeholder.png",
+              title: "Заголовок",
+              description: "Описание"
+            }            
+          ]
+        }
+      />
 
       <div style={{height: 20}}></div>
 
-      <SmallPictureCards/>
+      {/*Маленькие карточки с изображением*/}
+      <SmallPictureCards
+        pictures={
+          [
+            {
+              imageUrl: "/img/placeholder.png",
+              title: "Заголовок",
+              description: "Описание"
+            },
+            {
+              imageUrl: "/img/placeholder.png",
+              title: "Заголовок",
+              description: "Описание"
+            },
+            {
+              imageUrl: "/img/placeholder.png",
+              title: "Заголовок",
+              description: "Описание"
+            }
+          ]
+        }      
+      />
 
       <div style={{height: 20}}></div>
 
+      {/*Блок с цитатой*/}
       <QuoteBlock>
         Натальная карта - это основа для трактовок личности и расшифровки положения звёзд. На основе этой информации
         астролог сможет разбирать сложные ситуации и отвечать на вопросы.
@@ -200,16 +265,35 @@ const SystemPage = () => {
 
       <div style={{height: 20}}></div>
 
-      <AstrologerCard 
+      {/*Карточка астролога*/}
+      <AstrologerCard
         name="Александра Таровна"
         description="Таро, Астрология"
         imageUrl="/img/astrologist.png"
       />
 
       <div style={{height: 20}}></div>
-      
-    </div>
 
+      {/* Диграмма  */}
+      <div style={{display: 'flex', gap: 10}}>
+        <div style={{flex: 1}}>
+          <InputLabel>С низким значением:</InputLabel>
+          <RingChart value={0.3} low={0.4} high={0.6} classname/>
+        </div>
+
+        <div style={{flex: 1}}>
+          <InputLabel>Со средним значением:</InputLabel>
+          <RingChart value={0.5} low={0.4} high={0.6} classname/>
+        </div>
+
+        <div style={{flex: 1}}>
+          <InputLabel>С высоким значением:</InputLabel>
+          <RingChart value={0.7} low={0.4} high={0.6} classname/>
+        </div>
+      </div>
+
+      <div style={{height: 100}}></div>
+    </div>
   )
     ;
 };
