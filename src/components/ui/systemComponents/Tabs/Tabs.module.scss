@@ -1,0 +1,49 @@
+.label {
+  font-size: 12px;
+  color: #ffffff;
+  opacity: 0.8;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.tabsWrapper {
+  display: flex;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 4px; /* Отступ для внутреннего активного элемента */
+  position: relative;
+}
+
+.tabItem {
+  display: flex;
+  justify-content: center;
+  flex: 1;
+  justify-content: center;
+  padding: 16px 16px;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.8);
+  background: none;
+  border: none;
+  border-radius: 12px; /* Скругление для каждого сегмента */
+  cursor: pointer;
+  position: relative;
+  transition: background-color 0.3s, color 0.3s;
+  user-select: none;
+}
+
+.tabItemActive {
+  display: flex;
+  justify-content: center;
+  user-select: none;
+  flex: 1;
+  padding: 16px 16px;
+  font-size: 14px;  
+  border: none;
+  border-radius: 12px; /* Скругление для каждого сегмента */
+  cursor: pointer;
+  position: relative;
+  transition: background-color 0.3s, color 0.3s;
+  background-color: rgba(255, 255, 255, 0.2); /* Фон активного элемента */
+  color: #ffffff;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.3); /* Stroke для активного элемента */
+}

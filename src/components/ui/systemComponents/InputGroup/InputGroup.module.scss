@@ -1,0 +1,25 @@
+.textInput {
+  width: 100%;
+  padding: 12px 16px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1); /* Обводка с прозрачностью 10% */
+  border-radius: 12px;
+  color: #FFFFFF;
+  font-size: 16px;
+  position: relative;
+  height: 56px;
+  color: #ffffffa3;
+  
+  &::placeholder {
+    color: #FFFFFF;
+    opacity: 0.5;
+  }
+}
+
+.inputLabel {
+  font-size: 12px;
+  color: #FFFFFF;
+  opacity: 0.8;
+  margin-bottom: 8px;
+  display: block;
+}

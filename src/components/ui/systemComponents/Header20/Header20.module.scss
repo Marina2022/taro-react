@@ -1,0 +1,9 @@
+@use '@/assets/styles/mixins' as *;
+
+.title {
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.4;
+  color: #FFFFFF;
+  margin-bottom: 24px;
+}

@@ -1,0 +1,90 @@
+@use 'mixins' as *;
+
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  src: url('@/assets/fonts/Inter-Regular.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  src: url('@/assets/fonts/inter-medium.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  src: url('@/assets/fonts/Inter-SemiBold.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  src: url('@/assets/fonts/Inter-Bold.woff2') format('woff2');
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+h1, h2, h3, ul, ol, li {
+  margin: 0;  
+}
+
+img {
+  display: block;
+}
+
+html {
+  overflow-x: hidden; 
+}
+
+body {
+  font-family: Inter, sans-serif;
+  position: relative;
+  background: #421F47;
+  color: #FFFFFF;
+  height: 100vh;
+}
+
+button {
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+  font-family: inherit;
+}
+
+.container {
+  margin: 0 auto;
+  width: 100%;
+  max-width: 1200px;
+
+  //@include t {
+  //  max-width: 920px;
+  //}
+
+  @include m {
+    max-width: unset;
+    padding-inline: 20px;
+  }
+}
+
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}

@@ -1,0 +1,20 @@
+.button {
+  width: 100%;
+  padding: 18px 24px;
+  font-size: 16px;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  text-align: center;
+  font-family: "Inter", sans-serif;  
+  transition: background-color 0.3s, color 0.3s;  
+  border-radius: 12px;  
+  backdrop-filter: blur(3px);
+  background-color: #ffb94c;
+  color: #2f1b40;
+  border: none;
+  
+  &:hover {
+    background-color: #ff9a2b; /* Немного темнее на hover для основного цвета */
+  }
+}

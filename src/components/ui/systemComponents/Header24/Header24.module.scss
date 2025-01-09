@@ -1,0 +1,9 @@
+@use '@/assets/styles/mixins' as *;
+
+.title {
+  font-size: 24px;
+  font-weight: 500; /* Можно изменить на 600 или bold, если требуется более жирный стиль */
+  line-height: 1.4;
+  color: #FFFFFF; /* Основной белый цвет текста */
+  margin-bottom: 24px;
+}

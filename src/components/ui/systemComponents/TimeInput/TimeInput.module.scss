@@ -1,0 +1,56 @@
+.inputIconContainer {
+  flex-shrink: 0;
+  width: 100%;
+  position: relative;
+
+  & input {
+    width: 100%;
+  }
+}
+
+.input {
+  height: 56px;
+  width: 100%;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, .1);
+  background: #ffffff1a;
+  -webkit-backdrop-filter: blur(3px);
+  backdrop-filter: blur(3px);
+  padding: 16px;
+  color: #fff;
+  font-size: 16px;
+  color: #ffffffa3 !important;
+  
+  
+
+  &::placeholder {
+    color: rgb(255 255 255 / 0.64) !important;
+  }
+}
+
+.label {
+  color: #fffc;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 16px;
+  margin-top: 30px;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.icon {
+  position: absolute;
+  right: 16px;
+  top: 18px;  
+  fill: #ffffffa3;
+}
+
+.comment {
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 16px;
+  margin-top: 0;
+  color: #fff6;
+}
