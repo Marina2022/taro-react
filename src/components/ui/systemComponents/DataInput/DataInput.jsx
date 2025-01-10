@@ -1,7 +1,7 @@
 import s from './DataInput.module.scss';
 const DataInput = ({label, day, setDay, month, setMonth, year, setYear, classname=''}) => {
   return (
-    <div className={`${s.wrapper} ${classname}`}>
+    <div className={classname}>
       <label className={s.onboardingLabels} htmlFor="birth-month">
         {label}
       </label>
@@ -37,7 +37,7 @@ const DataInput = ({label, day, setDay, month, setMonth, year, setYear, classnam
             <option value="11">Ноябрь</option>
             <option value="12">Декабрь</option>
           </select>
-          <div className="input-icon select-icon"></div>
+          <div className={s.icon}></div>
         </div>
         <input
           id="birth-year"

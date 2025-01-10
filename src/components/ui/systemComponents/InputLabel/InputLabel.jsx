@@ -1,7 +1,7 @@
 import s from './InputLabel.module.scss';
-const InputLabel = ({children}) => {
+const InputLabel = ({children, classname=''}) => {
   return (
-    <label className={s.label}>
+    <label className={`${s.label} ${classname}`}>
       {children}
     </label>
   );

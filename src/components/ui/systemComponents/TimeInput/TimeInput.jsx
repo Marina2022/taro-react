@@ -2,7 +2,7 @@ import s from './TimeInput.module.scss';
 import {useEffect, useRef, useState} from "react";
 import Checkboxes from "@/components/ui/systemComponents/Checkboxes/Checkboxes.jsx";
 
-const TimeInput = ({label, classname, dontKnowTime, setDontKnowTime = ''}) => {
+const TimeInput = ({time, setTime, label, classname, dontKnowTime, setDontKnowTime = ''}) => {
 
   const ref = useRef()
   
@@ -15,8 +15,8 @@ const TimeInput = ({label, classname, dontKnowTime, setDontKnowTime = ''}) => {
       setDisabled(false)
     } else {
       setDisabled(true)
-    }
-  
+      setTime('00:00')
+    }  
   }
 
   useEffect(() => {
@@ -44,6 +44,8 @@ const TimeInput = ({label, classname, dontKnowTime, setDontKnowTime = ''}) => {
           placeholder="00:00"
           className={s.input}
           disabled={disabled}
+          value={time}
+          onChange={(e)=>setTime(e.target.value)}
         />
         <svg
           style={{opacity: disabled ? .4 : 1}}          

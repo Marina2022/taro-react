@@ -1,0 +1,40 @@
+@use '@/assets/styles/mixins' as *;
+
+.controlsBlock {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgb(255 255 255/0.3);
+  border-radius: 20px;
+  padding: 20px;
+  height: 416px;
+}
+
+.stepsButtons {
+  display: flex;
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.btn {
+  margin-top: 20px;
+}
+
+.header {
+  color: #fff;
+  font-family: Inter;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 32px;
+  margin: 0;
+}
+
+.text {
+  color: #fffc;
+  font-family: Inter;
+  margin: 8px 0 24px;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 22px;
+}

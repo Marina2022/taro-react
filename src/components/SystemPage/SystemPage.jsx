@@ -31,7 +31,7 @@ const SystemPage = () => {
   const [inputValue, setInputValue] = useState('')
 
   const [day, setDay] = useState('')
-  const [month, setMonth] = useState('')
+  const [month, setMonth] = useState(1)
   const [year, setYear] = useState('')
 
   const [time, setTime] = useState('')
@@ -92,7 +92,12 @@ const SystemPage = () => {
 
       {/*Поле ввода времени*/}
       <div className={s.smallWidthWrapper}>
-        <TimeInput label="Ввод времени" dontKnowTime={dontKnowTime} setDontKnowTime={setDontKnowTime}/>
+        <TimeInput
+          time={time}
+          setTime={setTime}
+          label="Ввод времени"
+          dontKnowTime={dontKnowTime}
+          setDontKnowTime={setDontKnowTime}/>
       </div>
 
       {/* Выбор из списка */}
@@ -225,7 +230,7 @@ const SystemPage = () => {
               imageUrl: "/img/placeholder.png",
               title: "Заголовок",
               description: "Описание"
-            }            
+            }
           ]
         }
       />
@@ -252,7 +257,7 @@ const SystemPage = () => {
               description: "Описание"
             }
           ]
-        }      
+        }
       />
 
       <div style={{height: 20}}></div>

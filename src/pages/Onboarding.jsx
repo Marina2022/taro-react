@@ -1,10 +1,8 @@
-import React from 'react';
+import OnboardingPage from "@/components/OnboardingPage/OnboardingPage.jsx";
 
 const Onboarding = () => {
   return (
-    <div className='container'>
-      Onboarding
-    </div>
+    <OnboardingPage />
   );
 };
 

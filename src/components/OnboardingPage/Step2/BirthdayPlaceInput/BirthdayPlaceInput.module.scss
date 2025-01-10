@@ -1,0 +1,32 @@
+.iconContainer {
+  
+  position: relative;  
+}
+
+.cityInputBlock {
+  
+  padding: 12px 16px;
+  background-color: #ffffff1a;
+  border: 1px solid rgba(255, 255, 255, .1);
+  border-radius: 12px;
+  
+  font-size: 16px;
+  
+  height: 56px;
+  
+  align-items: center;
+  color: #ffffff8a;
+  width: 100%;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 24px;
+  
+}
+
+.clickText {
+  width: 28ch;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

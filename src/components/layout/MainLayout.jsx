@@ -5,7 +5,6 @@ const MainLayout = () => {
   return (
     <div>
       <header>header</header>
-
         <Outlet/>
       <footer>navbar</footer>
     </div>

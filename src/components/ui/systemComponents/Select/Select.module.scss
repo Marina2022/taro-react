@@ -2,13 +2,11 @@
 .inputIconContainer {
   position: relative;  
   width: 100%;
-  flex-shrink: 0;
-  flex-grow: 1;
+  flex-shrink: 0; 
 }
 
 .select {
-  height: 56px;
-  
+  height: 56px;  
   background: #421f47;
   border: none;
   outline: none;
@@ -21,6 +19,7 @@
   color: rgb(255 255 255/0.54);
   width: 100%;
   flex-shrink: 0;
+  
   
   & option {
     color: black;
