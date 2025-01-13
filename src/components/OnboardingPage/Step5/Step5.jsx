@@ -15,7 +15,7 @@ const Step5 = ({setStep}) => {
         credentials: 'include',
       })
         .then(response => {
-          if (response.status === 400) {
+          if (response.status === 200) {
             
             return response.json();
           } else if (response.status === 403 || response.status === 401) {
