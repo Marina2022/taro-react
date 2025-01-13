@@ -84,12 +84,7 @@ const OnboardingPage = () => {
     };
 
     // console.log(data)
-
-
-     setStep(5)
-    
-    
-    
+               
     fetch("https://my.aspectum.app/api/signup/", {
       method: "POST",
       headers: {
@@ -101,8 +96,8 @@ const OnboardingPage = () => {
       .then((response) => response.json())
       .then((result) => {
         if (result.status === "User created and logged in successfully") {
-          
-          /// todo setStep(5)          
+
+          setStep(5) 
           
         } else {
           // Обработка ошибок
