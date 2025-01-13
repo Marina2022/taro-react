@@ -7,8 +7,11 @@ import Step2 from "@/components/OnboardingPage/Step2/Step2.jsx";
 import Step3 from "@/components/OnboardingPage/Step3/Step3.jsx";
 import Step4 from "@/components/OnboardingPage/Step4/Step4.jsx";
 import BirthdayPlacePopup from "@/components/OnboardingPage/BirthdayPlacePopup/BirthdayPlacePopup.jsx";
+import Step5 from "@/components/OnboardingPage/Step5/Step5.jsx";
 
 const OnboardingPage = () => {
+
+  const [step, setStep] = useState(1)
 
   const [onboardingCountries, setOnboardingCountries] = useState([])
   const [selectedCountry, setSelectedCountry] = useState({value: 8, label: 'Российская Федерация'})
@@ -18,27 +21,29 @@ const OnboardingPage = () => {
   const [coords, setCoords] = useState(null)
   const [showJustPopularCities, setShowJustPopularCities] = useState(true)
 
-  const [step, setStep] = useState(2)
-
   const [day, setDay] = useState('')
   const [month, setMonth] = useState(1)
   const [year, setYear] = useState('')
   const [time, setTime] = useState('')
   const [dontKnowTime, setDontKnowTime] = useState([])
 
+  const [nickname, setNickname] = useState('')
+  const [selectedSex, setSelectedSex] = useState('male')
+  const [consentCheckboxes, setConsentCheckboxes] = useState([])  // возможные значения: ["dataConsent", "newsConsent"]
+
+
+  const [email, setEmail] = useState('')
+
   // если пользователь выбрал "Не знаю точное время", то посылаем 12:00 
   const timeValueToSend = dontKnowTime.length > 0 ? '12:00' : time
-  const birth_date = `${year}-${addLeadingZero(+month)}-${addLeadingZero(+day)}`;
-
-  //todo не забыть послать координаты, если они есть, но нет айди города
-
+    
   const [popupOpened, setPopupOpened] = useState(false)
 
   useEffect(() => {
     // запрос на страны - только один раз в самом начале
     fetch("https://my.aspectum.app/api/countries")
       .then((res) =>
-        res.json().then((val) => {          
+        res.json().then((val) => {
           setOnboardingCountries(val);
         })
       )
@@ -46,12 +51,12 @@ const OnboardingPage = () => {
         console.error("Ошибка:", error);
       });
   }, []);
-  
+
   useEffect(() => {
     // запрос на города
     fetch(`https://my.aspectum.app/api/cities/?country_id=${selectedCountry.value}&prefix=${prefix}`)
       .then((res) =>
-        res.json().then((val) => {          
+        res.json().then((val) => {
           setOnboardingCities(showJustPopularCities ? val.slice(0, 5) : val);
         })
       )
@@ -61,11 +66,60 @@ const OnboardingPage = () => {
 
   }, [selectedCountry, prefix])
 
- 
+  const submitForm = () => {
+
+    const birth_date = `${year}-${addLeadingZero(+month)}-${addLeadingZero(+day)}`;
+
+    const data = {
+      birth_date,
+      birth_time: dontKnowTime.length > 0 ? '12:00' : time,
+      city_id: selectedCity ? selectedCity.id : null,
+      latitude: +coords?.lat ?? "",
+      longitude: +coords?.lng ?? "",
+      nickname: nickname,
+      gender: selectedSex,
+      email: email,
+      data_consent: consentCheckboxes.includes('dataConsent'),
+      newsletter_consent: consentCheckboxes.includes('newsConsent'),      
+    };
+
+    // console.log(data)
+
+
+     setStep(5)
     
+    
+    
+    fetch("https://my.aspectum.app/api/signup/", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+      credentials: 'include'
+    })
+      .then((response) => response.json())
+      .then((result) => {
+        if (result.status === "User created and logged in successfully") {
+          
+          /// todo setStep(5)          
+          
+        } else {
+          // Обработка ошибок
+
+          throw new Error(result.error);
+          // alert(result.error);
+        }
+      })
+      .catch((error) => {
+        console.error("Ошибка:", error);
+        alert(error);
+      });
+  }
+
   return (
-    <div className={s.onboarding}>
-      
+    <div className={ step !==5 ? s.onboarding : s.onboardingFinal}>
+
       <div className={s.stepsContainer}>
         {
           step === 1 && <Step1
@@ -90,7 +144,7 @@ const OnboardingPage = () => {
             onboardingCities={onboardingCities}
             selectedCountry={selectedCountry}
             setSelectedCountry={setSelectedCountry}
-            setPopupOpened={setPopupOpened }
+            setPopupOpened={setPopupOpened}
             selectedCity={selectedCity}
             setSelectedCity={setSelectedCity}
             coords={coords}
@@ -99,17 +153,37 @@ const OnboardingPage = () => {
         }
 
         {
-          step === 3 && <Step3 setStep={setStep}/>
+          step === 3 && <Step3
+            setStep={setStep}
+            nickname={nickname}
+            setNickname={setNickname}
+            selectedTab={selectedSex}
+            setSelectedTab={setSelectedSex}
+          />
         }
 
         {
-          step === 4 && <Step4 setStep={setStep}/>
+          step === 4 && <Step4
+            setStep={setStep}
+            setEmail={setEmail}
+            email={email}
+            checkboxCheckedValues={consentCheckboxes}
+            setCheckboxCheckedValues={setConsentCheckboxes}
+            submitForm={submitForm}
+          />
+        }
+
+        {
+          step === 5 && <Step5
+            setStep={setStep}
+            
+          />
         }
 
       </div>
 
       {
-        popupOpened && <BirthdayPlacePopup 
+        popupOpened && <BirthdayPlacePopup
           onboardingCities={onboardingCities}
           setOnboardingCities={setOnboardingCities}
           showJustPopularCities={showJustPopularCities}

@@ -13,6 +13,7 @@
   background-color: #ffb94c;
   color: #2f1b40;
   border: none;
+  user-select: none;
   
   &:hover {
     background-color: #ff9a2b; /* Немного темнее на hover для основного цвета */

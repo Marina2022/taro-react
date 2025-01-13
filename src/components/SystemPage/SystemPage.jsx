@@ -102,7 +102,7 @@ const SystemPage = () => {
 
       {/* Выбор из списка */}
       <div className={s.smallWidthWrapper}>
-        <Select selectedValue={selectedValue} setSelectedValue={setSelectedValue} options={
+        <Select selectedValue={selectedValue} onSelect={setSelectedValue} options={
           [
             {value: 1, label: 'option 1'},
             {value: 2, label: 'option 2'},
@@ -134,7 +134,7 @@ const SystemPage = () => {
         <Tabs
           label="Лейбл для селекта"
           selectedTab={selectedTab}
-          setSelectedTab={setSelectedTab}
+          setSelectedTab={setSelectedTab}          
           tabs={
             [
               {value: 1, label: 'Значение 1'},

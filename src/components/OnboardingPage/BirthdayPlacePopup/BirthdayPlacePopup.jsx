@@ -19,7 +19,11 @@ const BirthdayPlacePopup = ({
   const [cityListTitle, setCityListTitle] = useState('Популярные города')
   const [preselectedCity, setPreselectedCity] = useState(null)
   const [inputValue, setInputValue] = useState('')
+  const [latInputValue, setLatInputValue] = useState('')
+  const [lngInputValue, setLngInputValue] = useState('')
 
+  const cityPopupRef = useRef()
+  
   useEffect(() => {
     if (inputValue === '') return
     setPrefix(inputValue)
@@ -38,7 +42,6 @@ const BirthdayPlacePopup = ({
     return () => document.removeEventListener("keydown", handleKeyDown);
   }, []);
 
-  const cityPopupRef = useRef()
   const handleCityInputFocus = (e) => {
     setCityListTitle("Начните вводить название города...")
     setOnboardingCities([])
@@ -92,10 +95,7 @@ const BirthdayPlacePopup = ({
       closePopup();
     }
   }
-
-  const [latInputValue, setLatInputValue] = useState('')
-  const [lngInputValue, setLngInputValue] = useState('')
-
+  
   const handleLatInput = (e) => {
     setLatInputValue(e.target.value.replace(/[^0-9.-]/g, ""))
   }

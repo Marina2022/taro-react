@@ -13,6 +13,19 @@
   background-position: top;
 }
 
+.onboardingFinal {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-image: url("@/assets/img/onboarding/bg-stars-rounds-black.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: top;
+}
+
 .stepsContainer {
   width: 375px;  // todo надо посмотреть
   position: fixed;

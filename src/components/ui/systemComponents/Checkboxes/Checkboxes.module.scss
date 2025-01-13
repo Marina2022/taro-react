@@ -1,3 +1,5 @@
+@use '@/assets/styles/mixins' as *;
+
 .checkboxContainer {
   display: flex;
   gap: 6px;
@@ -7,6 +9,11 @@
   line-height: 20px;
   margin-bottom: 12px;
   cursor: pointer;
+
+  @include xs {
+    font-size: 12px;
+    line-height: 16px;
+  }
 }
 
 .unchecked {  

@@ -1,9 +1,21 @@
 import React from 'react';
-import s from "@/components/OnboardingPage/Step2/Step2.module.scss";
+import s from "./Step3.module.scss";
 import SecondaryButton from "@/components/ui/systemComponents/SecondaryButton/SecondaryButton.jsx";
 import Button from "@/components/ui/systemComponents/Button/Button.jsx";
+import InputGroup from "@/components/ui/systemComponents/InputGroup/InputGroup.jsx";
+import Tabs from "@/components/ui/systemComponents/Tabs/Tabs.jsx";
 
-const Step3 = ({setStep}) => {
+const Step3 = ({setStep, nickname, setNickname, selectedTab, setSelectedTab}) => {
+  
+  const handleContinue = ()=>{
+    
+    if (!nickname) {
+      alert("Пожалуйста, введите имя.");
+      return false
+    }    
+    setStep(4)
+  }
+  
   return (
     <>
       <div className={s.controlsBlock}>
@@ -11,10 +23,31 @@ const Step3 = ({setStep}) => {
         <p className={s.text}>
           Пока мы готовим ваш персональный гороскоп и рекомендации
         </p>
-      </div>
+
+        <InputGroup
+        classname={s.nicknameInput}  
+          value={nickname} 
+          setValue={setNickname} 
+          label="Как к вам обращаться?"  />
+
+        <Tabs
+          classname={s.sexTabs}
+          label="Пол"
+          selectedTab={selectedTab}
+          setSelectedTab={setSelectedTab}
+          tabs={
+            [
+              {value: 'male', label: 'Мужской'},
+              {value: 'female', label: 'Женский'},
+              {value: 'other', label: 'Небинарный'},
+            ]
+          }/>
+      </div>    
+      
+      
       <div className={s.stepsButtons}>
         <SecondaryButton onClick={() => setStep(2)}>Назад</SecondaryButton>
-        <Button onClick={() => setStep(4)}>Далее</Button>
+        <Button onClick={handleContinue}>Далее</Button>
       </div>
     </>
   );

@@ -1,8 +1,8 @@
 import s from './Tabs.module.scss'
 
-const Tabs = ({tabs, selectedTab, setSelectedTab, label}) => {
+const Tabs = ({tabs, selectedTab, setSelectedTab, label, classname=''}) => {
   return (
-    <div>
+    <div className={classname}>
       <div className={s.label}>{label}</div>
       <ul className={s.tabsWrapper}>
         {

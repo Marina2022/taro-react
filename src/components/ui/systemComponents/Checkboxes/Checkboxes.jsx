@@ -26,7 +26,7 @@ const Checkboxes = ({checkboxes, checkboxCheckedValues, setCheckboxCheckedValues
                 checkboxCheckedValues.includes(checkbox.value) ? <span className={s.checked}></span> :
                   <span className={s.unchecked}></span>
               }
-              <div>{checkbox.label}</div>
+              <div dangerouslySetInnerHTML={{ __html: checkbox.label }}></div>              
             </li>
           )
         })

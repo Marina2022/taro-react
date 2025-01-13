@@ -38,3 +38,15 @@
   font-weight: 500;
   line-height: 22px;
 }
+
+.emailInput {
+  margin-top: 14px;
+
+  @include xs {
+    margin-top: 0px;
+  }
+}
+
+.checkboxes {
+  margin-top: 20px;
+}
