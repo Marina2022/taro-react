@@ -1,0 +1,29 @@
+.slide {
+  cursor: pointer;
+ 
+}
+
+.slideTitle {
+  font-size: 20px;
+  font-weight: 500;
+  margin-bottom: 18px;
+  
+}
+
+.slideText {
+  color: rgba(255, 255, 255, 0.8);
+  font-family: Inter;
+  margin: 8px 0 0 0;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 22px; /* 137.5% */
+  margin-bottom: 24px;
+  margin-bottom: 40px;  
+}
+
+
+.onboardingSlider {
+  --swiper-theme-color: #fff;
+  --swiper-pagination-bullet-inactive-color: #fff;
+}

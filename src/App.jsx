@@ -8,50 +8,45 @@ import System from "@/pages/System.jsx";
 import AuthContextProvider, {useUserAuth} from "@/context/authContext.jsx";
 import {useEffect, useState} from "react";
 
-
 function App() {
 
   const {setUser, setIsUserLoading, setNatalChartCreated} = useUserAuth()
-    
+
   useEffect(() => {
-    const fetchUserProfile = async () => {      
+    const fetchUserProfile = async () => {
       try {
         setIsUserLoading(true)
         const response = await fetch('https://my.aspectum.app/api/profile/', {
           method: 'GET',
           credentials: 'include',
-        })        
+        })
         if (response.redirected !== true) {
-          console.log('Юзер авторизован!')
-          const user  = await response.json();
+          const user = await response.json();
           setUser(user)
-          
+
           const natalChartCreated = localStorage.getItem('natalChartCreated')
           if (natalChartCreated) {
             setNatalChartCreated(true)
           } else {
             setNatalChartCreated(false)
           }
-                    
+
         } else {
           throw new Error('Ошибка при получении данных профиля');
-        }  
-      } catch(err) {
+        }
+      } catch (err) {
         console.log(err)
       } finally {
         setIsUserLoading(false)
       }
-      
-      
     }
 
     fetchUserProfile()
-    
-  }, [])
- 
- 
 
-return (
+  }, [])
+
+
+  return (
     <Router>
       <Routes>
         <Route path='/onboarding' element={<Onboarding/>}/>
@@ -63,7 +58,7 @@ return (
         </Route>
       </Routes>
     </Router>
-);
+  )
 }
 
 export default App

@@ -10,17 +10,13 @@ const ProtectedRoute = ({children}) => {
   const navigate = useNavigate()
 
   useEffect(() => {
-    if (!user && !isUserLoading) navigate('/onboarding')
-    
-    if (user && !natalChartCreated) navigate('/onboarding')
-    
+    if (!user && !isUserLoading) navigate('/onboarding')    
+    if (user && !natalChartCreated) navigate('/onboarding')    
   }, [navigate, user, isUserLoading])
 
   if (isUserLoading) return null
   // if (isUserLoading) return <Spinner/>
-
   if (user) return children
-
 };
 
 export default ProtectedRoute;

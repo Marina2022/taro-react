@@ -14,8 +14,7 @@ const OnboardingPage = () => {
 
   const {user, setNatalChartCreated} = useUserAuth()
 
-
-  const [step, setStep] = useState(1)
+  const [step, setStep] = useState(5)
 
   const [onboardingCountries, setOnboardingCountries] = useState([])
   const [selectedCountry, setSelectedCountry] = useState({value: 8, label: 'Российская Федерация'})
@@ -50,10 +49,8 @@ const OnboardingPage = () => {
   useEffect(() => {
 
 
-    if (user) {
-      console.log('юзер есть', user)
-      setStep(5)
-    }
+    if (user) {      
+      setStep(5)    }
   }, [user]);
 
 

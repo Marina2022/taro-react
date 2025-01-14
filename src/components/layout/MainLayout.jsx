@@ -7,7 +7,12 @@ const MainLayout = () => {
     <div>
       <Header/>
       <Outlet/>
-      <footer>navbar</footer>
+      <footer>
+        <div className="container">
+          <br/>
+          navbar
+        </div>
+      </footer>
     </div>
   );
 };
