@@ -14,7 +14,7 @@ const OnboardingPage = () => {
 
   const {user, setNatalChartCreated} = useUserAuth()
 
-  const [step, setStep] = useState(5)
+  const [step, setStep] = useState(1)
 
   const [onboardingCountries, setOnboardingCountries] = useState([])
   const [selectedCountry, setSelectedCountry] = useState({value: 8, label: 'Российская Федерация'})
@@ -197,10 +197,7 @@ const OnboardingPage = () => {
         }
 
         {
-          step === 5 && <Step5
-            setStep={setStep}
-
-          />
+          step === 5 && <Step5 setStep={setStep}/>
         }
       </div>
 
