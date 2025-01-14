@@ -1,0 +1,65 @@
+.tabbar {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 12px 0;
+  background-color: rgba(255, 255, 255, 0.12);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  position: fixed;
+  bottom: 16px; /* Отступ снизу */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 92%; /* Уменьшенная ширина для равных отступов по бокам */
+  max-width: 660px; /* Ограничение максимальной ширины */
+  border-radius: 60px; /* Скругление таббара */
+}
+
+.tabButton {
+  background: none;
+  border: none;
+  color: #ffffff;
+  font-size: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+  opacity: 0.7;
+}
+
+.tabButtonActive {
+  background: none;
+  border: none;
+  font-size: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+  opacity: 1;
+  color: #ffb94c; /* Цвет активного элемента */
+}
+
+.tabIcon {
+  font-size: 24px;
+  font-family: "SF Pro Display", sans-serif; /* Шрифт для иконок */
+  margin-bottom: 4px;
+}
+
+.tabText {
+  font-size: 12px;
+}
+
+.tabIndicator {
+  position: absolute;
+  bottom: -12px; /* Примыкание к нижней части таббара */
+  height: 4px;
+  width: 40px;
+  background: linear-gradient(90deg, rgba(205, 159, 73, 0) 0%, #cd9f49 50%, rgba(205, 159, 73, 0) 100%);
+  border-radius: 2px;
+}
+
+.tab-button:not(.active) .tab-indicator {
+  display: none;
+}

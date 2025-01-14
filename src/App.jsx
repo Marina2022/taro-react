@@ -54,7 +54,7 @@ function App() {
         <Route element={<ProtectedRoute><MainLayout/></ProtectedRoute>}>
           <Route path='/' index element={<Home/>}/>
           <Route path='/ask' element={<Ask/>}/>
-          <Route path='*' element={<div>Not found</div>}/>
+          <Route path='*' element={<div className='container'>Not found</div>}/>
         </Route>
       </Routes>
     </Router>

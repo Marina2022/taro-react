@@ -2,8 +2,7 @@ import s from './Header.module.scss';
 import {useUserAuth} from "@/context/authContext.jsx";
 
 const Header = () => {
-  const {user, natalChartCreated } = useUserAuth()
-  console.log(user)
+  const {user, natalChartCreated } = useUserAuth()  
   
   user.sign = 'scorpio'
   return (

@@ -1,3 +1,5 @@
+@use '@/assets/styles/mixins' as *;
+
 .listItemButton {
   display: flex;
   align-items: center;
@@ -33,6 +35,11 @@
 
 .listItemText {
   flex: 1;
+  max-width: 90%;
+  
+  @include xs {
+    max-width: 70%;
+  }
 }
 
 .listItemTitle {

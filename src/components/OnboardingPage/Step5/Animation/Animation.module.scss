@@ -497,7 +497,17 @@
   pointer-events: none;
 }
 
-/*Счетчик процентов поверх анимации на последнем шаге*/
+.noAnimation * {
+  animation: none!important;
+}
+
+.noAnimation::before,
+.noAnimation::after, {
+  animation: none!important;
+}
+
+
+/*Счетчик процентов */
 
 .percentCounter {
   position: absolute;
@@ -514,14 +524,4 @@
   font-size: 16px;
   margin-left: 2px;
   font-weight: 500;
-}
-
-
-.noAnimation * {
-  animation: none!important;
-}
-
-.noAnimation::before,
-.noAnimation::after, {
-  animation: none!important;
 }

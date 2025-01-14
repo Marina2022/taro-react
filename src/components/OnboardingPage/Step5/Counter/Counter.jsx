@@ -6,10 +6,10 @@ const Counter = ({isCounting, setIsCounting, classname}) => {
   const [currentPercent, setCurrentPercent] = useState(0)
   const intervalId = useRef()
 
-  useEffect(() => {    
+  useEffect(() => {
     intervalId.current = setInterval(() => {
       setCurrentPercent(prev => prev + 1)
-    }, 600);  
+    }, 600);
     
     return () => {
       if (intervalId.current) clearInterval(intervalId.current);
@@ -17,7 +17,6 @@ const Counter = ({isCounting, setIsCounting, classname}) => {
   }, []);
 
   useEffect(() => {
-
     if (currentPercent >= 100) {
       clearInterval(intervalId.current);
       setIsCounting(false)

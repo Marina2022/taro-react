@@ -6,8 +6,7 @@ import InputGroup from "@/components/ui/systemComponents/InputGroup/InputGroup.j
 import Tabs from "@/components/ui/systemComponents/Tabs/Tabs.jsx";
 
 const Step3 = ({setStep, nickname, setNickname, selectedTab, setSelectedTab}) => {
-  
-  const handleContinue = ()=>{
+    const handleContinue = ()=>{
     
     if (!nickname) {
       alert("Пожалуйста, введите имя.");
@@ -42,8 +41,7 @@ const Step3 = ({setStep, nickname, setNickname, selectedTab, setSelectedTab}) =>
               {value: 'other', label: 'Небинарный'},
             ]
           }/>
-      </div>    
-      
+      </div> 
       
       <div className={s.stepsButtons}>
         <SecondaryButton onClick={() => setStep(2)}>Назад</SecondaryButton>

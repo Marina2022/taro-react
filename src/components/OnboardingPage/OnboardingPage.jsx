@@ -42,15 +42,14 @@ const OnboardingPage = () => {
 
   const [popupOpened, setPopupOpened] = useState(false)
 
-  
+
   const {setUser, setIsUserLoading} = useUserAuth()
 
   // Если пользователь уже есть (зарегистрирован), но он не посмотрел слайдер, перекидываем его на 5й шаг
   useEffect(() => {
-
-
-    if (user) {      
-      setStep(5)    }
+    if (user) {
+      setStep(5)
+    }
   }, [user]);
 
 
@@ -98,8 +97,6 @@ const OnboardingPage = () => {
       newsletter_consent: consentCheckboxes.includes('newsConsent'),
     };
 
-    // console.log(data)
-
     fetch("https://my.aspectum.app/api/signup/", {
       method: "POST",
       headers: {
@@ -111,18 +108,9 @@ const OnboardingPage = () => {
       .then((response) => response.json())
       .then((result) => {
         if (result.status === "User created and logged in successfully") {
-
-          // шаг ставим в useEffect при появлении user в приложении // todo потестить
-          // setStep(5) 
-
-          
           fetchUserProfile()
-
         } else {
-          // Обработка ошибок
-
           throw new Error(result.error);
-          // alert(result.error);
         }
       })
       .catch((error) => {
@@ -130,7 +118,6 @@ const OnboardingPage = () => {
         alert(error);
       });
   }
-
 
   const fetchUserProfile = async () => {
     try {
@@ -141,13 +128,12 @@ const OnboardingPage = () => {
       })
       if (response.redirected !== true) {
         console.log('Юзер авторизован!')
-        const user  = await response.json();
+        const user = await response.json();
         setUser(user)
-      
       } else {
         throw new Error('Ошибка при получении данных профиля');
       }
-    } catch(err) {
+    } catch (err) {
       console.log(err)
     } finally {
       setIsUserLoading(false)
@@ -216,7 +202,6 @@ const OnboardingPage = () => {
 
           />
         }
-
       </div>
 
       {

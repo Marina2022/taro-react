@@ -8,7 +8,7 @@ const ButtonWithBeak = ({title, description, number, classname=''}) => {
         <p className={s.listItemDescription}>{description}</p>
       </div>
       {
-        number > 0 && <div className={s.listItemIndicator}>2</div>
+        number > 0 && <div className={s.listItemIndicator}>{number}</div>
       }
       <div className={s.listItemChevron}></div>
     </button>

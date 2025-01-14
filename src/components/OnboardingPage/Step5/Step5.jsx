@@ -11,21 +11,17 @@ import OnboardingSlider from "@/components/OnboardingPage/Step5/OnboardingSlider
 const Step5 = ({setStep}) => {
 
   const {setNatalChartCreated} = useUserAuth()
-
   const [isCounting, setIsCounting] = useState(true)
-
-  const navigate = useNavigate()
+  const navigate = useNavigate()  
+  const [changeSlide, setChangeSlide] = useState(true) 
 
   useEffect(() => {
     if (!isCounting) {      
       localStorage.setItem('natalChartCreated', true)
       setNatalChartCreated(true)
     }
-
   }, [isCounting]);
-
-  const [changeSlide, setChangeSlide] = useState(true)
-
+  
   const handleClick = () => {
     if (isCounting) {
       setChangeSlide(prev => !prev)
@@ -44,7 +40,6 @@ const Step5 = ({setStep}) => {
         <Animation isCounting={isCounting} setIsCounting={setIsCounting}/>
         <div className={s.sliderWrapper}>
           <OnboardingSlider changeSlide={changeSlide}/>
-
         </div>
       </div>
       <Button onClick={handleClick} classname={s.btn}>{isCounting ? 'Далее' : 'Приступить'}</Button>

@@ -299,8 +299,7 @@ const SystemPage = () => {
 
       <div style={{height: 100}}></div>
     </div>
-  )
-    ;
-};
+  )    
+}
 
 export default SystemPage;

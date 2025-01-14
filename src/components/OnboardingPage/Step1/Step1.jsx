@@ -43,8 +43,7 @@ const Step1 = ({setStep, day, setDay, month, setMonth, year, setYear, time, setT
     } else if (timeArray[1] > 59 || timeArray[1].includes('_'))  {
       alert("Пожалуйста, введите минуту рождения правильно.");
       return false;
-    }
-    
+    }    
     setStep(2)
   }
   

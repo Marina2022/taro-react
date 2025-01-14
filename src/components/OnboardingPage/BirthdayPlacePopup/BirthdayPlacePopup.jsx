@@ -82,20 +82,16 @@ const BirthdayPlacePopup = ({
           lat: latInputValue,
           lng: lngInputValue
         }
-      )
-      
+      )      
       if (!preselectedCity) setSelectedCity(null)
-    }
-    
+    }    
     closePopup()
   }
-
   const handleUnderlayClick = (e) => {
     if (!cityPopupRef.current.contains(e.target)) {
       closePopup();
     }
-  }
-  
+  }  
   const handleLatInput = (e) => {
     setLatInputValue(e.target.value.replace(/[^0-9.-]/g, ""))
   }

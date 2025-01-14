@@ -24,7 +24,6 @@ const Step2 = ({
     setSelectedCity(null)
     setCoords(null)
   }
-
   const handleContinue = () => {
     if (!(selectedCity || coords)) {
       alert("Пожалуйста, укажите место рождения.");
@@ -49,17 +48,15 @@ const Step2 = ({
             onboardingCountries.map(country => ({value: country.id, label: country.name}))
           }
         />
-
         <InputLabel classname={s.placeLabel}>Место рождения</InputLabel>
         <BirthdayPlaceInput setPopupOpened={setPopupOpened} selectedCity={selectedCity} coords={coords}/>
-
       </div>
       <div className={s.stepsButtons}>
         <SecondaryButton onClick={() => setStep(1)}>Назад</SecondaryButton>
         <Button onClick={handleContinue}>Далее</Button>
       </div>
     </>
-  );
-};
+  )
+}
 
 export default Step2;

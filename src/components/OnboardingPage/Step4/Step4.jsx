@@ -4,7 +4,6 @@ import SecondaryButton from "@/components/ui/systemComponents/SecondaryButton/Se
 import Button from "@/components/ui/systemComponents/Button/Button.jsx";
 import InputGroup from "@/components/ui/systemComponents/InputGroup/InputGroup.jsx";
 import Checkboxes from "@/components/ui/systemComponents/Checkboxes/Checkboxes.jsx";
-
 const Step4 = ({setStep, checkboxCheckedValues, setCheckboxCheckedValues, email, setEmail, submitForm}) => {
   
   const handleSubmit = () => {
@@ -55,7 +54,7 @@ const Step4 = ({setStep, checkboxCheckedValues, setCheckboxCheckedValues, email,
               {
                 value: 'newsConsent',
                 label: 'Я согласен получать прогнозы, рассылки и уведомления от aspectum.app'
-              },
+              }
             ]
           }
         />
