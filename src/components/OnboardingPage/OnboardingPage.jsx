@@ -11,7 +11,7 @@ import Step5 from "@/components/OnboardingPage/Step5/Step5.jsx";
 
 const OnboardingPage = () => {
 
-  const [step, setStep] = useState(1)
+  const [step, setStep] = useState(5)
 
   const [onboardingCountries, setOnboardingCountries] = useState([])
   const [selectedCountry, setSelectedCountry] = useState({value: 8, label: 'Российская Федерация'})
@@ -74,8 +74,8 @@ const OnboardingPage = () => {
       birth_date,
       birth_time: dontKnowTime.length > 0 ? '12:00' : time,
       city_id: selectedCity ? selectedCity.id : null,
-      latitude: +coords?.lat ?? "",
-      longitude: +coords?.lng ?? "",
+      latitude: coords?.lat ? +coords?.lat : "",
+      longitude: coords?.lng ? +coords?.lng : "",
       nickname: nickname,
       gender: selectedSex,
       email: email,

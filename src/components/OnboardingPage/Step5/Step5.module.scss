@@ -6,7 +6,7 @@
   border: 1px solid rgb(255 255 255/0.3);
   border-radius: 20px;
   padding: 20px;
-  height: 416px;
+  //height: 416px;
 }
 
 .stepsButtons {
@@ -37,4 +37,25 @@
   font-style: normal;
   font-weight: 500;
   line-height: 22px;
+}
+
+.slideTitle {
+  font-size: 20px;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+.slideText {
+  color: rgba(255, 255, 255, 0.8);
+  font-family: Inter;
+  margin: 8px 0 0 0;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 22px; /* 137.5% */
+  margin-bottom: 24px;
+}
+
+.sliderWrapper {
+  margin-top: 236px;
 }

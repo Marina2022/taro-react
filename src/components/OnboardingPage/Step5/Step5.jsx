@@ -2,13 +2,14 @@ import s from './Step5.module.scss';
 import DataInput from "@/components/ui/systemComponents/DataInput/DataInput.jsx";
 import TimeInput from "@/components/ui/systemComponents/TimeInput/TimeInput.jsx";
 import Button from "@/components/ui/systemComponents/Button/Button.jsx";
-import {useEffect} from "react";
+import {useEffect, useState} from "react";
 import Animation from "@/components/OnboardingPage/Step5/Animation/Animation.jsx";
 
 const Step5 = ({setStep}) => {
+  
+  const [isCounting, setIsCounting] = useState(true)
 
   useEffect(() => {
-
     function fetchUserProfile() {
       fetch('https://my.aspectum.app/api/profile/', {
         method: 'GET',
@@ -16,7 +17,7 @@ const Step5 = ({setStep}) => {
       })
         .then(response => {
           if (response.status === 200) {
-            
+
             return response.json();
           } else if (response.status === 403 || response.status === 401) {
             // Обработка случая, когда пользователь не аутентифицирован
@@ -30,7 +31,7 @@ const Step5 = ({setStep}) => {
         //
         //   console.log(data)
         //  
-          // Обновляем имя пользователя
+        // Обновляем имя пользователя
         //   const userNameElement = document.getElementById('user-name');
         //   if (userNameElement && data.name) {
         //     userNameElement.innerText = data.name;
@@ -49,7 +50,7 @@ const Step5 = ({setStep}) => {
     }
 
     fetchUserProfile()
-    
+
     // fetch('https://my.aspectum.app/api/profile/').then(res => res.json()).then(res => console.log(res))
   }, []);
 
@@ -60,10 +61,14 @@ const Step5 = ({setStep}) => {
         <p className={s.text}>
           Мы отправили пароль на ваш email
         </p>
-
-        <Animation/>
-
-
+        <Animation isCounting={isCounting} setIsCounting={setIsCounting} />
+        <div className={s.sliderWrapper}>
+          <h2 className={s.slideTitle}>Aspectum.app</h2>
+          <div className={s.slideText}>
+            Пока идет расчет натальной карты и персональных рекомендаций,
+            расскажем вам о самых важных функциях
+          </div>
+        </div>
       </div>
       <Button classname={s.btn}>Далее</Button>
     </>

@@ -1,20 +1,21 @@
 import s from './Animation.module.scss';
+import Counter from "@/components/OnboardingPage/Step5/Counter/Counter.jsx";
 
-const Animation = () => {
+const Animation = ({isCounting, setIsCounting}) => {
   return (
     <div className={s.animation}>
-      <div className="percentCounter">100%</div>
+      <Counter isCounting={isCounting} setIsCounting={setIsCounting} />
       
       <div className={s.gameLoader}>
-        <div className="game-loader__planet">
-          <div className="loaderRadius1"></div>
-          <div className="loaderRadius2"></div>
-          <div className="loaderRadius3"></div>
-          <div className="loaderRadius4"></div>
-          <div className="loaderMini1"></div>
-          <div className="loaderMini2"></div>
-          <div className="loaderMini3"></div>
-          <div className="loaderMini4"></div>
+        <div className={s.planet}>
+          <div className={s.loaderRadius1}></div>
+          <div className={s.loaderRadius2}></div>
+          <div className={s.loaderRadius3}></div>
+          <div className={s.loaderRadius4}></div>
+          <div className={s.loaderMini1}></div>
+          <div className={s.loaderMini2}></div>
+          <div className={s.loaderMini3}></div>
+          <div className={s.loaderMini4}></div>
           <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
             <defs>
               <filter id="goo">
