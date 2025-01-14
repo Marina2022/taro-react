@@ -8,10 +8,14 @@ import Step3 from "@/components/OnboardingPage/Step3/Step3.jsx";
 import Step4 from "@/components/OnboardingPage/Step4/Step4.jsx";
 import BirthdayPlacePopup from "@/components/OnboardingPage/BirthdayPlacePopup/BirthdayPlacePopup.jsx";
 import Step5 from "@/components/OnboardingPage/Step5/Step5.jsx";
+import {useUserAuth} from "@/context/authContext.jsx";
 
 const OnboardingPage = () => {
 
-  const [step, setStep] = useState(5)
+  const {user, setNatalChartCreated} = useUserAuth()
+
+
+  const [step, setStep] = useState(1)
 
   const [onboardingCountries, setOnboardingCountries] = useState([])
   const [selectedCountry, setSelectedCountry] = useState({value: 8, label: 'Российская Федерация'})
@@ -36,8 +40,22 @@ const OnboardingPage = () => {
 
   // если пользователь выбрал "Не знаю точное время", то посылаем 12:00 
   const timeValueToSend = dontKnowTime.length > 0 ? '12:00' : time
-    
+
   const [popupOpened, setPopupOpened] = useState(false)
+
+  
+  const {setUser, setIsUserLoading} = useUserAuth()
+
+  // Если пользователь уже есть (зарегистрирован), но он не посмотрел слайдер, перекидываем его на 5й шаг
+  useEffect(() => {
+
+
+    if (user) {
+      console.log('юзер есть', user)
+      setStep(5)
+    }
+  }, [user]);
+
 
   useEffect(() => {
     // запрос на страны - только один раз в самом начале
@@ -80,11 +98,11 @@ const OnboardingPage = () => {
       gender: selectedSex,
       email: email,
       data_consent: consentCheckboxes.includes('dataConsent'),
-      newsletter_consent: consentCheckboxes.includes('newsConsent'),      
+      newsletter_consent: consentCheckboxes.includes('newsConsent'),
     };
 
     // console.log(data)
-               
+
     fetch("https://my.aspectum.app/api/signup/", {
       method: "POST",
       headers: {
@@ -97,8 +115,12 @@ const OnboardingPage = () => {
       .then((result) => {
         if (result.status === "User created and logged in successfully") {
 
-          setStep(5) 
+          // шаг ставим в useEffect при появлении user в приложении // todo потестить
+          // setStep(5) 
+
           
+          fetchUserProfile()
+
         } else {
           // Обработка ошибок
 
@@ -112,8 +134,31 @@ const OnboardingPage = () => {
       });
   }
 
+
+  const fetchUserProfile = async () => {
+    try {
+      setIsUserLoading(true)
+      const response = await fetch('https://my.aspectum.app/api/profile/', {
+        method: 'GET',
+        credentials: 'include',
+      })
+      if (response.redirected !== true) {
+        console.log('Юзер авторизован!')
+        const user  = await response.json();
+        setUser(user)
+      
+      } else {
+        throw new Error('Ошибка при получении данных профиля');
+      }
+    } catch(err) {
+      console.log(err)
+    } finally {
+      setIsUserLoading(false)
+    }
+  }
+
   return (
-    <div className={ step !==5 ? s.onboarding : s.onboardingFinal}>
+    <div className={step !== 5 ? s.onboarding : s.onboardingFinal}>
 
       <div className={s.stepsContainer}>
         {
@@ -171,7 +216,7 @@ const OnboardingPage = () => {
         {
           step === 5 && <Step5
             setStep={setStep}
-            
+
           />
         }
 

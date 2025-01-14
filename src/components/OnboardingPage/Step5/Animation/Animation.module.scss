@@ -8,7 +8,7 @@
   position: absolute;
   top: 40px;
   left: 0;
-  
+
 
   --anim-size: 375px; /* Значение по умолчанию */
 
@@ -516,11 +516,12 @@
   font-weight: 500;
 }
 
-.planet.no-animation * {
-  animation: none;
+
+.noAnimation * {
+  animation: none!important;
 }
 
-.planet.no-animation::before,
-.planet.no-animation::after {
-  animation: none;
+.noAnimation::before,
+.noAnimation::after, {
+  animation: none!important;
 }

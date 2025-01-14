@@ -4,56 +4,33 @@ import TimeInput from "@/components/ui/systemComponents/TimeInput/TimeInput.jsx"
 import Button from "@/components/ui/systemComponents/Button/Button.jsx";
 import {useEffect, useState} from "react";
 import Animation from "@/components/OnboardingPage/Step5/Animation/Animation.jsx";
+import {useNavigate} from "react-router-dom";
+import {useUserAuth} from "@/context/authContext.jsx";
 
 const Step5 = ({setStep}) => {
   
+  const {setNatalChartCreated} = useUserAuth()
+  
   const [isCounting, setIsCounting] = useState(true)
 
+  const navigate = useNavigate()
+  
   useEffect(() => {
-    function fetchUserProfile() {
-      fetch('https://my.aspectum.app/api/profile/', {
-        method: 'GET',
-        credentials: 'include',
-      })
-        .then(response => {
-          if (response.status === 200) {
-
-            return response.json();
-          } else if (response.status === 403 || response.status === 401) {
-            // Обработка случая, когда пользователь не аутентифицирован
-            console.error('Пользователь не аутентифицирован');
-            // Вы можете перенаправить пользователя на страницу входа или показать сообщение
-          } else {
-            throw new Error('Ошибка при получении данных профиля');
-          }
-        })
-        // .then(data => {
-        //
-        //   console.log(data)
-        //  
-        // Обновляем имя пользователя
-        //   const userNameElement = document.getElementById('user-name');
-        //   if (userNameElement && data.name) {
-        //     userNameElement.innerText = data.name;
-        //   }
-        //
-        //   // Обновляем знак зодиака пользователя
-        //   const horoSignElement = document.querySelector('.horo-sign');
-        //   if (horoSignElement && data.sign) {
-        //     horoSignElement.className = 'horo-sign';
-        //     horoSignElement.classList.add(data.sign.toLowerCase());
-        //   }
-        // })
-        .catch(error => {
-          console.error('Ошибка:', error);
-        });
+    if (!isCounting) {
+      console.log('сетаем')
+      localStorage.setItem('natalChartCreated', true)
+      setNatalChartCreated(true)
     }
+    
+  }, [isCounting]);
 
-    fetchUserProfile()
-
-    // fetch('https://my.aspectum.app/api/profile/').then(res => res.json()).then(res => console.log(res))
-  }, []);
-
+  const handleClick = () => {
+    if (isCounting) return
+    
+    navigate('/')
+    
+  }
+  
   return (
     <>
       <div className={s.controlsBlock}>
@@ -70,7 +47,7 @@ const Step5 = ({setStep}) => {
           </div>
         </div>
       </div>
-      <Button classname={s.btn}>Далее</Button>
+      <Button onClick={handleClick} classname={s.btn}>{isCounting ? 'Далее' : 'Приступить'}</Button>
     </>
   );
 };

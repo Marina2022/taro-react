@@ -4,10 +4,10 @@ import Counter from "@/components/OnboardingPage/Step5/Counter/Counter.jsx";
 const Animation = ({isCounting, setIsCounting}) => {
   return (
     <div className={s.animation}>
-      <Counter isCounting={isCounting} setIsCounting={setIsCounting} />
+      <Counter isCounting={isCounting} setIsCounting={setIsCounting} classname={s.percentCounter} />
       
       <div className={s.gameLoader}>
-        <div className={s.planet}>
+        <div className={isCounting ? s.planet : `${s.planet} ${s.noAnimation}` }>
           <div className={s.loaderRadius1}></div>
           <div className={s.loaderRadius2}></div>
           <div className={s.loaderRadius3}></div>
