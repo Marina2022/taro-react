@@ -14,7 +14,7 @@ const OnboardingPage = () => {
 
   const {user, setNatalChartCreated, isUserLoading} = useUserAuth()
 
-  const [step, setStep] = useState( user ? 5 : 1)
+  const [step, setStep] = useState(  1)
 
   const [onboardingCountries, setOnboardingCountries] = useState([])
   const [selectedCountry, setSelectedCountry] = useState({value: 8, label: 'Российская Федерация'})
@@ -131,7 +131,9 @@ const OnboardingPage = () => {
         const user = await response.json();
         setUser(user)
       } else {
+        alert('Запрос на Profile не проходит')
         throw new Error('Ошибка при получении данных профиля');
+        
       }
     } catch (err) {
       console.log(err)
