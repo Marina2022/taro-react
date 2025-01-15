@@ -12,9 +12,9 @@ import {useUserAuth} from "@/context/authContext.jsx";
 
 const OnboardingPage = () => {
 
-  const {user, setNatalChartCreated} = useUserAuth()
+  const {user, setNatalChartCreated, isUserLoading} = useUserAuth()
 
-  const [step, setStep] = useState(1)
+  const [step, setStep] = useState( user ? 5 : 1)
 
   const [onboardingCountries, setOnboardingCountries] = useState([])
   const [selectedCountry, setSelectedCountry] = useState({value: 8, label: 'Российская Федерация'})
@@ -139,6 +139,8 @@ const OnboardingPage = () => {
       setIsUserLoading(false)
     }
   }
+  
+  if (isUserLoading) return null
 
   return (
     <div className={step !== 5 ? s.onboarding : s.onboardingFinal}>
