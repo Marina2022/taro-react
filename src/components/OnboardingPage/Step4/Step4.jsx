@@ -60,9 +60,10 @@ const Step4 = ({setStep, checkboxCheckedValues, setCheckboxCheckedValues, email,
         />
 
       </div>
+            
       <div className={s.stepsButtons}>
-        <SecondaryButton onClick={() => setStep(3)}>Назад</SecondaryButton>
-        <Button onClick={handleSubmit}>Завершить</Button>
+        <SecondaryButton onClick={() => setStep(3)}>Назад</SecondaryButton>        
+        <Button onClick={handleSubmit}>Завершить</Button>        
       </div>
     </>
   );

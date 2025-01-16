@@ -20,6 +20,8 @@ function App() {
           method: 'GET',
           credentials: 'include',
         })
+
+        console.log(response)
         if (response.redirected !== true) {
           const user = await response.json();
           setUser(user)
@@ -40,9 +42,7 @@ function App() {
         setIsUserLoading(false)
       }
     }
-
     fetchUserProfile()
-
   }, [])
 
 
@@ -52,6 +52,7 @@ function App() {
         <Route path='/onboarding' element={<Onboarding/>}/>
         <Route path='/system' element={<System/>}/>
         <Route element={<ProtectedRoute><MainLayout/></ProtectedRoute>}>
+        {/*<Route element={<MainLayout/>}>*/}
           <Route path='/' index element={<Home/>}/>
           <Route path='/ask' element={<Ask/>}/>
           <Route path='*' element={<div className='container'>Not found</div>}/>
