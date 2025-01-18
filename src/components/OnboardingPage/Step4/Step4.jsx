@@ -6,7 +6,7 @@ import InputGroup from "@/components/ui/systemComponents/InputGroup/InputGroup.j
 import Checkboxes from "@/components/ui/systemComponents/Checkboxes/Checkboxes.jsx";
 const Step4 = ({setStep, checkboxCheckedValues, setCheckboxCheckedValues, email, setEmail, submitForm}) => {
   
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
 
     const emailRegex = /^[a-zA-Z0-9._+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     
@@ -23,7 +23,8 @@ const Step4 = ({setStep, checkboxCheckedValues, setCheckboxCheckedValues, email,
       return false;
     }
 
-    submitForm()
+    const result = await submitForm()
+    if (!result) return false  // ошибкой закончился запрос значит
   }
   
   return (

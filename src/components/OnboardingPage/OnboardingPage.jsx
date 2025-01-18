@@ -116,13 +116,14 @@ const OnboardingPage = () => {
       .then((result) => {
         if (result.status === "User created and logged in successfully") {
           fetchUserProfile()
-        } else {
+        } else {          
           throw new Error(result.error);
         }
       })
       .catch((error) => {
         console.error("Ошибка:", error);
         alert(error);
+        return false
       });
   }
 
