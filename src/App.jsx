@@ -3,10 +3,15 @@ import MainLayout from "@/components/layout/MainLayout.jsx";
 import Onboarding from "@/pages/Onboarding.jsx";
 import ProtectedRoute from "@/components/ProtectedRoute/ProtectedRoute.jsx";
 import Home from "@/pages/Home.jsx";
-import Ask from "@/pages/Ask.jsx";
+import AskAstrologer from "@/pages/AskAstrologer.jsx";
 import System from "@/pages/System.jsx";
 import AuthContextProvider, {useUserAuth} from "@/context/authContext.jsx";
 import {useEffect, useState} from "react";
+import Natal from "@/components/NatalPage/NatalPage.jsx";
+import Character from "@/components/NatalPage/Character/Character.jsx";
+import Chart from "@/components/NatalPage/Chart/Chart.jsx";
+import Today from "@/pages/Today.jsx";
+import ScrollToTop from "@/components/ui/ScrollToTop/ScrollToTop.jsx";
 
 function App() {
 
@@ -21,7 +26,6 @@ function App() {
           credentials: 'include',
         })
 
-        console.log(response)
         if (response.redirected !== true) {
           const user = await response.json();
           setUser(user)
@@ -47,18 +51,28 @@ function App() {
 
 
   return (
-    <Router>
-      <Routes>
-        <Route path='/onboarding' element={<Onboarding/>}/>
-        <Route path='/system' element={<System/>}/>
-        <Route element={<ProtectedRoute><MainLayout/></ProtectedRoute>}>
-        {/*<Route element={<MainLayout/>}>*/}
-          <Route path='/' index element={<Home/>}/>
-          <Route path='/ask' element={<Ask/>}/>
-          <Route path='*' element={<div className='container'>Not found</div>}/>
-        </Route>
-      </Routes>
-    </Router>
+    <>
+      
+
+      <Router>
+        <ScrollToTop/>
+        <Routes>
+          <Route path='/onboarding' element={<Onboarding/>}/>
+          <Route path='/system' element={<System/>}/>
+          <Route element={<ProtectedRoute><MainLayout/></ProtectedRoute>}>
+            <Route path='/' index element={<Home/>}/>
+            <Route path='/ask-astrologer' element={<AskAstrologer/>}/>
+            <Route path='/today' element={<Today/>}/>
+            <Route path='/natal' element={<Natal/>}>
+              <Route path='/natal' index element={<Chart/>}/>
+              <Route path='/natal/character' element={<Character/>}/>
+            </Route>
+            <Route path='*' element={<div className='container'>Not found</div>}/>
+          </Route>
+        </Routes>
+      </Router>
+    </>
+
   )
 }
 

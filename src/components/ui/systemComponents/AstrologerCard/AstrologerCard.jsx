@@ -1,5 +1,5 @@
 import s from './AstrologerCard.module.scss';
-const AstrologerCard = ({ name, description, imageUrl, classname}) => {
+const AstrologerCard = ({ name, imageUrl, classname='', children}) => {
   return (
     <div className={`${s.astrologerCard} ${classname}`}>
       
@@ -9,7 +9,7 @@ const AstrologerCard = ({ name, description, imageUrl, classname}) => {
       {/*Текстовая информация*/}
       <div className={s.astrologerInfo}>
         <h2 className={s.astrologerName}>{name}</h2>
-        <p className={s.astrologerDescription}>{description}</p>
+        <p className={s.astrologerDescription}>{children}</p>
       </div>
 
       {/*Декоратор справа*/}

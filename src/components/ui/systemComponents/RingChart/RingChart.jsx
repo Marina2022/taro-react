@@ -1,7 +1,7 @@
 import s from './RingChart.module.scss';
 import {getProgressBarColor} from "@/utils.js";
 
-const RingChart = ({value, low, high, classname}) => {
+const RingChart = ({value, low, high, classname=''}) => {
 
   const color = getProgressBarColor(value, low, high)
 

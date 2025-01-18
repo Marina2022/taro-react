@@ -1,23 +1,42 @@
 import s from './Header.module.scss';
 import {useUserAuth} from "@/context/authContext.jsx";
+import {useLocation, useNavigate} from "react-router-dom";
 
 const Header = () => {
-  const {user, natalChartCreated } = useUserAuth()  
+  const {user, natalChartCreated} = useUserAuth()
+  const location = useLocation()
+  const navigate = useNavigate()
+
   
   user.sign = 'scorpio'
+  
+  const backButtonHandler = () => {
+    navigate(-1)
+  }
+  
   return (
     <header>
       <div className="container">
         <nav className={s.headerNav}>
-          <div className={s.userBlock}>
-            <div className={`${s.horoSign} ${user.sign ? user.sign : 'sign'}`}></div>
-            <div className={s.name}>{user.name}</div>
-          </div>
+
+          {
+            location.pathname === '/' && <div className={s.userBlock}>
+              <div className={`${s.horoSign} ${user.sign ? user.sign : 'sign'}`}></div>
+              <div className={s.name}>{user.name}</div>
+            </div>
+          }
+
+          {
+            location.pathname !== '/' && <button onClick={backButtonHandler} className={s.backButton}></button>
+          }
+
+
           <button className={s.settingsBtn}></button>
         </nav>
       </div>
     </header>
-  );
+  )
+    ;
 };
 
 export default Header;

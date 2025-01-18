@@ -47,6 +47,8 @@ const SystemPage = () => {
 
   const [radioButtonsValue, setRadioButtonsValue] = useState(10)
 
+  const [textAreaValue, setTextAreaValue] = useState('')
+  
   return (
     <div className={s.systemContainer}>
 
@@ -115,7 +117,12 @@ const SystemPage = () => {
 
       {/*Поле для длинного текста с подсчетом символов*/}
       <div className={s.smallWidthWrapper}>
-        <TextArea label="Поле для длинного текста" placeholder="Введите текст" maxLength={200}/>
+        <TextArea
+          textAreaValue={textAreaValue}
+          setTextAreaValue={setTextAreaValue}
+          label="Поле для длинного текста"
+          placeholder="Введите текст"
+          maxLength={200}/>
       </div>
 
       {/*Основная кнопка*/}
@@ -134,7 +141,7 @@ const SystemPage = () => {
         <Tabs
           label="Лейбл для селекта"
           selectedTab={selectedTab}
-          setSelectedTab={setSelectedTab}          
+          setSelectedTab={setSelectedTab}
           tabs={
             [
               {value: 1, label: 'Значение 1'},
@@ -197,6 +204,7 @@ const SystemPage = () => {
       <div style={{height: 20}}></div>
 
       {/*Кнопка с клювиком справа*/}
+      {/*href - если отправляем href, то будем рендерить ссылку*/}
       <ButtonWithBeak
         title="Заголовок"
         description="Описание"
@@ -273,9 +281,9 @@ const SystemPage = () => {
       {/*Карточка астролога*/}
       <AstrologerCard
         name="Александра Таровна"
-        description="Таро, Астрология"
-        imageUrl="/img/astrologist.png"
-      />
+        imageUrl="/img/astrologist.png">
+        Таро, Астрология
+      </AstrologerCard>
 
       <div style={{height: 20}}></div>
 
@@ -283,23 +291,23 @@ const SystemPage = () => {
       <div className={s.diagramWrapper}>
         <div style={{flex: 1}}>
           <InputLabel>С низким значением:</InputLabel>
-          <RingChart value={0.3} low={0.4} high={0.6} classname/>
+          <RingChart value={0.3} low={0.4} high={0.6}/>
         </div>
 
         <div style={{flex: 1}}>
           <InputLabel>Со средним значением:</InputLabel>
-          <RingChart value={0.5} low={0.4} high={0.6} classname/>
+          <RingChart value={0.5} low={0.4} high={0.6}/>
         </div>
 
         <div style={{flex: 1}}>
           <InputLabel>С высоким значением:</InputLabel>
-          <RingChart value={0.7} low={0.4} high={0.6} classname/>
+          <RingChart value={0.7} low={0.4} high={0.6}/>
         </div>
       </div>
 
       <div style={{height: 100}}></div>
     </div>
-  )    
+  )
 }
 
 export default SystemPage;

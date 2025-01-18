@@ -14,11 +14,12 @@ const OnboardingPage = () => {
 
   const {user, setNatalChartCreated, isUserLoading} = useUserAuth()
 
-  const [step, setStep] = useState(   user ? 5 : 1)
+  const [step, setStep] = useState(user ? 5 : 1)
   //const [step, setStep] = useState(  1)
 
   const [onboardingCountries, setOnboardingCountries] = useState([])
-  const [selectedCountry, setSelectedCountry] = useState({value: 8, label: 'Российская Федерация'})
+  const [selectedCountry, setSelectedCountry] = useState({value: 20, label: 'Российская Федерация'})
+  // const [selectedCountry, setSelectedCountry] = useState(null)
   const [prefix, setPrefix] = useState('')
   const [selectedCity, setSelectedCity] = useState(null)
   const [onboardingCities, setOnboardingCities] = useState([])
@@ -60,6 +61,7 @@ const OnboardingPage = () => {
       .then((res) =>
         res.json().then((val) => {
           setOnboardingCountries(val);
+          setSelectedCountry(val[0])
         })
       )
       .catch((error) => {
@@ -67,18 +69,23 @@ const OnboardingPage = () => {
       });
   }, []);
 
+
+   
   useEffect(() => {
     // запрос на города
-    fetch(`https://my.aspectum.app/api/cities/?country_id=${selectedCountry.value}&prefix=${prefix}`)
-      .then((res) =>
-        res.json().then((val) => {
-          setOnboardingCities(showJustPopularCities ? val.slice(0, 5) : val);
-        })
-      )
-      .catch((error) => {
-        console.error("Ошибка:", error);
-      });
 
+    if (selectedCountry) {
+      fetch(`https://my.aspectum.app/api/cities/?country_id=${selectedCountry.value}&prefix=${prefix}`)
+        .then((res) =>
+          res.json().then((val) => {
+            setOnboardingCities(showJustPopularCities ? val.slice(0, 5) : val);
+          })
+        )
+        .catch((error) => {
+          console.error("Ошибка:", error);
+        });
+
+    }
   }, [selectedCountry, prefix])
 
   const submitForm = () => {
@@ -127,15 +134,15 @@ const OnboardingPage = () => {
         method: 'GET',
         credentials: 'include',
       })
-      
-      if (response.redirected !== true) {        
+
+      if (response.redirected !== true) {
         const user = await response.json();
         setUser(user)
       } else {
         alert('Запрос на Profile не проходит')
-        
+
         throw new Error('Ошибка при получении данных профиля');
-        
+
       }
     } catch (err) {
       console.log(err)
@@ -143,7 +150,7 @@ const OnboardingPage = () => {
       setIsUserLoading(false)
     }
   }
-  
+
   if (isUserLoading) return null
 
   return (

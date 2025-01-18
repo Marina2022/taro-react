@@ -1,0 +1,162 @@
+@use '@/assets/styles/mixins' as *;
+
+.card {  
+  border-radius: 12px;
+  margin-bottom: 16px;
+  position: relative;
+  overflow: hidden;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 32px;
+  background-color: #4d2e52;
+  color: inherit;
+
+  @include xs {
+    padding: 12px;
+    border-radius: 8px;
+  }
+}
+
+.cardText {  
+  margin-top: auto;
+
+}
+
+.cardTitle {  
+  font-weight: 500;
+  color: #e8e4e9;
+  margin-bottom: 4px;
+  margin-top: 10px;
+  font-size: 26px;
+
+  @include m {
+    font-size: 18px;
+  }  
+}
+
+.cardDescription {
+  color: #ffffff;
+  opacity: 0.8;
+  font-size: 20px;
+  margin-top: 20px;
+  
+  
+  @include m {
+    margin-top: 14px;
+    font-size: 16px;
+  }
+
+  @include xs {
+    margin-bottom: 0px;
+    font-size: 12px;
+  }
+}
+
+.chartWrapper {  
+  //padding: 20px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+  @include m {
+    padding: 0;
+  }
+  
+}
+
+.percent {
+  font-size: 40px;
+  font-weight: 500;
+  margin-top: -20px;
+  position: relative;
+  z-index: 1;
+
+  @include m {
+    font-size: 4vw;
+  }
+}
+
+.cardSubtitle {
+  font-weight: 500;
+  color: #e8e4e9;
+  margin-bottom: 4px;
+  //margin-top: 10px;
+  font-size: 20px;
+
+  @include m {    
+    font-size: 14px;
+  }
+}
+
+.shortDayOfWeek {
+  font-size: 38px;
+  margin-top: 10px;
+  //font-size: 3vw;
+  //margin-bottom: 6px;
+  //margin-top: 16px;
+  
+  @include m {
+    //font-size: 18px;
+    margin-top: 0px;
+    font-size: 3vw;
+    margin-bottom: 0px;
+    //margin-top: 10px;
+  }
+  
+  @include xs {
+    //font-size: 16px;
+    font-size: 2.7vw;
+    margin-bottom: 0px;
+  }
+}
+
+.shortDate {
+  font-size: 42px;
+  //font-size: 6vw;
+  font-weight: 600;
+  margin-bottom: 10px;
+
+  @include m {
+    //font-size: 36px;
+    font-size: 5vw;
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+
+  @include xs {
+    //font-size: 26px;
+    //font-size: 5.3vw;
+    margin-bottom: 6px;
+  }
+}
+
+.bordered {
+  width: 100%;
+  aspect-ratio: 1;
+  padding: 16px;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.2);
+  
+  border-radius: 8px;
+  margin-bottom: 20px;
+   
+  
+  @include xs {
+    //width: 96%;
+    margin-bottom: 10px;
+    padding: 10px;
+  }
+}
+
+
+.flexWrapper {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  //display: none;
+}

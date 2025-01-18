@@ -1,6 +1,25 @@
 import s from './ButtonWithBeak.module.scss';
-const ButtonWithBeak = ({title, description, number, classname=''}) => {
-  return (    
+import {Link} from "react-router-dom";
+const ButtonWithBeak = ({title, description, number, classname='', href, img}) => {
+  
+  if (href) return (
+    <Link to={href} className={s.listItemButton}>
+      <div className={s.listItemIcon}>
+        <img src={img} alt="icon"/>
+      </div>
+
+      <div className={s.listItemText}>
+        <p className={s.listItemTitle}>{title}</p>
+        <p className={s.listItemDescription}>{description}</p>
+      </div>
+      {
+        number > 0 && <div className={s.listItemIndicator}>{number}</div>
+      }
+      <div className={s.listItemChevron}></div>
+    </Link>
+  )
+
+  return (
     <button className={s.listItemButton}>
       <div className={s.listItemIcon}></div>
       <div className={s.listItemText}>

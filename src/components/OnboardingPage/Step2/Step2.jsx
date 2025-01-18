@@ -43,7 +43,7 @@ const Step2 = ({
         <InputLabel classname={s.countryLabel}>Страна рождения</InputLabel>
         <Select
           selectedValue={selectedCountry}
-          onSelect={handleSelect} ы
+          onSelect={handleSelect} 
           options={
             onboardingCountries.map(country => ({value: country.id, label: country.name}))
           }

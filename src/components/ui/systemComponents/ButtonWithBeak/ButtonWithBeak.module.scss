@@ -1,10 +1,11 @@
 @use '@/assets/styles/mixins' as *;
 
-.listItemButton {
+.listItemButton {  
   display: flex;
-  align-items: center;
-  width: calc(100% + 32px);
-  padding: 16px 16px;
+  align-items: flex-start;
+  width: calc(100% + 48px);
+  //width: 100%;
+  padding: 24px;
   background-color: transparent;
   border: none;
   cursor: pointer;
@@ -12,10 +13,17 @@
   text-align: left;
   color: inherit; /* Наследуем цвет */
   transition: background-color 0.3s ease;
-  margin-left: -16px;
+  margin-left: -24px;
+  border-radius: 16px;
   
   &:hover {
     background-color: rgba(255, 185, 76, 0.16);
+  }
+  
+  @include m {
+    padding: 12px;
+    //margin-left: -16px;
+    //margin-right: -16px;
   }
 }
 
@@ -53,6 +61,11 @@
   font-size: 14px;
   color: #ffffff;
   opacity: 0.8;
+  max-width: 90%;
+  
+  @include m {
+    font-size: 12px;
+  }
 }
 
 .listItemIndicator {

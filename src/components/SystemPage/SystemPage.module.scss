@@ -6,7 +6,7 @@
   max-width: 900px;
   margin-top: 40px;
   
-  @include t {
+  @include m {
     max-width: unset;    
     padding-inline: 20px;
   }

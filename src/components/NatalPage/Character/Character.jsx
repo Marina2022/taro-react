@@ -1,11 +1,11 @@
 import React from 'react';
 
-const Ask = () => {
+const Character = () => {
   return (
     <div className='container'>
-      Ask
+      Character
     </div>
   );
 };
 
-export default Ask;
+export default Character;
