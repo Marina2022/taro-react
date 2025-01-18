@@ -60,8 +60,7 @@ const OnboardingPage = () => {
     fetch("https://my.aspectum.app/api/countries")
       .then((res) =>
         res.json().then((val) => {
-          setOnboardingCountries(val);
-          setSelectedCountry(val[0])
+          setOnboardingCountries(val);          
         })
       )
       .catch((error) => {
