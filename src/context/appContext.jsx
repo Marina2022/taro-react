@@ -10,9 +10,9 @@ const ContextProvider = ({children}) => {
   const [situations, setSituations] = useState(null)
   const [currentTimer, setCurrentTimer] = useState(null)
     
-  if (situations) {
-    situations.seconds_left = 10000  // todo убрать потом  
-  }  
+  // if (situations) {
+  //   situations.seconds_left = 10000  // todo убрать потом  
+  // }  
      
   useEffect(() => {
     // если объект из запроса peek пришел, то обновляем значение таймера 
@@ -25,10 +25,8 @@ const ContextProvider = ({children}) => {
   useEffect(() => {
     
     if (currentTimer > 0) {
-      intervalId.current = setInterval(() => {
-        console.log(currentTimer)
+      intervalId.current = setInterval(() => {        
         setCurrentTimer((prev) => {
-
           if (prev === 0) {
             clearInterval(intervalId.current); // Остановка таймера, когда значение достигло 0
             return 0;

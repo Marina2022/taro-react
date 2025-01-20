@@ -16,7 +16,8 @@ const HomePage = () => {
   const {pathname} = useLocation()
   const {situations} = useAppContext()
   // console.log('situations с home page -- ', situations)
-  
+
+  const {currentTimer} = useAppContext()
   
   return (
     <div className={s.homePage}>
@@ -36,7 +37,7 @@ const HomePage = () => {
         <div className={s.wrapper}>
           <div className={s.buttonsWrapper}>
 
-            <Clock />
+            <Clock currentTimer={currentTimer} />
             
             <ButtonWithBeak
               title="Сообщения"

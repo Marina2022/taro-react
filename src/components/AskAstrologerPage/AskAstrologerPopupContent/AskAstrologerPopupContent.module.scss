@@ -1,0 +1,37 @@
+@use '@/assets/styles/mixins' as *;
+
+.popupParagraph {
+  margin-block: 16px;
+  line-height: 1.5;
+  text-align: center;
+
+  @include xs {
+    font-size: 14px;
+    line-height: 1.4;
+  }
+}
+
+.astrologerAva {
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  margin-bottom: 10px;
+  
+  @include xs {
+    width: 70px;
+    height: 70px;
+    margin-bottom: 0px;
+  }
+}
+
+.popupTitle {
+  text-align: center;
+}
+
+.center {
+  text-align: center;
+}
+
+.clock {
+  margin-bottom: 20px;
+}
