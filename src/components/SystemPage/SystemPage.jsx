@@ -205,6 +205,7 @@ const SystemPage = () => {
 
       {/*Кнопка с клювиком справа*/}
       {/*href - если отправляем href, то будем рендерить ссылку*/}
+      
       <ButtonWithBeak
         title="Заголовок"
         description="Описание"

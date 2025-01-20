@@ -27,7 +27,7 @@ const WaitingBar = () => {
 
   const understoodHandler = () => {
     setIsOpen(false)
-   
+
   }
 
   const situationsMapping = {
@@ -37,8 +37,7 @@ const WaitingBar = () => {
   if (!situations.situation_type) {
     return null
   }
-  
-  
+
 
   return (
     <>
@@ -46,22 +45,30 @@ const WaitingBar = () => {
       <div className={s.waitingBar} onClick={handleClick}>
 
         <div>
-          <div className={s.title}>
+
+          <div className={s.flex}>
+
             {
-              situationsMapping[situations.situation_type]
+              situations.situation_type === 'astrology_question' && <img className={s.img} src="/img/astrologist.png"/>
             }
+
+            <div>
+              <div className={s.title}>
+                {
+                  situationsMapping[situations.situation_type]
+                }
+              </div>
+              {
+                situations.status === 'in_progress' &&
+                <Clock currentTimer={currentTimer} onEnd={fetchSituations} classname={s.clock}/>
+              }
+              {
+                situations.status === 'completed' && <div className={s.ready}>Готово!</div>
+              }
+            </div>
           </div>
 
-          {
-            situations.status === 'in_progress' &&
-            <Clock currentTimer={currentTimer} onEnd={fetchSituations} classname={s.clock}/>
-          }
-
-          {
-            situations.status === 'completed' && <div className={s.ready}>Готово!</div>
-          }
         </div>
-
         {
           situations.status === 'in_progress' &&
           <svg className={s.icon} width="16" height="17" viewBox="0 0 16 17" fill="none"
