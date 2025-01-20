@@ -10,13 +10,12 @@ import {useLocation} from "react-router-dom";
 import log from "eslint-plugin-react/lib/util/log.js";
 import {useAppContext} from "@/context/appContext.jsx";
 import Clock from "@/components/ui/Clock/Clock.jsx";
+import WaitingBar from "@/components/HomePage/WaitingBar/WaitingBar.jsx";
 
 const HomePage = () => {
   
   const {pathname} = useLocation()
-  const {situations} = useAppContext()
-  // console.log('situations с home page -- ', situations)
-
+  const {situations, fetchSituations} = useAppContext()
   const {currentTimer} = useAppContext()
   
   return (
@@ -33,11 +32,10 @@ const HomePage = () => {
         <div className={s.slogan}>Не думайте о том, что вы не можете, думайте о том, что вы <span
           className={s.highlight}> можете!</span></div>
 
-
-        <div className={s.wrapper}>
+        <div className={s.wrapper}>          
           <div className={s.buttonsWrapper}>
-
-            <Clock currentTimer={currentTimer} />
+            
+            <WaitingBar />
             
             <ButtonWithBeak
               title="Сообщения"
@@ -70,8 +68,6 @@ const HomePage = () => {
           </div>
         </div>
       </div>
-
-
     </div>
   );
 };

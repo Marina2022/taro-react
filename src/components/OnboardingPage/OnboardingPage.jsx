@@ -49,11 +49,11 @@ const OnboardingPage = () => {
   const {setUser, setIsUserLoading} = useAppContext()
 
   // Если пользователь уже есть (зарегистрирован), но он не посмотрел слайдер, перекидываем его на 5й шаг
-  useEffect(() => {
-    if (user) {
-      setStep(5)
-    }
-  }, [user]);
+  // useEffect(() => {
+  //   if (user) {
+  //     setStep(5)
+  //   }
+  // }, [user]);
 
 
   useEffect(() => {
@@ -96,7 +96,7 @@ const OnboardingPage = () => {
       
       if (result.data.status === 'Построение натальной карты запущено') {
         setStep(5)
-        
+
         setTimeout(()=>{
           fetchUserProfile()  
         }, 15000)
@@ -106,8 +106,7 @@ const OnboardingPage = () => {
       }
     } catch (err) {
       console.log(err)
-    } 
-    
+    }     
   }
   
   const submitForm = () => {
@@ -166,9 +165,7 @@ const OnboardingPage = () => {
         setUser(user)
       } else {
         alert('Запрос на Profile не проходит')
-
         throw new Error('Ошибка при получении данных профиля');
-
       }
     } catch (err) {
       console.log(err)
@@ -177,7 +174,7 @@ const OnboardingPage = () => {
     }
   }
 
-  if (isUserLoading) return null
+  // if (isUserLoading) return null
 
   return (
     <div className={step !== 5 ? s.onboarding : s.onboardingFinal}>

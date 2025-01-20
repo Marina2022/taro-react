@@ -40,7 +40,7 @@ const ContextProvider = ({children}) => {
 
   const fetchSituations = async () => {
     const response = await axiosInstance('situations/peek/')
-    setSituations(response.data)
+    setSituations(response?.data)
   }
 
   return (

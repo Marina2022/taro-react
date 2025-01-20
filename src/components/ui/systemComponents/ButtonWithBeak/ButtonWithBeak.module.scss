@@ -3,8 +3,7 @@
 .listItemButton {  
   display: flex;
   align-items: flex-start;
-  width: calc(100% + 48px);
-  //width: 100%;
+  width: calc(100% + 48px);  
   padding: 24px;
   background-color: transparent;
   border: none;
@@ -19,11 +18,11 @@
   &:hover {
     background-color: rgba(255, 185, 76, 0.16);
   }
-  
+
   @include m {
-    padding: 12px;
-    //margin-left: -16px;
-    //margin-right: -16px;
+    margin-left: 0;
+    width: 100%;
+    padding: 10px;
   }
 }
 
@@ -61,7 +60,7 @@
   font-size: 14px;
   color: #ffffff;
   opacity: 0.8;
-  max-width: 90%;
+  max-width: 94%;
   
   @include m {
     font-size: 12px;
@@ -89,7 +88,11 @@
   background-position: center;
   background-size: contain;
   position: absolute;
-  right: 18px;
+  right: 26px;
   top: 50%;
   transform: translateY(-50%);
+  
+  @include m {
+    right: 8px;
+  }
 }

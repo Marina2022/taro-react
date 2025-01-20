@@ -2,7 +2,7 @@ import s from './Clock.module.scss';
 import {useAppContext} from "@/context/appContext.jsx";
 import {useEffect, useRef, useState} from "react";
 
-const Clock = ({classname, currentTimer}) => {
+const Clock = ({classname, currentTimer, onEnd=()=>{}}) => {
       
   const [innerTimerValue, setInnerTimerValue] = useState(currentTimer)  
   const intervalId = useRef()
@@ -14,6 +14,7 @@ const Clock = ({classname, currentTimer}) => {
         setInnerTimerValue((prev) => {
           if (prev === 0) {
             clearInterval(intervalId.current); // Остановка таймера, когда значение достигло 0
+            onEnd()
             return 0;
           }
           return prev - 1; // Уменьшение таймера

@@ -5,7 +5,7 @@ import Clock from "@/components/ui/Clock/Clock.jsx";
 import {useAppContext} from "@/context/appContext.jsx";
 
 const AskAstrologerPopupContent = () => {
-  const {currentTimer} = useAppContext()
+  const {currentTimer, fetchSituations} = useAppContext()
   return (
     <>
       <Header20 classname={s.popupTitle}>Заказ</Header20>
@@ -21,7 +21,7 @@ const AskAstrologerPopupContent = () => {
         </p>
       </div>
       <div className={s.center}>
-        <Clock classname={s.clock} currentTimer={currentTimer}/>
+        <Clock classname={s.clock} currentTimer={currentTimer}  onEnd={fetchSituations} />
       </div>      
     </>
   );

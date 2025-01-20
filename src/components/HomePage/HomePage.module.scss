@@ -6,7 +6,7 @@
 
 .homePage {
   padding-top: 10px;
-  padding-bottom: 100px;
+  padding-bottom: 120px;
 }
 
 .topBlock {
@@ -32,7 +32,7 @@
   @include xs {
     font-size: 16px;
     padding-inline: 16px;
-    
+    margin-block: 12px;    
   }
 }
 
@@ -44,16 +44,17 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  //padding-bottom: 100px;  
-  //border: red 1px solid;
 }
 
 .buttonsWrapper {
-  margin-top: 20px;
   width: 100%;
   max-width: 860px;
   border-radius: 20px;
   padding: 20px;
+  
+  @include xs {
+    padding: 0;
+  }
 } 
 
 .topBlockWrapper {

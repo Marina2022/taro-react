@@ -22,10 +22,11 @@ const Step5 = ({setStep}) => {
     }
   }, [isCounting]);
   
-  const handleClick = () => {
+  const handleClick = async() => {
     if (isCounting) {
       setChangeSlide(prev => !prev)
     } else {
+            
       navigate('/')
     }
   }
