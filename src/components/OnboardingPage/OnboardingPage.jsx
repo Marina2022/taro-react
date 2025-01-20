@@ -1,6 +1,7 @@
 import s from './OnboardingPage.module.scss';
 import {useEffect, useState} from "react";
 import {addLeadingZero} from "@/utils.js";
+import axios from "@/api/axiosInstance.js";
 
 import Step1 from "@/components/OnboardingPage/Step1/Step1.jsx";
 import Step2 from "@/components/OnboardingPage/Step2/Step2.jsx";
@@ -8,11 +9,11 @@ import Step3 from "@/components/OnboardingPage/Step3/Step3.jsx";
 import Step4 from "@/components/OnboardingPage/Step4/Step4.jsx";
 import BirthdayPlacePopup from "@/components/OnboardingPage/BirthdayPlacePopup/BirthdayPlacePopup.jsx";
 import Step5 from "@/components/OnboardingPage/Step5/Step5.jsx";
-import {useUserAuth} from "@/context/authContext.jsx";
+import {useAppContext} from "@/context/appContext.jsx";
 
 const OnboardingPage = () => {
 
-  const {user, setNatalChartCreated, isUserLoading} = useUserAuth()
+  const {user, setNatalChartCreated, isUserLoading} = useAppContext()
 
   const [step, setStep] = useState(user ? 5 : 1)
   //const [step, setStep] = useState(  1)
@@ -45,7 +46,7 @@ const OnboardingPage = () => {
   const [popupOpened, setPopupOpened] = useState(false)
 
 
-  const {setUser, setIsUserLoading} = useUserAuth()
+  const {setUser, setIsUserLoading} = useAppContext()
 
   // Если пользователь уже есть (зарегистрирован), но он не посмотрел слайдер, перекидываем его на 5й шаг
   useEffect(() => {
@@ -87,6 +88,28 @@ const OnboardingPage = () => {
     }
   }, [selectedCountry, prefix])
 
+  
+  const buildNatalMap = async()=>{
+    try {      
+      const result = await axios('/api/build/', {withCredentials: true})
+      console.log('result on build === ', result)
+      
+      if (result.data.status === 'Построение натальной карты запущено') {
+        setStep(5)
+        
+        setTimeout(()=>{
+          fetchUserProfile()  
+        }, 15000)
+        
+      } else {
+        throw new Error('Не получилось запустить построение натальной карты')
+      }
+    } catch (err) {
+      console.log(err)
+    } 
+    
+  }
+  
   const submitForm = () => {
 
     const birth_date = `${year}-${addLeadingZero(+month)}-${addLeadingZero(+day)}`;
@@ -115,7 +138,10 @@ const OnboardingPage = () => {
       .then((response) => response.json())
       .then((result) => {
         if (result.status === "User created and logged in successfully") {
-          fetchUserProfile()
+                    
+          //fetchUserProfile()
+          buildNatalMap()
+          
         } else {          
           throw new Error(result.error);
         }

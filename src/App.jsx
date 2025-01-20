@@ -5,7 +5,7 @@ import ProtectedRoute from "@/components/ProtectedRoute/ProtectedRoute.jsx";
 import Home from "@/pages/Home.jsx";
 import AskAstrologer from "@/pages/AskAstrologer.jsx";
 import System from "@/pages/System.jsx";
-import AuthContextProvider, {useUserAuth} from "@/context/authContext.jsx";
+import AuthContextProvider, {useAppContext} from "@/context/appContext.jsx";
 import {useEffect, useState} from "react";
 import Natal from "@/components/NatalPage/NatalPage.jsx";
 import Character from "@/components/NatalPage/Character/Character.jsx";
@@ -15,7 +15,7 @@ import ScrollToTop from "@/components/ui/ScrollToTop/ScrollToTop.jsx";
 
 function App() {
 
-  const {setUser, setIsUserLoading, setNatalChartCreated} = useUserAuth()
+  const {setUser, setIsUserLoading, setNatalChartCreated, situations, fetchSituations} = useAppContext()
 
   useEffect(() => {
     const fetchUserProfile = async () => {
@@ -46,14 +46,16 @@ function App() {
         setIsUserLoading(false)
       }
     }
+           
     fetchUserProfile()
+    fetchSituations()
   }, [])
+  
+  
 
 
   return (
     <>
-      
-
       <Router>
         <ScrollToTop/>
         <Routes>

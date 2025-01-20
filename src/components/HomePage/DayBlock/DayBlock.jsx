@@ -1,10 +1,10 @@
 import s from "./DayBlock.module.scss";
 import {useEffect, useState} from "react";
-import axios from "@/api/axiosInstance.js";
 import RingChart from "@/components/ui/systemComponents/RingChart/RingChart.jsx";
 import InputLabel from "@/components/ui/systemComponents/InputLabel/InputLabel.jsx";
 import {getProgressBarColor} from "@/utils.js";
 import {Link} from "react-router-dom";
+import axiosInstance from "@/api/axiosInstance.js";
 
 
 const DayBlock = ({classname}) => {
@@ -25,7 +25,7 @@ const DayBlock = ({classname}) => {
 
         try {
           setIsLoading(true)
-          const result = await axios.post('biorhythms/day/', payload, {withCredentials: true})
+          const result = await axiosInstance.post('biorhythms/day/', payload)
           setDayQuality(result.data.day_quality)
         } catch (err) {
           console.log(err)

@@ -1,19 +1,17 @@
 import s from './Header.module.scss';
-import {useUserAuth} from "@/context/authContext.jsx";
+import {useAppContext} from "@/context/appContext.jsx";
 import {useLocation, useNavigate} from "react-router-dom";
 
 const Header = () => {
-  const {user, natalChartCreated} = useUserAuth()
+  const {user, natalChartCreated} = useAppContext()
   const location = useLocation()
   const navigate = useNavigate()
 
-  
-  user.sign = 'scorpio'
-  
+      
   const backButtonHandler = () => {
     navigate(-1)
   }
-  
+    
   return (
     <header>
       <div className="container">
@@ -21,7 +19,7 @@ const Header = () => {
 
           {
             location.pathname === '/' && <div className={s.userBlock}>
-              <div className={`${s.horoSign} ${user.sign ? user.sign : 'sign'}`}></div>
+              <div className={`${s.horoSign} ${user.sign ? user.sign.toLowerCase() : 'sign'}`}></div>
               <div className={s.name}>{user.name}</div>
             </div>
           }

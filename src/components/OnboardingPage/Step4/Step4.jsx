@@ -8,7 +8,8 @@ const Step4 = ({setStep, checkboxCheckedValues, setCheckboxCheckedValues, email,
   
   const handleSubmit = async () => {
 
-    const emailRegex = /^[a-zA-Z0-9._+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    // const emailRegex = /^[a-zA-Z0-9._+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    const emailRegex = /^[a-zA-Z0-9._+-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*\.[a-zA-Z]{2,}$/;
     
     if (!email) {
       alert("Пожалуйста, введите ваш email.");
@@ -24,7 +25,7 @@ const Step4 = ({setStep, checkboxCheckedValues, setCheckboxCheckedValues, email,
     }
 
     const result = await submitForm()
-    if (!result) return false  // ошибкой закончился запрос значит
+    if (!result) return false  // значит запрос закончился ошибкой 
   }
   
   return (

@@ -8,10 +8,13 @@ import loveIcon from "@/assets/img/home/loveIcon.png"
 import {useEffect} from "react";
 import {useLocation} from "react-router-dom";
 import log from "eslint-plugin-react/lib/util/log.js";
+import {useAppContext} from "@/context/appContext.jsx";
 
 const HomePage = () => {
   
   const {pathname} = useLocation()
+  const {situations} = useAppContext()
+  console.log('situations с home page', situations)
   
   return (
     <div className={s.homePage}>

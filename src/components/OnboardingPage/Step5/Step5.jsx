@@ -5,12 +5,12 @@ import Button from "@/components/ui/systemComponents/Button/Button.jsx";
 import {useEffect, useState} from "react";
 import Animation from "@/components/OnboardingPage/Step5/Animation/Animation.jsx";
 import {useNavigate} from "react-router-dom";
-import {useUserAuth} from "@/context/authContext.jsx";
+import {useAppContext} from "@/context/appContext.jsx";
 import OnboardingSlider from "@/components/OnboardingPage/Step5/OnboardingSlider/OnboardingSlider.jsx";
 
 const Step5 = ({setStep}) => {
 
-  const {setNatalChartCreated} = useUserAuth()
+  const {setNatalChartCreated} = useAppContext()
   const [isCounting, setIsCounting] = useState(true)
   const navigate = useNavigate()  
   const [changeSlide, setChangeSlide] = useState(true) 
