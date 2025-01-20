@@ -33,8 +33,7 @@ const AskAstrologerPage = () => {
       console.log(err)
     } finally {
       setSending(false)
-    }
-        
+    }        
   }
 
   return (

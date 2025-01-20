@@ -9,12 +9,14 @@ import {useEffect} from "react";
 import {useLocation} from "react-router-dom";
 import log from "eslint-plugin-react/lib/util/log.js";
 import {useAppContext} from "@/context/appContext.jsx";
+import Clock from "@/components/ui/Clock/Clock.jsx";
 
 const HomePage = () => {
   
   const {pathname} = useLocation()
   const {situations} = useAppContext()
-  console.log('situations с home page', situations)
+  // console.log('situations с home page -- ', situations)
+  
   
   return (
     <div className={s.homePage}>
@@ -33,6 +35,9 @@ const HomePage = () => {
 
         <div className={s.wrapper}>
           <div className={s.buttonsWrapper}>
+
+            <Clock />
+            
             <ButtonWithBeak
               title="Сообщения"
               description="Архив сообщений и заказов"
