@@ -6,7 +6,6 @@ import {getProgressBarColor} from "@/utils.js";
 import {Link} from "react-router-dom";
 import axiosInstance from "@/api/axiosInstance.js";
 
-
 const DayBlock = ({classname}) => {
 
     const [dayQuality, setDayQuality] = useState()

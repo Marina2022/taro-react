@@ -29,10 +29,15 @@
   text-align: center;
   line-height: 1.5;
   
+  @include m {
+    margin-top: 36px;
+  }
+  
   @include xs {
     font-size: 16px;
     padding-inline: 16px;
-    margin-block: 12px;    
+    margin-top: 24px;
+    margin-bottom: 24px;
   }
 }
 
