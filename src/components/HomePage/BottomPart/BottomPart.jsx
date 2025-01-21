@@ -6,17 +6,14 @@ import askIcon from "@/assets/img/home/askIcon.png";
 import specialistIcon from "@/assets/img/home/specialistIcon.png";
 import loveIcon from "@/assets/img/home/loveIcon.png";
 import {useAppContext} from "@/contexts/appContext.jsx";
-import {useEffect} from "react";
 
 const BottomPart = () => {
-  
-  const {situations, fetchSituations, currentTimer} = useAppContext()
-  
+      
   return (
     <div className={s.wrapper}>
       <div className={s.buttonsWrapper}>
 
-        <WaitingBar />
+        <WaitingBar  />
                 
         <ButtonWithBeak
           title="Сообщения"

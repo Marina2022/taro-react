@@ -6,6 +6,7 @@ const ContextProvider = ({children}) => {
 
   const [situations, setSituations] = useState(null)
   const [currentTimer, setCurrentTimer] = useState(null)
+  const [isSituationsLoading, setIsSituationsLoading] = useState(true)
          
   useEffect(() => {
     // если объект из запроса peek пришел, то обновляем значение таймера 
@@ -32,8 +33,17 @@ const ContextProvider = ({children}) => {
   }, [currentTimer]);
 
   const fetchSituations = async () => {
-    const response = await axiosInstance('situations/peek/')
-    setSituations(response?.data)
+    
+    try {
+      setIsSituationsLoading(true)
+      const response = await axiosInstance('situations/peek/')
+      setSituations(response?.data)      
+    } catch(err) {
+      console.log(err)
+    } finally {
+      setIsSituationsLoading(false)
+    }
+    
   }
 
   return (
@@ -41,7 +51,8 @@ const ContextProvider = ({children}) => {
       value={{        
         situations,
         fetchSituations,
-        currentTimer
+        currentTimer,
+        isSituationsLoading
       }}>
       {children}
     </AppContext.Provider>

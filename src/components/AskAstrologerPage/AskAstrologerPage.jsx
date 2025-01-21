@@ -57,8 +57,7 @@ const AskAstrologerPage = () => {
     
     setTimeout(()=>{      
       navigate('/')  
-    }, 0)
-    
+    }, 0)    
   }
 
   return (

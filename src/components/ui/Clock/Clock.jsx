@@ -1,8 +1,9 @@
 import s from './Clock.module.scss';
 import {useAppContext} from "@/contexts/appContext.jsx";
 import {useEffect, useRef, useState} from "react";
+import MiniSpinner from "@/components/ui/miniSpinner/MiniSpinner.jsx";
 
-const Clock = ({classname, currentTimer, onEnd=()=>{}}) => {
+const Clock = ({classname, loading, currentTimer, useGlobalTimer=false,   onEnd=()=>{}}) => {
       
   const [innerTimerValue, setInnerTimerValue] = useState(currentTimer)  
   const intervalId = useRef()
@@ -38,7 +39,12 @@ const Clock = ({classname, currentTimer, onEnd=()=>{}}) => {
   
   return (
     <div className={`${s.clock} ${classname}`}>
-      {formatTime(innerTimerValue)}
+      
+      {
+
+        loading ? <MiniSpinner /> : formatTime(useGlobalTimer ? currentTimer : innerTimerValue)
+      
+      }
     </div>
   );
 };

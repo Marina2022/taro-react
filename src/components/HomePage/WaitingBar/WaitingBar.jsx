@@ -10,7 +10,7 @@ import {useState} from "react";
 import astrologerImg from '@/assets/img/home/astrologist.png'
 
 const WaitingBar = () => {
-  const {currentTimer, fetchSituations, situations} = useAppContext()
+  const {currentTimer, fetchSituations, situations, isSituationsLoading } = useAppContext()
   const navigate = useNavigate()
   const [isOpen, setIsOpen] = useState(false)
   const handleClick = () => {
@@ -49,7 +49,7 @@ const WaitingBar = () => {
               </div>
               {
                 situations.status === 'in_progress' &&
-                <Clock currentTimer={currentTimer} onEnd={fetchSituations} classname={s.clock}/>
+                <Clock currentTimer={currentTimer} onEnd={fetchSituations} classname={s.clock} loading={isSituationsLoading} useGlobalTimer />
               }
               {
                 situations.status === 'completed' && <div className={s.ready}>Готово!</div>
