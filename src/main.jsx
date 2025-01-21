@@ -7,9 +7,7 @@ import ContextProvider from "@/contexts/appContext.jsx";
 import AuthContextProvider from "@/contexts/authContext.jsx";
 
 createRoot(document.getElementById('root')).render(
-  <AuthContextProvider>
-    <ContextProvider>
-      <App/>
-    </ContextProvider>
+  <AuthContextProvider>    
+      <App/>    
   </AuthContextProvider>
 )

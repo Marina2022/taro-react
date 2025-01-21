@@ -3,9 +3,7 @@ import {useAppContext} from "@/contexts/appContext.jsx";
 import Button from "@/components/ui/systemComponents/Button/Button.jsx";
 
 const WaitingPopup = ({isOpen, setIsOpen, onUnderstood, children}) => {
-
-  const {situations} = useAppContext()
-
+  
   if (!isOpen) return null
 
   return (

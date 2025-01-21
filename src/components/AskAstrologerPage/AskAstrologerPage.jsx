@@ -23,7 +23,7 @@ const AskAstrologerPage = () => {
   const [isOpen, setIsOpen] = useState(false)
   const [innerTimer, setInnerTimer] = useState(null)
   
-  const {fetchSituations} = useAppContext()
+  // const {fetchSituations} = useAppContext()
 
   const askHandler = async () => {    
     try {
@@ -33,7 +33,7 @@ const AskAstrologerPage = () => {
       })
 
       if (result.data.message === "Interpretation is being processed") {        
-        await fetchSituations()
+        // await fetchSituations()
         setIsOpen(true)
         setInnerTimer(result.data.seconds_left)
 

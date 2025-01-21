@@ -33,7 +33,7 @@ const WaitingBar = () => {
     astrology_question: "Вопрос астрологу"
   }
 
-  if (!situations.situation_type) {
+  if (!situations?.situation_type) {
     return null
   }
   
@@ -53,7 +53,7 @@ const WaitingBar = () => {
               </div>
               {
                 situations.status === 'in_progress' &&
-                <Clock currentTimer={currentTimer} onEnd={fetchSituations} classname={s.clock}/>
+                <Clock currentTimer={situations.seconds_left} onEnd={fetchSituations} classname={s.clock}/>
               }
               {
                 situations.status === 'completed' && <div className={s.ready}>Готово!</div>

@@ -17,7 +17,7 @@ import {useAppContext} from "@/contexts/appContext.jsx";
 function App() {
 
   const {setUser, setIsUserLoading, setNatalChartCreated, situations} = useAuthContext()
-  const {fetchSituations} = useAppContext()
+  // const {fetchSituations} = useAppContext()
 
   useEffect(() => {
     const fetchUserProfile = async () => {
@@ -50,7 +50,7 @@ function App() {
     }
            
     fetchUserProfile()
-    fetchSituations()
+    // fetchSituations()
   }, [])
   
   

@@ -6,7 +6,7 @@ const Clock = ({classname, currentTimer, onEnd=()=>{}}) => {
       
   const [innerTimerValue, setInnerTimerValue] = useState(currentTimer)  
   const intervalId = useRef()
-  
+ 
   useEffect(() => {
 
     if (innerTimerValue > 0) {
