@@ -14,6 +14,7 @@ import {useNavigate} from "react-router-dom";
 import MiniSpinner from "@/components/ui/miniSpinner/MiniSpinner.jsx";
 import {useAppContext} from "@/contexts/appContext.jsx";
 import astrologerImg from '@/assets/img/home/astrologist.png'
+import Header24 from "@/components/ui/systemComponents/Header24/Header24.jsx";
 const AskAstrologerPage = () => {
 
   const [message, setMessage] = useState('')
@@ -55,6 +56,10 @@ const AskAstrologerPage = () => {
     <>
       <div className={s.askAstrologer}>
         <div className='container'>
+          <Header24 classname={s.mainTitle}>Вопрос астрологу</Header24>
+
+          {/*<img src="https://my.aspectum.app/api/natal/aspect-chart-svg/" alt=""/>*/}
+          
           <AstrologerCard
             name="Александра Таровна"
             imageUrl={astrologerImg}>

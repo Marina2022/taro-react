@@ -1,3 +1,5 @@
+@use '@/assets/styles/mixins' as *;
+
 .inputGroup {
   margin-bottom: 24px;
   display: flex;
@@ -24,6 +26,11 @@
   font-family: Inter, sans-serif;
   color: #ffffffa3;
   min-height: 200px;
+  
+  @include xs {
+    font-size: 14px;
+    
+  }
   
   
   &::placeholder {
