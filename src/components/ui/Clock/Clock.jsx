@@ -22,7 +22,7 @@ const Clock = ({classname, currentTimer, onEnd=()=>{}}) => {
       }, 1000);
       return () => clearInterval(intervalId.current); // Очистка интервала при размонтировании
     }
-  }, [currentTimer]);
+  }, []);
 
   const formatTime = (time) => {
     const hours = Math.floor(time / 3600);
@@ -38,7 +38,7 @@ const Clock = ({classname, currentTimer, onEnd=()=>{}}) => {
   
   return (
     <div className={`${s.clock} ${classname}`}>
-      {formatTime(currentTimer)}
+      {formatTime(innerTimerValue)}
     </div>
   );
 };

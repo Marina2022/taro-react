@@ -21,6 +21,7 @@ const AskAstrologerPage = () => {
   const [sending, setSending] = useState(false)
 
   const [isOpen, setIsOpen] = useState(false)
+  const [innerTimer, setInnerTimer] = useState(null)
   
   const {fetchSituations} = useAppContext()
 
@@ -34,6 +35,7 @@ const AskAstrologerPage = () => {
       if (result.data.message === "Interpretation is being processed") {        
         await fetchSituations()
         setIsOpen(true)
+        setInnerTimer(result.data.seconds_left)
 
       } else {
         throw new Error ("Interpretation is not being processed for some reason")
@@ -80,7 +82,7 @@ const AskAstrologerPage = () => {
         </div>
       </div>
       <WaitingPopup isOpen={isOpen} setIsOpen={setIsOpen} onUnderstood={understoodHandler}>
-        <AskAstrologerPopupContent />
+        <AskAstrologerPopupContent currentTimer={innerTimer} />
       </WaitingPopup>
 
 

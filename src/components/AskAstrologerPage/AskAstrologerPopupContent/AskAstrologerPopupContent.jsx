@@ -3,9 +3,11 @@ import Header20 from "@/components/ui/systemComponents/Header20/Header20.jsx";
 
 import Clock from "@/components/ui/Clock/Clock.jsx";
 import {useAppContext} from "@/contexts/appContext.jsx";
+import {useState} from "react";
 
-const AskAstrologerPopupContent = () => {
-  const {currentTimer, fetchSituations} = useAppContext()
+const AskAstrologerPopupContent = ({currentTimer}) => {
+  const {fetchSituations} = useAppContext()
+      
   return (
     <>
       <Header20 classname={s.popupTitle}>Заказ</Header20>

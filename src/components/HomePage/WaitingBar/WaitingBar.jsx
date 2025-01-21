@@ -60,7 +60,6 @@ const WaitingBar = () => {
               }
             </div>
           </div>
-
         </div>
         {
           situations.status === 'in_progress' &&
@@ -79,7 +78,7 @@ const WaitingBar = () => {
       </div>
 
       <WaitingPopup isOpen={isOpen} setIsOpen={setIsOpen} onUnderstood={understoodHandler}>
-        <AskAstrologerPopupContent/>
+        <AskAstrologerPopupContent currentTimer={currentTimer} />
       </WaitingPopup>
 
     </>
