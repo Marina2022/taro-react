@@ -12,7 +12,7 @@ import AskAstrologerPopupContent
   from "@/components/AskAstrologerPage/AskAstrologerPopupContent/AskAstrologerPopupContent.jsx";
 import {useNavigate} from "react-router-dom";
 import MiniSpinner from "@/components/ui/miniSpinner/MiniSpinner.jsx";
-import {useAppContext} from "@/context/appContext.jsx";
+import {useAppContext} from "@/contexts/appContext.jsx";
 
 const AskAstrologerPage = () => {
 

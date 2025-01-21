@@ -1,9 +1,9 @@
 import s from './Header.module.scss';
-import {useAppContext} from "@/context/appContext.jsx";
 import {useLocation, useNavigate} from "react-router-dom";
+import {useAuthContext} from "@/contexts/authContext.jsx";
 
 const Header = () => {
-  const {user, natalChartCreated} = useAppContext()
+  const {user, natalChartCreated} = useAuthContext()
   const location = useLocation()
   const navigate = useNavigate()
 

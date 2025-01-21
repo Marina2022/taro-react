@@ -3,17 +3,10 @@ import axiosInstance from "@/api/axiosInstance.js";
 
 const AppContext = createContext()
 const ContextProvider = ({children}) => {
-  const [user, setUser] = useState(null)
-  const [isUserLoading, setIsUserLoading] = useState(true)
-  const [natalChartCreated, setNatalChartCreated] = useState(false)
 
   const [situations, setSituations] = useState(null)
   const [currentTimer, setCurrentTimer] = useState(null)
-    
-  // if (situations) {
-  //   situations.seconds_left = 10000  // todo убрать потом  
-  // }  
-     
+         
   useEffect(() => {
     // если объект из запроса peek пришел, то обновляем значение таймера 
     if (situations) setCurrentTimer(situations.seconds_left)
@@ -45,13 +38,7 @@ const ContextProvider = ({children}) => {
 
   return (
     <AppContext.Provider
-      value={{
-        user,
-        setUser,
-        isUserLoading,
-        setIsUserLoading,
-        natalChartCreated,
-        setNatalChartCreated,
+      value={{        
         situations,
         fetchSituations,
         currentTimer

@@ -13,11 +13,8 @@ const DayBlock = ({classname}) => {
 
     useEffect(() => {
       const getDay = async () => {
-
-
         const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
         const currentTime = new Date().toISOString();
-
         const payload = {
           now_dt: currentTime, timezone: timeZone
         }
@@ -31,8 +28,6 @@ const DayBlock = ({classname}) => {
         } finally {
           setIsLoading(false)
         }
-
-
       }
       getDay()
     }, [])

@@ -1,21 +1,23 @@
-import {BrowserRouter as Router, Navigate, Route, Routes} from 'react-router-dom';
+import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 import MainLayout from "@/components/layout/MainLayout.jsx";
 import Onboarding from "@/pages/Onboarding.jsx";
 import ProtectedRoute from "@/components/ProtectedRoute/ProtectedRoute.jsx";
 import Home from "@/pages/Home.jsx";
 import AskAstrologer from "@/pages/AskAstrologer.jsx";
 import System from "@/pages/System.jsx";
-import AuthContextProvider, {useAppContext} from "@/context/appContext.jsx";
-import {useEffect, useState} from "react";
+import {useEffect} from "react";
 import Natal from "@/components/NatalPage/NatalPage.jsx";
 import Character from "@/components/NatalPage/Character/Character.jsx";
 import Chart from "@/components/NatalPage/Chart/Chart.jsx";
 import Today from "@/pages/Today.jsx";
 import ScrollToTop from "@/components/ui/ScrollToTop/ScrollToTop.jsx";
+import {useAuthContext} from "@/contexts/authContext.jsx";
+import {useAppContext} from "@/contexts/appContext.jsx";
 
 function App() {
 
-  const {setUser, setIsUserLoading, setNatalChartCreated, situations, fetchSituations} = useAppContext()
+  const {setUser, setIsUserLoading, setNatalChartCreated, situations} = useAuthContext()
+  const {fetchSituations} = useAppContext()
 
   useEffect(() => {
     const fetchUserProfile = async () => {

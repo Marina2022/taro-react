@@ -1,5 +1,5 @@
 import s from './Clock.module.scss';
-import {useAppContext} from "@/context/appContext.jsx";
+import {useAppContext} from "@/contexts/appContext.jsx";
 import {useEffect, useRef, useState} from "react";
 
 const Clock = ({classname, currentTimer, onEnd=()=>{}}) => {

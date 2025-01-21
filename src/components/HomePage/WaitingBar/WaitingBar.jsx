@@ -1,5 +1,5 @@
 import s from './WaitingBar.module.scss';
-import {useAppContext} from "@/context/appContext.jsx";
+import {useAppContext} from "@/contexts/appContext.jsx";
 import Clock from "@/components/ui/Clock/Clock.jsx";
 import {BsExclamationCircle} from "react-icons/bs";
 import {useNavigate} from "react-router-dom";
@@ -12,7 +12,7 @@ const WaitingBar = () => {
 
   const {currentTimer, fetchSituations, situations} = useAppContext()
 
-  console.log(situations)
+  // console.log(situations)
 
   const navigate = useNavigate()
   const [isOpen, setIsOpen] = useState(false)
@@ -27,7 +27,6 @@ const WaitingBar = () => {
 
   const understoodHandler = () => {
     setIsOpen(false)
-
   }
 
   const situationsMapping = {
@@ -37,21 +36,15 @@ const WaitingBar = () => {
   if (!situations.situation_type) {
     return null
   }
-
-
+  
   return (
     <>
-
       <div className={s.waitingBar} onClick={handleClick}>
-
         <div>
-
           <div className={s.flex}>
-
             {
               situations.situation_type === 'astrology_question' && <img className={s.img} src="/img/astrologist.png"/>
             }
-
             <div>
               <div className={s.title}>
                 {

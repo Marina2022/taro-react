@@ -2,11 +2,11 @@ import {useNavigate} from "react-router-dom";
 import {useEffect} from "react";
 
 import Spinner from "@/components/ui/Spinner/Spinner.jsx";
-import {useAppContext} from "@/context/appContext.jsx";
+import {useAuthContext} from "@/contexts/authContext.jsx";
 
 const ProtectedRoute = ({children}) => {
 
-  const {user, natalChartCreated, isUserLoading} = useAppContext()
+  const {user, natalChartCreated, isUserLoading} = useAuthContext()
   const navigate = useNavigate()
 
   useEffect(() => {

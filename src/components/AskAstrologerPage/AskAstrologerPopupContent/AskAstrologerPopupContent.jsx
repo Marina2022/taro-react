@@ -2,7 +2,7 @@ import s from './AskAstrologerPopupContent.module.scss';
 import Header20 from "@/components/ui/systemComponents/Header20/Header20.jsx";
 
 import Clock from "@/components/ui/Clock/Clock.jsx";
-import {useAppContext} from "@/context/appContext.jsx";
+import {useAppContext} from "@/contexts/appContext.jsx";
 
 const AskAstrologerPopupContent = () => {
   const {currentTimer, fetchSituations} = useAppContext()

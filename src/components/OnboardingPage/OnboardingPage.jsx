@@ -9,11 +9,11 @@ import Step3 from "@/components/OnboardingPage/Step3/Step3.jsx";
 import Step4 from "@/components/OnboardingPage/Step4/Step4.jsx";
 import BirthdayPlacePopup from "@/components/OnboardingPage/BirthdayPlacePopup/BirthdayPlacePopup.jsx";
 import Step5 from "@/components/OnboardingPage/Step5/Step5.jsx";
-import {useAppContext} from "@/context/appContext.jsx";
+import {useAuthContext} from "@/contexts/authContext.jsx";
 
 const OnboardingPage = () => {
 
-  const {user, setNatalChartCreated, isUserLoading} = useAppContext()
+  const {user, setUser, setIsUserLoading, setNatalChartCreated, isUserLoading} = useAuthContext()
 
   const [step, setStep] = useState(user ? 5 : 1)
   //const [step, setStep] = useState(  1)
@@ -46,7 +46,7 @@ const OnboardingPage = () => {
   const [popupOpened, setPopupOpened] = useState(false)
 
 
-  const {setUser, setIsUserLoading} = useAppContext()
+  
 
   // Если пользователь уже есть (зарегистрирован), но он не посмотрел слайдер, перекидываем его на 5й шаг
   // useEffect(() => {
@@ -99,7 +99,7 @@ const OnboardingPage = () => {
 
         setTimeout(()=>{
           fetchUserProfile()  
-        }, 15000)
+        }, 30000)
         
       } else {
         throw new Error('Не получилось запустить построение натальной карты')

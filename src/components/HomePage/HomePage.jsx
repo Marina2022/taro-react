@@ -4,7 +4,7 @@ import NatalMap from "@/components/HomePage/NatalMap/NatalMap.jsx";
 import ButtonWithBeak from "@/components/ui/systemComponents/ButtonWithBeak/ButtonWithBeak.jsx";
 import {useEffect} from "react";
 import {useLocation} from "react-router-dom";
-import {useAppContext} from "@/context/appContext.jsx";
+import {useAppContext} from "@/contexts/appContext.jsx";
 import Clock from "@/components/ui/Clock/Clock.jsx";
 import WaitingBar from "@/components/HomePage/WaitingBar/WaitingBar.jsx";
 
