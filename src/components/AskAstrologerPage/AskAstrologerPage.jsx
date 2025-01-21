@@ -59,9 +59,7 @@ const AskAstrologerPage = () => {
       <div className={s.askAstrologer}>
         <div className='container'>
           <Header24 classname={s.mainTitle}>Вопрос астрологу</Header24>
-
-          {/*<img src="https://my.aspectum.app/api/natal/aspect-chart-svg/" alt=""/>*/}
-          
+                    
           <AstrologerCard
             name="Александра Таровна"
             imageUrl={astrologerImg}>

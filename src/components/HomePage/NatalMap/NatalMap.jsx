@@ -7,12 +7,9 @@ const NatalMap = () => {
     <Link
       to="/natal"
       className={`${s.card} `}>
-
       <div className={s.imageWrapper}>
         <img className={s.cardImage} src={natalMap} alt='natal map'/>
       </div>
-
-
       <div className={s.cardText}>
         <h2 className={s.cardTitle}>Натальная карта</h2>
         <p className={s.cardDescription}>с пояснениями</p>

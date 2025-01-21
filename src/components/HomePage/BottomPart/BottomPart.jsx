@@ -21,8 +21,7 @@ const BottomPart = () => {
       <div className={s.buttonsWrapper}>
 
         <WaitingBar/>
-        
-        
+                
         <ButtonWithBeak
           title="Сообщения"
           description="Архив сообщений и заказов"

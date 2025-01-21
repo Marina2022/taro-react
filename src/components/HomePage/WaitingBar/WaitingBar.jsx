@@ -8,12 +8,9 @@ import AskAstrologerPopupContent
   from "@/components/AskAstrologerPage/AskAstrologerPopupContent/AskAstrologerPopupContent.jsx";
 import {useState} from "react";
 import astrologerImg from '@/assets/img/home/astrologist.png'
+
 const WaitingBar = () => {
-
   const {currentTimer, fetchSituations, situations} = useAppContext()
-
-  // console.log(situations)
-
   const navigate = useNavigate()
   const [isOpen, setIsOpen] = useState(false)
   const handleClick = () => {
@@ -24,7 +21,6 @@ const WaitingBar = () => {
       setIsOpen(true)
     }
   }
-
   const understoodHandler = () => {
     setIsOpen(false)
   }
@@ -36,7 +32,7 @@ const WaitingBar = () => {
   if (!situations?.situation_type) {
     return null
   }
-  
+
   return (
     <>
       <div className={s.waitingBar} onClick={handleClick}>
@@ -78,9 +74,8 @@ const WaitingBar = () => {
       </div>
 
       <WaitingPopup isOpen={isOpen} setIsOpen={setIsOpen} onUnderstood={understoodHandler}>
-        <AskAstrologerPopupContent currentTimer={currentTimer} />
+        <AskAstrologerPopupContent currentTimer={currentTimer}/>
       </WaitingPopup>
-
     </>
   );
 };

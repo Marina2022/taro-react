@@ -7,17 +7,15 @@ import AskAstrologer from "@/pages/AskAstrologer.jsx";
 import System from "@/pages/System.jsx";
 import {useEffect} from "react";
 import Natal from "@/components/NatalPage/NatalPage.jsx";
-import Character from "@/components/NatalPage/Character/Character.jsx";
 import Chart from "@/components/NatalPage/Chart/Chart.jsx";
 import Today from "@/pages/Today.jsx";
 import ScrollToTop from "@/components/ui/ScrollToTop/ScrollToTop.jsx";
 import {useAuthContext} from "@/contexts/authContext.jsx";
-import {useAppContext} from "@/contexts/appContext.jsx";
+import NatalFeature from "@/components/NatalPage/NatalFeature/NatalFeature.jsx";
 
 function App() {
 
   const {setUser, setIsUserLoading, setNatalChartCreated, situations} = useAuthContext()
-  // const {fetchSituations} = useAppContext()
 
   useEffect(() => {
     const fetchUserProfile = async () => {
@@ -48,12 +46,9 @@ function App() {
         setIsUserLoading(false)
       }
     }
-           
+
     fetchUserProfile()
-    // fetchSituations()
   }, [])
-  
-  
 
 
   return (
@@ -69,7 +64,7 @@ function App() {
             <Route path='/today' element={<Today/>}/>
             <Route path='/natal' element={<Natal/>}>
               <Route path='/natal' index element={<Chart/>}/>
-              <Route path='/natal/character' element={<Character/>}/>
+              <Route path='/natal/description/:feature' element={<NatalFeature/>}/>
             </Route>
             <Route path='*' element={<div className='container'>Not found</div>}/>
           </Route>
