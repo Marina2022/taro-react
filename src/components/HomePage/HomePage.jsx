@@ -9,7 +9,7 @@ import {useEffect} from "react";
 const HomePage = () => {
 
   const {pathname} = useLocation()
-  
+
   return (
     <div className={s.homePage}>
       <div className='container'>
@@ -23,10 +23,7 @@ const HomePage = () => {
         </div>
         <div className={s.slogan}>Не думайте о том, что вы не можете, думайте о том, что вы <span
           className={s.highlight}> можете!</span></div>
-
-        <ContextProvider>
-          <BottomPart />
-        </ContextProvider>
+        <BottomPart/>
       </div>
     </div>
   );

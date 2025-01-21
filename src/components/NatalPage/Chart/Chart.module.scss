@@ -44,7 +44,7 @@
     flex-wrap: wrap;
     gap: 0px;
     padding: 16px;
-    padding-top: 100px;
+    padding-top: 90px;
   }
   
 }
@@ -73,17 +73,22 @@
 }
 
 .userChartInfo {
+  opacity: 0.8;
   font-size: 14px;
   position: absolute;
-  left: 20px;
-  top: 20px;
-  //padding: 10px;
+  left: 30px;
+  top: 30px;  
   max-width: calc(100% - 32px);
   display: flex;
   flex-direction: column;
   gap: 10px;
   line-height: .8;
   font-weight: 400;
+  
+  @include m {
+    left: 20px;
+    top: 20px;
+  }
   
   @include xs {
     line-height: 1.4;

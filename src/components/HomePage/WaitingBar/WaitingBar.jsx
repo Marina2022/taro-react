@@ -49,7 +49,7 @@ const WaitingBar = () => {
               </div>
               {
                 situations.status === 'in_progress' &&
-                <Clock currentTimer={situations.seconds_left} onEnd={fetchSituations} classname={s.clock}/>
+                <Clock currentTimer={currentTimer} onEnd={fetchSituations} classname={s.clock}/>
               }
               {
                 situations.status === 'completed' && <div className={s.ready}>Готово!</div>

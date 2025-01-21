@@ -22,6 +22,8 @@ const AskAstrologerPage = () => {
 
   const [isOpen, setIsOpen] = useState(false)
   const [innerTimer, setInnerTimer] = useState(null)
+
+  const {fetchSituations} = useAppContext()
   
   // const {fetchSituations} = useAppContext()
 
@@ -49,9 +51,14 @@ const AskAstrologerPage = () => {
   }
 
   const navigate = useNavigate()
-  const understoodHandler = () => {
+  const understoodHandler = async() => {
+    await fetchSituations()
     setIsOpen(false)
-    navigate('/')
+    
+    setTimeout(()=>{      
+      navigate('/')  
+    }, 0)
+    
   }
 
   return (

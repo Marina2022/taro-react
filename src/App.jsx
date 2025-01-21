@@ -11,12 +11,15 @@ import Chart from "@/components/NatalPage/Chart/Chart.jsx";
 import Today from "@/pages/Today.jsx";
 import ScrollToTop from "@/components/ui/ScrollToTop/ScrollToTop.jsx";
 import {useAuthContext} from "@/contexts/authContext.jsx";
+import {useAppContext} from "@/contexts/appContext.jsx";
 import NatalFeature from "@/components/NatalPage/NatalFeature/NatalFeature.jsx";
 
 function App() {
 
   const {setUser, setIsUserLoading, setNatalChartCreated, situations} = useAuthContext()
 
+  const {fetchSituations} = useAppContext()
+  
   useEffect(() => {
     const fetchUserProfile = async () => {
       try {
@@ -44,10 +47,11 @@ function App() {
         console.log(err)
       } finally {
         setIsUserLoading(false)
+        fetchSituations()
       }
     }
 
-    fetchUserProfile()
+    fetchUserProfile()    
   }, [])
 
 
@@ -57,7 +61,7 @@ function App() {
         <ScrollToTop/>
         <Routes>
           <Route path='/onboarding' element={<Onboarding/>}/>
-          <Route path='/system' element={<System/>}/>
+          <Route path='/system' element={<System/>}/>          
           <Route element={<ProtectedRoute><MainLayout/></ProtectedRoute>}>
             <Route path='/' index element={<Home/>}/>
             <Route path='/ask-astrologer' element={<AskAstrologer/>}/>

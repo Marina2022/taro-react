@@ -11,16 +11,12 @@ import {useEffect} from "react";
 const BottomPart = () => {
   
   const {situations, fetchSituations, currentTimer} = useAppContext()
-
-  useEffect(() => {
-    fetchSituations()
-  }, []);
   
   return (
     <div className={s.wrapper}>
       <div className={s.buttonsWrapper}>
 
-        <WaitingBar/>
+        <WaitingBar />
                 
         <ButtonWithBeak
           title="Сообщения"

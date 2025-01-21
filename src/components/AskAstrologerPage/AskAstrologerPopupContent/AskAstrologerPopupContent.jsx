@@ -6,6 +6,8 @@ import {useAppContext} from "@/contexts/appContext.jsx";
 import {useState} from "react";
 
 const AskAstrologerPopupContent = ({currentTimer}) => {  
+  
+  const {fetchSituations} = useAppContext()
       
   return (
     <>
@@ -22,7 +24,7 @@ const AskAstrologerPopupContent = ({currentTimer}) => {
         </p>
       </div>
       <div className={s.center}>
-        <Clock classname={s.clock} currentTimer={currentTimer}  />
+        <Clock classname={s.clock} currentTimer={currentTimer} onEnd={fetchSituations}  />
       </div>      
     </>
   );
