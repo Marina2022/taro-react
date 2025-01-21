@@ -13,7 +13,7 @@ import AskAstrologerPopupContent
 import {useNavigate} from "react-router-dom";
 import MiniSpinner from "@/components/ui/miniSpinner/MiniSpinner.jsx";
 import {useAppContext} from "@/contexts/appContext.jsx";
-
+import astrologerImg from '@/assets/img/home/astrologist.png'
 const AskAstrologerPage = () => {
 
   const [message, setMessage] = useState('')
@@ -57,7 +57,7 @@ const AskAstrologerPage = () => {
         <div className='container'>
           <AstrologerCard
             name="Александра Таровна"
-            imageUrl="/img/astrologist.png">
+            imageUrl={astrologerImg}>
             Таро, Астрология
           </AstrologerCard>
           <Header20 classname={s.title}>О чём вы хотите спросить?</Header20>

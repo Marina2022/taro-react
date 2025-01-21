@@ -7,7 +7,7 @@ import WaitingPopup from "@/components/ui/WaitingPopup/WaitingPopup.jsx";
 import AskAstrologerPopupContent
   from "@/components/AskAstrologerPage/AskAstrologerPopupContent/AskAstrologerPopupContent.jsx";
 import {useState} from "react";
-
+import astrologerImg from '@/assets/img/home/astrologist.png'
 const WaitingBar = () => {
 
   const {currentTimer, fetchSituations, situations} = useAppContext()
@@ -43,7 +43,7 @@ const WaitingBar = () => {
         <div>
           <div className={s.flex}>
             {
-              situations.situation_type === 'astrology_question' && <img className={s.img} src="/img/astrologist.png"/>
+              situations.situation_type === 'astrology_question' && <img className={s.img} src={astrologerImg}/>
             }
             <div>
               <div className={s.title}>
