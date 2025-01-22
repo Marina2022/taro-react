@@ -1,7 +1,7 @@
-import s from './NatalFeature.module.scss';
+import s from './NatalFeaturePage.module.scss';
 import {useParams} from "react-router-dom";
 
-const NatalFeature = () => {
+const NatalFeaturePage = () => {
   
   const {feature} = useParams()
   
@@ -12,4 +12,4 @@ const NatalFeature = () => {
   );
 };
 
-export default NatalFeature;
+export default NatalFeaturePage;

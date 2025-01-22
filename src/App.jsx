@@ -12,7 +12,7 @@ import Today from "@/pages/Today.jsx";
 import ScrollToTop from "@/components/ui/ScrollToTop/ScrollToTop.jsx";
 import {useAuthContext} from "@/contexts/authContext.jsx";
 import {useAppContext} from "@/contexts/appContext.jsx";
-import NatalFeature from "@/components/NatalPage/NatalFeature/NatalFeature.jsx";
+import NatalFeaturePage from "@/components/NatalFeaturePage/NatalFeaturePage.jsx";
 
 function App() {
 
@@ -68,7 +68,7 @@ function App() {
             <Route path='/today' element={<Today/>}/>
             <Route path='/natal' element={<Natal/>}>
               <Route path='/natal' index element={<Chart/>}/>
-              <Route path='/natal/description/:feature' element={<NatalFeature/>}/>
+              <Route path='/natal/description/:feature' element={<NatalFeaturePage/>}/>
             </Route>
             <Route path='*' element={<div className='container'>Not found</div>}/>
           </Route>

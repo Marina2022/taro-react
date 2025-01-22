@@ -72,12 +72,12 @@ const Chart = () => {
 
         <div className={s.texts}>
           <TextBlock classname={s.textBlock}>
-            <Header20>Знак: {data.user.sign}</Header20>
+            <Header20 classname={s.textTitle}>Знак: {data.user.sign}</Header20>
             <Text16 classname={s.text}>{data.user.sign_text}</Text16>
           </TextBlock>
 
           <TextBlock classname={s.textBlock}>
-            <Header20>Асцендент: {data.user.ascendant_sign}</Header20>
+            <Header20 classname={s.textTitle}>Асцендент: {data.user.ascendant_sign}</Header20>
             <Text16 classname={s.text}>{data.user.ascendant_sign_text}</Text16>
           </TextBlock>
 

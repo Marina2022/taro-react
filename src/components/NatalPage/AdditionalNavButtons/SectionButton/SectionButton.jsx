@@ -6,8 +6,7 @@ const SectionButton = ({section}) => {
   const navigate = useNavigate()
   const clickHandler = ()=>{
     const page = section.href.split('/').pop();    
-    navigate(`/natal/description/${page}`)
-    
+    navigate(`/natal/description/${page}`)    
   }
   
   return (

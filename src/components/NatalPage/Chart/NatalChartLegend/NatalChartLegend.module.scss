@@ -7,14 +7,15 @@
   align-items: center;
   font-size: 16px;
   opacity: .8;
+  //margin-top: 10px;
   
   @include m {
-    left: 20px;
+    margin-top: 10px;
   }
   
   @include xs {
-    left: 16px;
-    bottom: 16px;
+    //left: 16px;
+    //bottom: 16px;
     font-size: 14px;
   }
 }
@@ -31,7 +32,7 @@
 }
 
 .btnText {
-  width: 90px;
+  //width: 90px;
   user-select: none;  
 }
 
