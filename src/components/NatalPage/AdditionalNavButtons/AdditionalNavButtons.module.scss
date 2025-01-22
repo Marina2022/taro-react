@@ -1,0 +1,23 @@
+@use '@/assets/styles/mixins' as *;
+
+.wrapper {
+  //margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  @include xs {
+    margin-top: 20px;
+  }
+}
+
+.buttonsList {  
+  width: 100%;
+  max-width: 860px;
+  border-radius: 20px;
+  padding: 20px;
+
+  @include xs {
+    padding: 0;
+  }
+} 

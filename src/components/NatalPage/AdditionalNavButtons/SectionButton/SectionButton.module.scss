@@ -1,9 +1,9 @@
 @use '@/assets/styles/mixins' as *;
 
-.listItemButton {  
+.sectionButton {
   display: flex;
   align-items: flex-start;
-  width: calc(100% + 48px);  
+  width: calc(100% + 48px);
   padding: 24px;
   background-color: transparent;
   border: none;
@@ -14,21 +14,20 @@
   transition: background-color 0.3s ease;
   margin-left: -24px;
   border-radius: 16px;
-  
+
   &:hover {
-    background-color: rgba(255, 185, 76, 0.16);   
+    background-color: rgba(255, 185, 76, 0.16);
   }
 
   @include m {
     margin-left: 0;
     width: 100%;
-    padding: 10px;
+    padding-inline: 4px;
+    padding-block: 16px;
 
     &:hover {
       background-color: transparent;
     }
-
-    
   }
 }
 
@@ -38,52 +37,12 @@
   background-color: rgba(255, 185, 76, 0.1);
   border-radius: 50%;
   margin-right: 14px;
-  
+
   img {
     width: 45px;
     height: 45px;
     transform: scale(1.2);
   }
-}
-
-.listItemText {
-  flex: 1;
-  max-width: 90%;
-  
-  @include xs {
-    max-width: 70%;
-  }
-}
-
-.listItemTitle {
-  font-size: 16px;
-  font-weight: 500;
-  color: #ffffff;
-  margin-bottom: 4px;
-}
-
-.listItemDescription {
-  font-size: 14px;
-  color: #ffffff;
-  opacity: 0.8;
-  max-width: 94%;
-  
-  @include m {
-    font-size: 12px;
-  }
-}
-
-.listItemIndicator {
-  background-color: #ff4c4c;
-  color: #ffffff;
-  font-size: 12px;
-  font-weight: 500;
-  padding: 4px 8px;
-  border-radius: 12px;
-  position: absolute;
-  top: 50%;
-  right: 40px; /* Отступ для стрелки */
-  transform: translateY(-50%);
 }
 
 .listItemChevron {
@@ -97,7 +56,7 @@
   right: 26px;
   top: 50%;
   transform: translateY(-50%);
-  
+
   @include m {
     right: 8px;
   }

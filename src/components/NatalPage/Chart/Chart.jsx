@@ -8,6 +8,7 @@ import TextBlock from "@/components/ui/TextBlock/TextBlock.jsx";
 import Header20 from "@/components/ui/systemComponents/Header20/Header20.jsx";
 import Text16 from "@/components/ui/systemComponents/Text16/Text16.jsx";
 import QuoteBlock from "@/components/ui/systemComponents/QuoteBlock/QuoteBlock.jsx";
+import AdditionalNavButtons from "@/components/NatalPage/AdditionalNavButtons/AdditionalNavButtons.jsx";
 
 const Chart = () => {
 
@@ -69,23 +70,28 @@ const Chart = () => {
           </div>
         </div>
 
-        <TextBlock classname={s.textBlock}>
-          <Header20>Знак: {data.user.sign}</Header20>
-          <Text16 classname={s.text}>{data.user.sign_text}</Text16>
-        </TextBlock>
+        <div className={s.texts}>
+          <TextBlock classname={s.textBlock}>
+            <Header20>Знак: {data.user.sign}</Header20>
+            <Text16 classname={s.text}>{data.user.sign_text}</Text16>
+          </TextBlock>
 
-        <TextBlock classname={s.textBlock}>
-          <Header20>Асцендент: {data.user.ascendant_sign}</Header20>
-          <Text16 classname={s.text}>{data.user.ascendant_sign_text}</Text16>
-        </TextBlock>
+          <TextBlock classname={s.textBlock}>
+            <Header20>Асцендент: {data.user.ascendant_sign}</Header20>
+            <Text16 classname={s.text}>{data.user.ascendant_sign_text}</Text16>
+          </TextBlock>
 
-        <div className={s.outerQuote}>
-        <QuoteBlock classname={s.quote}>
-          Натальная карта – это основа для трактовок личности и расшифровки положения звёзд. На основе этой информации
-          астролог сможет разбирать сложные ситуации и отвечать на вопросы.
-        </QuoteBlock>
+          <div className={s.outerQuote}>
+            <QuoteBlock classname={s.quote}>
+              Натальная карта – это основа для трактовок личности и расшифровки положения звёзд. На основе этой
+              информации
+              астролог сможет разбирать сложные ситуации и отвечать на вопросы.
+            </QuoteBlock>
+          </div>
         </div>
 
+        <AdditionalNavButtons sections={data.sections} />
+               
       </div>
     </div>
   );

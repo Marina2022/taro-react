@@ -104,14 +104,14 @@
 .chartInfoLocation {
   font-size: 14px;
 }
-
-
 .textBlock {
-  margin-top: 20px;
+  @include xs {
+    padding-inline: 4px!important;
+  }
 }
 
 .quote {
-  margin-bottom: 0;
+  margin-bottom: 0;    
 }
 
 .outerQuote {
@@ -129,9 +129,15 @@
     padding-left: 0px;
     margin-left: 0;
     width: 100%;
+
+    
   }
 }
 
 .text {
   opacity: .8;
+}
+
+.texts {
+  margin-top: 20px;
 }
