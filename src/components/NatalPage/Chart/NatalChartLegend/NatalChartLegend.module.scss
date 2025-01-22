@@ -1,0 +1,58 @@
+@use '@/assets/styles/mixins' as *;
+
+.legendWrapper {
+  cursor: pointer;  
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  font-size: 16px;
+  opacity: .8;
+  
+  @include m {
+    left: 20px;
+  }
+  
+  @include xs {
+    left: 16px;
+    bottom: 16px;
+    font-size: 14px;
+  }
+}
+
+.icon {
+  position: relative;
+  top: 1px;
+}
+
+.iconUpsidedown {
+  transform: rotate(180deg);
+  position: relative;
+  top: 1px;
+}
+
+.btnText {
+  width: 90px;
+  user-select: none;  
+}
+
+.info {
+  margin-top: 20px;
+  opacity: .8;
+
+  @include xs {    
+    font-size: 15px;
+  }
+  
+}
+
+.raw {
+  display: flex;
+  gap: 6px;
+  //align-items: center;
+  margin-bottom: 10px;
+}
+
+.degrees {
+  min-width: 84px;
+  flex-shrink: 0;
+}

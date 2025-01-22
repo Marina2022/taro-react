@@ -3,13 +3,18 @@ import {useAppContext} from "@/contexts/appContext.jsx";
 import {useEffect, useRef, useState} from "react";
 import MiniSpinner from "@/components/ui/miniSpinner/MiniSpinner.jsx";
 
-const Clock = ({classname, loading, currentTimer, useGlobalTimer=false,   onEnd=()=>{}}) => {
-      
-  const [innerTimerValue, setInnerTimerValue] = useState(currentTimer)  
+const Clock = ({
+                 classname,
+                 loading,
+                 currentTimer,
+                 onEnd = () => {
+                 },
+                 useGlobalTimer = false
+               }) => {
+  const [innerTimerValue, setInnerTimerValue] = useState(currentTimer)
   const intervalId = useRef()
- 
-  useEffect(() => {
 
+  useEffect(() => {
     if (innerTimerValue > 0) {
       intervalId.current = setInterval(() => {
         setInnerTimerValue((prev) => {
@@ -36,17 +41,14 @@ const Clock = ({classname, loading, currentTimer, useGlobalTimer=false,   onEnd=
       seconds.toString().padStart(2, '0'),
     ].join(':');
   };
-  
+
   return (
     <div className={`${s.clock} ${classname}`}>
-      
       {
-
-        loading ? <MiniSpinner /> : formatTime(useGlobalTimer ? currentTimer : innerTimerValue)
-      
+        loading ? <MiniSpinner/> : formatTime(useGlobalTimer ? currentTimer : innerTimerValue)
       }
     </div>
-  );
-};
+  )
+}
 
 export default Clock;

@@ -6,8 +6,7 @@ const Header = () => {
   const {user, natalChartCreated} = useAuthContext()
   const location = useLocation()
   const navigate = useNavigate()
-
-      
+     
   const backButtonHandler = () => {
     navigate(-1)
   }
@@ -27,7 +26,6 @@ const Header = () => {
           {
             location.pathname !== '/' && <button onClick={backButtonHandler} className={s.backButton}></button>
           }
-
 
           <button className={s.settingsBtn}></button>
         </nav>

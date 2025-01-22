@@ -1,7 +1,7 @@
 @use '@/assets/styles/mixins' as *;
 
 .chartPage {  
-  padding-bottom: 100px;
+  padding-bottom: 110px;
   margin-top: -48px;
 
   @include xs {
@@ -22,33 +22,34 @@
   }
 }
 
-.picturesBlock {
-  aspect-ratio: 1000 / 600;
-  justify-content: center;
-  
-  display: flex;
-  gap: 20px;
+.picturesWithLegend {
   background-color: #553559;
   padding: 20px;
   padding-top: 60px;
-  border-radius: 16px; 
+  border-radius: 16px;
   overflow: hidden;
   
-  @include m {
-    aspect-ratio: 1000 / 700;
-  }
-  
-  
-  @include xs {
-    aspect-ratio: 428 / 925;
+  @include xs {    
     flex-wrap: wrap;
     gap: 0px;
     padding: 16px;
     padding-top: 90px;
+    padding-bottom: 20px;
   }
-  
 }
 
+.picturesBlock {
+  aspect-ratio: 1000 / 520;
+  justify-content: center;  
+  display: flex;
+  gap: 20px;   
+    
+  @include xs {
+    aspect-ratio: 428 / 850;
+    flex-wrap: wrap;
+    gap: 0px;    
+  }
+}
 
 .mapImg {
   width: 48%;
@@ -93,8 +94,7 @@
   @include xs {
     line-height: 1.4;
     gap: 4px;
-  }
-  
+  }  
 }
 
 .chartInfoDate {
@@ -103,4 +103,35 @@
 
 .chartInfoLocation {
   font-size: 14px;
+}
+
+
+.textBlock {
+  margin-top: 20px;
+}
+
+.quote {
+  margin-bottom: 0;
+}
+
+.outerQuote {
+  width: 90%;
+  margin-left: 20px;
+  margin-top: 20px;
+  padding: 20px;  
+  opacity: .8;
+  
+  @include m {
+    padding-left: 0px;
+  }
+  
+  @include xs {
+    padding-left: 0px;
+    margin-left: 0;
+    width: 100%;
+  }
+}
+
+.text {
+  opacity: .8;
 }
