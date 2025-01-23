@@ -1,7 +1,7 @@
 import s from './OnboardingPage.module.scss';
 import {useEffect, useState} from "react";
 import {addLeadingZero} from "@/utils.js";
-import axios from "@/api/axiosInstance.js";
+import axiosInstance from "@/api/axiosInstance.js";
 
 import Step1 from "@/components/OnboardingPage/Step1/Step1.jsx";
 import Step2 from "@/components/OnboardingPage/Step2/Step2.jsx";
@@ -91,9 +91,8 @@ const OnboardingPage = () => {
   
   const buildNatalMap = async()=>{
     try {      
-      const result = await axios('/api/build/', {withCredentials: true})
-      console.log('result on build === ', result)
-      
+      const result = await axiosInstance('/api/build/')
+            
       if (result.data.status === 'Построение натальной карты запущено') {
         setStep(5)
 
@@ -162,13 +161,14 @@ const OnboardingPage = () => {
 
       if (response.redirected !== true) {
         const user = await response.json();
-        setUser(user)
-      } else {
-        alert('Запрос на Profile не проходит')
-        throw new Error('Ошибка при получении данных профиля');
+        if (!user.sign) throw new Error('Натальная карта не построилась'); 
+        setUser(user) 
+      } else {        
+        throw new Error('Запрос на Profile не проходит');
       }
     } catch (err) {
       console.log(err)
+      alert(err)
     } finally {
       setIsUserLoading(false)
     }
