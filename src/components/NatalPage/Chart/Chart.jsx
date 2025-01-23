@@ -9,6 +9,7 @@ import Header20 from "@/components/ui/systemComponents/Header20/Header20.jsx";
 import Text16 from "@/components/ui/systemComponents/Text16/Text16.jsx";
 import QuoteBlock from "@/components/ui/systemComponents/QuoteBlock/QuoteBlock.jsx";
 import AdditionalNavButtons from "@/components/NatalPage/AdditionalNavButtons/AdditionalNavButtons.jsx";
+import {signsMapping} from "../../../../data/singsMapping.js";
 
 const Chart = () => {
 
@@ -33,7 +34,7 @@ const Chart = () => {
 
   }, []);
 
-  console.log(data)
+  
 
   const date = new Date(data?.user.birth_date);
 
@@ -46,7 +47,6 @@ const Chart = () => {
   });
 
   const resultedDate = formattedDate.replace(" г.", "").replace(",", "").replace(" в ", " - ");
-
 
   if (isLoading) return null
 
@@ -72,12 +72,22 @@ const Chart = () => {
 
         <div className={s.texts}>
           <TextBlock classname={s.textBlock}>
-            <Header20 classname={s.textTitle}>Знак: {data.user.sign}</Header20>
+
+            <div className={s.titleWrapper}>
+              <div
+                className={`${s.horoSign} ${data.user.sign ? signsMapping[data?.user?.sign] : 'sign'}`}></div>
+              <Header20 classname={s.textTitle}>Знак: {data?.user?.sign}</Header20>
+            </div>
             <Text16 classname={s.text}>{data.user.sign_text}</Text16>
           </TextBlock>
 
+
           <TextBlock classname={s.textBlock}>
-            <Header20 classname={s.textTitle}>Асцендент: {data.user.ascendant_sign}</Header20>
+            <div className={s.titleWrapper}>
+              <div
+                className={`${s.horoSign} ${data.user.sign ? signsMapping[data.user.ascendant_sign] : 'sign'}`}></div>
+              <Header20 classname={s.textTitle}>Асцендент: {data.user.ascendant_sign}</Header20>
+            </div>
             <Text16 classname={s.text}>{data.user.ascendant_sign_text}</Text16>
           </TextBlock>
 
@@ -90,8 +100,8 @@ const Chart = () => {
           </div>
         </div>
 
-        <AdditionalNavButtons sections={data.sections} />
-               
+        <AdditionalNavButtons sections={data.sections}/>
+
       </div>
     </div>
   );

@@ -5,7 +5,7 @@
   margin-top: -48px;
 
   @include xs {
-    margin-top: -44px;
+    margin-top: -43px;
   }
 }
 
@@ -119,7 +119,7 @@
   margin-left: 20px;
   margin-top: 20px;
   padding: 20px;  
-  opacity: .8;
+  //opacity: .8;
   
   @include m {
     padding-left: 0px;
@@ -146,4 +146,27 @@
 
 .textTitle {
   margin-bottom: 20px;  
+}
+
+.titleWrapper  {
+  display: flex;
+  gap: 20px;
+}
+
+
+.horoSign {
+  border-radius: 50%;
+  box-shadow: 0 0 0 0.5px rgba(255, 185, 76, 0.2);
+  width: 24px;
+  height: 24px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-clip: content-box;
+  border: none;
+  background-color: rgba(255, 255, 255, 0.1);
+  cursor: pointer;
+  color: #ffb94c;
+  transform: scale(1.5);
+  translate: 9px 0px;
+  margin-right: 10px;
 }

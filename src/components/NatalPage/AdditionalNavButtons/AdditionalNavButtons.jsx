@@ -4,10 +4,7 @@ import SectionButton from "@/components/NatalPage/AdditionalNavButtons/SectionBu
 
 const AdditionalNavButtons = ({sections}) => {
   return (
-    <div>
-
-      {/*<Header20>Дополнительная информация</Header20>*/}
-
+    <div>      
       <div className={s.wrapper}>
         <ul className={s.buttonsList}>
           {
@@ -15,8 +12,6 @@ const AdditionalNavButtons = ({sections}) => {
           }
         </ul>
       </div>
-
-
     </div>
   );
 };

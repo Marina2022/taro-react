@@ -19,14 +19,11 @@ const AskAstrologerPage = () => {
 
   const [message, setMessage] = useState('')
   const [sending, setSending] = useState(false)
-
   const [isOpen, setIsOpen] = useState(false)
   const [innerTimer, setInnerTimer] = useState(null)
 
   const {fetchSituations} = useAppContext()
   
-  // const {fetchSituations} = useAppContext()
-
   const askHandler = async () => {    
     try {
       setSending(true)
@@ -35,7 +32,6 @@ const AskAstrologerPage = () => {
       })
 
       if (result.data.message === "Interpretation is being processed") {        
-        // await fetchSituations()
         setIsOpen(true)
         setInnerTimer(result.data.seconds_left)
 
@@ -64,8 +60,7 @@ const AskAstrologerPage = () => {
     <>
       <div className={s.askAstrologer}>
         <div className='container'>
-          <Header24 classname={s.mainTitle}>Вопрос астрологу</Header24>
-                    
+          <Header24 classname={s.mainTitle}>Вопрос астрологу</Header24>                    
           <AstrologerCard
             name="Александра Таровна"
             imageUrl={astrologerImg}>
@@ -88,8 +83,6 @@ const AskAstrologerPage = () => {
       <WaitingPopup isOpen={isOpen} setIsOpen={setIsOpen} onUnderstood={understoodHandler}>
         <AskAstrologerPopupContent currentTimer={innerTimer} />
       </WaitingPopup>
-
-
     </>
   );
 };

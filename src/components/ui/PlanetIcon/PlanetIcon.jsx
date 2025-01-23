@@ -1,6 +1,6 @@
 import {planetIcons} from "../../../../data/planetIcons.js";
 
-const Icon = ({ name, stroke='white', fill = 'white', size = 22, className = '' }) => {
+const PlanetIcon = ({ name, stroke='white', fill = 'white', size = 22, className = '' }) => {
   const SvgIcon = planetIcons[name];
 
   if (!SvgIcon) {
@@ -16,10 +16,10 @@ const Icon = ({ name, stroke='white', fill = 'white', size = 22, className = '' 
         stroke: stroke,
         width: size,
         height: size,
-        transition: 'fill 0.3s ease', // Плавный переход цвета
+        transition: 'fill 0.3s ease', 
       }}      
     />
   );
 };
 
-export default Icon;
+export default PlanetIcon;

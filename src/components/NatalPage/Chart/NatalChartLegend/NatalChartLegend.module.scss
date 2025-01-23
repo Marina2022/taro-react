@@ -7,15 +7,12 @@
   align-items: center;
   font-size: 16px;
   opacity: .8;
-  //margin-top: 10px;
   
   @include m {
     margin-top: 10px;
   }
   
-  @include xs {
-    //left: 16px;
-    //bottom: 16px;
+  @include xs {    
     font-size: 14px;
   }
 }
@@ -32,7 +29,6 @@
 }
 
 .btnText {
-  //width: 90px;
   user-select: none;  
 }
 
@@ -42,18 +38,31 @@
 
   @include xs {    
     font-size: 15px;
-  }
-  
+  }  
 }
 
 .raw {
   display: flex;
   gap: 6px;
-  //align-items: center;
   margin-bottom: 10px;
+  align-items: center;
+    
+  @include xs {
+    align-items: flex-start;
+  }
 }
 
 .degrees {
   min-width: 84px;
   flex-shrink: 0;
+}
+
+.signIcon {
+  flex-shrink: 0;
+  
+  @include xs {
+    position: relative;
+    top: -1px;  
+  }
+  
 }

@@ -1,1 +1,49 @@
 @use '@/assets/styles/mixins' as *;
+
+.natalFeaturePage {
+  padding-bottom: 110px;
+  margin-top: -48px;
+
+  @include xs {
+    margin-top: -43px;
+  }
+}
+
+.mainTitle {
+  text-align: center;
+  margin-bottom: 42px;
+
+  @include m {
+    font-size: 22px;
+  }
+
+  @include xs {
+    font-size: 16px;
+  }
+}
+
+.textBlock {
+  @include xs {
+    padding-inline: 4px !important;
+  }
+}
+
+
+.text {
+  opacity: .8;
+  margin-top: 16px;
+}
+
+.texts {
+  margin-top: 30px;
+
+  @include xs {
+    margin-top: 20px;
+  }
+}
+
+
+.textTitle {
+  margin-bottom: 20px;
+}
+

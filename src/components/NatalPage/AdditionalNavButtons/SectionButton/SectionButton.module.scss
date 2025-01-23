@@ -2,7 +2,7 @@
 
 .sectionButton {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   width: calc(100% + 48px);
   padding: 24px;
   background-color: transparent;
@@ -60,4 +60,20 @@
   @include m {
     right: 8px;
   }
+}
+
+.buttonName {
+  
+}
+
+.buttonNameLocked {
+  opacity: .8;
+}
+
+
+.lockIcon {
+  width: 18px;
+  height: 18px;
+  margin-left: auto;
+  opacity: .8;
 }

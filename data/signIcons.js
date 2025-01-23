@@ -11,9 +11,6 @@ import Scorpio from '@/assets/img/signs/Scorpio.svg?react';
 import Taurus from '@/assets/img/signs/Taurus.svg?react';
 import Virgo from '@/assets/img/signs/Virgo.svg?react';
 
-import PartOfFortune from '@/assets/img/planets/part of fortune.svg?react';
-
-
 export const signIcons = {
   Aries, Aquarius, Cancer, Capricorn, Gemini, Leo, Libra, Pisces, Sagittarius, Scorpio, Taurus, Virgo
 }
