@@ -8,6 +8,12 @@ import {useState} from "react";
 const AskAstrologerPopupContent = ({currentTimer}) => {  
   
   const {fetchSituations} = useAppContext()
+
+  const endHandler = () => {
+    setTimeout(()=>{
+      fetchSituations()
+    }, 1000)
+  }
       
   return (
     <>
@@ -24,7 +30,7 @@ const AskAstrologerPopupContent = ({currentTimer}) => {
         </p>
       </div>
       <div className={s.center}>
-        <Clock classname={s.clock} currentTimer={currentTimer} onEnd={fetchSituations}  />
+        <Clock classname={s.clock} currentTimer={currentTimer} onEnd={endHandler}  />
       </div>      
     </>
   );

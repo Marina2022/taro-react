@@ -41,6 +41,7 @@ const Step4 = ({setStep, checkboxCheckedValues, setCheckboxCheckedValues, email,
           label="Ваш E-MAIL (используется как логин)"
           value={email}
           setValue={setEmail}
+          autofocus={true}
         />
 
         <Checkboxes

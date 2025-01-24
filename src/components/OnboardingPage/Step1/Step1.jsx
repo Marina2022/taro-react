@@ -63,6 +63,7 @@ const Step1 = ({setStep, day, setDay, month, setMonth, year, setYear, time, setT
           setMonth={setMonth}
           year={year}
           setYear={setYear}
+          autofocus={true}
         />
 
         <TimeInput time={time} setTime={setTime} label="Время рождения" dontKnowTime={dontKnowTime} setDontKnowTime={setDontKnowTime}/>

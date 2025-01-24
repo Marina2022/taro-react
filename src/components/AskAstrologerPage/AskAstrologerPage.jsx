@@ -25,6 +25,12 @@ const AskAstrologerPage = () => {
   const {fetchSituations} = useAppContext()
   
   const askHandler = async () => {    
+    
+    if(!message) {
+      alert('Введите, пожалуйста, ваш вопрос')
+      return
+    }
+    
     try {
       setSending(true)
       const result = await axiosInstance.post('astrologists/ask/', {

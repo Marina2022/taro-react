@@ -21,7 +21,7 @@ const DayBlock = ({classname}) => {
 
         try {
           setIsLoading(true)
-          const result = await axiosInstance.post('biorhythms/day/', payload)
+          const result = await axiosInstance.post('api/energy/day/', payload)
           setDayQuality(result.data.day_quality)
         } catch (err) {
           console.log(err)
@@ -36,9 +36,7 @@ const DayBlock = ({classname}) => {
 
     const formattedDate = date.toLocaleDateString('ru-RU', {
       day: '2-digit',
-      // month: '2-digit',
-      month: 'long',
-      // year: 'numeric',
+      month: '2-digit',
     });
 
     const dayOfWeek = date.toLocaleDateString('ru-RU', {weekday: 'long'});
@@ -49,12 +47,8 @@ const DayBlock = ({classname}) => {
       <Link to="/today"
             className={`${s.card} ${classname}`}>
         <div className={s.bordered}>
+          <div className={s.shortDayOfWeek}>{formattedDate} {dayOfWeekCapitalized}</div>
           
-          {/*<div className={s.flexWrapper}>*/}
-          <div className={s.shortDayOfWeek}>{shortDayOfWeek}</div>
-          <div className={s.shortDate}>{date.getDate()}</div>
-          {/*</div>*/}
-
           {
             !isLoading && <div className={s.chartWrapper}>
               <RingChart value={dayQuality} low={0} high={1}/>
@@ -67,8 +61,8 @@ const DayBlock = ({classname}) => {
         </div>
 
         <div className={s.cardText}>
-          <h2 className={s.cardTitle}>{formattedDate}</h2>
-          <p className={s.cardSubtitle}>{dayOfWeekCapitalized}</p>
+          <h2 className={s.cardTitle}>Энергия <br className={s.br} />дня</h2>
+          {/*<p className={s.cardSubtitle}>{dayOfWeekCapitalized}</p>*/}
           {/*<p className={s.cardDescription}>Чего ожидать от дня?</p>*/}
           <p className={s.cardDescription}>Что принесет этот день?</p>
         </div>

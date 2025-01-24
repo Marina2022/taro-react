@@ -6,15 +6,15 @@ import InputGroup from "@/components/ui/systemComponents/InputGroup/InputGroup.j
 import Tabs from "@/components/ui/systemComponents/Tabs/Tabs.jsx";
 
 const Step3 = ({setStep, nickname, setNickname, selectedTab, setSelectedTab}) => {
-    const handleContinue = ()=>{
-    
+  const handleContinue = () => {
+
     if (!nickname) {
       alert("Пожалуйста, введите имя.");
       return false
-    }    
+    }
     setStep(4)
   }
-  
+
   return (
     <>
       <div className={s.controlsBlock}>
@@ -24,10 +24,13 @@ const Step3 = ({setStep, nickname, setNickname, selectedTab, setSelectedTab}) =>
         </p>
 
         <InputGroup
-        classname={s.nicknameInput}  
-          value={nickname} 
-          setValue={setNickname} 
-          label="Как к вам обращаться?"  />
+          classname={s.nicknameInput}
+          value={nickname}
+          setValue={setNickname}
+          label="Как к вам обращаться?"
+          autofocus={true}
+        />
+
 
         <Tabs
           classname={s.sexTabs}
@@ -41,8 +44,8 @@ const Step3 = ({setStep, nickname, setNickname, selectedTab, setSelectedTab}) =>
               {value: 'other', label: 'Небинарный'},
             ]
           }/>
-      </div> 
-      
+      </div>
+
       <div className={s.stepsButtons}>
         <SecondaryButton onClick={() => setStep(2)}>Назад</SecondaryButton>
         <Button onClick={handleContinue}>Далее</Button>

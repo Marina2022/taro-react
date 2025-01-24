@@ -24,6 +24,7 @@ const BirthdayPlacePopup = ({
 
   const cityPopupRef = useRef()
   
+  
   useEffect(() => {
     if (inputValue === '') return
     setPrefix(inputValue)

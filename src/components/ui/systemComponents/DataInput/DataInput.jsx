@@ -1,5 +1,13 @@
 import s from './DataInput.module.scss';
-const DataInput = ({label, day, setDay, month, setMonth, year, setYear, classname=''}) => {
+import {useEffect, useRef} from "react";
+const DataInput = ({label, day, setDay, month, setMonth, year, setYear, autofocus=false, classname=''}) => {
+  
+  const birthInputRef = useRef()
+  
+  useEffect(()=>{
+    if (autofocus) birthInputRef.current.focus()
+  }, [])
+  
   return (
     <div className={classname}>
       <label className={s.onboardingLabels} htmlFor="birth-month">
@@ -7,13 +15,14 @@ const DataInput = ({label, day, setDay, month, setMonth, year, setYear, classnam
       </label>
       <div className={s.dataInputWrapper}>
         <input
+          ref={birthInputRef}
           id="birth-day"
           type="number"
           className={s.birthdayInput}
           placeholder="День"
           min="1"
-          max="31"
-          value={day}
+          max="31"          
+          value={day}          
           onChange={(e)=>setDay(e.target.value)}
         />
         <div className={s.inputIconContainer}>

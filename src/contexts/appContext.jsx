@@ -36,7 +36,8 @@ const ContextProvider = ({children}) => {
     
     try {
       setIsSituationsLoading(true)
-      const response = await axiosInstance('situations/peek/')
+      // const response = await axiosInstance('situations/peek/')
+      const response = await axiosInstance('api/orders/peek/')
       setSituations(response?.data)      
     } catch(err) {
       console.log(err)

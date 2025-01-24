@@ -14,7 +14,6 @@ const WaitingBar = () => {
   const navigate = useNavigate()
   const [isOpen, setIsOpen] = useState(false)
   const handleClick = () => {
-
     if (situations.status === 'completed') {
       navigate(`/astrologists/answer/${situations.related_object_id}`)
     } else if (situations.status === 'in_progress') {
@@ -29,6 +28,12 @@ const WaitingBar = () => {
     astrology_question: "Вопрос астрологу"
   }
 
+  const endHandler = () => {
+    setTimeout(()=>{
+      fetchSituations()
+    }, 1000)
+  }
+  
   if (!situations?.situation_type) {
     return null
   }
@@ -49,7 +54,7 @@ const WaitingBar = () => {
               </div>
               {
                 situations.status === 'in_progress' &&
-                <Clock currentTimer={currentTimer} onEnd={fetchSituations} classname={s.clock} loading={isSituationsLoading} useGlobalTimer />
+                <Clock currentTimer={currentTimer} onEnd={endHandler} classname={s.clock} loading={isSituationsLoading} useGlobalTimer />
               }
               {
                 situations.status === 'completed' && <div className={s.ready}>Готово!</div>

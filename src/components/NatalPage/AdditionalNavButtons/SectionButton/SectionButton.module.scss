@@ -1,7 +1,6 @@
 @use '@/assets/styles/mixins' as *;
 
 .sectionButton {
-  display: flex;
   align-items: center;
   width: calc(100% + 48px);
   padding: 24px;
@@ -15,6 +14,17 @@
   margin-left: -24px;
   border-radius: 16px;
 
+
+  display: flex;
+  background-color: #4d2e52;
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 16px;
+  position: relative;
+  overflow: hidden;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.2);
+
   &:hover {
     background-color: rgba(255, 185, 76, 0.16);
   }
@@ -22,7 +32,7 @@
   @include m {
     margin-left: 0;
     width: 100%;
-    padding-inline: 4px;
+    //padding-inline: 4px;
     padding-block: 16px;
 
     &:hover {
@@ -58,7 +68,7 @@
   transform: translateY(-50%);
 
   @include m {
-    right: 8px;
+    right: 12px;
   }
 }
 

@@ -1,6 +1,6 @@
 import s from './InputGroup.module.scss';
 
-const InputGroup = ({label, value, setValue, placeholder, classname=''}) => {
+const InputGroup = ({label, value, setValue, placeholder, classname='', autofocus=false}) => {
   return (
     <div className={classname}>
       <label className={s.inputLabel}>{label}</label>
@@ -10,6 +10,7 @@ const InputGroup = ({label, value, setValue, placeholder, classname=''}) => {
         placeholder={placeholder}
         value={value}
         onChange={(e)=>setValue(e.target.value)}
+        autoFocus={autofocus}
       />
     </div>
   );

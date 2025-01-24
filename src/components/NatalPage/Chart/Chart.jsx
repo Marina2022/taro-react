@@ -18,7 +18,6 @@ const Chart = () => {
 
   useEffect(() => {
     const getData = async () => {
-
       try {
         setIsLoading(true)
         const result = await axiosInstance('api/natal')
@@ -48,7 +47,7 @@ const Chart = () => {
 
   const resultedDate = formattedDate.replace(" г.", "").replace(",", "").replace(" в ", " - ");
 
-  if (isLoading) return null
+  if (isLoading) return <Spinner />
 
   return (
     <div className={s.chartPage}>
