@@ -12,6 +12,7 @@
 .topBlock {
   display: flex;
   gap: 32px;
+  gap: 60px;
   
   @include xs {
     gap: 16px;
