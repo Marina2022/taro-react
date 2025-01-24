@@ -24,7 +24,7 @@
 
 
 .cardText {
-  margin-top: 20px;
+  //margin-top: 20px;
   //margin-top: auto;
   
   @include xs {
@@ -41,6 +41,11 @@
   @include m {
     font-size: 18px;
   }
+
+  @include xs {
+    margin-top: 0px;
+  }
+  
 }
 
 .cardDescription {

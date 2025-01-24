@@ -35,6 +35,10 @@
   @include m {
     font-size: 18px;
   }  
+  
+  @include xs {
+    margin-top: 0px;
+  }
 }
 
 .cardDescription {
@@ -124,7 +128,7 @@
   aspect-ratio: 1;
   padding: 16px;  
   border-radius: 8px;
-  margin-bottom: 20px;
+  //margin-bottom: 20px;
    
   
   @include xs {
