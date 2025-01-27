@@ -17,6 +17,10 @@
   background-color: #553559;
   width: 50%;
   
+  @include m {
+    padding: 20px;
+  }
+  
   @include xs {
     padding: 14px;
   }
@@ -25,16 +29,17 @@
 
 .cardText {
   //margin-top: 20px;
-  //margin-top: auto;
+  margin-top: auto;
   
   @include xs {
-    margin-top: 10px;
+    //margin-top: 10px;
   }
 }
 
 .cardTitle {
   font-weight: 500;
   color: #e8e4e9;
+  margin-top: 10px;
   margin-top: 10px;
   font-size: 26px;
 
@@ -57,13 +62,16 @@
 
   @include m {
     font-size: 16px;
-    margin-top: 14px;
-    
+    margin-top: 14px;    
   }
   
   @include xs {
     margin-bottom: 0px;
     font-size: 12px;
+  }
+  
+  @media (max-width: 389px) {
+    height: 30px;    
   }
 }
 
@@ -87,5 +95,14 @@
 }
 
 
+
+
+.br {
+  display: none;
+
+  @media(max-width: 404px) {
+    display: inline-block;
+  }
+}
 
 

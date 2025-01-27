@@ -14,6 +14,10 @@
   background-color: #4d2e52;
   background-color: #553559;
   color: inherit;
+  
+  @include m {
+    padding: 20px;
+  }
 
   @include xs {
     padding: 12px;
@@ -93,16 +97,16 @@
 }
 
 .shortDayOfWeek {
-  font-size: 28px;
-  margin-bottom: 46px;  
+  font-size: 27px;
+  margin-bottom: 44px;  
   
   @include m {    
-    font-size: 3.5vw;
-    margin-bottom: 6vw;
+    font-size: 3.3vw;
+    margin-bottom: 7vw;
   }
   
   @include xs {
-    font-size: 3.8vw;    
+    font-size: 3.3vw;    
     margin-bottom: 8vw;
   }
 }

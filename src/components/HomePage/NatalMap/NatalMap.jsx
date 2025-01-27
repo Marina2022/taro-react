@@ -28,7 +28,7 @@ const NatalMap = () => {
         <img className={s.hidden} src="https://my.aspectum.app/api/natal/aspect-chart-svg/" alt=""/>
       </div>
       <div className={s.cardText}>
-        <h2 className={s.cardTitle}>Натальная карта</h2>
+        <h2 className={s.cardTitle}>Натальная <br className={s.br} /> карта</h2>
         <p className={s.cardDescription}>с пояснениями</p>
       </div>
     </Link>
