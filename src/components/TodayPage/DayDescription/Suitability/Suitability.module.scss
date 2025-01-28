@@ -1,0 +1,80 @@
+@use '@/assets/styles/mixins' as *;
+
+.title {
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.financeTitle {
+  margin-bottom: 4px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.paragraph {
+  margin-bottom: 16px;
+}
+
+.paragraphs {
+  margin-bottom: 20px;
+}
+
+
+.unsuitableBlock {
+  margin-top: 60px;
+  margin-bottom: 60px;
+}
+
+.blur {
+  filter: blur(7px);
+  padding: 20px;
+  width: calc(100% + 40px);
+  position: relative;
+  left: -20px;  
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 10%, rgba(0, 0, 0, 0) 100%);
+  mask-composite: exclude; /* Для обеспечения работы в некоторых браузерах */
+  -webkit-mask-image: -webkit-linear-gradient(to bottom, rgba(0, 0, 0, 1) 80%, rgba(0, 0, 0, 0) 100%);
+}
+
+.lockBtn {
+  z-index: 1;
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  color: #FFB94C;
+  font-size: 18px;
+  font-weight: 500;
+  
+  @include xs {
+    font-size: 16px;
+  }
+  
+  svg {
+    fill: #FFB94C;
+  }
+  
+  &:hover {
+    color: #FCA51F;
+    
+    svg {
+      fill:#FCA51F; 
+    }
+  }
+}
+
+
+.lockBtn:hover svg {
+  fill:#FCA51F;
+}
+
+.financeWrapper {
+  position: relative;
+}

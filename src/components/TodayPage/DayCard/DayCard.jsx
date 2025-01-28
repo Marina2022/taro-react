@@ -5,11 +5,9 @@ import {getProgressBarColor} from "@/utils.js";
 const DayCard = ({day, index, currentDayIndex, setCurrentDayIndex}) => {
     
   const [dateDay, month, year] = day.date.split("-").map(Number);
-  const date = new Date(year, month - 1, dateDay);
-  console.log(date)
-  
+  const date = new Date(year, month - 1, dateDay); 
   const shortDayOfWeek = date.toLocaleDateString('ru-RU', {weekday: 'short'});
-  console.log(day.quality/100)
+  
   return (
     <div className={index === currentDayIndex ? s.cardActive : s.card} onClick={()=>setCurrentDayIndex(index)}>      
       <div className={s.weekDay}>{shortDayOfWeek}, {dateDay}</div>

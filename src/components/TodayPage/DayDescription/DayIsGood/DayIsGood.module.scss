@@ -1,0 +1,16 @@
+@use '@/assets/styles/mixins' as *;
+
+.wrapper {
+  text-align: center;  
+  font-size: 18px;
+  
+  @include xs {
+    font-size: 16px;
+  }
+}
+
+.dateText {
+    
+  margin-top: 40px;
+  margin-bottom: 20px;
+}

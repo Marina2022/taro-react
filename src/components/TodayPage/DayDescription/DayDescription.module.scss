@@ -1,0 +1,9 @@
+@use '@/assets/styles/mixins' as *;
+
+.descWrapper {
+  margin-top: 20px;
+
+  @media (max-width: 764px) {
+    margin-top: 200px;
+  }
+}

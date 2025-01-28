@@ -4,11 +4,9 @@ import {useEffect, useState} from "react";
 import axiosInstance from "@/api/axiosInstance.js";
 import Spinner from "@/components/ui/Spinner/Spinner.jsx";
 import DayCard from "@/components/TodayPage/DayCard/DayCard.jsx";
+import DayDescription from "@/components/TodayPage/DayDescription/DayDescription.jsx";
 
 const TodayPage = () => {
-
-  // POST /api/energy/week/
-  //{now_dt: "2025-01-24T11:51:38.836Z", timezone: "Europe/Moscow"}
 
   const [daysData, setDaysData] = useState()
   const [isLoading, setIsLoading] = useState(true)
@@ -26,8 +24,6 @@ const TodayPage = () => {
         setIsLoading(true)
         const result = await axiosInstance.post('api/energy/week/', payload)
         setDaysData(result.data)
-
-        console.log(result.data)
       } catch (err) {
         console.log(err)
       } finally {
@@ -40,23 +36,6 @@ const TodayPage = () => {
   const startDate = daysData?.[0]?.date.replaceAll('-', '.')
   const endDate = daysData?.[6]?.date.replaceAll('-', '.')
   const weekHeading = `Неделя c ${startDate} по ${endDate}`
-
-  // Определяем текстовое описание качества дня
-  let qualityText = '';
-  const quality = daysData?.quality;
-
-  if (quality >= 0 && quality <= 20) {
-    qualityText = 'неблагоприятный день';
-  } else if (quality > 20 && quality <= 40) {
-    qualityText = 'не самый благоприятный день';
-  } else if (quality > 40 && quality <= 60) {
-    qualityText = 'благоприятный день';
-  } else if (quality > 60 && quality <= 80) {
-    qualityText = 'очень благоприятный день';
-  } else if (quality > 80 && quality <= 100) {
-    qualityText = 'восхитительный день';
-  }
-
 
   if (isLoading) return <Spinner/>
 
@@ -83,7 +62,11 @@ const TodayPage = () => {
           </div>
         </div>
 
-
+        <DayDescription day={daysData[currentDayIndex]} />
+        
+        
+        
+        
       </div>
 
     </div>
