@@ -28,7 +28,7 @@ const ContextProvider = ({children}) => {
           return prev - 1; // Уменьшение таймера
         });
       }, 1000);
-      return () => clearInterval(intervalId.current); // Очистка интервала при размонтировании
+      return () => clearInterval(intervalId.current); 
     }
   }, [currentTimer]);
 

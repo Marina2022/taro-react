@@ -1,0 +1,53 @@
+
+
+.card {
+  min-width: 98px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 16px;
+  cursor: pointer;
+
+  padding: 9px 16px;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+  background-color: #553559;
+  
+  
+  
+  
+  
+}
+
+.cardActive {
+  min-width: 98px;  
+  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 16px;
+  outline: rgba(255, 255, 255, 0.2) 1px solid;
+  
+  cursor: pointer;
+  padding: 9px 16px;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.2);
+  background-color: #553559;
+}
+
+.weekDay {
+  margin-top: 4px;
+  margin-bottom: 14px;
+  font-size: 14px;
+  font-weight: 500;
+  text-transform: capitalize;
+}
+
+.percents {
+  font-weight: 700;
+  font-size: 16px;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  
+}

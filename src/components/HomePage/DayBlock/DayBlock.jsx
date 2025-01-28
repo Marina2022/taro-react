@@ -48,22 +48,18 @@ const DayBlock = ({classname}) => {
             className={`${s.card} ${classname}`}>
         <div className={s.bordered}>
           <div className={s.shortDayOfWeek}>{formattedDate} {dayOfWeekCapitalized}</div>
-          
+        
           {
             !isLoading && <div className={s.chartWrapper}>
-              <RingChart value={dayQuality} low={0} high={1}/>
+              <RingChart value={dayQuality} low={0.4} high={.6}/>
               <div className={s.percent}
-                   style={{color: getProgressBarColor(dayQuality, 0, 1)}}>{(dayQuality * 100).toFixed(0)}%
+                   style={{color: getProgressBarColor(dayQuality, 0.4, .6)}}>{(dayQuality * 100).toFixed(0)}%
               </div>
             </div>
           }
-
         </div>
-
         <div className={s.cardText}>
-          <h2 className={s.cardTitle}>Энергия <br className={s.br} />дня</h2>
-          {/*<p className={s.cardSubtitle}>{dayOfWeekCapitalized}</p>*/}
-          {/*<p className={s.cardDescription}>Чего ожидать от дня?</p>*/}
+          <h2 className={s.cardTitle}>Энергия <br className={s.br} />дня</h2>          
           <p className={s.cardDescription}>Что принесет этот день?</p>
         </div>
       </Link>
