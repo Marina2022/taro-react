@@ -1,7 +1,7 @@
 import s from './RingChart.module.scss';
 import {getProgressBarColor} from "@/utils.js";
 
-const RingChart = ({value, low, high, classname=''}) => {
+const RingChart = ({value, low, high, classname='', hideArtefact=false}) => {
 
   const color = getProgressBarColor(value, low, high)
 
@@ -10,7 +10,7 @@ const RingChart = ({value, low, high, classname=''}) => {
 
   return (
     <div className={`${s.ringChart} ${classname}`}>
-      <div className={s.line}></div>
+      <div  style={{display: hideArtefact ? 'block' : 'none'}} className={s.line}></div>
       <div
         style={{backgroundImage: `conic-gradient(from ${angle}deg, transparent, ${color})`}}
         className={s.conicGradient}

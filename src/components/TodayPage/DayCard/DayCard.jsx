@@ -11,7 +11,7 @@ const DayCard = ({day, index, currentDayIndex, setCurrentDayIndex}) => {
   return (
     <div className={index === currentDayIndex ? s.cardActive : s.card} onClick={()=>setCurrentDayIndex(index)}>      
       <div className={s.weekDay}>{shortDayOfWeek}, {dateDay}</div>
-      <RingChart value={day.quality/100} low={.4} high={.6} />
+      <RingChart value={day.quality/100} low={.4} high={.6} hideArtefact={true} />
       <div style={{color: getProgressBarColor(day.quality/100, .4, .6)}} className={s.percents}>{(day.quality ).toFixed(0)}%</div>      
     </div>
   );
