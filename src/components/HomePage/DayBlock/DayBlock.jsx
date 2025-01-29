@@ -47,8 +47,8 @@ const DayBlock = ({classname}) => {
       <Link to="/day-energy"
             className={`${s.card} ${classname}`}>
         <div className={s.bordered}>
-          {/*<div className={s.shortDayOfWeek}>{formattedDate} {dayOfWeekCapitalized}</div>        */}
-          <div className={s.shortDayOfWeek}>29.01 Понедельник</div>        
+          <div className={s.shortDayOfWeek}>{formattedDate} {dayOfWeekCapitalized}</div>        
+             
           {
             !isLoading && <div className={s.chartWrapper}>
               <RingChart value={dayQuality} low={0.4} high={.6}/>
