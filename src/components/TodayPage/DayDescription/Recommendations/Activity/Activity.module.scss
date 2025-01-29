@@ -4,7 +4,7 @@
   margin-bottom: 40px;
 
   @include xs {
-    margin-bottom: 30px;
+    margin-bottom: 20px;
   }
 }
 
@@ -23,6 +23,10 @@
   font-weight: 500;
   font-size: 16px;
   margin-bottom: 12px;
+  
+  @include xs {
+    margin-bottom: 10px;
+  }
 }
 
 .unrecommendedSubtitle {
@@ -35,17 +39,26 @@
 .recommended {
   padding-block: 12px;
   border-radius: 12px;
+  
+  @include xs {
+    padding-block: 10px;
+  }
 }
 
 .unrecommended {
   padding-block: 12px;
   border-radius: 12px;
+
+  @include xs {
+    padding-block: 10px;
+  }
 }
 
 .row {
   display: flex;
   align-items: flex-start;
   gap: 14px;
+  line-height: 1.4;
 }
 
 .close {
@@ -68,6 +81,10 @@
 
   & .row {
     padding-block: 3px;
+    
+    @include xs {
+      padding-block: 2px;
+    }
   }
 }
 
