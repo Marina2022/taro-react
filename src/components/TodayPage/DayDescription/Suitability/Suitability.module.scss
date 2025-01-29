@@ -5,6 +5,10 @@
   display: flex;
   align-items: center;
   gap: 10px;
+  
+  @include xs {
+    font-size: 18px;
+  }
 }
 
 .financeTitle {
@@ -12,6 +16,10 @@
   display: flex;
   align-items: center;
   gap: 10px;
+
+  @include xs {
+    font-size: 18px;
+  }
 }
 
 .paragraph {
@@ -26,6 +34,11 @@
 .unsuitableBlock {
   margin-top: 60px;
   margin-bottom: 60px;
+  
+  @include xs {
+    margin-top: 40px;
+    margin-bottom: 40px;
+  }
 }
 
 .blur {

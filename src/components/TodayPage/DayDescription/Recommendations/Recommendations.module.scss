@@ -2,17 +2,17 @@
 
 .recommendations {
   margin-top: 60px;
-  
+      
   @include xs {
     margin-top: 30px;
   }
 }
 
 .title {
-  margin-bottom: 40px;
+  margin-bottom: 40px;   
   
   @include xs {
     margin-bottom: 30px;
-    font-size: 20px;
+    font-size: 20px;    
   }
 }

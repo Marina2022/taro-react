@@ -2,9 +2,17 @@
 
 .activity {
   margin-bottom: 40px;
+  
+  &:last-child {
+    margin-bottom: 50px;
+    
+    @include xs {
+      margin-bottom: 30px;
+    }
+  }
 
   @include xs {
-    margin-bottom: 20px;
+    margin-bottom: 20px;            
   }
 }
 
@@ -67,30 +75,26 @@
   stroke-width: 2px;
   flex-shrink: 0;
   position: relative;
-  top: 2px;
+  top: 3px;
 }
 
 .check {
   flex-shrink: 0;
   position: relative;
-  top: 2px;
+  top: 3px;
 }
 
 
 .recommended {
 
   & .row {
-    padding-block: 3px;
-    
-    @include xs {
-      padding-block: 2px;
-    }
+    padding-block: 3px;    
   }
 }
 
 .unrecommended {
   
   & .row {
-    padding-block: 2px;
+    padding-block: 3px;
   }
 }
