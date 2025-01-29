@@ -1,7 +1,7 @@
 import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 import MainLayout from "@/components/layout/MainLayout.jsx";
 import Onboarding from "@/pages/Onboarding.jsx";
-import ProtectedRoute from "@/components/ProtectedRoute/ProtectedRoute.jsx";
+import ProtectedRoute from "@/components/ui/ProtectedRoute/ProtectedRoute.jsx";
 import Home from "@/pages/Home.jsx";
 import AskAstrologer from "@/pages/AskAstrologer.jsx";
 import System from "@/pages/System.jsx";
@@ -65,7 +65,7 @@ function App() {
           <Route element={<ProtectedRoute><MainLayout/></ProtectedRoute>}>
             <Route path='/' index element={<Home/>}/>
             <Route path='/ask-astrologer' element={<AskAstrologer/>}/>
-            <Route path='/today' element={<Today/>}/>
+            <Route path='/day-energy' element={<Today/>}/>
             <Route path='/natal' element={<Natal/>}>
               <Route path='/natal' index element={<Chart/>}/>
               <Route path='/natal/description/:feature' element={<NatalFeaturePage/>}/>

@@ -1,44 +1,51 @@
+@use '@/assets/styles/mixins' as *;
+
 .activity {
   margin-bottom: 40px;
+
+  @include xs {
+    margin-bottom: 30px;
+  }
 }
 
 .title {
-  margin-bottom: 16px;
+  margin-bottom: 8px;
+  color: rgb(255, 185, 76);
+
+  @include xs {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
 }
 
 .recommendedSubtitle {
-  //color: rgb(57, 203, 63);
+  color: rgb(255 255 255);
   font-weight: 500;
-  font-size: 18px;
+  font-size: 16px;
   margin-bottom: 12px;
 }
 
 .unrecommendedSubtitle {
-  //color: rgb(230, 61, 82);
+  color: rgb(255 255 255);
   font-weight: 500;
-  font-size: 18px;
+  font-size: 16px;
   margin-bottom: 12px;
 }
 
 .recommended {
-  //margin-bottom: 20px;
-  padding-left: 16px;
-  padding: 12px;
+  padding-block: 12px;
   border-radius: 12px;
 }
 
 .unrecommended {
-  padding-left: 16px;
-  padding: 12px;
+  padding-block: 12px;
   border-radius: 12px;
 }
 
 .row {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 14px;
-  //margin-bottom: 8px;
-  //align-items: flex-start;
 }
 
 .close {
@@ -46,32 +53,27 @@
   height: 16px;
   stroke-width: 2px;
   flex-shrink: 0;
-  
-
-  //stroke: rgb(230, 61, 82);
+  position: relative;
+  top: 2px;
 }
 
 .check {
-  //fill: rgb(57, 203, 63);
   flex-shrink: 0;
+  position: relative;
+  top: 2px;
 }
 
 
 .recommended {
-  
+
   & .row {
-//    background-color: rgba(0, 110, 0, 0.484314);
-//    padding-left: 10px;
-    padding-block: 2px;
+    padding-block: 3px;
   }
 }
 
 .unrecommended {
   
   & .row {
-    //background-color: rgba(100, 0, 0, 1);
-    //padding-left: 10px;
     padding-block: 2px;
-
   }
 }

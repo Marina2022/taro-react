@@ -52,6 +52,11 @@ body {
   background: #421F47;
   color: #FFFFFF;
   height: 100vh;  
+  background-image: url('@/assets/img/onboarding/bg-stars-rounds.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
 }
 
 button {

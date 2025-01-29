@@ -1,9 +1,30 @@
 @use '@/assets/styles/mixins' as *;
 
 .descWrapper {
-  margin-top: 20px;
-
+  margin-top: 20px;  
+  color: rgb(255 255 255/.8);
+  
   @media (max-width: 764px) {
     margin-top: 200px;
+  }
+}
+
+.quote {
+  margin-bottom: 0;
+}
+
+.outerQuote {
+  width: 90%;
+  margin-left: 20px;
+  margin-top: 20px;
+  padding: 20px;
+
+  @include m {
+    padding-left: 0px;
+  }
+  @include xs {
+    padding-left: 0px;
+    margin-left: 0;
+    width: 100%;
   }
 }

@@ -13,10 +13,8 @@ const Activity = ({activity}) => {
   return (
     <div className={s.activity}>
       <Header20 classname={s.title}>{activity.name}</Header20>
-
       <div className={s.recommended}>
         <h4 className={s.recommendedSubtitle}>Рекомендуемые занятия:</h4>
-
         <div className={s.row}><FaCheck className={s.check} />
           <div>{sortedActivities[0].name}</div>
         </div>
@@ -24,17 +22,12 @@ const Activity = ({activity}) => {
           <div>{sortedActivities[1].name}</div>
         </div>
       </div>
-
       <div className={s.unrecommended}>
         <h4 className={s.unrecommendedSubtitle}>Занятия, которых стоит избегать:</h4>
-
-
         <div className={s.row}><RiCloseLargeFill className={s.close} />
           <div>{sortedActivities[sortedActivities.length - 1].name}</div>
         </div>
       </div>
-
-
     </div>
   );
 };

@@ -119,12 +119,10 @@
   margin-left: 20px;
   margin-top: 20px;
   padding: 20px;  
-  //opacity: .8;
   
   @include m {
     padding-left: 0px;
-  }
-  
+  }  
   @include xs {
     padding-left: 0px;
     margin-left: 0;

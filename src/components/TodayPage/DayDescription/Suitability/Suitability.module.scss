@@ -16,12 +16,12 @@
 
 .paragraph {
   margin-bottom: 16px;
+  color: rgb(255 255 255/.8);  
 }
 
 .paragraphs {
-  margin-bottom: 20px;
+  margin-bottom: 20px;  
 }
-
 
 .unsuitableBlock {
   margin-top: 60px;
@@ -35,7 +35,7 @@
   position: relative;
   left: -20px;  
   mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 10%, rgba(0, 0, 0, 0) 100%);
-  mask-composite: exclude; /* Для обеспечения работы в некоторых браузерах */
+  mask-composite: exclude; 
   -webkit-mask-image: -webkit-linear-gradient(to bottom, rgba(0, 0, 0, 1) 80%, rgba(0, 0, 0, 0) 100%);
 }
 
@@ -69,7 +69,6 @@
     }
   }
 }
-
 
 .lockBtn:hover svg {
   fill:#FCA51F;

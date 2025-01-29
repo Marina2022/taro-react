@@ -9,8 +9,6 @@ const Recommendations = ({activities}) => {
       {
         activities.map((activity, i)=><Activity key={i} activity={activity} />)
       }
-      
-      
     </div>
   );
 };

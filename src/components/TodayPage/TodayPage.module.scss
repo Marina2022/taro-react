@@ -10,7 +10,6 @@
   }
 }
 
-
 .mainTitle {
   text-align: center;
   margin-bottom: 42px;
@@ -25,11 +24,9 @@
 }
 
 .daysList {
-  //margin-top: 24px;
   display: flex;
   gap: 8px;
   padding-top: 2px;    
-
   justify-content: space-between;
   
   @media (max-width: 764px) {
@@ -66,8 +63,8 @@
 }
 
 .placeholder {
-
   display:  none;
+  
   @media (max-width: 764px) {
     display:  block;
     width: 12px;

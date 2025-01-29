@@ -12,6 +12,7 @@
   margin-bottom: 40px;
   
   @include xs {
-    margin-bottom: 24px;
+    margin-bottom: 30px;
+    font-size: 20px;
   }
 }

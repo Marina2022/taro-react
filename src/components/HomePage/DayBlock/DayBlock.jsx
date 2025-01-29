@@ -44,11 +44,10 @@ const DayBlock = ({classname}) => {
     const shortDayOfWeek = date.toLocaleDateString('ru-RU', {weekday: 'short'}).toUpperCase();
 
     return (
-      <Link to="/today"
+      <Link to="/day-energy"
             className={`${s.card} ${classname}`}>
         <div className={s.bordered}>
-          <div className={s.shortDayOfWeek}>{formattedDate} {dayOfWeekCapitalized}</div>
-        
+          <div className={s.shortDayOfWeek}>{formattedDate} {dayOfWeekCapitalized}</div>        
           {
             !isLoading && <div className={s.chartWrapper}>
               <RingChart value={dayQuality} low={0.4} high={.6}/>
