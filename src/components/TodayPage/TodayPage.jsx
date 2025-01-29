@@ -10,7 +10,7 @@ const TodayPage = () => {
 
   const [daysData, setDaysData] = useState()
   const [isLoading, setIsLoading] = useState(true)
-  const [currentDayIndex, setCurrentDayIndex] = useState(0)
+  const [currentDayIndex, setCurrentDayIndex] = useState(1)
 
   useEffect(() => {
     const getDay = async () => {
