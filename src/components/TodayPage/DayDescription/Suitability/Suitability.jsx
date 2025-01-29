@@ -42,7 +42,7 @@ const Suitability = ({day}) => {
         </Header20>
         <div className={s.paragraphs}>
           {
-            day.suitable_summary.map((text, i) => {
+            day.unsuitable_summary.map((text, i) => {
               return (
                 <Text16 classname={s.paragraph} key={i}>{text}</Text16>
               )
