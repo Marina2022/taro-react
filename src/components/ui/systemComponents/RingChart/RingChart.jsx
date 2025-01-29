@@ -10,6 +10,7 @@ const RingChart = ({value, low, high, classname=''}) => {
 
   return (
     <div className={`${s.ringChart} ${classname}`}>
+      <div className={s.line}></div>
       <div
         style={{backgroundImage: `conic-gradient(from ${angle}deg, transparent, ${color})`}}
         className={s.conicGradient}
