@@ -16,7 +16,7 @@ const RingChart = ({value, low, high, classname=''}) => {
       ></div>
       <svg
         className={s.ringMask}
-        viewBox="0 0 108 54"
+        viewBox="0 0 108 52"
         xmlns="http://www.w3.org/2000/svg"
         preserveAspectRatio="none"
       >
