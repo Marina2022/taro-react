@@ -81,6 +81,7 @@
 
   @include m {
     font-size: 4vw;
+    margin-top: -10px;
   }
 }
 
@@ -100,13 +101,13 @@
   margin-bottom: 44px;  
   
   @include m {    
-    font-size: 3.3vw;
+    font-size: 3.8vw;
     margin-bottom: 7vw;
   }
   
   @include xs {
-    font-size: 3.3vw;    
-    margin-bottom: 8vw;
+    font-size: 3.8vw;    
+    margin-bottom: 6.7vw;
   }
 }
 
@@ -129,13 +130,13 @@
 .bordered {
   width: 100%;
   aspect-ratio: 1;
-  padding: 16px;
+  //padding: 16px;
   padding-top: 10px;
   border-radius: 8px; 
   
   @include xs {
     margin-bottom: 10px;
-    padding: 10px;
+    //padding: 10px;
   }
 }
 
