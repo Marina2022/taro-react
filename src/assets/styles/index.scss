@@ -33,7 +33,12 @@
   margin: 0;
   padding: 0;
   list-style: none;
+  
+  @include xs {
+    scrollbar-width: none;
+  }
 }
+
 h1, h2, h3, ul, ol, li {
   margin: 0;  
 }
@@ -58,6 +63,26 @@ body {
   background-attachment: fixed;
   background-position: center;
   overflow-x: hidden;
+
+  ::-webkit-scrollbar {
+
+    @include xs {
+      width: 0; /* Полностью скрывает полосу прокрутки */
+      height: 0;
+    }
+  }
+
+  ::-webkit-scrollbar-thumb {
+
+    @include xs {
+      background: transparent; /* Делает сам ползунок прозрачным */
+    }    
+  }
+  
+  
+  
+  
+  
 }
 
 button {
