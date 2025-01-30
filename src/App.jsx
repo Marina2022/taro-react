@@ -20,7 +20,12 @@ import axiosInstance from "@/api/axiosInstance.js";
 
 function App() {
 
-  const {setUser, setIsUserLoading, setNatalChartCreated, situations} = useAuthContext()
+  const {
+    setUser,
+    setIsUserLoading,
+    setNatalChartCreated,
+    situations
+  } = useAuthContext()
 
   const {
     fetchSituations,
@@ -40,7 +45,6 @@ function App() {
         if (response.redirected !== true) {
           const user = await response.json();
           setUser(user)
-
           const natalChartCreated = localStorage.getItem('natalChartCreated')
           if (natalChartCreated) {
             setNatalChartCreated(true)

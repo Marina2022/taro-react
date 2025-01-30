@@ -1,0 +1,39 @@
+@use '@/assets/styles/mixins' as *;
+
+.askTarotOrder {
+  padding-bottom: 100px;
+  margin-top: -60px;
+
+  @include xs {
+    margin-top: -54px;
+  }
+}
+
+
+.mainTitle {
+  text-align: center;
+  
+
+  @include m {
+    font-size: 22px;
+  }
+
+  @include xs {
+    font-size: 18px;
+  }
+}
+
+.subtitle {
+  text-align: center;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 42px;
+
+  @include m {
+    font-size: 14px;
+  }
+
+  @include xs {
+    font-size: 14px;
+  }
+  
+}

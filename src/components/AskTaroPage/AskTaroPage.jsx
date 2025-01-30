@@ -10,11 +10,9 @@ import askIcon from "@/assets/img/home/askIcon.png";
 const AskTaroPage = () => {
 
   const {tarotLayouts, areTarotLayoutsLoading} = useAppContext()
-
-
+  
   if (areTarotLayoutsLoading) return <Spinner/>
-  console.log('hello', tarotLayouts)
-
+  
   return (
     <div className={s.askTarot}>
       <div className='container'>
@@ -26,8 +24,6 @@ const AskTaroPage = () => {
         </AstrologerCard>
 
         <ul className={s.buttonList}>
-
-
           {
             tarotLayouts.map((tarotLayout, i) => {
               return (
