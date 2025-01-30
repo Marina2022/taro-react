@@ -14,8 +14,8 @@ const WaitingBar = () => {
   const navigate = useNavigate()
   const [isOpen, setIsOpen] = useState(false)
   const handleClick = () => {
-    if (situations.status === 'completed') {
-      navigate(`/astrologists/answer/${situations.related_object_id}`)
+    if (situations.status === 'completed') {   // todo в зависимости от типа ситуации будут разные ссылки
+      navigate(`/astrologer-answer/${situations.related_object_id}`)
     } else if (situations.status === 'in_progress') {
       setIsOpen(true)
     }

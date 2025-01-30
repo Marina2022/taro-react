@@ -12,9 +12,8 @@
   cursor: pointer;
   position: relative;
   text-align: left;
-  color: inherit; /* Наследуем цвет */
+  color: inherit; 
   transition: background-color 0.3s ease;
-  //margin-left: -24px;
   border-radius: 16px;
   
   &:hover {

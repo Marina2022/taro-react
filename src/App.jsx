@@ -13,6 +13,7 @@ import ScrollToTop from "@/components/ui/ScrollToTop/ScrollToTop.jsx";
 import {useAuthContext} from "@/contexts/authContext.jsx";
 import {useAppContext} from "@/contexts/appContext.jsx";
 import NatalFeaturePage from "@/components/NatalFeaturePage/NatalFeaturePage.jsx";
+import AstrologerAnswer from "@/pages/AstrologerAnswer.jsx";
 
 function App() {
 
@@ -65,6 +66,7 @@ function App() {
           <Route element={<ProtectedRoute><MainLayout/></ProtectedRoute>}>
             <Route path='/' index element={<Home/>}/>
             <Route path='/ask-astrologer' element={<AskAstrologer/>}/>
+            <Route path='/astrologer-answer/:id' element={<AstrologerAnswer/>}/>
             <Route path='/day-energy' element={<Today/>}/>
             <Route path='/natal' element={<Natal/>}>
               <Route path='/natal' index element={<Chart/>}/>

@@ -22,8 +22,7 @@ const AskAstrologerPage = () => {
   const [isOpen, setIsOpen] = useState(false)
   const [innerTimer, setInnerTimer] = useState(null)
 
-  const {fetchSituations} = useAppContext()
-  
+  const {fetchSituations} = useAppContext()  
   const askHandler = async () => {    
     
     if(!message) {
