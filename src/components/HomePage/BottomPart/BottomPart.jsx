@@ -26,7 +26,7 @@ const BottomPart = () => {
         <ButtonWithBeak
           title="Спросить у таро"
           description="Ответ на любой вопрос"
-          href="/"
+          href="ask-tarot"
           img={askIcon}
         />
 

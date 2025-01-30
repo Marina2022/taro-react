@@ -7,7 +7,10 @@ const ContextProvider = ({children}) => {
   const [situations, setSituations] = useState(null)
   const [currentTimer, setCurrentTimer] = useState(null)
   const [isSituationsLoading, setIsSituationsLoading] = useState(true)
-         
+
+  const [tarotLayouts, setTarotLayouts] = useState(null)
+  const [areTarotLayoutsLoading, setAreTarotLayoutsLoading] = useState(null)
+
   useEffect(() => {
     // если объект из запроса peek пришел, то обновляем значение таймера 
     if (situations) setCurrentTimer(situations.seconds_left)
@@ -17,9 +20,8 @@ const ContextProvider = ({children}) => {
   let intervalId = useRef()
 
   useEffect(() => {
-    
     if (currentTimer > 0) {
-      intervalId.current = setInterval(() => {        
+      intervalId.current = setInterval(() => {
         setCurrentTimer((prev) => {
           if (prev === 0) {
             clearInterval(intervalId.current); // Остановка таймера, когда значение достигло 0
@@ -28,32 +30,34 @@ const ContextProvider = ({children}) => {
           return prev - 1; // Уменьшение таймера
         });
       }, 1000);
-      return () => clearInterval(intervalId.current); 
+      return () => clearInterval(intervalId.current);
     }
   }, [currentTimer]);
 
   const fetchSituations = async () => {
-    
+
     try {
       setIsSituationsLoading(true)
-      // const response = await axiosInstance('situations/peek/')
       const response = await axiosInstance('api/orders/peek/')
-      setSituations(response?.data)      
-    } catch(err) {
+      setSituations(response?.data)
+    } catch (err) {
       console.log(err)
     } finally {
       setIsSituationsLoading(false)
     }
-    
   }
 
   return (
     <AppContext.Provider
-      value={{        
+      value={{
         situations,
         fetchSituations,
         currentTimer,
-        isSituationsLoading
+        isSituationsLoading,
+        tarotLayouts,
+        setTarotLayouts,
+        areTarotLayoutsLoading,
+        setAreTarotLayoutsLoading
       }}>
       {children}
     </AppContext.Provider>

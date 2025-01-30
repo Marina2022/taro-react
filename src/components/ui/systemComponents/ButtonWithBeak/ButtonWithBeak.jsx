@@ -3,7 +3,7 @@ import {Link} from "react-router-dom";
 const ButtonWithBeak = ({title, description, number, classname='', href, img}) => {
   
   if (href) return (
-    <Link to={href} className={s.listItemButton}>
+    <Link to={href} className={`${s.listItemButton} ${classname}`}>
       <div className={s.listItemIcon}>
         <img src={img} alt="icon"/>
       </div>
@@ -20,7 +20,7 @@ const ButtonWithBeak = ({title, description, number, classname='', href, img}) =
   )
 
   return (
-    <button className={s.listItemButton}>
+    <button className={`${s.listItemButton} ${classname}`}>
       <div className={s.listItemIcon}></div>
       <div className={s.listItemText}>
         <p className={s.listItemTitle}>{title}</p>

@@ -14,13 +14,20 @@ import {useAuthContext} from "@/contexts/authContext.jsx";
 import {useAppContext} from "@/contexts/appContext.jsx";
 import NatalFeaturePage from "@/components/NatalFeaturePage/NatalFeaturePage.jsx";
 import AstrologerAnswer from "@/pages/AstrologerAnswer.jsx";
+import AskTaro from "@/pages/AskTaro.jsx";
+import AskTaroOrderPage from "@/components/AskTaroOrderPage/AskTaroOrderPage.jsx";
+import axiosInstance from "@/api/axiosInstance.js";
 
 function App() {
 
   const {setUser, setIsUserLoading, setNatalChartCreated, situations} = useAuthContext()
 
-  const {fetchSituations} = useAppContext()
-  
+  const {
+    fetchSituations,
+    setTarotLayouts,
+    setAreTarotLayoutsLoading
+  } = useAppContext()
+
   useEffect(() => {
     const fetchUserProfile = async () => {
       try {
@@ -51,8 +58,20 @@ function App() {
         fetchSituations()
       }
     }
+    const getTarotLayouts = async () => {
+      try {
+        setAreTarotLayoutsLoading(true)
+        const result = await axiosInstance(`api/tarot/layouts/`)
+        setTarotLayouts(result.data)
+      } catch (err) {
+        console.log(err)
+      } finally {
+        setAreTarotLayoutsLoading(false)
+      }
+    }
 
-    fetchUserProfile()    
+    fetchUserProfile()
+    getTarotLayouts()
   }, [])
 
 
@@ -62,12 +81,16 @@ function App() {
         <ScrollToTop/>
         <Routes>
           <Route path='/onboarding' element={<Onboarding/>}/>
-          <Route path='/system' element={<System/>}/>          
+          <Route path='/system' element={<System/>}/>
           <Route element={<ProtectedRoute><MainLayout/></ProtectedRoute>}>
             <Route path='/' index element={<Home/>}/>
             <Route path='/ask-astrologer' element={<AskAstrologer/>}/>
             <Route path='/astrologer-answer/:id' element={<AstrologerAnswer/>}/>
             <Route path='/day-energy' element={<Today/>}/>
+
+            <Route path='/ask-tarot' element={<AskTaro/>}/>
+            <Route path='/ask-tarot/:order' element={<AskTaroOrderPage/>}/>
+
             <Route path='/natal' element={<Natal/>}>
               <Route path='/natal' index element={<Chart/>}/>
               <Route path='/natal/description/:feature' element={<NatalFeaturePage/>}/>

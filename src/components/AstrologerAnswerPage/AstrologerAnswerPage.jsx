@@ -22,8 +22,6 @@ const AstrologerAnswerPage = () => {
         setIsLoading(true)
         const result = await axiosInstance(`api/astrologists/answer/${id}`)
         setAnswer(result.data)
-        console.log(result.data)
-
       } catch (err) {
         console.log(err)
       } finally {
@@ -38,9 +36,6 @@ const AstrologerAnswerPage = () => {
   if (isLoading) return <Spinner/>
   
   const answerParagraphs = answer.answer.split("\n\n")
-  // const answerParagraphs = answer.answer.split(/\r\n|\n/)
-  console.log(answerParagraphs)
-
 
   return (
     <div className={s.astrologerAnswer}>
