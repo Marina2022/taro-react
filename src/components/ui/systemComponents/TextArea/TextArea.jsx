@@ -4,8 +4,7 @@ import {useState} from "react";
 const TextArea = ({label, placeholder, maxLength = 200, classname='', textAreaValue, setTextAreaValue}) => {
     
   const [currentLength, setCurrentLength] = useState(0)
-  
-  const changeHandler = (e)=>{    
+    const changeHandler = (e)=>{    
     
     if (e.target.value.length > maxLength) {
       return

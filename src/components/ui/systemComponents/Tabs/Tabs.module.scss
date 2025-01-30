@@ -16,6 +16,40 @@
   position: relative;
 }
 
+
+.tabsWrapperVertical{
+  display: flex;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 4px; /* Отступ для внутреннего активного элемента */
+  position: relative;
+  flex-direction: column;  
+}
+
+.tabsWrapperVertical .tabItem {
+  font-size: 16px;
+  padding-block: 10px;
+  
+  @include xs {
+    justify-content: flex-start;
+    font-size: 14px;
+    padding-block: 8px;
+    
+  }
+}
+
+.tabsWrapperVertical .tabItemActive {
+  font-size: 16px;
+  padding-block: 10px;
+
+  @include xs {
+    justify-content: flex-start;
+    font-size: 14px;
+    padding-block: 8px;
+    border-radius: 8px;
+  }
+}
+
 .tabItem {
   display: flex;
   justify-content: center;
@@ -26,7 +60,7 @@
   color: rgba(255, 255, 255, 0.8);
   background: none;
   border: none;
-  border-radius: 12px; /* Скругление для каждого сегмента */
+  border-radius: 12px; 
   cursor: pointer;
   position: relative;
   transition: background-color 0.3s, color 0.3s;

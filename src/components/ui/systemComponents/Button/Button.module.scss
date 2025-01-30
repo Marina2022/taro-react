@@ -8,7 +8,7 @@
   cursor: pointer;
   text-align: center;
   font-family: "Inter", sans-serif;  
-  transition: background-color 0.3s, color 0.3s;  
+  transition: background-color 0.2s, color 0.3s;  
   border-radius: 12px;  
   backdrop-filter: blur(3px);
   background-color: #ffb94c;
@@ -18,5 +18,9 @@
   
   &:hover {
     background-color: #ff9a2b; /* Немного темнее на hover для основного цвета */
+  }
+
+  &:active {
+    background-color: #cc7a23; /* еще немного темнее на active для основного цвета */    
   }
 }

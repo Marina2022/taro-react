@@ -1,10 +1,10 @@
 import s from './Tabs.module.scss'
 
-const Tabs = ({tabs, selectedTab, setSelectedTab, label, classname=''}) => {
+const Tabs = ({tabs, selectedTab, setSelectedTab, label, classname='', direction='horizontal'}) => {
   return (
     <div className={classname}>
       <div className={s.label}>{label}</div>
-      <ul className={s.tabsWrapper}>
+      <ul className={direction === 'horizontal' ? s.tabsWrapper : s.tabsWrapperVertical}>
         {
           tabs.map((tab, i) => {
             return (
