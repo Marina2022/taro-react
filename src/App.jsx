@@ -30,7 +30,9 @@ function App() {
   const {
     fetchSituations,
     setTarotLayouts,
-    setAreTarotLayoutsLoading
+    setAreTarotLayoutsLoading,
+    setIsDayLoading,
+    setDayQuality
   } = useAppContext()
 
   useEffect(() => {
@@ -41,7 +43,6 @@ function App() {
           method: 'GET',
           credentials: 'include',
         })
-
         if (response.redirected !== true) {
           const user = await response.json();
           setUser(user)
@@ -51,7 +52,6 @@ function App() {
           } else {
             setNatalChartCreated(false)
           }
-
         } else {
           throw new Error('Ошибка при получении данных профиля');
         }
@@ -74,8 +74,26 @@ function App() {
       }
     }
 
+    const getDay = async () => {
+      const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+      const currentTime = new Date().toISOString();
+      const payload = {
+        now_dt: currentTime, timezone: timeZone
+      }
+      try {
+        setIsDayLoading(true)
+        const result = await axiosInstance.post('api/energy/day/', payload)
+        setDayQuality(result.data.day_quality)
+      } catch (err) {
+        console.log(err)
+      } finally {
+        setIsDayLoading(false)
+      }
+    }
+    
     fetchUserProfile()
     getTarotLayouts()
+    getDay()
   }, [])
 
 

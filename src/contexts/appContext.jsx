@@ -11,6 +11,10 @@ const ContextProvider = ({children}) => {
   const [tarotLayouts, setTarotLayouts] = useState(null)
   const [areTarotLayoutsLoading, setAreTarotLayoutsLoading] = useState(null)
 
+  const [dayQuality, setDayQuality] = useState()
+  const [isDayLoading, setIsDayLoading] = useState(true)
+  
+  
   useEffect(() => {
     // если объект из запроса peek пришел, то обновляем значение таймера 
     if (situations) setCurrentTimer(situations.seconds_left)
@@ -57,7 +61,11 @@ const ContextProvider = ({children}) => {
         tarotLayouts,
         setTarotLayouts,
         areTarotLayoutsLoading,
-        setAreTarotLayoutsLoading
+        setAreTarotLayoutsLoading,
+        dayQuality, 
+        setDayQuality,
+        isDayLoading, 
+        setIsDayLoading
       }}>
       {children}
     </AppContext.Provider>

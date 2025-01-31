@@ -5,11 +5,11 @@ import InputLabel from "@/components/ui/systemComponents/InputLabel/InputLabel.j
 import {getProgressBarColor} from "@/utils.js";
 import {Link} from "react-router-dom";
 import axiosInstance from "@/api/axiosInstance.js";
+import {useAppContext} from "@/contexts/appContext.jsx";
 
 const DayBlock = ({classname}) => {
-
-    const [dayQuality, setDayQuality] = useState()
-    const [isLoading, setIsLoading] = useState(true)
+    
+    const {isDayLoading, dayQuality} = useAppContext()
 
     useEffect(() => {
       const getDay = async () => {
@@ -47,10 +47,10 @@ const DayBlock = ({classname}) => {
       <Link to="/day-energy"
             className={`${s.card} ${classname}`}>
         <div className={s.bordered}>
-          <div className={s.shortDayOfWeek}>{formattedDate} {dayOfWeekCapitalized}</div>        
-             
+          <div className={s.shortDayOfWeek}>{formattedDate} {dayOfWeekCapitalized}</div>
+
           {
-            !isLoading && <div className={s.chartWrapper}>
+            !isDayLoading && <div className={s.chartWrapper}>
               <RingChart value={dayQuality} low={0.4} high={.6}/>
               <div className={s.percent}
                    style={{color: getProgressBarColor(dayQuality, 0.4, .6)}}>{(dayQuality * 100).toFixed(0)}%
@@ -59,7 +59,7 @@ const DayBlock = ({classname}) => {
           }
         </div>
         <div className={s.cardText}>
-          <h2 className={s.cardTitle}>Энергия <br className={s.br} />дня</h2>          
+          <h2 className={s.cardTitle}>Энергия <br className={s.br}/>дня</h2>
           <p className={s.cardDescription}>Что принесет этот день?</p>
         </div>
       </Link>
