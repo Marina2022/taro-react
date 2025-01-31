@@ -1,5 +1,5 @@
 import s from './AskTaroOrderPage.module.scss';
-import {useParams} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 import {useAppContext} from "@/contexts/appContext.jsx";
 import Spinner from "@/components/ui/Spinner/Spinner.jsx";
 import {useEffect, useState} from "react";
@@ -11,18 +11,34 @@ import Tabs from "@/components/ui/systemComponents/Tabs/Tabs.jsx";
 import TextArea from "@/components/ui/systemComponents/TextArea/TextArea.jsx";
 import {modes} from "../../../data/modes.js";
 import Button from "@/components/ui/systemComponents/Button/Button.jsx";
+import MiniSpinner from "@/components/ui/miniSpinner/MiniSpinner.jsx";
+import WaitingPopup from "@/components/ui/WaitingPopup/WaitingPopup.jsx";
+import AskAstrologerPopupContent
+  from "@/components/AskAstrologerPage/AskAstrologerPopupContent/AskAstrologerPopupContent.jsx";
+import AskTaroPopupContent from "@/components/AskTaroOrderPage/AskTaroPopupContent/AskTaroPopupContent.jsx";
 
 const AskTaroOrderPage = () => {
   const {order} = useParams()
   const {tarotLayouts, areTarotLayoutsLoading} = useAppContext()
-  const tarotLayout = tarotLayouts.find((layout) => layout.id === order)
   
+  let tarotLayout
+  if (!areTarotLayoutsLoading) {
+    tarotLayout = tarotLayouts.find((layout) => layout.id === order)
+  }
+
   const [mode, setMode] = useState("relationships")
   const [description, setDescription] = useState('')
   const [question, setQuestion] = useState('')
 
-  
-  const submitHandler = (e) => {
+  const [sending, setSending] = useState(false)
+  const [isOpen, setIsOpen] = useState(false)
+  const [innerTimer, setInnerTimer] = useState(null)
+
+  const {fetchSituations} = useAppContext()
+  const navigate = useNavigate()
+
+  const submitHandler = async () => {
+
     if (!description) {
       alert('Опишите, пожалуйста, ситуацию')
       return
@@ -33,62 +49,100 @@ const AskTaroOrderPage = () => {
       return
     }
 
-    console.log({
-      mode, description, question
-    })
-    
+    try {
+      setSending(true)
+      const result = await axiosInstance.post('api/tarot/ask/', {
+        layout_type: order,
+        mode: mode,
+        situation_description: description,
+        user_question: question
+      })
+
+      if (result.data.message === "Interpretation is being processed") {
+        setIsOpen(true)
+        setInnerTimer(result.data.seconds_left)
+
+      } else {
+        throw new Error("Interpretation is not being processed for some reason")
+      }
+
+    } catch (err) {
+      console.log(err)
+    } finally {
+      setSending(false)
+    }
   }
-  
-  if (areTarotLayoutsLoading) return <Spinner/>  
-  
+
+  const understoodHandler = async () => {    
+    await fetchSituations()
+    setIsOpen(false)
+
+    setTimeout(() => {
+      navigate('/')
+    }, 0)
+  }
+
+  if (areTarotLayoutsLoading) return <Spinner/>
+
   return (
-    <div className={s.askTarotOrder}>
-      <div className="container">
-        <div>
-          <Header24 classname={s.mainTitle}>{tarotLayout.name}</Header24>
-          <p className={s.subtitle}>Задать вопрос</p>
+    <>
+      <div className={s.askTarotOrder}>
+        <div className="container">
+          <div>
+            <Header24 classname={s.mainTitle}>{tarotLayout.name}</Header24>
+            <p className={s.subtitle}>Задать вопрос</p>
+          </div>
+
+          <AstrologerCard
+            name="Александра Таровна"
+            imageUrl={astrologerImg}>
+            Таро, Астрология
+          </AstrologerCard>
+
+
+          <Tabs
+            label="О чём вы хотите спросить?"
+            direction="vertical"
+            selectedTab={mode}
+            setSelectedTab={setMode}
+            tabs={modes.map(mode => ({value: mode.value, label: mode.label}))}
+            classname={s.tabs}
+          />
+
+
+          <TextArea
+            textAreaValue={description}
+            setTextAreaValue={setDescription}
+            label="Опишите ситуацию"
+            placeholder="Опишите ситуацию..."
+            maxLength={200}
+            classname={s.descTextarea}
+          />
+
+
+          <TextArea
+            textAreaValue={question}
+            setTextAreaValue={setQuestion}
+            label="Кратко сформулируйте вопрос"
+            placeholder="Ваш вопрос..."
+            maxLength={100}
+            classname={s.questionTextarea}
+          />
+
+          <Button disabled={sending} onClick={submitHandler}>
+            {
+              sending ? <MiniSpinner/> : 'Далее'
+            }
+          </Button>
+
         </div>
-                
-        <AstrologerCard
-          name="Александра Таровна"
-          imageUrl={astrologerImg}>
-          Таро, Астрология
-        </AstrologerCard>
-
-
-        <Tabs
-          label="О чём вы хотите спросить?"
-          direction="vertical"
-          selectedTab={mode}
-          setSelectedTab={setMode}
-          tabs={modes.map(mode => ({value: mode.value, label: mode.label}))}
-          classname={s.tabs}
-        />
-
-
-        <TextArea
-          textAreaValue={description}
-          setTextAreaValue={setDescription}
-          label="Опишите ситуацию"
-          placeholder="Опишите ситуацию..."
-          maxLength={200}
-          classname={s.descTextarea}
-        />
-
-
-        <TextArea
-          textAreaValue={question}
-          setTextAreaValue={setQuestion}
-          label="Кратко сформулируйте вопрос"
-          placeholder="Ваш вопрос..."
-          maxLength={100}
-          classname={s.questionTextarea}
-        />
-
-        <Button onClick={submitHandler}>Далее</Button>
-
       </div>
-    </div>
+
+      <WaitingPopup isOpen={isOpen} setIsOpen={setIsOpen} onUnderstood={understoodHandler}>
+        <AskTaroPopupContent currentTimer={innerTimer} layout={tarotLayout.name} />
+      </WaitingPopup>
+
+    </>
   );
 };
 

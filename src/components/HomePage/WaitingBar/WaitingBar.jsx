@@ -8,14 +8,26 @@ import AskAstrologerPopupContent
   from "@/components/AskAstrologerPage/AskAstrologerPopupContent/AskAstrologerPopupContent.jsx";
 import {useState} from "react";
 import astrologerImg from '@/assets/img/home/astrologist.png'
+import AskTaroPopupContent from "@/components/AskTaroOrderPage/AskTaroPopupContent/AskTaroPopupContent.jsx";
 
 const WaitingBar = () => {
-  const {currentTimer, fetchSituations, situations, isSituationsLoading } = useAppContext()
+  const {currentTimer, fetchSituations, situations, isSituationsLoading} = useAppContext()
   const navigate = useNavigate()
   const [isOpen, setIsOpen] = useState(false)
+
+  // console.log(situations)
   const handleClick = () => {
     if (situations.status === 'completed') {   // todo в зависимости от типа ситуации будут разные ссылки
-      navigate(`/astrologer-answer/${situations.related_object_id}`)
+      
+      if ( situations.situation_type === 'astrology_question') {
+        navigate(`/astrologer-answer/${situations.related_object_id}`) 
+      }
+
+      if ( situations.situation_type === 'tarot_order') {
+        navigate(`/tarot/result/${situations.related_object_id}`)
+      }
+      
+      
     } else if (situations.status === 'in_progress') {
       setIsOpen(true)
     }
@@ -25,15 +37,16 @@ const WaitingBar = () => {
   }
 
   const situationsMapping = {
-    astrology_question: "Вопрос астрологу"
+    astrology_question: "Вопрос астрологу",
+    tarot_order: "Вопрос таро"
   }
 
   const endHandler = () => {
-    setTimeout(()=>{
+    setTimeout(() => {
       fetchSituations()
     }, 1000)
   }
-  
+
   if (!situations?.situation_type) {
     return null
   }
@@ -49,12 +62,17 @@ const WaitingBar = () => {
             <div>
               <div className={s.title}>
                 {
-                  situationsMapping[situations.situation_type]
+                  situations.situation_type !== 'tarot_order' && situationsMapping[situations.situation_type]
+                }
+
+                {
+                  situations.situation_type === 'tarot_order' && situations.name
                 }
               </div>
               {
                 situations.status === 'in_progress' &&
-                <Clock currentTimer={currentTimer} onEnd={endHandler} classname={s.clock} loading={isSituationsLoading} useGlobalTimer />
+                <Clock currentTimer={currentTimer} onEnd={endHandler} classname={s.clock} loading={isSituationsLoading}
+                       useGlobalTimer/>
               }
               {
                 situations.status === 'completed' && <div className={s.ready}>Готово!</div>
@@ -79,7 +97,15 @@ const WaitingBar = () => {
       </div>
 
       <WaitingPopup isOpen={isOpen} setIsOpen={setIsOpen} onUnderstood={understoodHandler}>
-        <AskAstrologerPopupContent currentTimer={currentTimer}/>
+        {
+          situations.situation_type !== 'tarot_order' && <AskAstrologerPopupContent currentTimer={currentTimer}/>
+        }
+
+        {
+          situations.situation_type === 'tarot_order' && <AskTaroPopupContent currentTimer={currentTimer} layout={situations.name} />
+        }
+
+        
       </WaitingPopup>
     </>
   );

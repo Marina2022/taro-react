@@ -43,13 +43,22 @@
 
 .descTextarea {
   & textarea {
-    min-height: 180px;
+    min-height: 100px;
+    
+    @include xs {
+      min-height: 180px;
+    }
   }
 }
 
 .questionTextarea {
   
   & textarea {   
-    min-height: 120px;
+    min-height: 50px;
+    height: 70px;
+
+    @include xs {
+      min-height: 120px;
+    }
   }
 }

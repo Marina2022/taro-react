@@ -22,7 +22,9 @@ const AskAstrologerPage = () => {
   const [isOpen, setIsOpen] = useState(false)
   const [innerTimer, setInnerTimer] = useState(null)
 
-  const {fetchSituations} = useAppContext()  
+  const {fetchSituations} = useAppContext()
+
+  const navigate = useNavigate()
   const askHandler = async () => {    
     
     if(!message) {
@@ -50,8 +52,7 @@ const AskAstrologerPage = () => {
       setSending(false)
     }        
   }
-
-  const navigate = useNavigate()
+  
   const understoodHandler = async() => {
     await fetchSituations()
     setIsOpen(false)

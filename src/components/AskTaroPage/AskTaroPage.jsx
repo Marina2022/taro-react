@@ -31,12 +31,10 @@ const AskTaroPage = () => {
                   key={i}
                   classname={s.navButton}
                   title={tarotLayout.name}
-                  description="Ответ на любой вопрос"
+                  description="разбор натальной карты, гороскопа и прогнозы от специалиста-астролога"
                   href={tarotLayout.id}
                   img={`https://my.aspectum.app/${tarotLayout.icon}`}
                 />
-
-
               )
             })
           }

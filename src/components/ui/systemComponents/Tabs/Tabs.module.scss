@@ -28,19 +28,18 @@
 
 .tabsWrapperVertical .tabItem {
   font-size: 16px;
-  padding-block: 10px;
+  padding-block: 8px;
   
   @include xs {
     justify-content: flex-start;
     font-size: 14px;
-    padding-block: 8px;
-    
+    padding-block: 8px;    
   }
 }
 
 .tabsWrapperVertical .tabItemActive {
   font-size: 16px;
-  padding-block: 10px;
+  padding-block: 8px;
 
   @include xs {
     justify-content: flex-start;
