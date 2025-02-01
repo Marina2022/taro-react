@@ -3,6 +3,7 @@ import Activity from "@/components/TodayPage/DayDescription/Recommendations/Acti
 import Header24 from "@/components/ui/systemComponents/Header24/Header24.jsx";
 
 const Recommendations = ({activities}) => {
+    
   return (
     <div className={s.recommendations}>
       <Header24 classname={s.title}>Рекомендации по активностям</Header24>

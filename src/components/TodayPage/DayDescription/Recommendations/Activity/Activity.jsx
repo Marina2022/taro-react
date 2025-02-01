@@ -10,21 +10,23 @@ const Activity = ({activity}) => {
   // сортировка активностей по убыванию score
   const sortedActivities = activity.activities.sort((a, b) => b.score - a.score)
 
+  if (sortedActivities.length === 0) return null
+
   return (
     <div className={s.activity}>
       <Header20 classname={s.title}>{activity.name}</Header20>
       <div className={s.recommended}>
         <h4 className={s.recommendedSubtitle}>Рекомендуемые занятия:</h4>
-        <div className={s.row}><FaCheck className={s.check} />
+        <div className={s.row}><FaCheck className={s.check}/>
           <div>{sortedActivities[0].name}</div>
         </div>
-        <div className={s.row}><FaCheck className={s.check} />
+        <div className={s.row}><FaCheck className={s.check}/>
           <div>{sortedActivities[1].name}</div>
         </div>
       </div>
       <div className={s.unrecommended}>
         <h4 className={s.unrecommendedSubtitle}>Занятия, которых стоит избегать:</h4>
-        <div className={s.row}><RiCloseLargeFill className={s.close} />
+        <div className={s.row}><RiCloseLargeFill className={s.close}/>
           <div>{sortedActivities[sortedActivities.length - 1].name}</div>
         </div>
       </div>

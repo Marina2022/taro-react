@@ -9,7 +9,7 @@ import {useAppContext} from "@/contexts/appContext.jsx";
 
 const DayBlock = ({classname}) => {
     
-    const {isDayLoading, dayQuality} = useAppContext()
+    const {isDayLoading, setIsDayLoading, setDayQuality, dayQuality} = useAppContext()
 
     useEffect(() => {
       const getDay = async () => {
@@ -20,13 +20,13 @@ const DayBlock = ({classname}) => {
         }
 
         try {
-          setIsLoading(true)
+          setIsDayLoading(true)
           const result = await axiosInstance.post('api/energy/day/', payload)
           setDayQuality(result.data.day_quality)
         } catch (err) {
           console.log(err)
         } finally {
-          setIsLoading(false)
+          setIsDayLoading(false)
         }
       }
       getDay()

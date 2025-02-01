@@ -14,13 +14,9 @@ import {useAuthContext} from "@/contexts/authContext.jsx";
 const OnboardingPage = () => {
 
   const {user, setUser, setIsUserLoading, setNatalChartCreated, isUserLoading} = useAuthContext()
-
   const [step, setStep] = useState(user ? 5 : 1)
-  //const [step, setStep] = useState(  1)
-
   const [onboardingCountries, setOnboardingCountries] = useState([])
   const [selectedCountry, setSelectedCountry] = useState({value: 20, label: 'Российская Федерация'})
-  // const [selectedCountry, setSelectedCountry] = useState(null)
   const [prefix, setPrefix] = useState('')
   const [selectedCity, setSelectedCity] = useState(null)
   const [onboardingCities, setOnboardingCities] = useState([])
@@ -37,7 +33,6 @@ const OnboardingPage = () => {
   const [selectedSex, setSelectedSex] = useState('male')
   const [consentCheckboxes, setConsentCheckboxes] = useState([])  // возможные значения: ["dataConsent", "newsConsent"]
 
-
   const [email, setEmail] = useState('')
 
   // если пользователь выбрал "Не знаю точное время", то посылаем 12:00 
@@ -45,23 +40,12 @@ const OnboardingPage = () => {
 
   const [popupOpened, setPopupOpened] = useState(false)
 
-
-  
-
-  // Если пользователь уже есть (зарегистрирован), но он не посмотрел слайдер, перекидываем его на 5й шаг
-  // useEffect(() => {
-  //   if (user) {
-  //     setStep(5)
-  //   }
-  // }, [user]);
-
-
   useEffect(() => {
     // запрос на страны - только один раз в самом начале
     fetch("https://my.aspectum.app/api/countries")
       .then((res) =>
         res.json().then((val) => {
-          setOnboardingCountries(val);          
+          setOnboardingCountries(val);
         })
       )
       .catch((error) => {
@@ -70,7 +54,6 @@ const OnboardingPage = () => {
   }, []);
 
 
-   
   useEffect(() => {
     // запрос на города
 
@@ -88,26 +71,25 @@ const OnboardingPage = () => {
     }
   }, [selectedCountry, prefix])
 
-  
-  const buildNatalMap = async()=>{
-    try {      
+  const buildNatalMap = async () => {
+    try {
       const result = await axiosInstance('/api/build/')
-            
+
       if (result.data.status === 'Построение натальной карты запущено') {
         setStep(5)
 
-        setTimeout(()=>{
-          fetchUserProfile()  
+        setTimeout(() => {
+          fetchUserProfile()
         }, 30000)
-        
+
       } else {
         throw new Error('Не получилось запустить построение натальной карты')
       }
     } catch (err) {
       console.log(err)
-    }     
+    }
   }
-  
+
   const submitForm = () => {
 
     const birth_date = `${year}-${addLeadingZero(+month)}-${addLeadingZero(+day)}`;
@@ -136,11 +118,11 @@ const OnboardingPage = () => {
       .then((response) => response.json())
       .then((result) => {
         if (result.status === "User created and logged in successfully") {
-                    
+
           //fetchUserProfile()
           buildNatalMap()
-          
-        } else {          
+
+        } else {
           throw new Error(result.error);
         }
       })
@@ -161,9 +143,11 @@ const OnboardingPage = () => {
 
       if (response.redirected !== true) {
         const user = await response.json();
-        if (!user.sign) throw new Error('Натальная карта не построилась'); 
-        setUser(user) 
-      } else {        
+        if (!user.sign) throw new Error('Натальная карта не построилась');
+        setUser(user)
+
+
+      } else {
         throw new Error('Запрос на Profile не проходит');
       }
     } catch (err) {

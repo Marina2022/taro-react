@@ -38,7 +38,7 @@ const TodayPage = () => {
   const weekHeading = `Неделя c ${startDate} по ${endDate}`
 
   if (isLoading) return <Spinner/>
-
+  
   return (
     <div className='container'>
       <div className={s.todayPage}>
@@ -63,10 +63,7 @@ const TodayPage = () => {
         </div>
 
         <DayDescription day={daysData[currentDayIndex]} />
-        
-        
-        
-        
+                
       </div>
 
     </div>
