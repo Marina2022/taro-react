@@ -25,6 +25,10 @@
 
 .buttonList {
   margin-top: 40px;  
+  
+  @include xs {
+    margin-top: 32px;
+  }
 }
 
 .navButton {
