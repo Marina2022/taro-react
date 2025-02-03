@@ -56,7 +56,8 @@
 }
 
 .resultWrapper {
-  margin-top: 28px;
+  width: 64%;
+  margin-top: 32px;
   margin-inline: auto;
   border-radius: 12px;
   position: relative;
@@ -67,16 +68,18 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  padding: 52px;  
+  padding: 24px;  
   background-color: #553559;
   color: inherit;
   
   @include xs {
+    width: 100%;
     padding: 20px;
     margin-top: 20px;    
   }
 }
 
 .resultImg {
-  width: 100%;  
+  width: 100%;
+  object-fit: contain;  
 }
