@@ -23,7 +23,6 @@ const AskAstrologerPage = () => {
   const [innerTimer, setInnerTimer] = useState(null)
 
   const {fetchSituations} = useAppContext()
-
   const navigate = useNavigate()
   const askHandler = async () => {    
     

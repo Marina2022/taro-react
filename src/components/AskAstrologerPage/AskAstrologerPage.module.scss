@@ -12,6 +12,10 @@
 .title {
   margin-bottom: 24px;
   margin-top: 50px;
+  
+  @include xs {
+    margin-top: 32px;
+  }
 }
 
 .mainTitle {
@@ -24,5 +28,6 @@
 
   @include xs {
     font-size: 16px;
+    margin-bottom: 28px;
   }
 }

@@ -9,7 +9,6 @@
   }
 }
 
-
 .mainTitle {
   text-align: center;
   margin-bottom: 42px;
@@ -20,6 +19,7 @@
 
   @include xs {
     font-size: 16px;
+    margin-bottom: 32px;
   }
 }
 

@@ -25,6 +25,7 @@ import QuoteBlock from "@/components/ui/systemComponents/QuoteBlock/QuoteBlock.j
 import AstrologerCard from "@/components/ui/systemComponents/AstrologerCard/AstrologerCard.jsx";
 import RingChart from "@/components/ui/systemComponents/RingChart/RingChart.jsx";
 import InputLabel from "@/components/ui/systemComponents/InputLabel/InputLabel.jsx";
+import TextArea from "@/components/ui/systemComponents/TextArea/TextArea.jsx";
 
 const SystemPage = () => {
 

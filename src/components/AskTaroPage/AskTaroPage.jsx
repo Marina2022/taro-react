@@ -9,9 +9,7 @@ import askIcon from "@/assets/img/home/askIcon.png";
 import React from "react";
 
 const AskTaroPage = () => {
-
-  const {tarotLayouts, areTarotLayoutsLoading} = useAppContext()
-  
+  const {tarotLayouts, areTarotLayoutsLoading} = useAppContext()  
   if (areTarotLayoutsLoading) return <Spinner/>
   
   return (
@@ -23,7 +21,6 @@ const AskTaroPage = () => {
           imageUrl={astrologerImg}>
           Таро, Астрология
         </AstrologerCard>
-
         <ul className={s.buttonList}>
           {
             tarotLayouts.map((tarotLayout, i) => {
@@ -33,8 +30,6 @@ const AskTaroPage = () => {
                   classname={s.navButton}
                   title={tarotLayout.name}
                   description= {tarotLayout.description ? tarotLayout.description : "разбор натальной карты, гороскопа и прогнозы от специалиста-астролога" }
-                    
-                    
                   href={tarotLayout.id}
                   img={`https://my.aspectum.app/${tarotLayout.icon}`}
                 />

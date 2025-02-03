@@ -8,7 +8,6 @@ import {useState} from "react";
 const AskTaroPopupContent = ({currentTimer, layout}) => {  
   
   const {fetchSituations} = useAppContext()
-
   const endHandler = () => {
     setTimeout(()=>{
       fetchSituations()
@@ -18,8 +17,7 @@ const AskTaroPopupContent = ({currentTimer, layout}) => {
   return (
     <>
       <Header20 classname={s.popupTitle}>{layout}</Header20>
-      <img className={s.astrologerAva} src="/img/astrologist.png" alt=""/>
-      
+      <img className={s.astrologerAva} src="/img/astrologist.png" alt=""/>      
       <div className={s.text}>
         <p className={s.popupParagraph}>
           Сейчас я работаю над раскладом. Чтобы колода не запутала нас, мне нужно сосредоточиться на вашем вопросе и

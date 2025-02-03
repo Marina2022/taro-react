@@ -61,18 +61,15 @@ const AskTaroOrderPage = () => {
       if (result.data.message === "Interpretation is being processed") {
         setIsOpen(true)
         setInnerTimer(result.data.seconds_left)
-
       } else {
         throw new Error("Interpretation is not being processed for some reason")
       }
-
     } catch (err) {
       console.log(err)
     } finally {
       setSending(false)
     }
   }
-
   const understoodHandler = async () => {    
     await fetchSituations()
     setIsOpen(false)
@@ -109,7 +106,6 @@ const AskTaroOrderPage = () => {
             classname={s.tabs}
           />
 
-
           <TextArea
             textAreaValue={description}
             setTextAreaValue={setDescription}
@@ -133,16 +129,14 @@ const AskTaroOrderPage = () => {
               sending ? <MiniSpinner/> : 'Далее'
             }
           </Button>
-
         </div>
       </div>
 
       <WaitingPopup isOpen={isOpen} setIsOpen={setIsOpen} onUnderstood={understoodHandler}>
         <AskTaroPopupContent currentTimer={innerTimer} layout={tarotLayout.name} />
       </WaitingPopup>
-
     </>
-  );
-};
+  )
+}
 
 export default AskTaroOrderPage;

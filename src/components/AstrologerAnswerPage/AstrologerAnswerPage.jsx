@@ -13,7 +13,6 @@ const AstrologerAnswerPage = () => {
 
   const [answer, setAnswer] = useState(null)
   const [isLoading, setIsLoading] = useState(true)
-
   const {id} = useParams()
 
   useEffect(() => {
@@ -53,17 +52,17 @@ const AstrologerAnswerPage = () => {
         <Header20 classname={s.answerTitle}>Ответ астролога:</Header20>
         <Text16>
           {
-            answerParagraphs.map((paragraph, i) => {              
-              const innerParagraphs = paragraph.split("\r\n")              
+            answerParagraphs.map((paragraph, i) => {
+              const innerParagraphs = paragraph.split("\r\n")
               return (
                 <p className={s.par} key={i}>
                   {
-                    innerParagraphs.map((innerParagraph,ind)=> <p className={s.innerPar}  key={ind}>{innerParagraph}</p> )                  
+                    innerParagraphs.map((innerParagraph, ind) => <p className={s.innerPar}
+                                                                    key={ind}>{innerParagraph}</p>)
                   }
                 </p>
               )
-            })
-          }
+            })}
         </Text16>
       </div>
     </div>

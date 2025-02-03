@@ -13,21 +13,7 @@ const TaroAnswerPage = () => {
 
   const [answer, setAnswer] = useState(null)
   const [isLoading, setIsLoading] = useState(true)
-
   const {id} = useParams()
-
-
-  // {
-  //   "page_name": "Результат расклада Таро",
-  //   "layout_name": "Простой крест",
-  //   "order_date": "29-01-2025",
-  //   "layout_text": "Дорогой Сергей, я рада помочь тебе в поисках ответов на вопрос о том, как жить счастливо в браке. …!",
-  //   "situation_description": "Я женился",
-  //   "user_question": "Как жить счастливо? ",
-  //   "svg_url": "/tarot/layout_svg/simple_cross/?cards=33,-38,46,2",
-  //   "debug": null
-  // }
-
 
   useEffect(() => {
     const getAnswer = async () => {
@@ -85,8 +71,13 @@ const TaroAnswerPage = () => {
               return (
                 <div className={s.par} key={i}>
                   {
-                    innerParagraphs.map((innerParagraph, ind) => <p className={s.innerPar}
-                                                                    key={ind}>{innerParagraph}</p>)
+                    innerParagraphs.map((innerParagraph, ind) => <p
+                        className={s.innerPar}
+                        key={ind}
+                      >
+                        {innerParagraph}
+                      </p>
+                    )
                   }
                 </div>
               )

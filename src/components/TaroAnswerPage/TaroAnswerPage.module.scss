@@ -18,7 +18,8 @@
   }
 
   @include xs {
-    font-size: 16px;
+    font-size: 12px;
+    margin-bottom: 28px;
   }
 }
 
@@ -28,6 +29,8 @@
 
   @include xs {
     font-size: 18px;
+    margin-top: 32px;
+    margin-bottom: 16px;
   }
 }
 
@@ -53,7 +56,7 @@
 }
 
 .resultWrapper {
-  margin-top: 32px;
+  margin-top: 28px;
   margin-inline: auto;
   border-radius: 12px;
   position: relative;
@@ -69,12 +72,11 @@
   color: inherit;
   
   @include xs {
-    padding: 16px;
-    
+    padding: 20px;
+    margin-top: 20px;    
   }
 }
 
 .resultImg {
-  width: 100%;
-  
+  width: 100%;  
 }
