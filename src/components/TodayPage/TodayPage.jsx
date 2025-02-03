@@ -1,6 +1,6 @@
 import s from './TodayPage.module.scss';
 import Header24 from "@/components/ui/systemComponents/Header24/Header24.jsx";
-import {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import axiosInstance from "@/api/axiosInstance.js";
 import Spinner from "@/components/ui/Spinner/Spinner.jsx";
 import DayCard from "@/components/TodayPage/DayCard/DayCard.jsx";
@@ -38,7 +38,7 @@ const TodayPage = () => {
   const weekHeading = `Неделя c ${startDate} по ${endDate}`
 
   if (isLoading) return <Spinner/>
-  
+    
   return (
     <div className='container'>
       <div className={s.todayPage}>
@@ -70,4 +70,4 @@ const TodayPage = () => {
   );
 };
 
-export default TodayPage;
+export default React.memo(TodayPage);

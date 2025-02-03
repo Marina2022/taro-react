@@ -115,17 +115,16 @@ const AskTaroOrderPage = () => {
             setTextAreaValue={setDescription}
             label="Опишите ситуацию"
             placeholder="Опишите ситуацию..."
-            maxLength={200}
+            maxLength={300}
             classname={s.descTextarea}
           />
-
 
           <TextArea
             textAreaValue={question}
             setTextAreaValue={setQuestion}
             label="Кратко сформулируйте вопрос"
             placeholder="Ваш вопрос..."
-            maxLength={100}
+            maxLength={200}
             classname={s.questionTextarea}
           />
 

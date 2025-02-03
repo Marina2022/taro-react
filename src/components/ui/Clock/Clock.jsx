@@ -13,13 +13,20 @@ const Clock = ({
                }) => {
   const [innerTimerValue, setInnerTimerValue] = useState(currentTimer)
   const intervalId = useRef()
+  
+  
+  // если используем таймер глобальный, то когда значение = 0, запускаем функцию onEnd, переданную из родителя
+  if (useGlobalTimer) {
+    if (currentTimer === 0) onEnd()
+  }
 
   useEffect(() => {
     if (innerTimerValue > 0) {
       intervalId.current = setInterval(() => {
         setInnerTimerValue((prev) => {
+          // если используем таймер внутренний,  то когда значение = 0, останавливаем таймер и и запускаем функцию onEnd, переданную из родителя
           if (prev === 0) {
-            clearInterval(intervalId.current); // Остановка таймера, когда значение достигло 0
+            clearInterval(intervalId.current); // Остановка таймера, когда значение достигло 0            
             onEnd()
             return 0;
           }

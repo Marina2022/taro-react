@@ -17,6 +17,7 @@ import AstrologerAnswer from "@/pages/AstrologerAnswer.jsx";
 import AskTaro from "@/pages/AskTaro.jsx";
 import AskTaroOrderPage from "@/components/AskTaroOrderPage/AskTaroOrderPage.jsx";
 import axiosInstance from "@/api/axiosInstance.js";
+import TaroAnswerPage from "@/components/TaroAnswerPage/TaroAnswerPage.jsx";
 
 function App() {
 
@@ -112,7 +113,8 @@ function App() {
 
             <Route path='/ask-tarot' element={<AskTaro/>}/>
             <Route path='/ask-tarot/:order' element={<AskTaroOrderPage/>}/>
-
+            <Route path='/tarot-answer/:id' element={<TaroAnswerPage/>}/>
+            
             <Route path='/natal' element={<Natal/>}>
               <Route path='/natal' index element={<Chart/>}/>
               <Route path='/natal/description/:feature' element={<NatalFeaturePage/>}/>

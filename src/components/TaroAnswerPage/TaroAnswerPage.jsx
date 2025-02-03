@@ -1,0 +1,101 @@
+import s from './TaroAnswerPage.module.scss';
+import React, {useEffect, useState} from "react";
+import {useParams} from "react-router-dom";
+import axiosInstance from "@/api/axiosInstance.js";
+import AstrologerCard from "@/components/ui/systemComponents/AstrologerCard/AstrologerCard.jsx";
+import Header24 from "@/components/ui/systemComponents/Header24/Header24.jsx";
+import astrologerImg from "@/assets/img/home/astrologist.png";
+import Header20 from "@/components/ui/systemComponents/Header20/Header20.jsx";
+import Text16 from "@/components/ui/systemComponents/Text16/Text16.jsx";
+import Spinner from "@/components/ui/Spinner/Spinner.jsx";
+
+const TaroAnswerPage = () => {
+
+  const [answer, setAnswer] = useState(null)
+  const [isLoading, setIsLoading] = useState(true)
+
+  const {id} = useParams()
+
+
+  // {
+  //   "page_name": "Результат расклада Таро",
+  //   "layout_name": "Простой крест",
+  //   "order_date": "29-01-2025",
+  //   "layout_text": "Дорогой Сергей, я рада помочь тебе в поисках ответов на вопрос о том, как жить счастливо в браке. …!",
+  //   "situation_description": "Я женился",
+  //   "user_question": "Как жить счастливо? ",
+  //   "svg_url": "/tarot/layout_svg/simple_cross/?cards=33,-38,46,2",
+  //   "debug": null
+  // }
+
+
+  useEffect(() => {
+    const getAnswer = async () => {
+      try {
+        setIsLoading(true)
+        const result = await axiosInstance(`api/tarot/answer/${id}`)
+        setAnswer(result.data)
+      } catch (err) {
+        console.log(err)
+      } finally {
+        setIsLoading(false)
+      }
+    }
+
+    getAnswer()
+
+  }, []);
+
+  if (isLoading) return <Spinner/>
+
+  const answerParagraphs = answer.layout_text.split("\n\n")
+
+  return (
+    <div className={s.astrologerAnswer}>
+      <div className='container'>
+        <Header24 classname={s.mainTitle}>{answer.page_name.toUpperCase()}</Header24>
+        <AstrologerCard
+          name={answer.layout_name}
+          imageUrl={astrologerImg}>
+          {
+            answer.order_date
+          }
+        </AstrologerCard>
+        <Header20 classname={s.title}>Ваша ситуация:</Header20>
+        <Text16>
+          {answer.situation_description}
+        </Text16>
+
+        <Header20 classname={s.title}>Ваш вопрос:</Header20>
+        <Text16>
+          {answer.user_question}
+        </Text16>
+
+        <Header20 classname={s.title}>Выпавший расклад:</Header20>
+
+        <div className={s.resultWrapper}>
+          <img className={s.resultImg} src={"https://my.aspectum.app/" + answer.svg_url} alt="result"/>
+        </div>
+
+        <Header20 classname={s.answerTitle}>Трактовка расклада:</Header20>
+        <Text16>
+          {
+            answerParagraphs.map((paragraph, i) => {
+              const innerParagraphs = paragraph.split("\r\n")
+              return (
+                <div className={s.par} key={i}>
+                  {
+                    innerParagraphs.map((innerParagraph, ind) => <p className={s.innerPar}
+                                                                    key={ind}>{innerParagraph}</p>)
+                  }
+                </div>
+              )
+            })
+          }
+        </Text16>
+      </div>
+    </div>
+  );
+};
+
+export default React.memo(TaroAnswerPage);

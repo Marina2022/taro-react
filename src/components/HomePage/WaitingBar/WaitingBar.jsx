@@ -15,8 +15,7 @@ const WaitingBar = () => {
   const navigate = useNavigate()
   const [isOpen, setIsOpen] = useState(false)
 
-  // console.log(situations)
-  const handleClick = () => {
+    const handleClick = () => {
     if (situations.status === 'completed') {   // todo в зависимости от типа ситуации будут разные ссылки
       
       if ( situations.situation_type === 'astrology_question') {
@@ -24,7 +23,8 @@ const WaitingBar = () => {
       }
 
       if ( situations.situation_type === 'tarot_order') {
-        navigate(`/tarot/result/${situations.related_object_id}`)
+        navigate(`/tarot-answer/${situations.related_object_id}`)
+        
       }
       
       
@@ -42,6 +42,7 @@ const WaitingBar = () => {
   }
 
   const endHandler = () => {
+    
     setTimeout(() => {
       fetchSituations()
     }, 1000)
@@ -104,8 +105,7 @@ const WaitingBar = () => {
         {
           situations.situation_type === 'tarot_order' && <AskTaroPopupContent currentTimer={currentTimer} layout={situations.name} />
         }
-
-        
+       
       </WaitingPopup>
     </>
   );

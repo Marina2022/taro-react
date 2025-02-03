@@ -1,11 +1,10 @@
 import s from "./NatalMap.module.scss";
 import natalMap from '@/assets/img/home/natalMap.jpg'
 import {Link} from "react-router-dom";
-import {useState} from "react";
+import React, {useState} from "react";
 import Spinner from "@/components/ui/Spinner/Spinner.jsx";
 
 const NatalMap = () => {
-
   return (
     <Link
       to="/natal"
@@ -22,4 +21,5 @@ const NatalMap = () => {
   )
 }
 
-export default NatalMap;
+export default React.memo(NatalMap);
+

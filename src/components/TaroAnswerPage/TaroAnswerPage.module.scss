@@ -1,0 +1,80 @@
+@use '@/assets/styles/mixins' as *;
+
+.astrologerAnswer {
+  padding-bottom: 110px;
+  margin-top: -48px;
+
+  @include xs {
+    margin-top: -43px;
+  }
+}
+
+.mainTitle {
+  text-align: center;
+  margin-bottom: 42px;
+
+  @include m {
+    font-size: 22px;
+  }
+
+  @include xs {
+    font-size: 16px;
+  }
+}
+
+.title {
+  margin-top: 40px;
+  margin-bottom: 20px;
+
+  @include xs {
+    font-size: 18px;
+  }
+}
+
+.answerTitle {
+  margin-top: 40px;
+  margin-bottom: 20px;
+
+  @include xs {
+    font-size: 18px;
+  }
+}
+
+.par {
+  margin-bottom: 20px;
+}
+
+.innerPar {
+  margin-bottom: 10px;
+}
+
+.resultCards {
+  margin-top: 24px;
+}
+
+.resultWrapper {
+  margin-top: 32px;
+  margin-inline: auto;
+  border-radius: 12px;
+  position: relative;
+  overflow: hidden;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 52px;  
+  background-color: #553559;
+  color: inherit;
+  
+  @include xs {
+    padding: 16px;
+    
+  }
+}
+
+.resultImg {
+  width: 100%;
+  
+}

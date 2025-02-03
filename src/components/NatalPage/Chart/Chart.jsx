@@ -1,6 +1,6 @@
 import s from './Chart.module.scss';
 import Header24 from "@/components/ui/systemComponents/Header24/Header24.jsx";
-import {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import axiosInstance from "@/api/axiosInstance.js";
 import Spinner from "@/components/ui/Spinner/Spinner.jsx";
 import NatalChartLegend from "@/components/NatalPage/Chart/NatalChartLegend/NatalChartLegend.jsx";
@@ -33,8 +33,7 @@ const Chart = () => {
 
   }, []);
 
-  
-
+ 
   const date = new Date(data?.user.birth_date);
 
   const formattedDate = date?.toLocaleString("ru-RU", {
@@ -106,4 +105,4 @@ const Chart = () => {
   );
 };
 
-export default Chart;
+export default React.memo(Chart);

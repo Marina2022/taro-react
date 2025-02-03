@@ -6,6 +6,7 @@ import AstrologerCard from "@/components/ui/systemComponents/AstrologerCard/Astr
 import astrologerImg from "@/assets/img/home/astrologist.png";
 import ButtonWithBeak from "@/components/ui/systemComponents/ButtonWithBeak/ButtonWithBeak.jsx";
 import askIcon from "@/assets/img/home/askIcon.png";
+import React from "react";
 
 const AskTaroPage = () => {
 
@@ -31,21 +32,19 @@ const AskTaroPage = () => {
                   key={i}
                   classname={s.navButton}
                   title={tarotLayout.name}
-                  description="разбор натальной карты, гороскопа и прогнозы от специалиста-астролога"
+                  description= {tarotLayout.description ? tarotLayout.description : "разбор натальной карты, гороскопа и прогнозы от специалиста-астролога" }
+                    
+                    
                   href={tarotLayout.id}
                   img={`https://my.aspectum.app/${tarotLayout.icon}`}
                 />
               )
             })
           }
-
-
         </ul>
-
-
       </div>
     </div>
   )
 }
 
-export default AskTaroPage;
+export default React.memo(AskTaroPage);

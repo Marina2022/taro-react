@@ -39,26 +39,29 @@
 .tabs {
   margin-top: 40px;
   margin-bottom: 40px;
+  //font-size: 14px;
 }
 
-.descTextarea {
+.descTextarea {  
   & textarea {
-    min-height: 100px;
+    
+    min-height: 150px;
     
     @include xs {
-      min-height: 180px;
+      min-height: 270px;
     }
   }
 }
 
 .questionTextarea {
   
-  & textarea {   
-    min-height: 50px;
-    height: 70px;
+  & textarea {
+    
+    min-height: 100px;
+    height: 100px;
 
     @include xs {
-      min-height: 120px;
+      min-height: 230px;
     }
   }
 }

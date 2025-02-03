@@ -6,6 +6,7 @@ import askIcon from "@/assets/img/home/askIcon.png";
 import specialistIcon from "@/assets/img/home/specialistIcon.png";
 import loveIcon from "@/assets/img/home/loveIcon.png";
 import {useAppContext} from "@/contexts/appContext.jsx";
+import React from "react";
 
 const BottomPart = () => {
       
@@ -48,4 +49,4 @@ const BottomPart = () => {
   );
 };
 
-export default BottomPart;
+export default React.memo(BottomPart)

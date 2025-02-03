@@ -1,5 +1,5 @@
 import s from './AstrologerAnswerPage.module.scss';
-import {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import {useParams} from "react-router-dom";
 import axiosInstance from "@/api/axiosInstance.js";
 import AstrologerCard from "@/components/ui/systemComponents/AstrologerCard/AstrologerCard.jsx";
@@ -70,4 +70,4 @@ const AstrologerAnswerPage = () => {
   );
 };
 
-export default AstrologerAnswerPage;
+export default React.memo(AstrologerAnswerPage);

@@ -1,5 +1,5 @@
 import s from "./DayBlock.module.scss";
-import {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import RingChart from "@/components/ui/systemComponents/RingChart/RingChart.jsx";
 import InputLabel from "@/components/ui/systemComponents/InputLabel/InputLabel.jsx";
 import {getProgressBarColor} from "@/utils.js";
@@ -67,4 +67,4 @@ const DayBlock = ({classname}) => {
   }
 ;
 
-export default DayBlock;
+export default React.memo(DayBlock);

@@ -5,11 +5,11 @@ import Text16 from "@/components/ui/systemComponents/Text16/Text16.jsx";
 import Text12 from "@/components/ui/systemComponents/Text12/Text12.jsx";
 import Text14 from "@/components/ui/systemComponents/Text14/Text14.jsx";
 import InputGroup from "@/components/ui/systemComponents/InputGroup/InputGroup.jsx";
-import {useState} from "react";
+import React, {useState} from "react";
 import DataInput from "@/components/ui/systemComponents/DataInput/DataInput.jsx";
 import TimeInput from "@/components/ui/systemComponents/TimeInput/TimeInput.jsx";
 import Select from "@/components/ui/systemComponents/Select/Select.jsx";
-import TextArea from "@/components/ui/systemComponents/TextArea/TextArea.jsx";
+import TextATextArea from "@/components/ui/systemComponents/TextArea/TextArea.jsx";
 import Button from "@/components/ui/systemComponents/Button/Button.jsx";
 import SecondaryButton from "@/components/ui/systemComponents/SecondaryButton/SecondaryButton.jsx";
 import Tabs from "@/components/ui/systemComponents/Tabs/Tabs.jsx";
@@ -320,4 +320,4 @@ const SystemPage = () => {
   )
 }
 
-export default SystemPage;
+export default React.memo(SystemPage);

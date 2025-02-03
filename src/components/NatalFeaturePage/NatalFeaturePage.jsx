@@ -1,6 +1,6 @@
 import s from './NatalFeaturePage.module.scss';
 import {useLocation, useParams} from "react-router-dom";
-import {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import axiosInstance from "@/api/axiosInstance.js";
 import Spinner from "@/components/ui/Spinner/Spinner.jsx";
 import Header24 from "@/components/ui/systemComponents/Header24/Header24.jsx";
@@ -74,4 +74,4 @@ const NatalFeaturePage = () => {
   );
 };
 
-export default NatalFeaturePage;
+export default React.memo(NatalFeaturePage);

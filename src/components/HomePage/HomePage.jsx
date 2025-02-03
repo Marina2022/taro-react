@@ -4,7 +4,7 @@ import NatalMap from "@/components/HomePage/NatalMap/NatalMap.jsx";
 import {useLocation} from "react-router-dom";
 import ContextProvider, {useAppContext} from "@/contexts/appContext.jsx";
 import BottomPart from "@/components/HomePage/BottomPart/BottomPart.jsx";
-import {useEffect} from "react";
+import React, {useEffect} from "react";
 
 const HomePage = () => {
 

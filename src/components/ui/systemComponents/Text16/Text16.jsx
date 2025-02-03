@@ -1,9 +1,9 @@
 import s from './Text16.module.scss';
 const Text16 = ({children, classname=''}) => {
   return (
-    <p className={`${s.text} ${classname}`} >
+    <div className={`${s.text} ${classname}`} >
       {children}
-    </p>
+    </div>
   );
 };
 
