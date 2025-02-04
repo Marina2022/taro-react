@@ -3,11 +3,13 @@ import Header20 from "@/components/ui/systemComponents/Header20/Header20.jsx";
 
 import Clock from "@/components/ui/Clock/Clock.jsx";
 import {useAppContext} from "@/contexts/appContext.jsx";
-import {useState} from "react";
+import React, {useState} from "react";
+import {useAuthContext} from "@/contexts/authContext.jsx";
 
 const AskTaroPopupContent = ({currentTimer, layout}) => {  
   
   const {fetchSituations} = useAppContext()
+  const {user} = useAuthContext()
   const endHandler = () => {
     setTimeout(()=>{
       fetchSituations()
@@ -17,8 +19,11 @@ const AskTaroPopupContent = ({currentTimer, layout}) => {
   return (
     <>
       <Header20 classname={s.popupTitle}>{layout}</Header20>
-      <img className={s.astrologerAva} src="/img/astrologist.png" alt=""/>      
+      <img className={s.astrologerAva} src="/img/astrologist.png" alt=""/>
       <div className={s.text}>
+        <p className={s.popupParagraph}>
+          Привет, {user.name}
+        </p>
         <p className={s.popupParagraph}>
           Сейчас я работаю над раскладом. Чтобы колода не запутала нас, мне нужно сосредоточиться на вашем вопросе и
           не отвлекаться на другие дела.

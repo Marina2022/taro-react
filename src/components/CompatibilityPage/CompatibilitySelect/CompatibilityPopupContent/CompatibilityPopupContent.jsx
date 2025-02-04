@@ -1,21 +1,13 @@
-import s from './AskAstrologerPopupContent.module.scss';
+import React from 'react';
 import Header20 from "@/components/ui/systemComponents/Header20/Header20.jsx";
-
+import s from "@/components/AskAstrologerPage/AskAstrologerPopupContent/AskAstrologerPopupContent.module.scss";
 import Clock from "@/components/ui/Clock/Clock.jsx";
-import {useAppContext} from "@/contexts/appContext.jsx";
-import React, {useState} from "react";
 import {useAuthContext} from "@/contexts/authContext.jsx";
 
-const AskAstrologerPopupContent = ({currentTimer}) => {  
-  
-  const {fetchSituations} = useAppContext()
+const CompatibilityPopupContent = () => {
+
   const {user} = useAuthContext()
-  const endHandler = () => {
-    setTimeout(()=>{
-      fetchSituations()
-    }, 1000)
-  }
-      
+  
   return (
     <>
       <Header20 classname={s.popupTitle}>Заказ</Header20>
@@ -32,12 +24,9 @@ const AskAstrologerPopupContent = ({currentTimer}) => {
           Благосклонная колода даёт подсказки и намёки даже в самых запутанных случаях, нужно только их увидеть.
           Подготовлю ответ уже скоро.
         </p>
-      </div>
-      <div className={s.center}>
-        <Clock classname={s.clock} currentTimer={currentTimer} onEnd={endHandler}  />
       </div>      
     </>
   );
 };
 
-export default AskAstrologerPopupContent;
+export default CompatibilityPopupContent;

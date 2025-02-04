@@ -41,7 +41,7 @@ const BottomPart = () => {
         <ButtonWithBeak
           title="Совместимость"
           description="в делах и отношениях"
-          href="/system"
+          href="/compatibility/select"
           img={loveIcon}
         />
       </div>

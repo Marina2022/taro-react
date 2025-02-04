@@ -15,19 +15,21 @@ const WaitingBar = () => {
   const navigate = useNavigate()
   const [isOpen, setIsOpen] = useState(false)
 
-    const handleClick = () => {
+  const handleClick = () => {
     if (situations.status === 'completed') {   // todo в зависимости от типа ситуации будут разные ссылки
-      
-      if ( situations.situation_type === 'astrology_question') {
-        navigate(`/astrologer-answer/${situations.related_object_id}`) 
+
+      if (situations.situation_type === 'astrology_question') {
+        navigate(`/astrologer-answer/${situations.related_object_id}`)
       }
 
-      if ( situations.situation_type === 'tarot_order') {
+      if (situations.situation_type === 'tarot_order') {
         navigate(`/tarot-answer/${situations.related_object_id}`)
-        
       }
-      
-      
+
+      if (situations.situation_type === 'compatibility_order') {
+        navigate(`/compatibility/result/${situations.related_object_id}`)
+      }
+
     } else if (situations.status === 'in_progress') {
       setIsOpen(true)
     }
@@ -42,7 +44,7 @@ const WaitingBar = () => {
   }
 
   const endHandler = () => {
-    
+
     setTimeout(() => {
       fetchSituations()
     }, 1000)
@@ -68,6 +70,10 @@ const WaitingBar = () => {
 
                 {
                   situations.situation_type === 'tarot_order' && situations.name
+                }
+
+                {
+                  situations.situation_type === 'compatibility_order' && `Расчет совместимости: ${situations.name}`
                 }
               </div>
               {
@@ -98,14 +104,18 @@ const WaitingBar = () => {
       </div>
 
       <WaitingPopup isOpen={isOpen} setIsOpen={setIsOpen} onUnderstood={understoodHandler}>
+        
+        {/*Для всех случае, кром ответа Таро, открывается попап с AskAstrologerPopupContent*/}
+        
         {
           situations.situation_type !== 'tarot_order' && <AskAstrologerPopupContent currentTimer={currentTimer}/>
         }
 
         {
-          situations.situation_type === 'tarot_order' && <AskTaroPopupContent currentTimer={currentTimer} layout={situations.name} />
+          situations.situation_type === 'tarot_order' &&
+          <AskTaroPopupContent currentTimer={currentTimer} layout={situations.name}/>
         }
-       
+                
       </WaitingPopup>
     </>
   );
