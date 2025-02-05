@@ -21,6 +21,8 @@ import TaroAnswerPage from "@/components/TaroAnswerPage/TaroAnswerPage.jsx";
 import CompatibilitySelect from "@/components/CompatibilityPage/CompatibilitySelect/CompatibilitySelect.jsx";
 import Compatibility from "@/pages/Compatibility.jsx";
 import CompatibilityResult from "@/components/CompatibilityPage/CompatibilityResult/CompatibilityResult.jsx";
+import CompatibilityOrder
+  from "@/components/CompatibilityPage/CompatibilitySelect/CompatibilityOrder/CompatibilityOrder.jsx";
 
 function App() {
 
@@ -125,7 +127,7 @@ function App() {
 
             <Route path='/compatibility' element={<Compatibility/>}>
               <Route path='/compatibility/select' index element={<CompatibilitySelect/>}/>
-              {/*<Route path='/compatibility/order' element={<CompatibilityOrder/>}/>*/}
+              <Route path='/compatibility/order' element={<CompatibilityOrder/>}/>
               {/*<Route path='/compatibility/question/:id/:theme' index element={<CompatibilityQuestion/>}/>*/}
               {/*<Route path='/compatibility/answer/:id/:theme' index element={<CompatibilityAnswer/>}/>*/}
               <Route path='/compatibility/result/:id' index element={<CompatibilityResult/>}/>

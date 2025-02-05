@@ -1,6 +1,6 @@
 @use '@/assets/styles/mixins' as *;
 
-.waitingBar {
+.compatibilityBar {
   border-radius: 16px;
   padding: 20px;
   border: 1px solid rgb( 255 255 255/.2);
@@ -9,7 +9,7 @@
   align-items: center;
   justify-content: space-between;
   cursor: pointer;
-  margin-bottom: 16px;
+  margin-bottom: 20px;
 
   @include xs {
     padding: 16px;

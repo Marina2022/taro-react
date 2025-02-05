@@ -60,8 +60,12 @@
 
 .checkbox {
   margin-top: 10px;
-
-  div {    
+  
+  & li {
+    align-items: center;
+  }
+  
+  & div {    
     font-weight: 500;
     color: #fff6;
   }

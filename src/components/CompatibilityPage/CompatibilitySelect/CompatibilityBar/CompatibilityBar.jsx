@@ -40,7 +40,7 @@ const CompatibilityBar = ({data, setData}) => {
 
     return (
       <>
-        <div className={s.waitingBar} onClick={handleClick}>
+        <div className={s.compatibilityBar} onClick={handleClick}>
           <div>
             <div className={s.flex}>
               {

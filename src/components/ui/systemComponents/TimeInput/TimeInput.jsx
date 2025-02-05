@@ -2,7 +2,7 @@ import s from './TimeInput.module.scss';
 import {useEffect, useRef, useState} from "react";
 import Checkboxes from "@/components/ui/systemComponents/Checkboxes/Checkboxes.jsx";
 
-const TimeInput = ({time, setTime, label, classname, dontKnowTime, setDontKnowTime = ''}) => {
+const TimeInput = ({time, setTime, label, classname='', dontKnowTime, setDontKnowTime = ''}) => {
 
   const ref = useRef()
   

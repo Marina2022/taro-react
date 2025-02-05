@@ -3,7 +3,7 @@ import s from './Tabs.module.scss'
 const Tabs = ({tabs, selectedTab, setSelectedTab, label, classname='', direction='horizontal'}) => {
   return (
     <div className={classname}>
-      <div className={s.label}>{label}</div>
+      <label className={s.label}>{label}</label>
       <ul className={direction === 'horizontal' ? s.tabsWrapper : s.tabsWrapperVertical}>
         {
           tabs.map((tab, i) => {

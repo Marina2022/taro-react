@@ -70,6 +70,8 @@ const OnboardingPage = () => {
 
     }
   }, [selectedCountry, prefix])
+  
+  if (onboardingCountries.length === 0) return null
 
   const buildNatalMap = async () => {
     try {

@@ -1,6 +1,7 @@
 @use '@/assets/styles/mixins' as *;
 
 .underlay {
+  z-index: 2;
   position: fixed;
   left: 0;
   top: 0;
@@ -18,6 +19,7 @@
   transform: translate(-50%) translateY(-50%);
   width: 375px;
   min-height: 328px;
+  min-height: 318px;
   border-radius: 20px;
   background: #421f47;
   display: flex;
@@ -133,4 +135,8 @@
     color: #ffffff;
     opacity: 0.5;
   }
+}
+
+.popupBtn {
+  margin-top: 32px;
 }

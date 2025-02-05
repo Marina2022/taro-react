@@ -196,7 +196,7 @@ const BirthdayPlacePopup = ({
             />
           </div>
         </div>
-        <Button onClick={handleReadyBtnClick}>Готово</Button>
+        <Button onClick={handleReadyBtnClick} classname={s.popupBtn}>Готово</Button>
       </div>
     </div>
   );

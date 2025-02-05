@@ -6,7 +6,7 @@ import Text12 from "@/components/ui/systemComponents/Text12/Text12.jsx";
 import Text14 from "@/components/ui/systemComponents/Text14/Text14.jsx";
 import InputGroup from "@/components/ui/systemComponents/InputGroup/InputGroup.jsx";
 import React, {useState} from "react";
-import DataInput from "@/components/ui/systemComponents/DataInput/DataInput.jsx";
+import DataInput from "@/components/ui/systemComponents/DateInput/DateInput.jsx";
 import TimeInput from "@/components/ui/systemComponents/TimeInput/TimeInput.jsx";
 import Select from "@/components/ui/systemComponents/Select/Select.jsx";
 import TextATextArea from "@/components/ui/systemComponents/TextArea/TextArea.jsx";

@@ -1,12 +1,12 @@
-import s from './DataInput.module.scss';
+import s from './DateInput.module.scss';
 import {useEffect, useRef} from "react";
-const DataInput = ({label, day, setDay, month, setMonth, year, setYear, autofocus=false, classname=''}) => {
+const DateInput = ({label, day, setDay, month, setMonth, year, setYear, autofocus = false, classname = ''}) => {
   
   const birthInputRef = useRef()
   
-  useEffect(()=>{
-    if (autofocus) birthInputRef.current.focus()
-  }, [])
+  // useEffect(()=>{
+  //   if (autofocus) birthInputRef.current.focus()
+  // }, [])
   
   return (
     <div className={classname}>
@@ -62,4 +62,4 @@ const DataInput = ({label, day, setDay, month, setMonth, year, setYear, autofocu
   );
 };
 
-export default DataInput;
+export default DateInput;

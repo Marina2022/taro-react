@@ -1,6 +1,6 @@
 import s from './Step1.module.scss';
 import Button from "@/components/ui/systemComponents/Button/Button.jsx";
-import DataInput from "@/components/ui/systemComponents/DataInput/DataInput.jsx";
+import DateInput from "@/components/ui/systemComponents/DateInput/DateInput.jsx";
 import {useState} from "react";
 import TimeInput from "@/components/ui/systemComponents/TimeInput/TimeInput.jsx";
 import {daysInMonth} from "@/utils.js";
@@ -55,7 +55,7 @@ const Step1 = ({setStep, day, setDay, month, setMonth, year, setYear, time, setT
           Данные для расчёта натальной карты и персонального гороскопа
         </p>
 
-        <DataInput
+        <DateInput
           label="Дата рождения"
           day={day}
           setDay={setDay}

@@ -1,6 +1,6 @@
 import s from './BirthdayPlaceInput.module.scss';
 
-const BirthdayPlaceInput = ({setPopupOpened, selectedCity, coords}) => {
+const BirthdayPlaceInput = ({setPopupOpened, selectedCity, coords, classname=''}) => {
   
   let inputContent = 'Нажмите для выбора'
   if(selectedCity) {
@@ -12,7 +12,7 @@ const BirthdayPlaceInput = ({setPopupOpened, selectedCity, coords}) => {
   return (
     <div onClick={()=> {      
       setPopupOpened(true)
-    }} className={s.iconContainer}>
+    }} className={`${s.iconContainer} ${classname}`}>
       <div className={s.cityInputBlock}>
         <div className={s.clickText}>
           {inputContent}
