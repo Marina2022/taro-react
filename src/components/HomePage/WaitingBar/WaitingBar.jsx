@@ -10,6 +10,8 @@ import {useEffect, useState} from "react";
 import astrologerImg from '@/assets/img/home/astrologist.png'
 import AskTaroPopupContent from "@/components/AskTaroOrderPage/AskTaroPopupContent/AskTaroPopupContent.jsx";
 
+import tarotIcon from "@/assets/img/home/askIcon.png"
+import compatibilityIcon from "@/assets/img/home/loveIcon.png"
 const WaitingBar = () => {
   const {currentTimer, fetchSituations, situations, isSituationsLoading} = useAppContext()
   const navigate = useNavigate()
@@ -62,10 +64,8 @@ const WaitingBar = () => {
     <div className={s.wrapper}>
       
       <div 
-        className={s.waitingUnderlay}
-        
-          style={{transform: `scaleX(${percent}%)`}}
-      
+        className={s.waitingUnderlay}        
+          style={{transform: `scaleX(${percent}%)`}}      
       ></div>
       
       
@@ -75,8 +75,17 @@ const WaitingBar = () => {
             {
               situations.situation_type === 'astrology_question' && <img className={s.img} src={astrologerImg}/>
             }
+            
+            {
+              situations.situation_type === 'tarot_order' && <img className={s.img} src={tarotIcon}/>
+            }
+     
+            {
+              situations.situation_type === 'compatibility_order' && <img className={s.img} src={compatibilityIcon}/>
+            }
+
             <div>
-              <div className={s.title}>
+            <div className={s.title}>
                 {
                   situations.situation_type !== 'tarot_order' && situationsMapping[situations.situation_type]
                 }
