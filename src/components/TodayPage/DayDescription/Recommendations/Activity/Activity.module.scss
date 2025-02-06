@@ -1,9 +1,7 @@
 @use '@/assets/styles/mixins' as *;
 
 .activity {
-  //margin-bottom: 40px;
-
-  padding: 16px;
+  padding: 26px;
   border-radius: 8px;
   background-color: #553559;
   
@@ -73,6 +71,10 @@
   line-height: 1.4;
 }
 
+.iconWrapper {
+  flex-shrink: 0;
+}
+
 .close {
   width: 16px;
   height: 16px;
@@ -81,6 +83,7 @@
   position: relative;
   top: 3px;
   stroke: #421F47;
+  
   
   
   background: red;
@@ -112,6 +115,7 @@
 .greenCheck {
   position: relative;
   top: -6px;
+  flex-shrink: 0;  
 }
 
 .iconWrapper {
