@@ -74,7 +74,7 @@ const TaroAnswerPage = () => {
 
           <div className={s.rightPart}>
 
-            <Header20 classname={s.title}>Выпавший расклад:</Header20>
+            {/*<Header20 classname={s.title}>Выпавший расклад:</Header20>*/}
 
             <div className={s.resultWrapper}>
               <img className={s.resultImg} src={"https://my.aspectum.app/" + answer.svg_url} alt="result"/>
