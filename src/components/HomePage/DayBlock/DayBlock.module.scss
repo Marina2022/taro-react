@@ -100,18 +100,15 @@
 
 .shortDayOfWeek {
   font-size: 24px;
-  //margin-bottom: 44px;  
-  margin-bottom: 38px;  
+  margin-bottom: 37px;  
   
   @include m {    
     font-size: 3.7vw;
-    //margin-bottom: 7vw;
     margin-bottom: 5vw;
   }
   
   @include xs {
     font-size: 3.7vw;    
-    //margin-bottom: 6.7vw;
     margin-bottom: 6vw;
   }
 }
