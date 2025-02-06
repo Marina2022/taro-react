@@ -20,8 +20,6 @@ const CompatibilitySelect = () => {
         setIsLoading(true)
         const result = await axiosInstance(`api/compatibility/select/`)
         setData(result.data)
-
-        console.log(result.data)
       } catch (err) {
         console.log(err)
       } finally {

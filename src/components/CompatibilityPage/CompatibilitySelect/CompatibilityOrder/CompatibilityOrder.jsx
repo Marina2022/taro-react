@@ -200,7 +200,7 @@ const CompatibilityOrder = () => {
                 ]
               }/>
           </div>
-          <div className={s.row}>
+          <div className={`${s.row} ${s.secondRow}`}>
             <div className={s.inRowPart}>
               <DateInput
                 label="Дата рождения"

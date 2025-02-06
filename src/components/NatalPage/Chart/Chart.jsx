@@ -44,7 +44,7 @@ const Chart = () => {
     minute: "2-digit",
   });
 
-  const resultedDate = formattedDate.replace(" г.", "").replace(",", "").replace(" в ", " - ");
+  const resultedDate = formattedDate.replace(",", "").replace(" в ", " - ");
 
   if (isLoading) return <Spinner />
 

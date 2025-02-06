@@ -2,10 +2,11 @@ import axios from "axios";
 
 axios.defaults.baseURL = 'https://my.aspectum.app/'
 
+export const baseURL = 'https://my.aspectum.app/'
 
 const axiosInstance = axios.create({
   withCredentials: true,
-  baseURL: 'https://my.aspectum.app/',
+  baseURL: baseURL,
   headers: {
     'Content-Type': 'application/json',
   }

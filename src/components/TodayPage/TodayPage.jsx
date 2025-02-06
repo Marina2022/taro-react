@@ -33,12 +33,19 @@ const TodayPage = () => {
     getDay()
   }, [])
 
-  const startDate = daysData?.[0]?.date.replaceAll('-', '.')
-  const endDate = daysData?.[6]?.date.replaceAll('-', '.')
-  const weekHeading = `Неделя c ${startDate} по ${endDate}`
 
   if (isLoading) return <Spinner/>
-    
+
+  const [day1, month1, year1] = daysData?.[0]?.date.split('-')
+  const date1 = new Date(`${year1}-${month1}-${day1}`)
+  const startDate = date1.toLocaleDateString('ru-RU', {day: 'numeric', month: 'long'});
+  
+  const [day2, month2, year2] = daysData?.[6]?.date.split('-')
+  const date2 = new Date(`${year2}-${month2}-${day2}`)
+  const endDate = date2.toLocaleDateString('ru-RU', {day: 'numeric', month: 'long'});
+
+  const weekHeading = `Неделя c ${startDate} по ${endDate}`
+
   return (
     <div className='container'>
       <div className={s.todayPage}>
@@ -62,8 +69,8 @@ const TodayPage = () => {
           </div>
         </div>
 
-        <DayDescription day={daysData[currentDayIndex]} />
-                
+        <DayDescription day={daysData[currentDayIndex]}/>
+
       </div>
 
     </div>

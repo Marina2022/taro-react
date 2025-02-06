@@ -1,15 +1,21 @@
 @use '@/assets/styles/mixins' as *;
 
 .waitingBar {
-  border-radius: 16px;
+  z-index: 2;
+  position: absolute;
+  top: 0;
+  left: 0;
+  
+  //border-radius: 16px;
   padding: 20px;
-  border: 1px solid rgb( 255 255 255/.2);
+  padding-bottom: 18px;
+  //border: 1px solid rgb( 255 255 255/.2);
   width: 100%;  
   display: flex;
   align-items: center;
   justify-content: space-between;
   cursor: pointer;
-  margin-bottom: 16px;
+  
   
   @include xs {
     padding: 16px;
@@ -49,4 +55,35 @@
 .flex {
   display: flex;
   gap: 20px;
+}
+
+.waitingUnderlay {
+  transition: transform 0.3s ease-in-out;
+  //border: 1px solid rgb( 255 255 255/.2);
+  transform-origin: left;
+  //border-radius: 16px;
+  z-index: 1;
+  position: absolute;
+  left: -1px;
+  right: -1px;
+  top: -1px;
+  bottom: -1px;
+  height: 98px;
+  
+  //height: 100%;
+  background: linear-gradient(
+                  to right,
+                  rgba(255, 185, 76, 0.2) 0%,    /* 50% прозрачности в начале */
+                  rgba(255, 185, 76, 0.1) 70%,   /* 30% прозрачности в центре */
+                  rgba(255, 185, 76, 0.2) 100%   /* 50% прозрачности в конце */
+  );
+}
+
+.wrapper {
+  height: 94px;
+  position: relative;
+  margin-bottom: 16px;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgb( 255 255 255/.2);
 }

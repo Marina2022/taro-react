@@ -8,6 +8,7 @@ import astrologerImg from "@/assets/img/home/astrologist.png";
 import Header20 from "@/components/ui/systemComponents/Header20/Header20.jsx";
 import Text16 from "@/components/ui/systemComponents/Text16/Text16.jsx";
 import Spinner from "@/components/ui/Spinner/Spinner.jsx";
+import QuoteBlock from "@/components/ui/systemComponents/QuoteBlock/QuoteBlock.jsx";
 
 const TaroAnswerPage = () => {
 
@@ -36,6 +37,12 @@ const TaroAnswerPage = () => {
 
   const answerParagraphs = answer.layout_text.split("\n\n")
 
+  const allButLast = answerParagraphs.slice(0, answerParagraphs.length - 1);
+    
+  const [day, month, year] = answer.order_date.split('-');
+  const date = new Date(`${year}-${month}-${day}`);
+  const formattedDate = date.toLocaleDateString('ru-RU', {day: 'numeric', month: 'long', year: 'numeric'});
+
   return (
     <div className={s.astrologerAnswer}>
       <div className='container'>
@@ -44,30 +51,42 @@ const TaroAnswerPage = () => {
           name={answer.layout_name}
           imageUrl={astrologerImg}>
           {
-            answer.order_date
+            formattedDate
           }
         </AstrologerCard>
-        <Header20 classname={s.title}>Ваша ситуация:</Header20>
-        <Text16>
-          {answer.situation_description}
-        </Text16>
 
-        <Header20 classname={s.title}>Ваш вопрос:</Header20>
-        <Text16>
-          {answer.user_question}
-        </Text16>
 
-        <Header20 classname={s.title}>Выпавший расклад:</Header20>
+        <div className={s.flexContainer}>
 
-        <div className={s.resultWrapper}>
-          <img className={s.resultImg} src={"https://my.aspectum.app/" + answer.svg_url} alt="result"/>
+          <div className={s.leftPart}>
+
+            <Header20 classname={s.title}>Ваша ситуация:</Header20>
+            <Text16 classname={s.text}>
+              {answer.situation_description}
+            </Text16>
+
+            <Header20 classname={s.title}>Ваш вопрос:</Header20>
+            <Text16 classname={s.text}>
+              {answer.user_question}
+            </Text16>
+
+          </div>
+
+          <div className={s.rightPart}>
+
+            <Header20 classname={s.title}>Выпавший расклад:</Header20>
+
+            <div className={s.resultWrapper}>
+              <img className={s.resultImg} src={"https://my.aspectum.app/" + answer.svg_url} alt="result"/>
+            </div>
+          </div>
         </div>
-
+        
         <Header20 classname={s.answerTitle}>Трактовка расклада:</Header20>
-        <Text16>
+        <Text16 classname={s.text}>
           {
-            answerParagraphs.map((paragraph, i) => {
-              const innerParagraphs = paragraph.split("\r\n")
+            allButLast.map((paragraph, i) => {
+              const innerParagraphs = paragraph.split("\r\n");              
               return (
                 <div className={s.par} key={i}>
                   {
@@ -84,6 +103,16 @@ const TaroAnswerPage = () => {
             })
           }
         </Text16>
+        
+        
+        <QuoteBlock>
+          {
+            
+            
+             answerParagraphs[answerParagraphs.length-1]
+          }
+          
+        </QuoteBlock>
       </div>
     </div>
   );

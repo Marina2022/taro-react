@@ -1,0 +1,31 @@
+
+@use '@/assets/styles/mixins' as *;
+
+.itemWrapper {
+  display:  flex;
+  gap: 20px;
+  width: 100%;
+  flex:1;
+  align-items: flex-start;
+  
+  @include xs {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+
+.progressBar {
+  width: 100%;
+  & label {
+    display: none;
+  }
+}
+
+.name {
+  width: 200px;
+  line-height: .9;
+  
+  @include xs {
+    font-size: 14px;
+  }
+}

@@ -1,0 +1,94 @@
+@use '@/assets/styles/mixins' as *;
+
+.personBar {
+  border-radius: 16px;
+  padding: 20px;
+  border: 1px solid rgb( 255 255 255/.2);
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  margin-bottom: 20px;
+  gap: 20px;
+
+  @include xs {
+    padding: 16px;
+  }
+}
+
+.clock {
+  font-weight: 400;
+}
+
+.personDescWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.desc {
+  font-size: 16px;
+  color: #c7afc1;
+  
+  &:last-child {
+    font-size: 14px;
+  }
+  
+  @include xs {
+    font-size: 14px;
+  }
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+  fill: #FFB94C;
+}
+
+.title {  
+  font-size: 18px;
+  margin-bottom: 10px;
+
+  @include xs {
+    font-size: 20px;
+    font-size: 16px;
+    margin-bottom: 6px;
+  }
+}
+
+.img {
+  width: 60px;
+  height: 60px;
+  border-radius: 20%;
+}
+
+.flex {
+  display: flex;
+  gap: 20px;
+}
+
+.signIcon {
+  margin-left: auto;
+  margin-right: 4px;
+  
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  height: 40px;
+  width: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  @include xs {
+    height: 36px;
+    width: 36px;
+  }
+}
+
+.mobileHidden {
+  
+  @include xs {
+    display: none;
+  }
+}

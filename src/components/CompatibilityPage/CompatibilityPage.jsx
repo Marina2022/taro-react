@@ -11,8 +11,7 @@ const CompatibilityPage = () => {
         <Header24 classname={s.mainTitle}>СОВМЕСТИМОСТЬ</Header24>
         <Outlet />
       </div>
-    </div>
-    
+    </div>    
   );
 };
 

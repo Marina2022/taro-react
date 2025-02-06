@@ -6,7 +6,7 @@ import {useNavigate} from "react-router-dom";
 import WaitingPopup from "@/components/ui/WaitingPopup/WaitingPopup.jsx";
 import AskAstrologerPopupContent
   from "@/components/AskAstrologerPage/AskAstrologerPopupContent/AskAstrologerPopupContent.jsx";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import astrologerImg from '@/assets/img/home/astrologist.png'
 import AskTaroPopupContent from "@/components/AskTaroOrderPage/AskTaroPopupContent/AskTaroPopupContent.jsx";
 
@@ -14,6 +14,8 @@ const WaitingBar = () => {
   const {currentTimer, fetchSituations, situations, isSituationsLoading} = useAppContext()
   const navigate = useNavigate()
   const [isOpen, setIsOpen] = useState(false)
+
+
 
   const handleClick = () => {
     if (situations.status === 'completed') {   // todo в зависимости от типа ситуации будут разные ссылки
@@ -54,8 +56,19 @@ const WaitingBar = () => {
     return null
   }
 
+  const percent =  (60 - currentTimer) / 60 * 100
+  
   return (
-    <>
+    <div className={s.wrapper}>
+      
+      <div 
+        className={s.waitingUnderlay}
+        
+          style={{transform: `scaleX(${percent}%)`}}
+      
+      ></div>
+      
+      
       <div className={s.waitingBar} onClick={handleClick}>
         <div>
           <div className={s.flex}>
@@ -117,7 +130,7 @@ const WaitingBar = () => {
         }
                 
       </WaitingPopup>
-    </>
+    </div>
   );
 };
 

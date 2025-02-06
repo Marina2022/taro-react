@@ -8,7 +8,7 @@ import axiosInstance from "@/api/axiosInstance.js";
 import {useAppContext} from "@/contexts/appContext.jsx";
 
 const DayBlock = ({classname}) => {
-    
+
     const {isDayLoading, setIsDayLoading, setDayQuality, dayQuality} = useAppContext()
 
     useEffect(() => {
@@ -34,10 +34,7 @@ const DayBlock = ({classname}) => {
 
     const date = new Date()
 
-    const formattedDate = date.toLocaleDateString('ru-RU', {
-      day: '2-digit',
-      month: '2-digit',
-    });
+    const formattedDate = date.toLocaleDateString('ru-RU', {day: 'numeric', month: 'long'});
 
     const dayOfWeek = date.toLocaleDateString('ru-RU', {weekday: 'long'});
     const dayOfWeekCapitalized = dayOfWeek.charAt(0).toUpperCase() + dayOfWeek.slice(1)
@@ -47,7 +44,7 @@ const DayBlock = ({classname}) => {
       <Link to="/day-energy"
             className={`${s.card} ${classname}`}>
         <div className={s.bordered}>
-          <div className={s.shortDayOfWeek}>{formattedDate} {dayOfWeekCapitalized}</div>
+          <div className={s.shortDayOfWeek}>{formattedDate}<br/>{dayOfWeekCapitalized}</div>
 
           {
             !isDayLoading && <div className={s.chartWrapper}>

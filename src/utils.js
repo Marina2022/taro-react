@@ -14,3 +14,19 @@ export const daysInMonth = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 export const addLeadingZero = (num) => {
   return num < 10 ? `0${num}` : `${num}`
 }
+
+export function getYearsString(num) {
+  if (num % 100 >= 11 && num % 100 <= 14) {
+    return `${num} лет`
+  }
+
+  const lastDigit = num % 10;
+
+  if (lastDigit === 1) {
+    return `${num} год`
+  } else if (lastDigit >= 2 && lastDigit <= 4) {
+    return `${num} года`
+  } else {
+    return `${num} лет`
+  }
+}

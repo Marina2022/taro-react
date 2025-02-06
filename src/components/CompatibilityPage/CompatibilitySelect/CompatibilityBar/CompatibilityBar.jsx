@@ -44,7 +44,7 @@ const CompatibilityBar = ({data, setData}) => {
           <div>
             <div className={s.flex}>
               {
-                <img className={s.img} src={loveIcon}/>  // todo иконка совместимость
+                <img className={s.img} src={loveIcon}/>  
               }
               <div>
                 <div className={s.title}>

@@ -1,7 +1,11 @@
 @use '@/assets/styles/mixins' as *;
 
 .activity {
-  margin-bottom: 40px;
+  //margin-bottom: 40px;
+
+  padding: 16px;
+  border-radius: 8px;
+  background-color: #553559;
   
   &:last-child {
     margin-bottom: 50px;
@@ -12,7 +16,7 @@
   }
 
   @include xs {
-    margin-bottom: 20px;            
+    //margin-bottom: 20px;            
   }
 }
 
@@ -76,6 +80,12 @@
   flex-shrink: 0;
   position: relative;
   top: 3px;
+  stroke: #421F47;
+  
+  
+  background: red;
+  border-radius: 50%;
+  padding: 3px;
 }
 
 .check {
@@ -98,3 +108,27 @@
     padding-block: 3px;
   }
 }
+
+.greenCheck {
+  position: relative;
+  top: -6px;
+}
+
+.iconWrapper {
+  position: relative;
+  top: 10px;
+  width: 32px;
+  
+  svg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50% );
+    
+  }
+  
+} 
+
+.redIcon {
+  fill: red;
+ }
