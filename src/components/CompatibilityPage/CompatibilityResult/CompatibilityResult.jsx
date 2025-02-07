@@ -11,6 +11,9 @@ import CompatibilityCharts
   from "@/components/CompatibilityPage/CompatibilityResult/CompatibilityCharts/CompatibilityCharts.jsx";
 import CompatibilityResultText
   from "@/components/CompatibilityPage/CompatibilityResult/CompatibilityResultText/CompatibilityResultText.jsx";
+import AdditionalNavButtons from "@/components/NatalPage/AdditionalNavButtons/AdditionalNavButtons.jsx";
+import CompatAdditionalNavButtons
+  from "@/components/CompatibilityPage/CompatibilityResult/CompatAdditionalNavButtons/CompatAdditionalNavButtons.jsx";
 
 const CompatibilityResult = () => {
 
@@ -41,12 +44,16 @@ const CompatibilityResult = () => {
   if (isLoading) return <Spinner/>
 
   const sinastry = result.sinastry_text.split("\n\n")
+
+  console.log('sinastry',sinastry)
+  
   const matches = result.matches.split("\n\n")
   const dissonances = result.dissonances.split("\n\n")
 
   return (
     <div>
       <PersonBar data={result}/>
+      
       <PersonSVGPicture pictureUrl={result.svg_url}/>
       {/*<PersonSVGPicture pictureUrl="/natal/chart-svg/" />*/}
 
@@ -67,7 +74,10 @@ const CompatibilityResult = () => {
       {
         dissonances.length > 0 &&  <CompatibilityResultText pars={dissonances} title="Диссонансы" />
       }
+      
+      <div className={s.nowWeCan}>Теперь, когда мы рассчитали взаимное влияние двух натальных карт, можно ответить на многие вопросы о взаимодействии вас и этого человека</div>
 
+      <CompatAdditionalNavButtons sections={result.sections}/>
 
     </div>
   );
