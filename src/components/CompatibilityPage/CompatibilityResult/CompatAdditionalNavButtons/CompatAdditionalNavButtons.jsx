@@ -4,7 +4,7 @@ import SectionButton from "@/components/NatalPage/AdditionalNavButtons/SectionBu
 import CompatSectionButton
   from "@/components/CompatibilityPage/CompatibilityResult/CompatAdditionalNavButtons/CompatSectionButton/CompatSectionButton.jsx";
 
-const CompatAdditionalNavButtons = ({sections}) => {
+const CompatAdditionalNavButtons = ({sections, userId}) => {
 
   console.log(sections)
   
@@ -16,7 +16,7 @@ const CompatAdditionalNavButtons = ({sections}) => {
         <ul className={s.buttonsList}>
           {
             // sections.map((section, i) => <CompatSectionButton key={i} section={section}/>)
-            testSections.map((section, i) => <CompatSectionButton key={i} section={section}/>)
+            testSections.map((section, i) => <CompatSectionButton key={i} section={section} userId={userId} />)
           }
         </ul>
       </div>

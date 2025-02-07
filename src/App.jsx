@@ -22,7 +22,9 @@ import CompatibilitySelect from "@/components/CompatibilityPage/CompatibilitySel
 import Compatibility from "@/pages/Compatibility.jsx";
 import CompatibilityResult from "@/components/CompatibilityPage/CompatibilityResult/CompatibilityResult.jsx";
 import CompatibilityOrder
-  from "@/components/CompatibilityPage/CompatibilitySelect/CompatibilityOrder/CompatibilityOrder.jsx";
+  from "@/components/CompatibilityPage/CompatibilityOrder/CompatibilityOrder.jsx";
+import CompatibilityQuestion from "@/components/CompatibilityPage/CompatibilityQuestion/CompatibilityQuestion.jsx";
+import CompatibilityAnswer from "@/components/CompatibilityPage/CompatibilityAnswer/CompatibilityAnswer.jsx";
 
 function App() {
 
@@ -128,8 +130,8 @@ function App() {
             <Route path='/compatibility' element={<Compatibility/>}>
               <Route path='/compatibility/select' index element={<CompatibilitySelect/>}/>
               <Route path='/compatibility/order' element={<CompatibilityOrder/>}/>
-              {/*<Route path='/compatibility/question/:id/:theme' index element={<CompatibilityQuestion/>}/>*/}
-              {/*<Route path='/compatibility/answer/:id/:theme' index element={<CompatibilityAnswer/>}/>*/}
+              <Route path='/compatibility/question/:id/:theme' index element={<CompatibilityQuestion/>}/>
+              <Route path='/compatibility/answer/:id/:theme' index element={<CompatibilityAnswer/>}/>
               <Route path='/compatibility/result/:id' index element={<CompatibilityResult/>}/>
             </Route>
             

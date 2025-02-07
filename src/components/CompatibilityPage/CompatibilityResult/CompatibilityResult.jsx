@@ -77,7 +77,7 @@ const CompatibilityResult = () => {
       
       <div className={s.nowWeCan}>Теперь, когда мы рассчитали взаимное влияние двух натальных карт, можно ответить на многие вопросы о взаимодействии вас и этого человека</div>
 
-      <CompatAdditionalNavButtons sections={result.sections}/>
+      <CompatAdditionalNavButtons sections={result.sections} userId={id} />
 
     </div>
   );

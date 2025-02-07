@@ -13,8 +13,6 @@
   transition: background-color 0.3s ease;
   margin-left: -24px;
   border-radius: 16px;
-
-
   display: flex;
   background-color: #4d2e52;
   border-radius: 12px;
@@ -32,12 +30,21 @@
   @include m {
     margin-left: 0;
     width: 100%;
-    //padding-inline: 4px;
     padding-block: 16px;
 
     &:hover {
       background-color: transparent;
     }
+  }
+}
+
+.disabled {
+  
+  cursor: auto;
+  background-color: transparent;
+
+  &:hover {
+    background-color: transparent;
   }
 }
 
@@ -80,13 +87,16 @@
   opacity: .8;
 }
 
-.lockIcon {
-  width: 18px;
-  height: 18px;
-  margin-left: auto;
-  opacity: .8;
-}
 
 .clockIcon {
+  width: 20px;
+  height: 20px;
+  margin-left: auto;  
+}
+
+.readyIcon {
+  width: 20px;
+  height: 20px;
+  fill: #FFB94C;
   margin-left: auto;
 }
