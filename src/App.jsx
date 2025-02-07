@@ -19,10 +19,8 @@ import AskTaroOrderPage from "@/components/AskTaroOrderPage/AskTaroOrderPage.jsx
 import axiosInstance from "@/api/axiosInstance.js";
 import TaroAnswerPage from "@/components/TaroAnswerPage/TaroAnswerPage.jsx";
 import CompatibilitySelect from "@/components/CompatibilityPage/CompatibilitySelect/CompatibilitySelect.jsx";
-import Compatibility from "@/pages/Compatibility.jsx";
 import CompatibilityResult from "@/components/CompatibilityPage/CompatibilityResult/CompatibilityResult.jsx";
-import CompatibilityOrder
-  from "@/components/CompatibilityPage/CompatibilityOrder/CompatibilityOrder.jsx";
+import CompatibilityOrder from "@/components/CompatibilityPage/CompatibilityOrder/CompatibilityOrder.jsx";
 import CompatibilityQuestion from "@/components/CompatibilityPage/CompatibilityQuestion/CompatibilityQuestion.jsx";
 import CompatibilityAnswer from "@/components/CompatibilityPage/CompatibilityAnswer/CompatibilityAnswer.jsx";
 
@@ -127,13 +125,13 @@ function App() {
               <Route path='/natal/description/:feature' element={<NatalFeaturePage/>}/>
             </Route>
 
-            <Route path='/compatibility' element={<Compatibility/>}>
+            {/*<Route path='/compatibility' element={<Compatibility/>}>*/}
               <Route path='/compatibility/select' index element={<CompatibilitySelect/>}/>
               <Route path='/compatibility/order' element={<CompatibilityOrder/>}/>
               <Route path='/compatibility/question/:id/:theme' index element={<CompatibilityQuestion/>}/>
               <Route path='/compatibility/answer/:id/:theme' index element={<CompatibilityAnswer/>}/>
               <Route path='/compatibility/result/:id' index element={<CompatibilityResult/>}/>
-            </Route>
+            {/*</Route>*/}
             
             <Route path='*' element={<div className='container'>Not found</div>}/>
           </Route>

@@ -53,6 +53,12 @@ const SystemPage = () => {
   return (
     <div className={s.systemContainer}>
 
+      <div className={s.card}>
+        Magic Card
+      </div>
+
+      
+
 
       {/*Заголовки*/}
       <Header24>Заголовок 24</Header24>

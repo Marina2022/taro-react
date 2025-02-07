@@ -14,6 +14,7 @@ import CompatibilityResultText
 import AdditionalNavButtons from "@/components/NatalPage/AdditionalNavButtons/AdditionalNavButtons.jsx";
 import CompatAdditionalNavButtons
   from "@/components/CompatibilityPage/CompatibilityResult/CompatAdditionalNavButtons/CompatAdditionalNavButtons.jsx";
+import Header24 from "@/components/ui/systemComponents/Header24/Header24.jsx";
 
 const CompatibilityResult = () => {
 
@@ -27,9 +28,7 @@ const CompatibilityResult = () => {
         setIsLoading(true)
         const result = await axiosInstance(`api/compatibility/answer/${id}`)
         setResult(result.data)
-
-        console.log(result.data)
-
+        
       } catch (err) {
         console.log(err)
       } finally {
@@ -44,41 +43,44 @@ const CompatibilityResult = () => {
   if (isLoading) return <Spinner/>
 
   const sinastry = result.sinastry_text.split("\n\n")
-
-  console.log('sinastry',sinastry)
-  
   const matches = result.matches.split("\n\n")
   const dissonances = result.dissonances.split("\n\n")
 
   return (
-    <div>
-      <PersonBar data={result}/>
-      
-      <PersonSVGPicture pictureUrl={result.svg_url}/>
-      {/*<PersonSVGPicture pictureUrl="/natal/chart-svg/" />*/}
 
-      <ShortInfo data={result}/>
-      <Header20 classname={s.integralHeader}>
-        ИНТЕГРАЛЬНАЯ СОВМЕСТИМОСТЬ:&nbsp;{result.integral_compatibility}%
-      </Header20>
-      <CompatibilityCharts biorhythms={result.biorhythms}/>
+    <div className={s.compatResult}>
+      <div className="container">
+        <Header24 classname={s.mainTitle}>СОВМЕСТИМОСТЬ</Header24>
 
-      {
-        sinastry.length > 0 &&  <CompatibilityResultText pars={sinastry} title="Синастрия" />  
-      }
+        <PersonBar data={result}/>
 
-      {
-        matches.length > 0 &&  <CompatibilityResultText pars={matches} title="Сочетания" />
-      }
+        <PersonSVGPicture pictureUrl={result.svg_url}/>
+        
+        <ShortInfo data={result}/>
+        <Header20 classname={s.integralHeader}>
+          ИНТЕГРАЛЬНАЯ СОВМЕСТИМОСТЬ:&nbsp;{result.integral_compatibility}%
+        </Header20>
+        <CompatibilityCharts biorhythms={result.biorhythms}/>
 
-      {
-        dissonances.length > 0 &&  <CompatibilityResultText pars={dissonances} title="Диссонансы" />
-      }
-      
-      <div className={s.nowWeCan}>Теперь, когда мы рассчитали взаимное влияние двух натальных карт, можно ответить на многие вопросы о взаимодействии вас и этого человека</div>
+        {
+          sinastry.length > 0 && <CompatibilityResultText pars={sinastry} title="Синастрия"/>
+        }
 
-      <CompatAdditionalNavButtons sections={result.sections} userId={id} />
+        {
+          matches.length > 0 && <CompatibilityResultText pars={matches} title="Сочетания"/>
+        }
 
+        {
+          dissonances.length > 0 && <CompatibilityResultText pars={dissonances} title="Диссонансы"/>
+        }
+
+        <div className={s.nowWeCan}>Теперь, когда мы рассчитали взаимное влияние двух натальных карт, можно ответить на
+          многие вопросы о взаимодействии вас и этого человека
+        </div>
+
+        <CompatAdditionalNavButtons sections={result.sections} userId={id}/>
+
+      </div>
     </div>
   );
 };

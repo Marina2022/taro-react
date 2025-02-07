@@ -3,10 +3,10 @@ import {useNavigate} from "react-router-dom";
 import {BsExclamationCircle} from "react-icons/bs";
 
 const CompatSectionButton = ({section, userId}) => {
-  
+
   const navigate = useNavigate()
-  const clickHandler = ()=>{
-        
+  const clickHandler = () => {
+
     if (section.in_progress) return
 
     if (section.completed) {
@@ -14,22 +14,20 @@ const CompatSectionButton = ({section, userId}) => {
       return
     }
 
-    if (!section.completed && !section.in_progress) {      
-      navigate(`/compatibility/question/${userId}/${section.followup_name}`)
+    if (!section.completed && !section.in_progress) {
+      navigate(`/compatibility/question/${userId}/${section.followup_name}`, {state: {questions: section.questions, name: section.name}})
       return
     }
   }
-  
-  return (
-    <li 
-      
-      style={{backgroundColor: section.completed ? 'rgba(255, 185, 76, 0.16)' : ''}}
-      className={`${s.sectionButton}  ${ section.in_progress ? s.disabled : null}`} onClick={clickHandler} >
-      <span
-        style={{opacity: section.in_progress ? .5 : 1 }}
-        className={s.buttonName}>{section.name}</span>
-           
 
+  return (
+    <li
+      style={{backgroundColor: section.completed ? 'rgba(255, 185, 76, 0.16)' : ''}}
+      className={`${s.sectionButton}  ${section.in_progress ? s.disabled : null}`} onClick={clickHandler}>
+      <span
+        style={{opacity: section.in_progress ? .5 : 1}}
+        className={s.buttonName}>{section.name}
+      </span>
       {
         section.in_progress && (
           <svg className={s.clockIcon} width="16" height="17" viewBox="0 0 16 17" fill="none"
@@ -40,7 +38,7 @@ const CompatSectionButton = ({section, userId}) => {
           </svg>
         )
       }
-      
+
       {
         section.completed && <BsExclamationCircle className={s.readyIcon}/>
       }
@@ -48,7 +46,6 @@ const CompatSectionButton = ({section, userId}) => {
       {
         !section.in_progress && !section.completed && <div className={s.listItemChevron}></div>
       }
-
 
     </li>
   );

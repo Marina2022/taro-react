@@ -3,20 +3,19 @@ import Header20 from "@/components/ui/systemComponents/Header20/Header20.jsx";
 import SectionButton from "@/components/NatalPage/AdditionalNavButtons/SectionButton/SectionButton.jsx";
 import CompatSectionButton
   from "@/components/CompatibilityPage/CompatibilityResult/CompatAdditionalNavButtons/CompatSectionButton/CompatSectionButton.jsx";
+import React from "react";
 
 const CompatAdditionalNavButtons = ({sections, userId}) => {
 
-  console.log(sections)
-  
-  const testSections = [...sections, { ...sections[0], completed: true}, {...sections[1], in_progress: true}]
+  const testSections = [...sections, { ...sections[0], completed: true, in_progress: false}, {...sections[1], in_progress: true, completed: false}]
   
   return (
     <div>      
       <div className={s.wrapper}>
         <ul className={s.buttonsList}>
           {
-            // sections.map((section, i) => <CompatSectionButton key={i} section={section}/>)
-            testSections.map((section, i) => <CompatSectionButton key={i} section={section} userId={userId} />)
+            sections.map((section, i) => <CompatSectionButton key={i} section={section} userId={userId} />)
+            //testSections.map((section, i) => <CompatSectionButton key={i} section={section} userId={userId} />)
           }
         </ul>
       </div>
@@ -24,4 +23,4 @@ const CompatAdditionalNavButtons = ({sections, userId}) => {
   );
 };
 
-export default CompatAdditionalNavButtons;
+export default React.memo(CompatAdditionalNavButtons);

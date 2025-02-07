@@ -15,4 +15,4 @@ const CompatibilityPage = () => {
   );
 };
 
-export default CompatibilityPage;
+export default React.memo(CompatibilityPage);

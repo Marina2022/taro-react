@@ -1,0 +1,59 @@
+@use '@/assets/styles/mixins' as *;
+
+.compatQuestion {
+  padding-bottom: 100px;
+  margin-top: -48px;
+
+  @include xs {
+    margin-top: -44px;
+  }
+}
+
+.mainTitle {
+  text-align: center;
+  margin-bottom: 42px;
+
+  @include m {
+    font-size: 22px;
+  }
+
+  @include xs {
+    font-size: 16px;
+    margin-bottom: 28px;
+  }
+}
+
+
+.text {
+  margin-top: 40px;
+  margin-bottom: 32px;
+  font-size: 16px;
+  line-height: 1.5;
+  
+}
+
+.timeText {
+  margin-top: 50px;
+  margin-bottom: 24px;
+  font-size: 16px;
+  opacity: .8;
+  line-height: 1.5;  
+}
+
+.check {
+  flex-shrink: 0;
+  position: relative;
+  //top: 3px;
+}
+
+.item {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  margin-bottom: 20px;  
+}
+
+.btn {
+  margin-top: 40px;
+}
+

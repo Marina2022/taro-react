@@ -34,6 +34,10 @@ const WaitingBar = () => {
         navigate(`/compatibility/result/${situations.related_object_id}`)
       }
 
+      if (situations.situation_type === 'compatibility_question') {
+        navigate(`/compatibility/answer/${situations.compatibility_id}/${situations.question_name}`)
+      }
+
     } else if (situations.status === 'in_progress') {
       setIsOpen(true)
     }
@@ -58,7 +62,7 @@ const WaitingBar = () => {
     return null
   }
 
-  const percent =  (60 - currentTimer) / 60 * 100
+  const percent =  (situations.expected_duration - currentTimer) / situations.expected_duration * 100
   
   return (
     <div className={s.wrapper}>
@@ -83,6 +87,10 @@ const WaitingBar = () => {
             {
               situations.situation_type === 'compatibility_order' && <img className={s.img} src={compatibilityIcon}/>
             }
+     
+            {
+              situations.situation_type === 'compatibility_question' && <img className={s.img} src={compatibilityIcon}/>
+            }
 
             <div>
             <div className={s.title}>
@@ -96,6 +104,10 @@ const WaitingBar = () => {
 
                 {
                   situations.situation_type === 'compatibility_order' && `Расчет совместимости: ${situations.name}`
+                }
+
+                {
+                  situations.situation_type === 'compatibility_question' && `Вопрос по совместимости`
                 }
               </div>
               {

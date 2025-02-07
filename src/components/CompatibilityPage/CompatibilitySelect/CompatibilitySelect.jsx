@@ -6,6 +6,7 @@ import CompatibilityBar from "@/components/CompatibilityPage/CompatibilitySelect
 import BigBar from "@/components/ui/systemComponents/BigBar/BigBar.jsx";
 import s from './CompatibilitySelect.module.scss'
 import {LuCirclePlus} from "react-icons/lu";
+import Header24 from "@/components/ui/systemComponents/Header24/Header24.jsx";
 
 const CompatibilitySelect = () => {
 
@@ -13,7 +14,7 @@ const CompatibilitySelect = () => {
   const [isLoading, setIsLoading] = useState(true)
 
   const navigate = useNavigate()
-  
+
   useEffect(() => {
     const getData = async () => {
       try {
@@ -31,33 +32,39 @@ const CompatibilitySelect = () => {
 
   }, []);
 
-  
+
   const addPersonHandler = () => {
     navigate('/compatibility/order')
   }
-  
+
   if (isLoading) return <Spinner/>
 
   const testData = [...data, {...data[0], status: 'in_progress', seconds_left: 1000}]
 
   return (
-    <div>
-      <ul>
-        {
-          data.map((item, i) => <CompatibilityBar key={i} data={item}/>)
-          //testData.map((item, i)=> <CompatibilityBar key={i} data={item} />)          
-        }
-      </ul>
+
+    <div className={s.compatSelect}>
+      <div className="container">
+        <Header24 classname={s.mainTitle}>СОВМЕСТИМОСТЬ</Header24>
+
+        <ul>
+          {
+            data.map((item, i) => <CompatibilityBar key={i} data={item}/>)
+            //testData.map((item, i)=> <CompatibilityBar key={i} data={item} />)          
+          }
+        </ul>
 
 
-      <div className={s.card} onClick={addPersonHandler}>
-        <div className={s.cardText}>
-          <p className={s.cardTitle}>Добавить персону</p>
+        <div className={s.card} onClick={addPersonHandler}>
+          <div className={s.cardText}>
+            <p className={s.cardTitle}>Добавить персону</p>
+          </div>
+          <LuCirclePlus className={s.cardIcon}/>
         </div>
-        <LuCirclePlus className={s.cardIcon}/>
-      </div>
 
+      </div>
     </div>
+    
   );
 };
 

@@ -17,13 +17,14 @@ import WaitingPopup from "@/components/ui/WaitingPopup/WaitingPopup.jsx";
 import AskTaroPopupContent from "@/components/AskTaroOrderPage/AskTaroPopupContent/AskTaroPopupContent.jsx";
 import AskAstrologerPopupContent
   from "@/components/AskAstrologerPage/AskAstrologerPopupContent/AskAstrologerPopupContent.jsx";
+import Header24 from "@/components/ui/systemComponents/Header24/Header24.jsx";
 
 const CompatibilityOrder = () => {
 
   const navigate = useNavigate()
   const [isOpen, setIsOpen] = useState(false)
   const [innerTimer, setInnerTimer] = useState(null)
-  
+
   const {fetchSituations} = useAppContext()
 
   const [countriesAreLoading, setCountriesAreLoading] = useState(true)
@@ -146,7 +147,7 @@ const CompatibilityOrder = () => {
       latitude: coords?.lat ? +coords?.lat : "",
       longitude: coords?.lng ? +coords?.lng : ""
     }
-    
+
     try {
       setSending(true)
       const result = await axiosInstance.post('api/compatibility/ask/', requestData)
@@ -173,100 +174,105 @@ const CompatibilityOrder = () => {
     }, 0)
   }
 
+  //compatOrder
+
   return (
-    <>
-      <div>
-        <div className={s.fillData}>Заполните данные человека для расчёта совместимости</div>
-        <form className={s.form}>
-          <div className={s.row}>
-            <InputGroup
-              label="Имя или ник:"
-              placeholder="Имя или никнейм"
-              value={nickname}
-              setValue={setNickname}
-              autofocus={true}
-              classname={s.nickInput}
-            />
-            <Tabs
-              classname={s.sexTabs}
-              label="Пол"
-              selectedTab={selectedSex}
-              setSelectedTab={setSelectedSex}
-              tabs={
-                [
-                  {value: 'male', label: 'Мужской'},
-                  {value: 'female', label: 'Женский'},
-                  {value: 'other', label: 'Небинарный'},
-                ]
-              }/>
-          </div>
-          <div className={`${s.row} ${s.secondRow}`}>
-            <div className={s.inRowPart}>
-              <DateInput
-                label="Дата рождения"
-                day={day}
-                setDay={setDay}
-                month={month}
-                setMonth={setMonth}
-                year={year}
-                setYear={setYear}
+    <div className={s.compatOrder}>
+      <div className="container">
+        <Header24 classname={s.mainTitle}>СОВМЕСТИМОСТЬ</Header24>
+        <div>
+          <div className={s.fillData}>Заполните данные человека для расчёта совместимости</div>
+          <form className={s.form}>
+            <div className={s.row}>
+              <InputGroup
+                label="Имя или ник:"
+                placeholder="Имя или никнейм"
+                value={nickname}
+                setValue={setNickname}
                 autofocus={true}
+                classname={s.nickInput}
               />
+              <Tabs
+                classname={s.sexTabs}
+                label="Пол"
+                selectedTab={selectedSex}
+                setSelectedTab={setSelectedSex}
+                tabs={
+                  [
+                    {value: 'male', label: 'Мужской'},
+                    {value: 'female', label: 'Женский'},
+                    {value: 'other', label: 'Небинарный'},
+                  ]
+                }/>
             </div>
-            <div className={s.inRowPart}>
-              <TimeInput
-                time={time}
-                setTime={setTime}
-                label="Время рождения"
-                dontKnowTime={dontKnowTime}
-                setDontKnowTime={setDontKnowTime}
-                classname={s.timeInput}
-              />
+            <div className={`${s.row} ${s.secondRow}`}>
+              <div className={s.inRowPart}>
+                <DateInput
+                  label="Дата рождения"
+                  day={day}
+                  setDay={setDay}
+                  month={month}
+                  setMonth={setMonth}
+                  year={year}
+                  setYear={setYear}
+                  autofocus={true}
+                />
+              </div>
+              <div className={s.inRowPart}>
+                <TimeInput
+                  time={time}
+                  setTime={setTime}
+                  label="Время рождения"
+                  dontKnowTime={dontKnowTime}
+                  setDontKnowTime={setDontKnowTime}
+                  classname={s.timeInput}
+                />
+              </div>
             </div>
-          </div>
-          <div className={s.row}>
-            <div className={s.inRowPart}>
-              <InputLabel classname={s.countryLabel}>Страна рождения</InputLabel>
-              <Select
-                selectedValue={selectedCountry}
-                onSelect={handleSelect}
-                options={
-                  countries.map(country => ({value: country.id, label: country.name}))
-                }
-              />
-            </div>
+            <div className={s.row}>
+              <div className={s.inRowPart}>
+                <InputLabel classname={s.countryLabel}>Страна рождения</InputLabel>
+                <Select
+                  selectedValue={selectedCountry}
+                  onSelect={handleSelect}
+                  options={
+                    countries.map(country => ({value: country.id, label: country.name}))
+                  }
+                />
+              </div>
 
-            <div className={s.inRowPart}>
-              <InputLabel classname={s.birthdayPlaceLabel}>Место рождения</InputLabel>
-              <BirthdayPlaceInput setPopupOpened={setPopupOpened}
-                                  selectedCity={selectedCity}
-                                  coords={coords}
-                                  classname={s.birthdayPlace}/>
+              <div className={s.inRowPart}>
+                <InputLabel classname={s.birthdayPlaceLabel}>Место рождения</InputLabel>
+                <BirthdayPlaceInput setPopupOpened={setPopupOpened}
+                                    selectedCity={selectedCity}
+                                    coords={coords}
+                                    classname={s.birthdayPlace}/>
+              </div>
             </div>
-          </div>
-          <Button onClick={handleSubmit} classname={s.btn}>Рассчитать</Button>
-        </form>
+            <Button onClick={handleSubmit} classname={s.btn}>Рассчитать</Button>
+          </form>
 
-        {
-          popupOpened && <BirthdayPlacePopup
-            onboardingCities={onboardingCities}
-            setOnboardingCities={setOnboardingCities}
-            showJustPopularCities={showJustPopularCities}
-            setShowJustPopularCities={setShowJustPopularCities}
-            setSelectedCity={setSelectedCity}
-            setCoords={setCoords}
-            selectedCity={selectedCity}
-            setPrefix={setPrefix}
-            setPopupOpened={setPopupOpened}
-          />
-        }
+          {
+            popupOpened && <BirthdayPlacePopup
+              onboardingCities={onboardingCities}
+              setOnboardingCities={setOnboardingCities}
+              showJustPopularCities={showJustPopularCities}
+              setShowJustPopularCities={setShowJustPopularCities}
+              setSelectedCity={setSelectedCity}
+              setCoords={setCoords}
+              selectedCity={selectedCity}
+              setPrefix={setPrefix}
+              setPopupOpened={setPopupOpened}
+            />
+          }
 
+        </div>
+
+        <WaitingPopup isOpen={isOpen} setIsOpen={setIsOpen} onUnderstood={understoodHandler}>
+          <AskAstrologerPopupContent currentTimer={innerTimer}/>
+        </WaitingPopup>
       </div>
-
-      <WaitingPopup isOpen={isOpen} setIsOpen={setIsOpen} onUnderstood={understoodHandler}>
-        <AskAstrologerPopupContent currentTimer={innerTimer} />
-      </WaitingPopup>
-    </>
+    </div>
   )
 }
 
