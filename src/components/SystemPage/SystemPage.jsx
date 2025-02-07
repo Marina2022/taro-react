@@ -49,15 +49,16 @@ const SystemPage = () => {
   const [radioButtonsValue, setRadioButtonsValue] = useState(10)
 
   const [textAreaValue, setTextAreaValue] = useState('')
-  
+
   return (
     <div className={s.systemContainer}>
 
-      <div className={s.card}>
-        Magic Card
-      </div>
 
-      
+      <div className={s.magicCardWrapper}>
+        <div className={s.card}>
+          Magic Card
+        </div>
+      </div>
 
 
       {/*Заголовки*/}
