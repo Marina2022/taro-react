@@ -6,19 +6,46 @@ import {useNavigate} from "react-router-dom";
 import WaitingPopup from "@/components/ui/WaitingPopup/WaitingPopup.jsx";
 import AskAstrologerPopupContent
   from "@/components/AskAstrologerPage/AskAstrologerPopupContent/AskAstrologerPopupContent.jsx";
-import {useEffect, useState} from "react";
+import {useEffect, useRef, useState} from "react";
 import astrologerImg from '@/assets/img/home/astrologist.png'
 import AskTaroPopupContent from "@/components/AskTaroOrderPage/AskTaroPopupContent/AskTaroPopupContent.jsx";
 
 import tarotIcon from "@/assets/img/home/askIcon.png"
 import compatibilityIcon from "@/assets/img/home/loveIcon.png"
 const WaitingBar = () => {
-  const {currentTimer, fetchSituations, situations, isSituationsLoading} = useAppContext()
+  const {fetchSituations, situations, isSituationsLoading} = useAppContext()
   const navigate = useNavigate()
   const [isOpen, setIsOpen] = useState(false)
 
+  const [innerTimerValue, setInnerTimerValue] = useState()
+  const intervalId = useRef()
 
 
+  useEffect(() => {
+        
+    if (situations) setInnerTimerValue(situations.seconds_left)
+    
+  }, [situations]);
+
+  useEffect(() => {
+            
+    if (innerTimerValue >= 0) {
+      
+      intervalId.current = setInterval(() => {
+        setInnerTimerValue((prev) => {
+          
+          if (prev === 0) {
+            clearInterval(intervalId.current); // Остановка таймера, когда значение достигло 0            
+            endHandler()
+            return 0;
+          }          
+          return prev - 1; // Уменьшение таймера
+        });
+      }, 1000);
+      return () => clearInterval(intervalId.current); // Очистка интервала при размонтировании
+    }
+  }, [innerTimerValue, situations]);
+  
   const handleClick = () => {
     if (situations.status === 'completed') {   // todo в зависимости от типа ситуации будут разные ссылки
 
@@ -53,16 +80,20 @@ const WaitingBar = () => {
 
   const endHandler = () => {
 
+    console.log(endHandler)
+
     setTimeout(() => {
       fetchSituations()
     }, 1000)
   }
+   
+  
 
   if (!situations?.situation_type) {
     return null
   }
 
-  const percent =  (situations.expected_duration - currentTimer) / situations.expected_duration * 100
+  const percent =  (situations.expected_duration - innerTimerValue) / situations.expected_duration * 100
   
   return (
     <div className={s.wrapper}>
@@ -112,8 +143,8 @@ const WaitingBar = () => {
               </div>
               {
                 situations.status === 'in_progress' &&
-                <Clock currentTimer={currentTimer} onEnd={endHandler} classname={s.clock} loading={isSituationsLoading}
-                       useGlobalTimer/>
+                <Clock currentTimer={innerTimerValue} classname={s.clock} loading={isSituationsLoading}
+                       />
               }
               {
                 situations.status === 'completed' && <div className={s.ready}>Готово!</div>
@@ -142,12 +173,12 @@ const WaitingBar = () => {
         {/*Для всех случае, кром ответа Таро, открывается попап с AskAstrologerPopupContent*/}
         
         {
-          situations.situation_type !== 'tarot_order' && <AskAstrologerPopupContent currentTimer={currentTimer}/>
+          situations.situation_type !== 'tarot_order' && <AskAstrologerPopupContent currentTimer={innerTimerValue}/>
         }
 
         {
           situations.situation_type === 'tarot_order' &&
-          <AskTaroPopupContent currentTimer={currentTimer} layout={situations.name}/>
+          <AskTaroPopupContent currentTimer={innerTimerValue} layout={situations.name}/>
         }
                 
       </WaitingPopup>
