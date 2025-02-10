@@ -13,11 +13,11 @@ import {useNavigate} from "react-router-dom";
 const BottomPart = () => {
   
   const [messagesAreLoading, setMessagesAreLoading] = useState(true)
-  
   const [messages, setMessages] = useState()
-
+  const {situations} = useAppContext()
+  
   useEffect(() => {
-    const getResult = async () => {
+    const getMessages = async () => {
       try {
         setMessagesAreLoading(true)
         const result = await axiosInstance(`/api/orders/list/`)
@@ -30,20 +30,28 @@ const BottomPart = () => {
       }
     }
 
-    getResult()
+    getMessages()
 
   }, []);
   
   const navigate = useNavigate()
   const messagesClickHandler = ()=>{    
-    navigate('/messages', {state: messages})
+    navigate('/messages')
+  }
+
+  const {fetchSituations, isSituationsLoading} = useAppContext()
+  const endHandler = () => {
+
+    setTimeout(() => {
+      fetchSituations()
+    }, 1000)
   }
         
   return (
     <div className={s.wrapper}>
       <div className={s.buttonsWrapper}>
 
-        <WaitingBar  />
+        <WaitingBar situation={situations} endHandler={endHandler} isSituationsLoading={isSituationsLoading} />
                 
         <ButtonWithBeak
           title="Сообщения"

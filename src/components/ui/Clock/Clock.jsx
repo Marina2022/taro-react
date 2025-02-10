@@ -15,10 +15,13 @@ const Clock = ({
   const intervalId = useRef()
   
   const formatTime = (time) => {
-    const hours = Math.floor(time / 3600);
-    const minutes = Math.floor((time % 3600) / 60);
+    
+    if (!time) return null
+    
+    const hours = Math.floor(time / 3600);    
+    const minutes = Math.floor((time % 3600) / 60);    
     const seconds = time % 60;
-
+    
     return [
       hours.toString().padStart(2, '0'),
       minutes.toString().padStart(2, '0'),

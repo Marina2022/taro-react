@@ -7,6 +7,7 @@ import BigBar from "@/components/ui/systemComponents/BigBar/BigBar.jsx";
 import s from './CompatibilitySelect.module.scss'
 import {LuCirclePlus} from "react-icons/lu";
 import Header24 from "@/components/ui/systemComponents/Header24/Header24.jsx";
+import WaitingBar from "@/components/HomePage/WaitingBar/WaitingBar.jsx";
 
 const CompatibilitySelect = () => {
 
@@ -15,31 +16,29 @@ const CompatibilitySelect = () => {
 
   const navigate = useNavigate()
 
-  useEffect(() => {
-    const getData = async () => {
-      try {
-        setIsLoading(true)
-        const result = await axiosInstance(`api/compatibility/select/`)
-        setData(result.data)
-      } catch (err) {
-        console.log(err)
-      } finally {
-        setIsLoading(false)
-      }
+  const getData = async () => {
+    try {
+      setIsLoading(true)
+      const result = await axiosInstance(`api/compatibility/select/`)
+      setData(result.data)
+    } catch (err) {
+      console.log(err)
+    } finally {
+      setIsLoading(false)
     }
-
+  }
+  
+  useEffect(() => {
     getData()
-
   }, []);
-
 
   const addPersonHandler = () => {
     navigate('/compatibility/order')
   }
 
-  if (isLoading) return <Spinner/>
+  if (!data) return <Spinner/>
 
-  const testData = [...data, {...data[0], status: 'in_progress', seconds_left: 1000}]
+  //const testData = [...data, {...data[0], status: 'in_progress', seconds_left: 1000}]
 
   return (
 
@@ -48,8 +47,8 @@ const CompatibilitySelect = () => {
         <Header24 classname={s.mainTitle}>СОВМЕСТИМОСТЬ</Header24>
 
         <ul>
-          {
-            data.map((item, i) => <CompatibilityBar key={i} data={item}/>)
+          {            
+            data.map((item, i) => <WaitingBar key={i} situation={item} isSelectPage={true} endHandler={getData}  />)
             //testData.map((item, i)=> <CompatibilityBar key={i} data={item} />)          
           }
         </ul>

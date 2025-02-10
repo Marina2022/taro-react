@@ -12,34 +12,27 @@ import AskTaroPopupContent from "@/components/AskTaroOrderPage/AskTaroPopupConte
 
 import tarotIcon from "@/assets/img/home/askIcon.png"
 import compatibilityIcon from "@/assets/img/home/loveIcon.png"
-const WaitingBar = () => {
-  const {fetchSituations, situations, isSituationsLoading} = useAppContext()
+const WaitingBar = ({situation, isSituationsLoading, isSelectPage=false, endHandler=()=>{}}) => {
+  
   const navigate = useNavigate()
   const [isOpen, setIsOpen] = useState(false)
 
   const [innerTimerValue, setInnerTimerValue] = useState()
   const intervalId = useRef()
+ 
+
+  useEffect(() => {        
+    if (situation) setInnerTimerValue(situation.seconds_left)    
+  }, [situation]);
 
   useEffect(() => {
-    fetchSituations()
-  }, []);
-
-  useEffect(() => {
-        
-    if (situations) setInnerTimerValue(situations.seconds_left)
-    
-  }, [situations]);
-
-  useEffect(() => {
-
-    console.log(innerTimerValue)
-            
+                
     if (innerTimerValue >= 0) {
       
       intervalId.current = setInterval(() => {
         setInnerTimerValue((prev) => {
           
-          if (prev === 0) {
+          if (prev === 1) {
             clearInterval(intervalId.current); // Остановка таймера, когда значение достигло 0            
             endHandler()
             return 0;
@@ -52,25 +45,25 @@ const WaitingBar = () => {
   }, [innerTimerValue]);
   
   const handleClick = () => {
-    if (situations.status === 'completed') {   // todo в зависимости от типа ситуации будут разные ссылки
+    if (situation.status === 'completed') {   // todo в зависимости от типа ситуации будут разные ссылки
 
-      if (situations.situation_type === 'astrology_question') {
-        navigate(`/astrologer-answer/${situations.related_object_id}`)
+      if (situation.situation_type === 'astrology_question') {
+        navigate(`/astrologer-answer/${situation.related_object_id}`)
       }
 
-      if (situations.situation_type === 'tarot_order') {
-        navigate(`/tarot-answer/${situations.related_object_id}`)
+      if (situation.situation_type === 'tarot_order') {
+        navigate(`/tarot-answer/${situation.related_object_id}`)
       }
 
-      if (situations.situation_type === 'compatibility_order') {
-        navigate(`/compatibility/result/${situations.related_object_id}`)
+      if (situation.situation_type === 'compatibility_order') {
+        navigate(`/compatibility/result/${situation.related_object_id}`)
       }
 
-      if (situations.situation_type === 'compatibility_question') {
-        navigate(`/compatibility/answer/${situations.compatibility_id}/${situations.question_name}`)
+      if (situation.situation_type === 'compatibility_question') {
+        navigate(`/compatibility/answer/${situation.compatibility_id}/${situation.question_name}`)
       }
 
-    } else if (situations.status === 'in_progress') {
+    } else if (situation.status === 'in_progress') {
       setIsOpen(true)
     }
   }
@@ -78,30 +71,24 @@ const WaitingBar = () => {
     setIsOpen(false)
   }
 
-  const situationsMapping = {
+  const situationMapping = {
     astrology_question: "Вопрос астрологу",
     tarot_order: "Вопрос таро"
   }
 
-  const endHandler = () => {
-    
-    setTimeout(() => {
-      fetchSituations()
-    }, 1000)
-  }
-    
-
-  if (!situations?.situation_type) {
+  if (!situation) {
     return null
   }
 
-  const percent =  (situations.expected_duration - innerTimerValue) / situations.expected_duration * 100
+  const percent =  (situation.expected_duration - innerTimerValue) / situation.expected_duration * 100
+
+  console.log('percent', percent)
    
   
   return (
     <div className={s.wrapper}>
       {
-        !isSituationsLoading && <div
+        !isSituationsLoading && !Number.isNaN(percent) && <div
           className={s.waitingUnderlay}
           style={{transform: `scaleX(${percent}%)`}}
         ></div>
@@ -111,52 +98,56 @@ const WaitingBar = () => {
         <div>
           <div className={s.flex}>
             {
-              situations.situation_type === 'astrology_question' && <img className={s.img} src={astrologerImg}/>
+              situation.situation_type === 'astrology_question' && <img className={s.img} src={astrologerImg}/>
             }
             
             {
-              situations.situation_type === 'tarot_order' && <img className={s.img} src={tarotIcon}/>
+              situation.situation_type === 'tarot_order' && <img className={s.img} src={tarotIcon}/>
             }
      
             {
-              situations.situation_type === 'compatibility_order' && <img className={s.img} src={compatibilityIcon}/>
+              situation.situation_type === 'compatibility_order' && <img className={s.img} src={compatibilityIcon}/>
             }
      
             {
-              situations.situation_type === 'compatibility_question' && <img className={s.img} src={compatibilityIcon}/>
+              situation.situation_type === 'compatibility_question' && <img className={s.img} src={compatibilityIcon}/>
             }
 
             <div>
             <div className={s.title}>
                 {
-                  situations.situation_type !== 'tarot_order' && situationsMapping[situations.situation_type]
+                  situation.situation_type !== 'tarot_order' && situationMapping[situation.situation_type]
                 }
 
                 {
-                  situations.situation_type === 'tarot_order' && situations.name
+                  situation.situation_type === 'tarot_order' && situation.name
                 }
 
                 {
-                  situations.situation_type === 'compatibility_order' && `Расчет совместимости: ${situations.name}`
+                  situation.situation_type === 'compatibility_order' && !isSelectPage && `${situation.name}`
                 }
 
                 {
-                  situations.situation_type === 'compatibility_question' && `Вопрос по совместимости`
+                  situation.situation_type === 'compatibility_order' && isSelectPage && ` ${situation.name}`
+                }
+
+                {
+                  situation.situation_type === 'compatibility_question' && `Вопрос по совместимости`
                 }
               </div>
               {
-                situations.status === 'in_progress' &&
+                situation.status === 'in_progress' &&
                 <Clock currentTimer={innerTimerValue} classname={s.clock} loading={isSituationsLoading}
                        />
               }
               {
-                situations.status === 'completed' && <div className={s.ready}>Готово!</div>
+                situation.status === 'completed' && <div className={s.ready}>Готово!</div>
               }
             </div>
           </div>
         </div>
         {
-          situations.status === 'in_progress' &&
+          situation.status === 'in_progress' &&
           <svg className={s.icon} width="16" height="17" viewBox="0 0 16 17" fill="none"
                xmlns="http://www.w3.org/2000/svg">
             <path
@@ -166,7 +157,7 @@ const WaitingBar = () => {
         }
 
         {
-          situations.status === 'completed' && <BsExclamationCircle className={s.icon}/>
+          situation.status === 'completed' && <BsExclamationCircle className={s.icon}/>
         }
 
       </div>
@@ -176,12 +167,12 @@ const WaitingBar = () => {
         {/*Для всех случае, кром ответа Таро, открывается попап с AskAstrologerPopupContent*/}
         
         {
-          situations.situation_type !== 'tarot_order' && <AskAstrologerPopupContent currentTimer={innerTimerValue}/>
+          situation.situation_type !== 'tarot_order' && <AskAstrologerPopupContent currentTimer={innerTimerValue}/>
         }
 
         {
-          situations.situation_type === 'tarot_order' &&
-          <AskTaroPopupContent currentTimer={innerTimerValue} layout={situations.name}/>
+          situation.situation_type === 'tarot_order' &&
+          <AskTaroPopupContent currentTimer={innerTimerValue} layout={situation.name}/>
         }
                 
       </WaitingPopup>

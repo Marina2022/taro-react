@@ -8,6 +8,12 @@ import React, {useEffect} from "react";
 
 const HomePage = () => {
 
+  const {fetchSituations} = useAppContext()
+  
+  useEffect(() => {
+    fetchSituations()
+  }, []);
+  
   const {pathname} = useLocation()
 
   return (

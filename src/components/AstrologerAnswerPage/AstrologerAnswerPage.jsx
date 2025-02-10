@@ -55,12 +55,12 @@ const AstrologerAnswerPage = () => {
             answerParagraphs.map((paragraph, i) => {
               const innerParagraphs = paragraph.split("\r\n")
               return (
-                <p className={s.par} key={i}>
+                <div className={s.par} key={i}>
                   {
                     innerParagraphs.map((innerParagraph, ind) => <p className={s.innerPar}
                                                                     key={ind}>{innerParagraph}</p>)
                   }
-                </p>
+                </div>
               )
             })}
         </Text16>
