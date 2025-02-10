@@ -30,7 +30,8 @@ const MessagesPage = () => {
   )
   
   if (!messages) return <Spinner />
-  
+
+  console.log(messages) 
   return (
     <div className={s.messagesPage}>
       <div className="container">
@@ -43,7 +44,11 @@ const MessagesPage = () => {
           {
            messages && messages.map((item, i) => <WaitingBar  
               key={i} 
-              isSituationsLoading={messagesAreLoading} situation={item} isSelectPage={true} endHandler={getMessages}/>)
+              isSituationsLoading={messagesAreLoading} 
+              situation={item}              
+              isMessagesPage={true}
+              endHandler={getMessages}
+            />)
                       
           }
         </ul>

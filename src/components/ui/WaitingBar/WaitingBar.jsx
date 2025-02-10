@@ -12,40 +12,47 @@ import AskTaroPopupContent from "@/components/AskTaroOrderPage/AskTaroPopupConte
 
 import tarotIcon from "@/assets/img/home/askIcon.png"
 import compatibilityIcon from "@/assets/img/home/loveIcon.png"
-const WaitingBar = ({situation, isSituationsLoading, isSelectPage=false, endHandler=()=>{}}) => {
-  
+
+const WaitingBar = ({
+                      situation,
+                      isSituationsLoading,
+                      isMessagesPage = false,
+                      endHandler = () => {
+                      }
+                    }) => {
+
   const navigate = useNavigate()
   const [isOpen, setIsOpen] = useState(false)
 
   const [innerTimerValue, setInnerTimerValue] = useState()
   const intervalId = useRef()
- 
 
-  useEffect(() => {        
-    if (situation) setInnerTimerValue(situation.seconds_left)    
+
+  useEffect(() => {
+    if (situation) setInnerTimerValue(situation.seconds_left)
   }, [situation]);
 
   useEffect(() => {
-                
+
     if (innerTimerValue >= 0) {
-      
+
       intervalId.current = setInterval(() => {
         setInnerTimerValue((prev) => {
-          
+
           if (prev === 1) {
             clearInterval(intervalId.current); // Остановка таймера, когда значение достигло 0            
             endHandler()
             return 0;
-          }          
+          }
           return prev - 1; // Уменьшение таймера
         });
       }, 1000);
       return () => clearInterval(intervalId.current); // Очистка интервала при размонтировании
     }
   }, [innerTimerValue]);
-  
+
   const handleClick = () => {
-    if (situation.status === 'completed') {   // todo в зависимости от типа ситуации будут разные ссылки
+    if (situation.status === 'completed') {
 
       if (situation.situation_type === 'astrology_question') {
         navigate(`/astrologer-answer/${situation.related_object_id}`)
@@ -80,65 +87,69 @@ const WaitingBar = ({situation, isSituationsLoading, isSelectPage=false, endHand
     return null
   }
 
-  const percent =  (situation.expected_duration - innerTimerValue) / situation.expected_duration * 100
+  const percent = (situation.expected_duration - innerTimerValue) / situation.expected_duration * 100
+  
+  const createdDate = new Date(situation.created_at).toLocaleDateString('ru')
 
-  console.log('percent', percent)
-   
+
+  let truncateString = ''
+
+  
+  
+  if (situation?.question) {
+    truncateString = situation.question.length > 50 ? str.slice(0, 50) + "..." : situation.question;  
+  }
+  
   
   return (
     <div className={s.wrapper}>
       {
-        !isSituationsLoading && !Number.isNaN(percent) && <div
-          className={s.waitingUnderlay}
-          style={{transform: `scaleX(${percent}%)`}}
-        ></div>
+        !isSituationsLoading && !Number.isNaN(percent) &&
+        (
+          <div
+            className={s.waitingUnderlay}
+            style={{transform: `scaleX(${percent}%)`}}
+          ></div>
+        )
       }
 
       <div className={s.waitingBar} onClick={handleClick}>
-        <div>
+        <div >
           <div className={s.flex}>
             {
               situation.situation_type === 'astrology_question' && <img className={s.img} src={astrologerImg}/>
             }
-            
+
             {
               situation.situation_type === 'tarot_order' && <img className={s.img} src={tarotIcon}/>
             }
-     
+
             {
               situation.situation_type === 'compatibility_order' && <img className={s.img} src={compatibilityIcon}/>
             }
-     
+
             {
               situation.situation_type === 'compatibility_question' && <img className={s.img} src={compatibilityIcon}/>
             }
 
-            <div>
-            <div className={s.title}>
-                {
-                  situation.situation_type !== 'tarot_order' && situationMapping[situation.situation_type]
-                }
+            <div className={s.flexColWrapper}>
+              <div className={s.title}>       
+                {situation.name} 
+              </div>              
+              
+              {
+                 isMessagesPage && (
+                  <div className={s.additionalInfo}>{truncateString} ({createdDate})</div>
+                )
 
-                {
-                  situation.situation_type === 'tarot_order' && situation.name
-                }
 
-                {
-                  situation.situation_type === 'compatibility_order' && !isSelectPage && `${situation.name}`
-                }
+              }
 
-                {
-                  situation.situation_type === 'compatibility_order' && isSelectPage && ` ${situation.name}`
-                }
 
-                {
-                  situation.situation_type === 'compatibility_question' && `Вопрос по совместимости`
-                }
-              </div>
               {
                 situation.status === 'in_progress' &&
                 <Clock currentTimer={innerTimerValue} classname={s.clock} loading={isSituationsLoading}
-                       />
+                />
               }
               {
                 situation.status === 'completed' && <div className={s.ready}>Готово!</div>
@@ -163,9 +174,9 @@ const WaitingBar = ({situation, isSituationsLoading, isSelectPage=false, endHand
       </div>
 
       <WaitingPopup isOpen={isOpen} setIsOpen={setIsOpen} onUnderstood={understoodHandler}>
-        
+
         {/*Для всех случае, кром ответа Таро, открывается попап с AskAstrologerPopupContent*/}
-        
+
         {
           situation.situation_type !== 'tarot_order' && <AskAstrologerPopupContent currentTimer={innerTimerValue}/>
         }
@@ -174,7 +185,7 @@ const WaitingBar = ({situation, isSituationsLoading, isSelectPage=false, endHand
           situation.situation_type === 'tarot_order' &&
           <AskTaroPopupContent currentTimer={innerTimerValue} layout={situation.name}/>
         }
-                
+
       </WaitingPopup>
     </div>
   );

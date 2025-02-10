@@ -26,13 +26,14 @@
 
 .title {
   color: #c7afc1;
-  margin-bottom: 8px;
+  //margin-bottom: 8px;
 }
 
 .icon {
   width: 24px;
   height: 24px;
   fill: #FFB94C;
+  flex-shrink: 0;
 }
 
 .ready {
@@ -103,4 +104,16 @@
   @include xs {
     height: 92px;
   }
+}
+
+.flexColWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;  
+}
+
+.additionalInfo {
+  color: #c7afc1;
+  
+  //font-size: 14px;
 }
