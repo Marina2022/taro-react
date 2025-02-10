@@ -1,5 +1,5 @@
 import s from './CompatibilityOrder.module.scss';
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import InputGroup from "@/components/ui/systemComponents/InputGroup/InputGroup.jsx";
 import Tabs from "@/components/ui/systemComponents/Tabs/Tabs.jsx";
 import DateInput from "@/components/ui/systemComponents/DateInput/DateInput.jsx";
@@ -48,11 +48,31 @@ const CompatibilityOrder = () => {
   const [nickname, setNickname] = useState('')
   const [selectedSex, setSelectedSex] = useState('male')
 
-
   // если пользователь выбрал "Не знаю точное время", то посылаем 12:00 
   const timeValueToSend = dontKnowTime.length > 0 ? '12:00' : time
-
   const [popupOpened, setPopupOpened] = useState(false)
+
+  const [initialTimer, setInitialTimer] = useState(null)
+  const intervalId = useRef()
+
+  useEffect(() => {
+
+    // если установили начальный таймер, т.е. пришел ответ с АПИ
+    if (initialTimer > 0) {
+      setInnerTimer(initialTimer)
+      intervalId.current = setInterval(() => {
+        setInnerTimer((prev) => {
+          if (prev === 0) {
+            clearInterval(intervalId.current); // Остановка таймера, когда значение достигло 0            
+            endHandler()
+            return 0;
+          }
+          return prev - 1; // Уменьшение таймера
+        });
+      }, 1000);
+      return () => clearInterval(intervalId.current); // Очистка интервала при размонтировании
+    }
+  }, [initialTimer]);
 
   useEffect(() => {
     // запрос на страны - только один раз в самом начале
@@ -154,7 +174,8 @@ const CompatibilityOrder = () => {
 
       if (result.data.message === "Interpretation is being processed") {
         setIsOpen(true)
-        setInnerTimer(result.data.seconds_left)
+        setInitialTimer(result.data.seconds_left)
+        // setInnerTimer(result.data.seconds_left)
       } else {
         throw new Error("Interpretation is not being processed for some reason")
       }
@@ -174,7 +195,7 @@ const CompatibilityOrder = () => {
     }, 0)
   }
 
-  //compatOrder
+  
 
   return (
     <div className={s.compatOrder}>

@@ -35,7 +35,7 @@ function App() {
   } = useAuthContext()
 
   const {
-    fetchSituations,
+    
     setTarotLayouts,
     setAreTarotLayoutsLoading,
     setIsDayLoading,
@@ -66,7 +66,7 @@ function App() {
         console.log(err)
       } finally {
         setIsUserLoading(false)
-        fetchSituations()
+        
       }
     }
     const getTarotLayouts = async () => {

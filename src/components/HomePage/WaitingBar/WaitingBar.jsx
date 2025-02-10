@@ -31,6 +31,8 @@ const WaitingBar = () => {
   }, [situations]);
 
   useEffect(() => {
+
+    console.log(innerTimerValue)
             
     if (innerTimerValue >= 0) {
       
@@ -47,7 +49,7 @@ const WaitingBar = () => {
       }, 1000);
       return () => clearInterval(intervalId.current); // Очистка интервала при размонтировании
     }
-  }, [innerTimerValue, situations]);
+  }, [innerTimerValue]);
   
   const handleClick = () => {
     if (situations.status === 'completed') {   // todo в зависимости от типа ситуации будут разные ссылки

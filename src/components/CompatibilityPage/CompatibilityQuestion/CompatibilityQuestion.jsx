@@ -10,7 +10,7 @@ import Button from "@/components/ui/systemComponents/Button/Button.jsx";
 import MiniSpinner from "@/components/ui/miniSpinner/MiniSpinner.jsx";
 import WaitingPopup from "@/components/ui/WaitingPopup/WaitingPopup.jsx";
 import AskTaroPopupContent from "@/components/AskTaroOrderPage/AskTaroPopupContent/AskTaroPopupContent.jsx";
-import {useState} from "react";
+import {useEffect, useRef, useState} from "react";
 import {useAppContext} from "@/contexts/appContext.jsx";
 import axiosInstance from "@/api/axiosInstance.js";
 import Spinner from "@/components/ui/Spinner/Spinner.jsx";
@@ -32,12 +32,28 @@ const CompatibilityQuestion = () => {
   const {fetchSituations} = useAppContext()
   const navigate = useNavigate()
 
+  const [initialTimer, setInitialTimer] = useState(null)
+  const intervalId = useRef()
+
+  useEffect(() => {
+
+    // если установили начальный таймер, т.е. пришел ответ с АПИ
+    if (initialTimer > 0) {
+      setInnerTimer(initialTimer)
+      intervalId.current = setInterval(() => {
+        setInnerTimer((prev) => {
+          if (prev === 0) {
+            clearInterval(intervalId.current); // Остановка таймера, когда значение достигло 0            
+            endHandler()
+            return 0;
+          }
+          return prev - 1; // Уменьшение таймера
+        });
+      }, 1000);
+      return () => clearInterval(intervalId.current); // Очистка интервала при размонтировании
+    }
+  }, [initialTimer]);
   const submitHandler = async () => {
-
-
-    // api/compatibility/answer/<целочисленный id результата базовой совместимости>/ask/
-
-
     try {
       setSending(true)
       const result = await axiosInstance.post(`api/compatibility/answer/${id}/ask/`, {
@@ -46,7 +62,8 @@ const CompatibilityQuestion = () => {
 
       if (result.data.message === "Interpretation is being processed") {
         setIsOpen(true)
-        setInnerTimer(result.data.seconds_left)
+        // setInnerTimer(result.data.seconds_left)
+        setInitialTimer(result.data.seconds_left)
       } else {
         throw new Error("Interpretation is not being processed for some reason")
       }

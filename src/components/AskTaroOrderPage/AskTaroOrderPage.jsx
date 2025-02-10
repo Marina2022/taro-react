@@ -2,7 +2,7 @@ import s from './AskTaroOrderPage.module.scss';
 import {useNavigate, useParams} from "react-router-dom";
 import {useAppContext} from "@/contexts/appContext.jsx";
 import Spinner from "@/components/ui/Spinner/Spinner.jsx";
-import {useEffect, useState} from "react";
+import {useEffect, useRef, useState} from "react";
 import axiosInstance from "@/api/axiosInstance.js";
 import Header24 from "@/components/ui/systemComponents/Header24/Header24.jsx";
 import AstrologerCard from "@/components/ui/systemComponents/AstrologerCard/AstrologerCard.jsx";
@@ -36,6 +36,28 @@ const AskTaroOrderPage = () => {
 
   const {fetchSituations} = useAppContext()
   const navigate = useNavigate()
+  const [initialTimer, setInitialTimer] = useState(null)
+  
+  const intervalId = useRef()
+
+  useEffect(() => {
+
+    // если установили начальный таймер, т.е. пришел ответ с АПИ
+    if (initialTimer > 0) {
+      setInnerTimer(initialTimer)
+      intervalId.current = setInterval(() => {
+        setInnerTimer((prev) => {
+          if (prev === 0) {
+            clearInterval(intervalId.current); // Остановка таймера, когда значение достигло 0            
+            endHandler()
+            return 0;
+          }
+          return prev - 1; // Уменьшение таймера
+        });
+      }, 1000);
+      return () => clearInterval(intervalId.current); // Очистка интервала при размонтировании
+    }
+  }, [initialTimer]);
 
   const submitHandler = async () => {
 
@@ -60,7 +82,8 @@ const AskTaroOrderPage = () => {
 
       if (result.data.message === "Interpretation is being processed") {
         setIsOpen(true)
-        setInnerTimer(result.data.seconds_left)
+        setInitialTimer(result.data.seconds_left)
+        
       } else {
         throw new Error("Interpretation is not being processed for some reason")
       }

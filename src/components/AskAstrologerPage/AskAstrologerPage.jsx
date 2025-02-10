@@ -35,14 +35,10 @@ const AskAstrologerPage = () => {
   useEffect(() => {
     
     // если установили начальный таймер, т.е. пришел ответ с АПИ
-
     if (initialTimer > 0) {
-
       setInnerTimer(initialTimer)
-
       intervalId.current = setInterval(() => {
         setInnerTimer((prev) => {
-
           if (prev === 0) {
             clearInterval(intervalId.current); // Остановка таймера, когда значение достигло 0            
             endHandler()
