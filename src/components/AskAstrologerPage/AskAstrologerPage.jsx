@@ -2,7 +2,7 @@ import s from './AskAstrologerPage.module.scss';
 import AstrologerCard from "@/components/ui/systemComponents/AstrologerCard/AstrologerCard.jsx";
 import Header20 from "@/components/ui/systemComponents/Header20/Header20.jsx";
 import TextArea from "@/components/ui/systemComponents/TextArea/TextArea.jsx";
-import {useState} from "react";
+import {useEffect, useRef, useState} from "react";
 import Button from "@/components/ui/systemComponents/Button/Button.jsx";
 import axios from "@/api/axiosInstance.js";
 import axiosInstance from "@/api/axiosInstance.js";
@@ -21,9 +21,41 @@ const AskAstrologerPage = () => {
   const [sending, setSending] = useState(false)
   const [isOpen, setIsOpen] = useState(false)
   const [innerTimer, setInnerTimer] = useState(null)
+  const [initialTimer, setInitialTimer] = useState(null)
 
   const {fetchSituations} = useAppContext()
   const navigate = useNavigate()
+
+  
+  
+  // отсюда todo
+
+  const intervalId = useRef()
+
+  useEffect(() => {
+    
+    // если установили начальный таймер, т.е. пришел ответ с АПИ
+
+    if (initialTimer > 0) {
+
+      setInnerTimer(initialTimer)
+
+      intervalId.current = setInterval(() => {
+        setInnerTimer((prev) => {
+
+          if (prev === 0) {
+            clearInterval(intervalId.current); // Остановка таймера, когда значение достигло 0            
+            endHandler()
+            return 0;
+          }
+          return prev - 1; // Уменьшение таймера
+        });
+      }, 1000);
+      return () => clearInterval(intervalId.current); // Очистка интервала при размонтировании
+    }
+  }, [initialTimer]);
+
+  // досюда todo
   const askHandler = async () => {    
     
     if(!message) {
@@ -39,7 +71,9 @@ const AskAstrologerPage = () => {
 
       if (result.data.message === "Interpretation is being processed") {        
         setIsOpen(true)
-        setInnerTimer(result.data.seconds_left)
+        
+        //  todo - везде добавить такое же
+        setInitialTimer(result.data.seconds_left)
 
       } else {
         throw new Error ("Interpretation is not being processed for some reason")

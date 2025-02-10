@@ -5,7 +5,7 @@ const AppContext = createContext()
 const ContextProvider = ({children}) => {
 
   const [situations, setSituations] = useState(null)
-  const [currentTimer, setCurrentTimer] = useState(null)
+  // const [currentTimer, setCurrentTimer] = useState(null)
   const [isSituationsLoading, setIsSituationsLoading] = useState(true)
 
   const [tarotLayouts, setTarotLayouts] = useState(null)
@@ -15,28 +15,28 @@ const ContextProvider = ({children}) => {
   const [isDayLoading, setIsDayLoading] = useState(true)
   
   
-  useEffect(() => {
-    // если объект из запроса peek пришел, то обновляем значение таймера 
-    if (situations) setCurrentTimer(situations.seconds_left)
-  }, [situations])
+  // useEffect(() => {
+  //   // если объект из запроса peek пришел, то обновляем значение таймера 
+  //   if (situations) setCurrentTimer(situations.seconds_left)
+  // }, [situations])
 
 
-  let intervalId = useRef()
+  // let intervalId = useRef()
 
-  useEffect(() => {
-    if (currentTimer > 0) {
-      intervalId.current = setInterval(() => {
-        setCurrentTimer((prev) => {
-          if (prev === 0) {
-            clearInterval(intervalId.current); // Остановка таймера, когда значение достигло 0
-            return 0;
-          }
-          return prev - 1; // Уменьшение таймера
-        });
-      }, 1000);
-      return () => clearInterval(intervalId.current);
-    }
-  }, [currentTimer]);
+  // useEffect(() => {
+  //   if (currentTimer > 0) {
+  //     intervalId.current = setInterval(() => {
+  //       setCurrentTimer((prev) => {
+  //         if (prev === 0) {
+  //           clearInterval(intervalId.current); // Остановка таймера, когда значение достигло 0
+  //           return 0;
+  //         }
+  //         return prev - 1; // Уменьшение таймера
+  //       });
+  //     }, 1000);
+  //     return () => clearInterval(intervalId.current);
+  //   }
+  // }, [currentTimer]);
 
   const fetchSituations = async () => {
 
@@ -56,7 +56,7 @@ const ContextProvider = ({children}) => {
       value={{
         situations,
         fetchSituations,
-        currentTimer,
+        // currentTimer,
         isSituationsLoading,
         tarotLayouts,
         setTarotLayouts,

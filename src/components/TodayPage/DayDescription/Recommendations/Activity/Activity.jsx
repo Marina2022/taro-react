@@ -7,8 +7,6 @@ import {RiCloseLargeFill} from "react-icons/ri";
 
 const Activity = ({activity}) => {
 
-  console.log(activity)
-
   // сортировка активностей по убыванию score
   const sortedActivities = activity.activities.sort((a, b) => b.score - a.score)
 

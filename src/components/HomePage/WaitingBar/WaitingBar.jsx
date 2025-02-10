@@ -20,6 +20,9 @@ const WaitingBar = () => {
   const [innerTimerValue, setInnerTimerValue] = useState()
   const intervalId = useRef()
 
+  useEffect(() => {
+    fetchSituations()
+  }, []);
 
   useEffect(() => {
         
@@ -79,31 +82,29 @@ const WaitingBar = () => {
   }
 
   const endHandler = () => {
-
-    console.log(endHandler)
-
+    
     setTimeout(() => {
       fetchSituations()
     }, 1000)
   }
-   
-  
+    
 
   if (!situations?.situation_type) {
     return null
   }
 
   const percent =  (situations.expected_duration - innerTimerValue) / situations.expected_duration * 100
+   
   
   return (
     <div className={s.wrapper}>
-      
-      <div 
-        className={s.waitingUnderlay}        
-          style={{transform: `scaleX(${percent}%)`}}      
-      ></div>
-      
-      
+      {
+        !isSituationsLoading && <div
+          className={s.waitingUnderlay}
+          style={{transform: `scaleX(${percent}%)`}}
+        ></div>
+      }
+
       <div className={s.waitingBar} onClick={handleClick}>
         <div>
           <div className={s.flex}>
