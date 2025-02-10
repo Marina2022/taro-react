@@ -77,4 +77,4 @@ const TodayPage = () => {
   );
 };
 
-export default React.memo(TodayPage);
+export default TodayPage;

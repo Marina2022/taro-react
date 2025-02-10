@@ -69,4 +69,4 @@ const AstrologerAnswerPage = () => {
   );
 };
 
-export default React.memo(AstrologerAnswerPage);
+export default AstrologerAnswerPage;

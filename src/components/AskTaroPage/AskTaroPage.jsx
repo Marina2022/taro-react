@@ -42,4 +42,4 @@ const AskTaroPage = () => {
   )
 }
 
-export default React.memo(AskTaroPage);
+export default AskTaroPage;

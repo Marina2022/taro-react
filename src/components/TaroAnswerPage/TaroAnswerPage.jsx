@@ -118,4 +118,4 @@ const TaroAnswerPage = () => {
   );
 };
 
-export default React.memo(TaroAnswerPage);
+export default TaroAnswerPage;

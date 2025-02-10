@@ -105,4 +105,4 @@ const Chart = () => {
   );
 };
 
-export default React.memo(Chart);
+export default Chart;

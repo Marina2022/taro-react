@@ -1,13 +1,11 @@
 import React, {useEffect, useState} from 'react';
-import {useNavigate, useParams} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 import axiosInstance from "@/api/axiosInstance.js";
 import Spinner from "@/components/ui/Spinner/Spinner.jsx";
-import CompatibilityBar from "@/components/CompatibilityPage/CompatibilitySelect/CompatibilityBar/CompatibilityBar.jsx";
-import BigBar from "@/components/ui/systemComponents/BigBar/BigBar.jsx";
 import s from './CompatibilitySelect.module.scss'
 import {LuCirclePlus} from "react-icons/lu";
 import Header24 from "@/components/ui/systemComponents/Header24/Header24.jsx";
-import WaitingBar from "@/components/HomePage/WaitingBar/WaitingBar.jsx";
+import WaitingBar from "@/components/ui/WaitingBar/WaitingBar.jsx";
 
 const CompatibilitySelect = () => {
 
@@ -53,18 +51,16 @@ const CompatibilitySelect = () => {
           }
         </ul>
 
-
         <div className={s.card} onClick={addPersonHandler}>
           <div className={s.cardText}>
             <p className={s.cardTitle}>Добавить персону</p>
           </div>
           <LuCirclePlus className={s.cardIcon}/>
         </div>
-
       </div>
     </div>
-    
+   
   );
 };
 
-export default React.memo(CompatibilitySelect);
+export default CompatibilitySelect;

@@ -85,4 +85,4 @@ const CompatibilityResult = () => {
   );
 };
 
-export default React.memo(CompatibilityResult);
+export default CompatibilityResult;

@@ -328,4 +328,4 @@ const SystemPage = () => {
   )
 }
 
-export default React.memo(SystemPage);
+export default SystemPage;

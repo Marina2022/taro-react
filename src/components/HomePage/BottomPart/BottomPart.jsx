@@ -1,5 +1,5 @@
 import s from "./BottomPart.module.scss";
-import WaitingBar from "@/components/HomePage/WaitingBar/WaitingBar.jsx";
+import WaitingBar from "@/components/ui/WaitingBar/WaitingBar.jsx";
 import ButtonWithBeak from "@/components/ui/systemComponents/ButtonWithBeak/ButtonWithBeak.jsx";
 import messagesIcon from "@/assets/img/home/messages.png";
 import askIcon from "@/assets/img/home/askIcon.png";

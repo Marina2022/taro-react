@@ -18,7 +18,6 @@ const NatalFeaturePage = () => {
   const [data, setData] = useState(null)
   const [dataIsLoading, setDataIsLoading] = useState(true)
   const [error, setError] = useState(null)
-
   
   const location = useLocation()
   
@@ -74,4 +73,4 @@ const NatalFeaturePage = () => {
   );
 };
 
-export default React.memo(NatalFeaturePage);
+export default NatalFeaturePage;

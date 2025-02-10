@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import s from "./MessagesPage.module.scss";
 import Header24 from "@/components/ui/systemComponents/Header24/Header24.jsx";
-import WaitingBar from "@/components/HomePage/WaitingBar/WaitingBar.jsx";
+import WaitingBar from "@/components/ui/WaitingBar/WaitingBar.jsx";
 import axiosInstance from "@/api/axiosInstance.js";
 import Spinner from "@/components/ui/Spinner/Spinner.jsx";
 

@@ -15,6 +15,7 @@ import MiniSpinner from "@/components/ui/miniSpinner/MiniSpinner.jsx";
 import {useAppContext} from "@/contexts/appContext.jsx";
 import astrologerImg from '@/assets/img/home/astrologist.png'
 import Header24 from "@/components/ui/systemComponents/Header24/Header24.jsx";
+
 const AskAstrologerPage = () => {
 
   const [message, setMessage] = useState('')
@@ -26,14 +27,10 @@ const AskAstrologerPage = () => {
   const {fetchSituations} = useAppContext()
   const navigate = useNavigate()
 
-  
-  
-  // отсюда todo
-
   const intervalId = useRef()
 
   useEffect(() => {
-    
+
     // если установили начальный таймер, т.е. пришел ответ с АПИ
     if (initialTimer > 0) {
       setInnerTimer(initialTimer)
@@ -51,51 +48,48 @@ const AskAstrologerPage = () => {
     }
   }, [initialTimer]);
 
-  // досюда todo
-  const askHandler = async () => {    
-    
-    if(!message) {
+  const askHandler = async () => {
+
+    if (!message) {
       alert('Введите, пожалуйста, ваш вопрос')
       return
     }
-    
+
     try {
       setSending(true)
       const result = await axiosInstance.post('astrologists/ask/', {
         user_question: message
       })
 
-      if (result.data.message === "Interpretation is being processed") {        
-        setIsOpen(true)
-        
-        //  todo - везде добавить такое же
+      if (result.data.message === "Interpretation is being processed") {
+        setIsOpen(true)        
         setInitialTimer(result.data.seconds_left)
 
       } else {
-        throw new Error ("Interpretation is not being processed for some reason")
+        throw new Error("Interpretation is not being processed for some reason")
       }
 
     } catch (err) {
       console.log(err)
     } finally {
       setSending(false)
-    }        
+    }
   }
-  
-  const understoodHandler = async() => {
+
+  const understoodHandler = async () => {
     await fetchSituations()
     setIsOpen(false)
-    
-    setTimeout(()=>{      
-      navigate('/')  
-    }, 0)    
+
+    setTimeout(() => {
+      navigate('/')
+    }, 0)
   }
 
   return (
     <>
       <div className={s.askAstrologer}>
         <div className='container'>
-          <Header24 classname={s.mainTitle}>Вопрос астрологу</Header24>                    
+          <Header24 classname={s.mainTitle}>Вопрос астрологу</Header24>
           <AstrologerCard
             name="Александра Таровна"
             imageUrl={astrologerImg}>
@@ -116,7 +110,7 @@ const AskAstrologerPage = () => {
         </div>
       </div>
       <WaitingPopup isOpen={isOpen} setIsOpen={setIsOpen} onUnderstood={understoodHandler}>
-        <AskAstrologerPopupContent currentTimer={innerTimer} />
+        <AskAstrologerPopupContent currentTimer={innerTimer}/>
       </WaitingPopup>
     </>
   );

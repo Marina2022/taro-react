@@ -1,4 +1,4 @@
-import {createContext, useContext, useEffect, useRef, useState} from "react";
+import {createContext, useContext, useState} from "react";
 import axiosInstance from "@/api/axiosInstance.js";
 
 const AppContext = createContext()
