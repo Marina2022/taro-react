@@ -23,8 +23,6 @@ const CompatibilityAnswer = () => {
         const result = await axiosInstance(`api/compatibility/answer/${id}/followup/${theme}`)
         setResult(result.data)
 
-        console.log(result.data)
-
       } catch (err) {
         console.log(err)
       } finally {
@@ -69,12 +67,12 @@ const CompatibilityAnswer = () => {
               answerParagraphs.map((paragraph, i) => {
                 const innerParagraphs = paragraph.split("\r\n")
                 return (
-                  <p className={s.par} key={i}>
+                  <div className={s.par} key={i}>
                     {
                       innerParagraphs.map((innerParagraph, ind) => <p className={s.innerPar}
                                                                       key={ind}>{innerParagraph}</p>)
                     }
-                  </p>
+                  </div>
                 )
               })}
           </Text16>

@@ -6,10 +6,39 @@ import askIcon from "@/assets/img/home/askIcon.png";
 import specialistIcon from "@/assets/img/home/specialistIcon.png";
 import loveIcon from "@/assets/img/home/loveIcon.png";
 import {useAppContext} from "@/contexts/appContext.jsx";
-import React from "react";
+import React, {useEffect, useState} from "react";
+import axiosInstance from "@/api/axiosInstance.js";
+import {useNavigate} from "react-router-dom";
 
 const BottomPart = () => {
-      
+  
+  const [messagesAreLoading, setMessagesAreLoading] = useState(true)
+  
+  const [messages, setMessages] = useState()
+
+  useEffect(() => {
+    const getResult = async () => {
+      try {
+        setMessagesAreLoading(true)
+        const result = await axiosInstance(`/api/orders/list/`)
+        setMessages(result.data)
+
+      } catch (err) {
+        console.log(err)
+      } finally {
+        setMessagesAreLoading(false)
+      }
+    }
+
+    getResult()
+
+  }, []);
+  
+  const navigate = useNavigate()
+  const messagesClickHandler = ()=>{    
+    navigate('/messages', {state: messages})
+  }
+        
   return (
     <div className={s.wrapper}>
       <div className={s.buttonsWrapper}>
@@ -19,8 +48,10 @@ const BottomPart = () => {
         <ButtonWithBeak
           title="Сообщения"
           description="Архив сообщений и заказов"
+          
+          onClick={messagesClickHandler}
           // number={2}
-          href="/"
+          
           img={messagesIcon}
         />
 

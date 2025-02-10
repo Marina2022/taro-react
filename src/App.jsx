@@ -23,6 +23,7 @@ import CompatibilityResult from "@/components/CompatibilityPage/CompatibilityRes
 import CompatibilityOrder from "@/components/CompatibilityPage/CompatibilityOrder/CompatibilityOrder.jsx";
 import CompatibilityQuestion from "@/components/CompatibilityPage/CompatibilityQuestion/CompatibilityQuestion.jsx";
 import CompatibilityAnswer from "@/components/CompatibilityPage/CompatibilityAnswer/CompatibilityAnswer.jsx";
+import Messages from "@/pages/Messages.jsx";
 
 function App() {
 
@@ -119,6 +120,8 @@ function App() {
             <Route path='/ask-tarot' element={<AskTaro/>}/>
             <Route path='/ask-tarot/:order' element={<AskTaroOrderPage/>}/>
             <Route path='/tarot-answer/:id' element={<TaroAnswerPage/>}/>
+            
+            <Route path='/messages' element={<Messages/>}/>
             
             <Route path='/natal' element={<Natal/>}>
               <Route path='/natal' index element={<Chart/>}/>

@@ -19,7 +19,7 @@ import {FaCheck} from "react-icons/fa";
 
 const CompatibilityQuestion = () => {
   const location = useLocation();
-  
+
   const {id, theme} = useParams()
 
   const data = location.state
@@ -36,14 +36,13 @@ const CompatibilityQuestion = () => {
 
 
     // api/compatibility/answer/<целочисленный id результата базовой совместимости>/ask/
-    
-    
+
 
     try {
       setSending(true)
-      const result = await axiosInstance.post(`api/compatibility/answer/${id}/ask/`, {      
+      const result = await axiosInstance.post(`api/compatibility/answer/${id}/ask/`, {
         followup_name: theme
-    })
+      })
 
       if (result.data.message === "Interpretation is being processed") {
         setIsOpen(true)
@@ -78,24 +77,25 @@ const CompatibilityQuestion = () => {
             imageUrl={astrologerImg}>
             Таро, Астрология
           </AstrologerCard>
-          
-          
-          <p className={s.text}>При заказе этой услуги наш астролог изучит ваши натальные карты, чтобы ответить на следующие вопросы:</p>
-          
+
+
+          <p className={s.text}>При заказе этой услуги наш астролог изучит ваши натальные карты, чтобы ответить на
+            следующие вопросы:</p>
+
           <ul className={s.list}>
             {
-              data.questions.map((question,i )=>{
+              data.questions.map((question, i) => {
                 return (
-                  
-                  <li className={s.item}>
-                    <FaCheck className={s.check}/>  
+
+                  <li key={i} className={s.item}>
+                    <FaCheck className={s.check}/>
                     {question}
                   </li>
                 )
               })
             }
           </ul>
-          
+
           <p className={s.timeText}>Примерное время анализа - 9 часов.</p>
 
           <Button classname={s.btn} disabled={sending} onClick={submitHandler}>

@@ -29,14 +29,15 @@
 
 .fillData {
   text-align: center;
-  margin-top: 50px;
-  margin-bottom: 24px;
+  margin-top: 64px;
+  margin-bottom: 62px;
   font-size: 18px;  
   
   @include xs {
     text-align: left;
     font-size: 16px;
     margin-top: 30px;
+    margin-bottom: 34px;
   }
 }
 
@@ -110,6 +111,10 @@
   
   @include m {
     margin-top: 30px;
+  }
+
+  @include xs {
+    margin-top: 28px;
   }
 }
 
