@@ -58,7 +58,7 @@ const BottomPart = () => {
           description="Архив сообщений и заказов"
           
           onClick={messagesClickHandler}
-          number={messages.length | null}          
+          number={messages?.length}          
           img={messagesIcon}
         />
 

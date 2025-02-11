@@ -12,6 +12,7 @@ import AskTaroPopupContent from "@/components/AskTaroOrderPage/AskTaroPopupConte
 
 import tarotIcon from "@/assets/img/home/askIcon.png"
 import compatibilityIcon from "@/assets/img/home/loveIcon.png"
+import {compatibilityQuestion} from "../../../../data/compatibilityQuestion.js";
 
 const WaitingBar = ({
                       situation,
@@ -88,19 +89,8 @@ const WaitingBar = ({
   }
 
   const percent = (situation.expected_duration - innerTimerValue) / situation.expected_duration * 100
-  
-  const createdDate = new Date(situation.created_at).toLocaleDateString('ru')
+  const createdDate = new Date(situation.created_at).toLocaleDateString('ru-RU', {day: 'numeric', month: 'short'});
 
-
-  let truncateString = ''
-
-  
-  
-  if (situation?.question) {
-    truncateString = situation.question.length > 50 ? str.slice(0, 50) + "..." : situation.question;  
-  }
-  
-  
   return (
     <div className={s.wrapper}>
       {
@@ -114,46 +104,53 @@ const WaitingBar = ({
       }
 
       <div className={s.waitingBar} onClick={handleClick}>
-        <div >
-          <div className={s.flex}>
-            {
-              situation.situation_type === 'astrology_question' && <img className={s.img} src={astrologerImg}/>
-            }
 
-            {
-              situation.situation_type === 'tarot_order' && <img className={s.img} src={tarotIcon}/>
-            }
+        {
+          situation.situation_type === 'astrology_question' && <img className={s.img} src={astrologerImg}/>
+        }
 
-            {
-              situation.situation_type === 'compatibility_order' && <img className={s.img} src={compatibilityIcon}/>
-            }
+        {
+          situation.situation_type === 'tarot_order' && <img className={s.img} src={tarotIcon}/>
+        }
 
-            {
-              situation.situation_type === 'compatibility_question' && <img className={s.img} src={compatibilityIcon}/>
-            }
+        {
+          situation.situation_type === 'compatibility_order' && <img className={s.img} src={compatibilityIcon}/>
+        }
 
-            <div className={s.flexColWrapper}>
-              <div className={s.title}>       
-                {situation.name} 
-              </div>              
-              
-              {
-                 isMessagesPage && (
-                  <div className={s.additionalInfo}>{truncateString} ({createdDate})</div>
-                )
-              }
+        {
+          situation.situation_type === 'compatibility_question' && <img className={s.img} src={compatibilityIcon}/>
+        }
 
-              {
-                situation.status === 'in_progress' &&
-                <Clock currentTimer={innerTimerValue} classname={s.clock} loading={isSituationsLoading}
-                />
-              }
-              {
-                situation.status === 'completed' && <div className={s.ready}>Готово!</div>
-              }
+        <div className={s.content}>
+          <div className={s.flexColWrapper}>
+            <div className={s.title}>
+              {situation.name}
             </div>
+
+            {
+              isMessagesPage && (
+                <div className={s.additionalInfo}>
+                  <div className={s.questionString}> {
+                    situation.situation_type !== 'compatibility_question' ?
+                      situation.question
+                      : compatibilityQuestion[situation.question]
+                  }</div>
+                  <div className={s.dateString}>({createdDate})</div>
+                </div>
+              )
+            }
+
+            {
+              situation.status === 'in_progress' &&
+              <Clock currentTimer={innerTimerValue} classname={s.clock} loading={isSituationsLoading}
+              />
+            }
+            {
+              situation.status === 'completed' && <div className={s.ready}>Готово!</div>
+            }
           </div>
         </div>
+
         {
           situation.status === 'in_progress' &&
           <svg className={s.icon} width="16" height="17" viewBox="0 0 16 17" fill="none"
