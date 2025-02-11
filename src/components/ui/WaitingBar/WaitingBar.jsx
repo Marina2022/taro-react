@@ -89,7 +89,7 @@ const WaitingBar = ({
   const percent = (situation.expected_duration - innerTimerValue) / situation.expected_duration * 100
   
   
-  const createdDate = new Date(situation.created_at).toLocaleDateString('ru-RU', {day: 'numeric', month: 'short',   hour: '2-digit',
+  const createdDate = new Date(situation.created_at+'Z').toLocaleDateString('ru-RU', {day: 'numeric', month: 'short',   hour: '2-digit',
     minute: '2-digit'});
 
   return (
