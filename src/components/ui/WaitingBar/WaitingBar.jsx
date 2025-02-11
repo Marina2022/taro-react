@@ -87,6 +87,8 @@ const WaitingBar = ({
   }
 
   const percent = (situation.expected_duration - innerTimerValue) / situation.expected_duration * 100
+  
+  
   const createdDate = new Date(situation.created_at).toLocaleDateString('ru-RU', {day: 'numeric', month: 'short',   hour: '2-digit',
     minute: '2-digit'});
 
@@ -122,9 +124,12 @@ const WaitingBar = ({
 
         <div className={s.content}>
           <div className={s.flexColWrapper}>
-            <div className={s.dateString}>{createdDate}</div>
+
+            {
+              isMessagesPage && <div className={s.dateString}>{createdDate}</div>
+            }
             <div className={s.title}>
-              {situation.name}
+            {situation.name}
             </div>
 
             {
