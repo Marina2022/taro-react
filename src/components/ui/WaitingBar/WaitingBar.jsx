@@ -141,10 +141,7 @@ const WaitingBar = ({
                  isMessagesPage && (
                   <div className={s.additionalInfo}>{truncateString} ({createdDate})</div>
                 )
-
-
               }
-
 
               {
                 situation.status === 'in_progress' &&
