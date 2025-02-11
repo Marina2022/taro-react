@@ -8,6 +8,7 @@ import AstrologerCard from "@/components/ui/systemComponents/AstrologerCard/Astr
 import astrologerImg from "@/assets/img/home/astrologist.png";
 import Header20 from "@/components/ui/systemComponents/Header20/Header20.jsx";
 import Text16 from "@/components/ui/systemComponents/Text16/Text16.jsx";
+import {GiDiamonds} from "react-icons/gi";
 
 const CompatibilityAnswer = () => {
 
@@ -52,9 +53,9 @@ const CompatibilityAnswer = () => {
         <div className={s.textBlock}>
           <Header20 classname={s.subTitle}>Интересующие вопросы:</Header20>
           <Text16>
-            <ul>
+            <ul className={s.list}>
               {
-                result.questions.map((question, i) => <li key={i} className={s.question}>{question}</li>)
+                result.questions.map((question, i) => <li key={i} className={s.question}><GiDiamonds className={s.diamondIcon} /> {question}</li>)
               }
             </ul>
           </Text16>
@@ -77,8 +78,6 @@ const CompatibilityAnswer = () => {
               })}
           </Text16>
         </div>
-
-
       </div>
     </div>
   )

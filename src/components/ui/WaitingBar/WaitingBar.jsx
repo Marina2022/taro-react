@@ -24,10 +24,8 @@ const WaitingBar = ({
 
   const navigate = useNavigate()
   const [isOpen, setIsOpen] = useState(false)
-
   const [innerTimerValue, setInnerTimerValue] = useState()
   const intervalId = useRef()
-
 
   useEffect(() => {
     if (situation) setInnerTimerValue(situation.seconds_left)
