@@ -25,6 +25,7 @@
 
 .title {
   color: #c7afc1;
+  font-weight: 700;
 }
 
 .icon {
@@ -112,9 +113,13 @@
   overflow: hidden;
   text-overflow: ellipsis;
   max-width: 100%;
+  opacity: .6;
 }
 
 .dateString {
   flex-shrink: 0;
   max-width: 40%;
+  color: #c7afc1;
+  font-size: 14px;
+  //opacity: .6;
 }

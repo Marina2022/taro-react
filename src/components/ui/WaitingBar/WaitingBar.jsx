@@ -87,7 +87,8 @@ const WaitingBar = ({
   }
 
   const percent = (situation.expected_duration - innerTimerValue) / situation.expected_duration * 100
-  const createdDate = new Date(situation.created_at).toLocaleDateString('ru-RU', {day: 'numeric', month: 'short'});
+  const createdDate = new Date(situation.created_at).toLocaleDateString('ru-RU', {day: 'numeric', month: 'short',   hour: '2-digit',
+    minute: '2-digit'});
 
   return (
     <div className={s.wrapper}>
@@ -121,6 +122,7 @@ const WaitingBar = ({
 
         <div className={s.content}>
           <div className={s.flexColWrapper}>
+            <div className={s.dateString}>{createdDate}</div>
             <div className={s.title}>
               {situation.name}
             </div>
@@ -133,7 +135,7 @@ const WaitingBar = ({
                       situation.question
                       : compatibilityQuestion[situation.question]
                   }</div>
-                  <div className={s.dateString}>({createdDate})</div>
+
                 </div>
               )
             }
@@ -143,6 +145,7 @@ const WaitingBar = ({
               <Clock currentTimer={innerTimerValue} classname={s.clock} loading={isSituationsLoading}
               />
             }
+
             {
               situation.status === 'completed' && <div className={s.ready}>Готово!</div>
             }
