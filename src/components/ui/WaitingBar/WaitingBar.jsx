@@ -13,6 +13,7 @@ import AskTaroPopupContent from "@/components/AskTaroOrderPage/AskTaroPopupConte
 import tarotIcon from "@/assets/img/home/askIcon.png"
 import compatibilityIcon from "@/assets/img/home/loveIcon.png"
 import {compatibilityQuestion} from "../../../../data/compatibilityQuestion.js";
+import axiosInstance from "@/api/axiosInstance.js";
 
 const WaitingBar = ({
                       situation,
@@ -50,8 +51,12 @@ const WaitingBar = ({
     }
   }, [innerTimerValue]);
 
-  const handleClick = () => {
+  const handleClick = async () => {
     if (situation.status === 'completed') {
+      axiosInstance.post('api/orders/set-read/', {order_id: situation.order_id})
+    }
+    
+    if (situation.status === 'completed' || situation.status === 'read') {
 
       if (situation.situation_type === 'astrology_question') {
         navigate(`/astrologer-answer/${situation.related_object_id}`)

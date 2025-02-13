@@ -1,6 +1,7 @@
 import s from './CompatSectionButton.module.scss';
 import {useNavigate} from "react-router-dom";
 import {BsExclamationCircle} from "react-icons/bs";
+import axiosInstance from "@/api/axiosInstance.js";
 
 const CompatSectionButton = ({section, userId}) => {
 
@@ -10,11 +11,17 @@ const CompatSectionButton = ({section, userId}) => {
     if (section.in_progress) return
 
     if (section.completed) {
+      
+      if (!section.is_read) {        
+        axiosInstance.post('api/orders/set-read/', {order_id: section.order_id})        
+      }
+      
       navigate(`/compatibility/answer/${userId}/${section.followup_name}`)
       return
     }
 
-    if (!section.completed && !section.in_progress) {
+    if (!section.completed && !section.in_progress ) {
+      
       navigate(`/compatibility/question/${userId}/${section.followup_name}`, {state: {questions: section.questions, name: section.name}})
       return
     }
