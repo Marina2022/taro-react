@@ -12,6 +12,8 @@ const ContextProvider = ({children}) => {
 
   const [dayQuality, setDayQuality] = useState()
   const [isDayLoading, setIsDayLoading] = useState(true)
+  
+  const [confirmedEmailPopupOpen, setConfirmedEmailPopupOpen] = useState(false)
     
   const fetchSituations = async () => {
 
@@ -39,7 +41,9 @@ const ContextProvider = ({children}) => {
         dayQuality, 
         setDayQuality,
         isDayLoading, 
-        setIsDayLoading
+        setIsDayLoading,
+        confirmedEmailPopupOpen, 
+        setConfirmedEmailPopupOpen
       }}>
       {children}
     </AppContext.Provider>

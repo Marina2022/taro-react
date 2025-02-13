@@ -11,6 +11,7 @@
   cursor: pointer;
   margin-bottom: 20px;
   gap: 20px;
+  cursor: default;
 
   @include xs {
     padding: 16px;

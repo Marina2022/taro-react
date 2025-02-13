@@ -26,6 +26,7 @@ import AstrologerCard from "@/components/ui/systemComponents/AstrologerCard/Astr
 import RingChart from "@/components/ui/systemComponents/RingChart/RingChart.jsx";
 import InputLabel from "@/components/ui/systemComponents/InputLabel/InputLabel.jsx";
 import TextArea from "@/components/ui/systemComponents/TextArea/TextArea.jsx";
+import MagicCard from "@/components/ui/MagicCard/MagicCard.jsx";
 
 const SystemPage = () => {
 
@@ -52,14 +53,10 @@ const SystemPage = () => {
 
   return (
     <div className={s.systemContainer}>
-
-
+   
       <div className={s.magicCardWrapper}>
-        <div className={s.card}>
-          Magic Card
-        </div>
+      <MagicCard/>
       </div>
-
 
       {/*Заголовки*/}
       <Header24>Заголовок 24</Header24>

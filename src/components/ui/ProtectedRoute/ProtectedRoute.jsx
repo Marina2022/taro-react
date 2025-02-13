@@ -10,6 +10,7 @@ const ProtectedRoute = ({children}) => {
   const navigate = useNavigate()
 
   useEffect(() => {
+        
     if (!user && !isUserLoading) {
       navigate('/onboarding')
       return

@@ -6,6 +6,7 @@ import {getProgressBarColor} from "@/utils.js";
 import {Link} from "react-router-dom";
 import axiosInstance from "@/api/axiosInstance.js";
 import {useAppContext} from "@/contexts/appContext.jsx";
+import MagicCard from "@/components/ui/MagicCard/MagicCard.jsx";
 
 const DayBlock = ({classname}) => {
 
@@ -41,8 +42,11 @@ const DayBlock = ({classname}) => {
     const shortDayOfWeek = date.toLocaleDateString('ru-RU', {weekday: 'short'}).toUpperCase();
 
     return (
+      
       <Link to="/day-energy"
             className={`${s.card} ${classname}`}>
+        
+        
         <div className={s.bordered}>
           <div className={s.shortDayOfWeek}>{formattedDate}<br/>{dayOfWeekCapitalized}</div>
 

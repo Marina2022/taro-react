@@ -82,7 +82,7 @@ const WaitingBar = ({
     tarot_order: "Вопрос таро"
   }
 
-  if (!situation) {
+  if (!situation?.situation_type) {
     return null
   }
 

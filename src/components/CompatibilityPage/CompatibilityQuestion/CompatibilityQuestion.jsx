@@ -3,9 +3,6 @@ import {useLocation, useNavigate, useParams} from "react-router-dom";
 import Header24 from "@/components/ui/systemComponents/Header24/Header24.jsx";
 import AstrologerCard from "@/components/ui/systemComponents/AstrologerCard/AstrologerCard.jsx";
 import astrologerImg from "@/assets/img/home/astrologist.png";
-import Tabs from "@/components/ui/systemComponents/Tabs/Tabs.jsx";
-import {modes} from "../../../../data/modes.js";
-import TextArea from "@/components/ui/systemComponents/TextArea/TextArea.jsx";
 import Button from "@/components/ui/systemComponents/Button/Button.jsx";
 import MiniSpinner from "@/components/ui/miniSpinner/MiniSpinner.jsx";
 import WaitingPopup from "@/components/ui/WaitingPopup/WaitingPopup.jsx";
@@ -14,8 +11,8 @@ import {useEffect, useRef, useState} from "react";
 import {useAppContext} from "@/contexts/appContext.jsx";
 import axiosInstance from "@/api/axiosInstance.js";
 import Spinner from "@/components/ui/Spinner/Spinner.jsx";
-import compatibility from "@/pages/Compatibility.jsx";
 import {FaCheck} from "react-icons/fa";
+import {useAuthContext} from "@/contexts/authContext.jsx";
 
 const CompatibilityQuestion = () => {
   const location = useLocation();
@@ -35,6 +32,45 @@ const CompatibilityQuestion = () => {
   const [initialTimer, setInitialTimer] = useState(null)
   const intervalId = useRef()
 
+  const { setConfirmedEmailPopupOpen} = useAppContext()
+  const {user, setUser} = useAuthContext()
+  
+  
+  useEffect(() => {
+      //перефетч юзера, чтобы проверить, не подтвердил ли он имейл 
+      const fetchUserProfile = async () => {
+
+        if (user.email_confirmed) return
+
+        try {
+          const response = await fetch('https://my.aspectum.app/api/profile/', {
+            method: 'GET',
+            credentials: 'include',
+          })
+          if (response.redirected !== true) {
+            const newUser = await response.json();
+
+            if (!newUser.email_confirmed) {             
+              navigate(`/compatibility/result/${id}`, {replace: true});
+              setConfirmedEmailPopupOpen(true)
+            } else {
+              setUser(newUser)
+            }
+
+          } else {
+            throw new Error('Ошибка при получении данных профиля');
+          }
+        } catch (err) {
+          console.log(err)
+        }
+      }
+
+      fetchUserProfile()
+
+    }, []
+  )
+
+  
   useEffect(() => {
 
     // если установили начальный таймер, т.е. пришел ответ с АПИ
@@ -81,8 +117,7 @@ const CompatibilityQuestion = () => {
       navigate('/')
     }, 0)
   }
-
-
+    
   return (
     <>
       <div className={s.compatQuestion}>

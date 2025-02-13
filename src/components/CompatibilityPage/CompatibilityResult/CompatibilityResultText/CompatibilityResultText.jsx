@@ -7,19 +7,15 @@ const CompatibilityResultText = ({pars, title}) => {
       <ul>
         {
           pars.map((par, i)=>{
-            return (
-              
+            return (              
               <div key={i}>
                 <Header20 classname={s.title}>{title}</Header20>
               <p className={s.par}>{par}</p>
-
               </div>
             )
           })
         }
       </ul>
-      
-      
     </div>
   );
 };

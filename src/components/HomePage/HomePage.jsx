@@ -5,15 +5,16 @@ import {useLocation} from "react-router-dom";
 import ContextProvider, {useAppContext} from "@/contexts/appContext.jsx";
 import BottomPart from "@/components/HomePage/BottomPart/BottomPart.jsx";
 import React, {useEffect} from "react";
+import MagicCard from "@/components/ui/MagicCard/MagicCard.jsx";
 
 const HomePage = () => {
 
   const {fetchSituations} = useAppContext()
-  
+
   useEffect(() => {
     fetchSituations()
   }, []);
-  
+
   const {pathname} = useLocation()
 
   return (
@@ -22,8 +23,11 @@ const HomePage = () => {
         <div className={s.wrapper}>
           <div className={s.topBlockWrapper}>
             <div className={s.topBlock}>
+
               <NatalMap/>
-              <DayBlock classname={s.dayBlock}/>
+              
+                <DayBlock classname={s.dayBlock}/>
+              
             </div>
           </div>
         </div>

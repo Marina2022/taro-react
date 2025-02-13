@@ -16,11 +16,13 @@ import WaitingPopup from "@/components/ui/WaitingPopup/WaitingPopup.jsx";
 import AskAstrologerPopupContent
   from "@/components/AskAstrologerPage/AskAstrologerPopupContent/AskAstrologerPopupContent.jsx";
 import AskTaroPopupContent from "@/components/AskTaroOrderPage/AskTaroPopupContent/AskTaroPopupContent.jsx";
+import {useAuthContext} from "@/contexts/authContext.jsx";
 
 const AskTaroOrderPage = () => {
+
   const {order} = useParams()
   const {tarotLayouts, areTarotLayoutsLoading} = useAppContext()
-  
+
   let tarotLayout
   if (!areTarotLayoutsLoading) {
     tarotLayout = tarotLayouts.find((layout) => layout.id === order)
@@ -37,8 +39,45 @@ const AskTaroOrderPage = () => {
   const {fetchSituations} = useAppContext()
   const navigate = useNavigate()
   const [initialTimer, setInitialTimer] = useState(null)
-  
+
   const intervalId = useRef()
+
+  const {setConfirmedEmailPopupOpen} = useAppContext()
+  const {user, setUser} = useAuthContext()
+
+
+  useEffect(() => {
+      //перефетч юзера, чтобы проверить, не подтвердил ли он имейл 
+      const fetchUserProfile = async () => {
+
+        if (user.email_confirmed) return
+
+        try {
+          const response = await fetch('https://my.aspectum.app/api/profile/', {
+            method: 'GET',
+            credentials: 'include',
+          })
+          if (response.redirected !== true) {
+            const newUser = await response.json();
+
+            if (!newUser.email_confirmed) {              
+              navigate('/ask-tarot', {replace: true});
+              setConfirmedEmailPopupOpen(true)
+            } else {
+              setUser(newUser)
+            }
+
+          } else {
+            throw new Error('Ошибка при получении данных профиля');
+          }
+        } catch (err) {
+          console.log(err)
+        }
+      }
+      fetchUserProfile()
+    }, []
+  )
+
 
   useEffect(() => {
 
@@ -83,7 +122,7 @@ const AskTaroOrderPage = () => {
       if (result.data.message === "Interpretation is being processed") {
         setIsOpen(true)
         setInitialTimer(result.data.seconds_left)
-        
+
       } else {
         throw new Error("Interpretation is not being processed for some reason")
       }
@@ -93,7 +132,7 @@ const AskTaroOrderPage = () => {
       setSending(false)
     }
   }
-  const understoodHandler = async () => {    
+  const understoodHandler = async () => {
     await fetchSituations()
     setIsOpen(false)
 
@@ -156,7 +195,7 @@ const AskTaroOrderPage = () => {
       </div>
 
       <WaitingPopup isOpen={isOpen} setIsOpen={setIsOpen} onUnderstood={understoodHandler}>
-        <AskTaroPopupContent currentTimer={innerTimer} layout={tarotLayout.name} />
+        <AskTaroPopupContent currentTimer={innerTimer} layout={tarotLayout.name}/>
       </WaitingPopup>
     </>
   )
