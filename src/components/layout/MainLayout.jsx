@@ -7,7 +7,6 @@ import ConfirmEmailPopup from "@/components/layout/ConfirmEmailPopup/ConfirmEmai
 
 const MainLayout = () => {
 
-
   const {confirmedEmailPopupOpen, setConfirmedEmailPopupOpen} = useAppContext()
 
   return (
@@ -15,9 +14,7 @@ const MainLayout = () => {
       <Header/>
       <Outlet/>
       <Navbar/>
-
       {confirmedEmailPopupOpen && <ConfirmEmailPopup setConfirmedEmailPopupOpen={setConfirmedEmailPopupOpen} />}
-
     </div>
   );
 };

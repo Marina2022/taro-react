@@ -6,7 +6,7 @@ import axiosInstance from "@/api/axiosInstance.js";
 import Spinner from "@/components/ui/Spinner/Spinner.jsx";
 
 const MessagesPage = () => {
-  
+
   const [messages, setMessages] = useState()
   const [messagesAreLoading, setMessagesAreLoading] = useState()
 
@@ -23,33 +23,28 @@ const MessagesPage = () => {
       setMessagesAreLoading(false)
     }
   }
-  
-  useEffect(() => {    
+
+  useEffect(() => {
       getMessages()
     }, []
   )
-  
-  if (!messages) return <Spinner />
 
-  console.log(messages) 
+  if (!messages) return <Spinner/>
   return (
     <div className={s.messagesPage}>
       <div className="container">
         <Header24 classname={s.mainTitle}>СИТУАЦИИ И СООБЩЕНИЯ</Header24>
-
         <div className={s.slogan}>Не думайте о том, что вы не можете, думайте о том, что вы <span
           className={s.highlight}> можете!</span></div>
-
         <ul>
           {
-           messages && messages.map((item, i) => <WaitingBar  
-              key={i} 
-              isSituationsLoading={messagesAreLoading} 
-              situation={item}              
+            messages && messages.map((item, i) => <WaitingBar
+              key={i}
+              isSituationsLoading={messagesAreLoading}
+              situation={item}
               isMessagesPage={true}
               endHandler={getMessages}
             />)
-                      
           }
         </ul>
       </div>

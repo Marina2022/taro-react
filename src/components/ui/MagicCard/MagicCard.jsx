@@ -1,4 +1,3 @@
-import React from 'react';
 import s from "./MagicCard.module.scss";
 
 const MagicCard = () => {

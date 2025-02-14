@@ -1,6 +1,5 @@
 import s from './Navbar.module.scss';
 import {Link, useLocation} from "react-router-dom";
-
 const Navbar = () => {
   const location = useLocation()
   const path = location.pathname
@@ -70,7 +69,6 @@ const Navbar = () => {
             path === '/page-1' && <div className={s.tabIndicator}></div>
           }
         </Link>
-
 
         <Link to="/page-2" className={path === '/page-2' ? s.tabButtonActive : s.tabButton}>
           <span className={s.tabIcon}>

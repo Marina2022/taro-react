@@ -12,44 +12,18 @@ const DayBlock = ({classname}) => {
 
     const {isDayLoading, setIsDayLoading, setDayQuality, dayQuality} = useAppContext()
 
-    useEffect(() => {
-      const getDay = async () => {
-        const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-        const currentTime = new Date().toISOString();
-        const payload = {
-          now_dt: currentTime, timezone: timeZone
-        }
-
-        try {
-          setIsDayLoading(true)
-          const result = await axiosInstance.post('api/energy/day/', payload)
-          setDayQuality(result.data.day_quality)
-        } catch (err) {
-          console.log(err)
-        } finally {
-          setIsDayLoading(false)
-        }
-      }
-      getDay()
-    }, [])
-
     const date = new Date()
-
     const formattedDate = date.toLocaleDateString('ru-RU', {day: 'numeric', month: 'long'});
-
     const dayOfWeek = date.toLocaleDateString('ru-RU', {weekday: 'long'});
     const dayOfWeekCapitalized = dayOfWeek.charAt(0).toUpperCase() + dayOfWeek.slice(1)
     const shortDayOfWeek = date.toLocaleDateString('ru-RU', {weekday: 'short'}).toUpperCase();
 
     return (
-      
+
       <Link to="/day-energy"
             className={`${s.card} ${classname}`}>
-        
-        
         <div className={s.bordered}>
           <div className={s.shortDayOfWeek}>{formattedDate}<br/>{dayOfWeekCapitalized}</div>
-
           {
             !isDayLoading && <div className={s.chartWrapper}>
               <RingChart value={dayQuality} low={0.4} high={.6}/>

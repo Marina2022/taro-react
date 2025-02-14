@@ -51,11 +51,8 @@ const CompatibilityResult = () => {
     <div className={s.compatResult}>
       <div className="container">
         <Header24 classname={s.mainTitle}>СОВМЕСТИМОСТЬ</Header24>
-
         <PersonBar data={result}/>
-
-        <PersonSVGPicture pictureUrl={result.svg_url}/>
-        
+        <PersonSVGPicture pictureUrl={result.svg_url} compatPictureUrl={result.compat_svg_url}  />      
         <ShortInfo data={result}/>
         <Header20 classname={s.integralHeader}>
           ИНТЕГРАЛЬНАЯ СОВМЕСТИМОСТЬ:&nbsp;{result.integral_compatibility}%

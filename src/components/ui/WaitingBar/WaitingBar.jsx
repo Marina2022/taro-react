@@ -1,19 +1,20 @@
 import s from './WaitingBar.module.scss';
+import {useEffect, useRef, useState} from "react";
 import {useAppContext} from "@/contexts/appContext.jsx";
+import {useNavigate} from "react-router-dom";
+
 import Clock from "@/components/ui/Clock/Clock.jsx";
 import {BsExclamationCircle} from "react-icons/bs";
-import {useNavigate} from "react-router-dom";
 import WaitingPopup from "@/components/ui/WaitingPopup/WaitingPopup.jsx";
 import AskAstrologerPopupContent
   from "@/components/AskAstrologerPage/AskAstrologerPopupContent/AskAstrologerPopupContent.jsx";
-import {useEffect, useRef, useState} from "react";
-import astrologerImg from '@/assets/img/home/astrologist.png'
 import AskTaroPopupContent from "@/components/AskTaroOrderPage/AskTaroPopupContent/AskTaroPopupContent.jsx";
+import axiosInstance from "@/api/axiosInstance.js";
 
+import astrologerImg from '@/assets/img/home/astrologist.png'
 import tarotIcon from "@/assets/img/home/askIcon.png"
 import compatibilityIcon from "@/assets/img/home/loveIcon.png"
 import {compatibilityQuestion} from "../../../../data/compatibilityQuestion.js";
-import axiosInstance from "@/api/axiosInstance.js";
 
 const WaitingBar = ({
                       situation,
@@ -145,7 +146,6 @@ const WaitingBar = ({
                       situation.question
                       : compatibilityQuestion[situation.question]
                   }</div>
-
                 </div>
               )
             }

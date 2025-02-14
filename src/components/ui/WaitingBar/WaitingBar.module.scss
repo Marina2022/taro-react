@@ -11,7 +11,6 @@
   justify-content: flex-start;
   cursor: pointer;
 
-
   @include xs {
     padding: 12px;
     gap: 14px;
@@ -39,7 +38,6 @@
 .ready {
   text-transform: uppercase;
   font-size: 22px;
-
 
   @include xs {
     font-size: 20px;
@@ -116,10 +114,8 @@
   opacity: .6;
 }
 
-.dateString {
-  
+.dateString {  
   flex-shrink: 0;  
   color: #c7afc1;
-  font-size: 14px;
-  //opacity: .6;
+  font-size: 14px;  
 }

@@ -1,8 +1,12 @@
 @use '@/assets/styles/mixins' as *;
 
 .img {
-  width: 100%;
-  object-fit: contain;  
+  width: 48%;
+  object-fit: contain;
+
+  @include xs {
+    width: 100%;
+  }  
 }
 
 .wrapper {
@@ -12,8 +16,13 @@
   padding: 20px;
   min-height: 100px;
   background-color: #553559;
+  display: flex;
+  gap: 30px;
+  justify-content: center;
   
   @include xs {
     margin-top: 20px;
+    flex-direction: column;
+    gap: 20px;
   }
 }
