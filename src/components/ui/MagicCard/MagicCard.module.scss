@@ -73,7 +73,7 @@
   z-index: -1;
   top: -1%;
   left: -2%;
-  animation: spin 2.5s linear infinite;
+  animation: spin 5s linear infinite;
 }
 
 .card::after {
@@ -98,7 +98,7 @@
           //, #87df8a, #39CB3F 43%, #13f11c  );
   opacity: 1;
   transition: opacity .5s;
-  animation: spin 2.5s linear infinite;
+  animation: spin 5s linear infinite;
   
   @include xs {
     transform: scale(0.7);
