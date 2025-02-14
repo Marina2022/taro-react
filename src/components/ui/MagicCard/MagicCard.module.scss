@@ -1,4 +1,4 @@
-//***********************
+@use '@/assets/styles/mixins' as *;
 
 
 @property --rotate {
@@ -19,7 +19,7 @@
   position: absolute;
   top: 0;
   left: 0;
-  z-index: 0;
+  //z-index: 0;
 
 }
 
@@ -33,11 +33,11 @@
     margin-top: 2rem;
   }
 
-  --card-width: 150px;
-  --card-height: 270px;
+  //--card-width: 150px;
+  //--card-height: 270px;
 
 
-  background: #191c29;
+  //background: #191c29;
   //width: var(--card-width);
   //height: var(--card-height);
 
@@ -70,11 +70,14 @@
   content: "";
   width: 104%;
   height: 102%;
+  
+  width: 100%;  
+  height: 100%;
   border-radius: 8px;
-  background-image: linear-gradient(
-                  var(--rotate)
-            , #5ddcff, #3c67e3 43%, #4e00c2);
-          //,  red, yellow 43%, green);
+  //background-image: linear-gradient(
+  //                var(--rotate)
+  //          , #5ddcff, #3c67e3 43%, #4e00c2);
+  //        //,  red, yellow 43%, green);
   position: absolute;
   z-index: -1;
   top: -1%;
@@ -85,22 +88,30 @@
 .card::after {
   position: absolute;
   content: "";
-  top: calc(var(--card-height) / 6);
+  //top: calc(var(--card-height) / 6);
+  top: 0;
   left: 0;
   right: 0;
   z-index: -1;
   height: 100%;
   width: 100%;
   margin: 0 auto;
-  transform: scale(0.8);
+  transform: scale(0.7);
   filter: blur(calc(var(--card-height) / 6));
-  background-image: linear-gradient(
-                  var(--rotate)
-            , #5ddcff, #3c67e3 43%, #4e00c2);
-          //, red, yellow 43%, green);
+  //background-image: linear-gradient(
+  //                var(--rotate)
+            //, #5ddcff, #3c67e3 43%, #4e00c2);  // изначальный
+          
+          //, #f3a5af, #E63D52 43%, #881220);
+          //, #ecff4c , #FFB94C 43%, #ff604c );
+          //, #87df8a, #39CB3F 43%, #13f11c  );
   opacity: 1;
   transition: opacity .5s;
   animation: spin 2.5s linear infinite;
+  
+  @include xs {
+    transform: scale(0.6);
+  }
 }
 
 @keyframes spin {
@@ -112,3 +123,22 @@
   }
 }
 
+
+
+.red::after {
+  background-image: linear-gradient(
+                  var(--rotate)
+            , #f3a5af, #E63D52 43%, #881220);            
+}
+
+.yellow::after {
+  background-image: linear-gradient(
+                  var(--rotate)
+          , #ecff4c , #FFB94C 43%, #ff604c );
+}
+
+.green::after {
+  background-image: linear-gradient(
+                  var(--rotate)
+          , #87df8a, #39CB3F 43%, #13f11c  );
+}

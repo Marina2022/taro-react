@@ -6,10 +6,11 @@ import ContextProvider, {useAppContext} from "@/contexts/appContext.jsx";
 import BottomPart from "@/components/HomePage/BottomPart/BottomPart.jsx";
 import React, {useEffect} from "react";
 import MagicCard from "@/components/ui/MagicCard/MagicCard.jsx";
+import {getProgressBarColor} from "@/utils.js";
 
 const HomePage = () => {
 
-  const {fetchSituations} = useAppContext()
+  const {fetchSituations, dayQuality} = useAppContext()
 
   useEffect(() => {
     fetchSituations()
@@ -25,9 +26,13 @@ const HomePage = () => {
             <div className={s.topBlock}>
 
               <NatalMap/>
-              
+
+              <div className={s.dayBlockWrapper}>
+                <MagicCard color={getProgressBarColor(dayQuality, .4, .6)}/>
                 <DayBlock classname={s.dayBlock}/>
-              
+
+              </div>
+
             </div>
           </div>
         </div>
