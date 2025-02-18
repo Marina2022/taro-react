@@ -1,6 +1,5 @@
 @use '@/assets/styles/mixins' as *;
 
-
 .compatResult {
   padding-bottom: 100px;
   margin-top: -48px;
@@ -9,7 +8,6 @@
     margin-top: -44px;
   }
 }
-
 
 .mainTitle {
   text-align: center;
@@ -25,12 +23,9 @@
   }
 }
 
-
-
 .integralHeader {
   margin-top: 32px;
   text-align: center;
-
 
   @include xs {
     margin-top: 20px;

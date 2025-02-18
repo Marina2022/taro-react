@@ -39,11 +39,10 @@ const TodayPage = () => {
   const [day1, month1, year1] = daysData?.[0]?.date.split('-')
   const date1 = new Date(`${year1}-${month1}-${day1}`)
   const startDate = date1.toLocaleDateString('ru-RU', {day: 'numeric', month: 'long'});
-  
+
   const [day2, month2, year2] = daysData?.[6]?.date.split('-')
   const date2 = new Date(`${year2}-${month2}-${day2}`)
   const endDate = date2.toLocaleDateString('ru-RU', {day: 'numeric', month: 'long'});
-
   const weekHeading = `Неделя c ${startDate} по ${endDate}`
 
   return (
@@ -51,7 +50,6 @@ const TodayPage = () => {
       <div className={s.todayPage}>
         <Header24 classname={s.mainTitle}>БЛАГОПРИЯТНЫЕ ДНИ</Header24>
         <div className={s.weekHeading}>{weekHeading}</div>
-
         <div className={s.daysWrapper}>
           <div className={s.secondWrapper}>
             <div className={s.daysList}>
@@ -68,11 +66,8 @@ const TodayPage = () => {
             </div>
           </div>
         </div>
-
         <DayDescription day={daysData[currentDayIndex]}/>
-
       </div>
-
     </div>
   );
 };

@@ -11,9 +11,7 @@ const CompatibilitySelect = () => {
 
   const [data, setData] = useState(null)
   const [isLoading, setIsLoading] = useState(true)
-
   const navigate = useNavigate()
-
   const getData = async () => {
     try {
       setIsLoading(true)
@@ -36,8 +34,6 @@ const CompatibilitySelect = () => {
 
   if (!data) return <Spinner/>
 
-  //const testData = [...data, {...data[0], status: 'in_progress', seconds_left: 1000}]
-
   return (
 
     <div className={s.compatSelect}>
@@ -47,7 +43,6 @@ const CompatibilitySelect = () => {
         <ul>
           {            
             data.map((item, i) => <WaitingBar key={i} situation={item} isSelectPage={true} endHandler={getData}  />)
-            //testData.map((item, i)=> <CompatibilityBar key={i} data={item} />)          
           }
         </ul>
 

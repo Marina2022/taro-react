@@ -11,8 +11,6 @@ const DayDescription = ({day}) => {
   const [dateDay, month, year] = day.date.split("-").map(Number);
   const date = new Date(year, month - 1, dateDay);
 
-  // console.log(day)
-
   return (
     <div className={s.descWrapper}>
       <DayIsGood dayQuality={day.quality} date={date}/>

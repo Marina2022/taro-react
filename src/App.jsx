@@ -25,7 +25,6 @@ import CompatibilityQuestion from "@/components/CompatibilityPage/CompatibilityQ
 import CompatibilityAnswer from "@/components/CompatibilityPage/CompatibilityAnswer/CompatibilityAnswer.jsx";
 import Messages from "@/pages/Messages.jsx";
 
-
 function App() {
 
   const {
@@ -110,38 +109,30 @@ function App() {
         <ScrollToTop/>
         <Routes>
           <Route path='/onboarding' element={<Onboarding/>}/>
-          <Route path='/system' element={<System/>}/>
-                    
+          <Route path='/system' element={<System/>}/>                    
           <Route element={<ProtectedRoute><MainLayout/></ProtectedRoute>}>
             <Route path='/' index element={<Home/>}/>
             <Route path='/ask-astrologer' element={ <AskAstrologer/> }/>
-            <Route path='/astrologer-answer/:id' element={<AstrologerAnswer/>}/>
-            
+            <Route path='/astrologer-answer/:id' element={<AstrologerAnswer/>}/>            
             <Route path='/day-energy' element={<Today/>}/>
-
             <Route path='/ask-tarot' element={<AskTaro/>}/>
             <Route path='/ask-tarot/:order' element={<AskTaroOrderPage/>}/>
             <Route path='/tarot-answer/:id' element={<TaroAnswerPage/>}/>
-
             <Route path='/messages' element={<Messages/>}/>
-
             <Route path='/natal' element={<Natal/>}>
               <Route path='/natal' index element={<Chart/>}/>
               <Route path='/natal/description/:feature' element={<NatalFeaturePage/>}/>
             </Route>
-
             <Route path='/compatibility/select' index element={<CompatibilitySelect/>}/>
             <Route path='/compatibility/order' element={<CompatibilityOrder/>}/>
             <Route path='/compatibility/question/:id/:theme' index element={<CompatibilityQuestion/>}/>
             <Route path='/compatibility/answer/:id/:theme' index element={<CompatibilityAnswer/>}/>
-            <Route path='/compatibility/result/:id' index element={<CompatibilityResult/>}/>
-            
+            <Route path='/compatibility/result/:id' index element={<CompatibilityResult/>}/>            
             <Route path='*' element={<div className='container'>Not found</div>}/>
           </Route>
         </Routes>
       </Router>
     </>
-
   )
 }
 

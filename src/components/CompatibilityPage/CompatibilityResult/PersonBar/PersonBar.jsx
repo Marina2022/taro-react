@@ -13,8 +13,7 @@ const PersonBar = ({data}) => {
     month: "long",
     year: "numeric"
   }) 
-  
-  
+    
   return (
     <div className={s.personBar}>
       <img className={s.img} src={loveIcon}/>

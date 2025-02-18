@@ -6,7 +6,6 @@ const AuthContextProvider = ({children}) => {
   const [isUserLoading, setIsUserLoading] = useState(true)
   const [natalChartCreated, setNatalChartCreated] = useState(false)
 
-
   return (
     <AuthContext.Provider
       value={{

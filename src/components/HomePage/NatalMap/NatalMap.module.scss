@@ -2,8 +2,7 @@
 
 .card {
   display: block;
-  border-radius: 12px;
-  //margin-bottom: 16px;
+  border-radius: 12px;  
   position: relative;
   overflow: hidden;
   transition: background-color 0.3s ease;
@@ -45,8 +44,7 @@
 
   @include xs {
     margin-top: 0px;
-  }
-  
+  }  
 }
 
 .cardDescription {

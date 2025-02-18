@@ -16,23 +16,17 @@ const HomePage = () => {
     fetchSituations()
   }, []);
 
-  const {pathname} = useLocation()
-
   return (
     <div className={s.homePage}>
       <div className='container'>
         <div className={s.wrapper}>
           <div className={s.topBlockWrapper}>
             <div className={s.topBlock}>
-
               <NatalMap/>
-
               <div className={s.dayBlockWrapper}>
                 <MagicCard color={getProgressBarColor(dayQuality, .4, .6)}/>
                 <DayBlock classname={s.dayBlock}/>
-
               </div>
-
             </div>
           </div>
         </div>

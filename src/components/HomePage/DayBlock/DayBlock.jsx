@@ -1,12 +1,9 @@
 import s from "./DayBlock.module.scss";
-import React, {useEffect, useState} from "react";
+import React from "react";
 import RingChart from "@/components/ui/systemComponents/RingChart/RingChart.jsx";
-import InputLabel from "@/components/ui/systemComponents/InputLabel/InputLabel.jsx";
 import {getProgressBarColor} from "@/utils.js";
 import {Link} from "react-router-dom";
-import axiosInstance from "@/api/axiosInstance.js";
 import {useAppContext} from "@/contexts/appContext.jsx";
-import MagicCard from "@/components/ui/MagicCard/MagicCard.jsx";
 
 const DayBlock = ({classname}) => {
 

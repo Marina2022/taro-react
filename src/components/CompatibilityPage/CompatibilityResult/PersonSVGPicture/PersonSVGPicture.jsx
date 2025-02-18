@@ -1,6 +1,5 @@
 import s from './PersonSVGPicture.module.scss';
 
-
 const PersonSvgPicture = ({pictureUrl, compatPictureUrl}) => {
 
   const url = 'https://my.aspectum.app' + pictureUrl

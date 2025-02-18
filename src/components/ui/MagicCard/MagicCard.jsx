@@ -1,8 +1,7 @@
 import s from "./MagicCard.module.scss";
 
 const MagicCard = ({color}) => {
-  console.log({color})
-  
+    
   let colorClass = ''
   if (color === "#E63D52") colorClass = s.red
   if (color === "#FFB94C") colorClass = s.yellow

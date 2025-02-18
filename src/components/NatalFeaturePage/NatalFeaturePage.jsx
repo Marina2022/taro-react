@@ -12,13 +12,10 @@ import QuoteBlock from "@/components/ui/systemComponents/QuoteBlock/QuoteBlock.j
 import AdditionalNavButtons from "@/components/NatalPage/AdditionalNavButtons/AdditionalNavButtons.jsx";
 
 const NatalFeaturePage = () => {
-
   const {feature} = useParams()
-
   const [data, setData] = useState(null)
   const [dataIsLoading, setDataIsLoading] = useState(true)
-  const [error, setError] = useState(null)
-  
+  const [error, setError] = useState(null)  
   const location = useLocation()
   
   useEffect(() => {
@@ -28,7 +25,6 @@ const NatalFeaturePage = () => {
         setError(null)
         const response = await axiosInstance(`api/natal/description/${feature}`)
         setData(response.data)
-        // console.log(data)
       } catch (err) {
         setError('Нет такой страницы :(')
       } finally {
@@ -51,7 +47,6 @@ const NatalFeaturePage = () => {
         <div className={s.texts}>
           {
             data.texts.map((text, i) => {
-
               return (
                 <TextBlock key={i} classname={s.textBlock}>
                   <Header20 classname={s.textTitle}>{text.header}</Header20>

@@ -55,8 +55,7 @@ const BottomPart = () => {
                 
         <ButtonWithBeak
           title="Сообщения"
-          description="Архив сообщений и заказов"
-          
+          description="Архив сообщений и заказов"          
           onClick={messagesClickHandler}
           number={messages?.length}          
           img={messagesIcon}

@@ -34,9 +34,7 @@ const WaitingBar = ({
   }, [situation]);
 
   useEffect(() => {
-
     if (innerTimerValue >= 0) {
-
       intervalId.current = setInterval(() => {
         setInnerTimerValue((prev) => {
 
@@ -56,7 +54,7 @@ const WaitingBar = ({
     if (situation.status === 'completed') {
       axiosInstance.post('api/orders/set-read/', {order_id: situation.order_id})
     }
-    
+
     if (situation.status === 'completed' || situation.status === 'read') {
 
       if (situation.situation_type === 'astrology_question') {
@@ -93,10 +91,12 @@ const WaitingBar = ({
   }
 
   const percent = (situation.expected_duration - innerTimerValue) / situation.expected_duration * 100
-  
-  
-  const createdDate = new Date(situation.created_at+'Z').toLocaleDateString('ru-RU', {day: 'numeric', month: 'short',   hour: '2-digit',
-    minute: '2-digit'});
+
+
+  const createdDate = new Date(situation.created_at + 'Z').toLocaleDateString('ru-RU', {
+    day: 'numeric', month: 'short', hour: '2-digit',
+    minute: '2-digit'
+  });
 
   return (
     <div className={s.wrapper}>
@@ -130,12 +130,11 @@ const WaitingBar = ({
 
         <div className={s.content}>
           <div className={s.flexColWrapper}>
-
             {
               isMessagesPage && <div className={s.dateString}>{createdDate}</div>
             }
             <div className={s.title}>
-            {situation.name}
+              {situation.name}
             </div>
 
             {

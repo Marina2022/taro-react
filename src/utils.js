@@ -1,5 +1,4 @@
-export function getProgressBarColor(value, low, high) {
-  // Определяем цвет на основе значений
+export function getProgressBarColor(value, low, high) {  
   if (value < low) {
     return "#E63D52"; // Красный
   } else if (value >= low && value < high) {

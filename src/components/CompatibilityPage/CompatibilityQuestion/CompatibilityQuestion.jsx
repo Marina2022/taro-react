@@ -16,11 +16,9 @@ import {useAuthContext} from "@/contexts/authContext.jsx";
 
 const CompatibilityQuestion = () => {
   const location = useLocation();
-
   const {id, theme} = useParams()
 
   const data = location.state
-
 
   const [sending, setSending] = useState(false)
   const [isOpen, setIsOpen] = useState(false)
@@ -64,9 +62,7 @@ const CompatibilityQuestion = () => {
           console.log(err)
         }
       }
-
       fetchUserProfile()
-
     }, []
   )
 
@@ -98,7 +94,6 @@ const CompatibilityQuestion = () => {
 
       if (result.data.message === "Interpretation is being processed") {
         setIsOpen(true)
-        // setInnerTimer(result.data.seconds_left)
         setInitialTimer(result.data.seconds_left)
       } else {
         throw new Error("Interpretation is not being processed for some reason")
@@ -129,7 +124,6 @@ const CompatibilityQuestion = () => {
             imageUrl={astrologerImg}>
             Таро, Астрология
           </AstrologerCard>
-
 
           <p className={s.text}>При заказе этой услуги наш астролог изучит ваши натальные карты, чтобы ответить на
             следующие вопросы:</p>

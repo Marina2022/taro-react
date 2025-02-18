@@ -27,8 +27,7 @@ const CompatibilityResult = () => {
       try {
         setIsLoading(true)
         const result = await axiosInstance(`api/compatibility/answer/${id}`)
-        setResult(result.data)
-        
+        setResult(result.data)        
       } catch (err) {
         console.log(err)
       } finally {

@@ -11,7 +11,6 @@ const MessagesPage = () => {
   const [messagesAreLoading, setMessagesAreLoading] = useState()
 
   const getMessages = async () => {
-
     try {
       setMessagesAreLoading(true)
       const result = await axiosInstance(`/api/orders/list/`)

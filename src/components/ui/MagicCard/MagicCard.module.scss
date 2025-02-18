@@ -1,6 +1,5 @@
 @use '@/assets/styles/mixins' as *;
 
-
 @property --rotate {
   syntax: "<angle>";
   initial-value: 132deg;
@@ -11,7 +10,6 @@
   --card-height: 65vh;
   --card-width: calc(var(--card-height) / 1.5);
 }
-
 
 .magicCardWrapper {  
   width: 100%;
@@ -31,13 +29,8 @@
     margin-top: 2rem;
   }
 
-  //background: #191c29;
-  //width: var(--card-width);
-  //height: var(--card-height);
-
   width: 100%;
   height: 100%;
-
   padding: 3px;
   position: relative;
   border-radius: 6px;
@@ -64,11 +57,7 @@
   content: "";
   width: 104%;
   height: 102%;  
-  border-radius: 8px;
-  //background-image: linear-gradient(
-  //                var(--rotate)
-  //          , #5ddcff, #3c67e3 43%, #4e00c2);
-  //        //,  red, yellow 43%, green);
+  border-radius: 8px;  
   position: absolute;
   z-index: -1;
   top: -1%;
@@ -79,7 +68,6 @@
 .card::after {
   position: absolute;
   content: "";
-  //top: calc(var(--card-height) / 6);
   top: 0;
   left: 0;
   right: 0;
@@ -89,13 +77,6 @@
   margin: 0 auto;
   transform: scale(0.75);
   filter: blur(calc(var(--card-height) / 6));
-  //background-image: linear-gradient(
-  //                var(--rotate)
-            //, #5ddcff, #3c67e3 43%, #4e00c2);  // изначальный
-          
-          //, #f3a5af, #E63D52 43%, #881220);
-          //, #ecff4c , #FFB94C 43%, #ff604c );
-          //, #87df8a, #39CB3F 43%, #13f11c  );
   opacity: 1;
   transition: opacity .5s;
   animation: spin 5s linear infinite;
@@ -128,7 +109,6 @@
 
 .green::after {
   background-image: linear-gradient(
-                  var(--rotate)
-          //, #C3EFC5, #39CB3F 43%, #165119  );
+                  var(--rotate)          
           , #89e841, #2fa133 43%, #346b0a  );
 }

@@ -7,11 +7,9 @@ const CompatSectionButton = ({section, userId}) => {
 
   const navigate = useNavigate()
   const clickHandler = () => {
-
     if (section.in_progress) return
-
-    if (section.completed) {
-      
+    
+    if (section.completed) {     
       if (!section.is_read) {        
         axiosInstance.post('api/orders/set-read/', {order_id: section.order_id})        
       }
@@ -45,15 +43,12 @@ const CompatSectionButton = ({section, userId}) => {
           </svg>
         )
       }
-
       {
         section.completed && <BsExclamationCircle className={s.readyIcon}/>
       }
-
       {
         !section.in_progress && !section.completed && <div className={s.listItemChevron}></div>
       }
-
     </li>
   );
 };

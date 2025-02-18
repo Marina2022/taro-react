@@ -6,8 +6,7 @@ const Recommendations = ({activities}) => {
     
   return (
     <div className={s.recommendations}>
-      <Header24 classname={s.title}>Рекомендации по активностям</Header24>
-      
+      <Header24 classname={s.title}>Рекомендации по активностям</Header24>      
       <ul className={s.recommendList}>
       {
         activities.map((activity, i)=><Activity key={i} activity={activity} />)

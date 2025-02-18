@@ -14,8 +14,7 @@ const CompatAdditionalNavButtons = ({sections, userId}) => {
       <div className={s.wrapper}>
         <ul className={s.buttonsList}>
           {
-            sections.map((section, i) => <CompatSectionButton key={i} section={section} userId={userId} />)
-            //testSections.map((section, i) => <CompatSectionButton key={i} section={section} userId={userId} />)
+            sections.map((section, i) => <CompatSectionButton key={i} section={section} userId={userId} />)            
           }
         </ul>
       </div>

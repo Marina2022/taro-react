@@ -9,8 +9,7 @@ const BiorhythmCharts = ({biorhythms}) => {
         {
           Object.keys(biorhythms).map((biorhythm, i)=><BiorhythmItem name={biorhythm} value={biorhythms[biorhythm]} key={i} />)          
         }
-      </ul>
-      
+      </ul>      
     </div>
   );
 };

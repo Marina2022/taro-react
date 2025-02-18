@@ -31,8 +31,7 @@
 
   @include m {
     margin-left: 0;
-    width: 100%;
-    //padding-inline: 4px;
+    width: 100%;    
     padding-block: 16px;
 
     &:hover {
@@ -72,14 +71,9 @@
   }
 }
 
-.buttonName {
-  
-}
-
 .buttonNameLocked {
   opacity: .8;
 }
-
 
 .lockIcon {
   width: 18px;

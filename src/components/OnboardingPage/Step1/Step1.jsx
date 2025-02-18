@@ -5,7 +5,6 @@ import {useState} from "react";
 import TimeInput from "@/components/ui/systemComponents/TimeInput/TimeInput.jsx";
 import {daysInMonth} from "@/utils.js";
 
-
 const Step1 = ({setStep, day, setDay, month, setMonth, year, setYear, time, setTime, dontKnowTime, setDontKnowTime}) => {     
   const handleClick = ()=>{
     

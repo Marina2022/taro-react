@@ -70,8 +70,7 @@
   
   @include m {
     padding-inline: 6px;
-  }  
- 
+  }   
 }
 
 .percent {
@@ -132,13 +131,11 @@
 .bordered {
   width: 100%;
   aspect-ratio: 1;
-  //padding: 16px;
   padding-top: 10px;
   border-radius: 8px; 
   
   @include xs {
     margin-bottom: 10px;
-    //padding: 10px;
   }
 }
 

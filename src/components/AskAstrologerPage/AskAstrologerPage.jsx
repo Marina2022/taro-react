@@ -23,16 +23,12 @@ const AskAstrologerPage = () => {
   const [isOpen, setIsOpen] = useState(false)
   const [innerTimer, setInnerTimer] = useState(null)
   const [initialTimer, setInitialTimer] = useState(null)
-
-  const {fetchSituations} = useAppContext()
   const navigate = useNavigate()
-
   const intervalId = useRef()
-
-  const {setConfirmedEmailPopupOpen} = useAppContext()
-
+  
+  const {fetchSituations, setConfirmedEmailPopupOpen} = useAppContext()
   const {user, setUser} = useAuthContext()
-
+  
 
   useEffect(() => {
       const fetchUserProfile = async () => {
@@ -114,7 +110,6 @@ const AskAstrologerPage = () => {
       setSending(false)
     }
   }
-
   const understoodHandler = async () => {
     await fetchSituations()
     setIsOpen(false)

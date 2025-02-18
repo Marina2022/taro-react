@@ -36,9 +36,7 @@ const TaroAnswerPage = () => {
   if (isLoading) return <Spinner/>
 
   const answerParagraphs = answer.layout_text.split("\n\n")
-
   const allButLast = answerParagraphs.slice(0, answerParagraphs.length - 1);
-    
   const [day, month, year] = answer.order_date.split('-');
   const date = new Date(`${year}-${month}-${day}`);
   const formattedDate = date.toLocaleDateString('ru-RU', {day: 'numeric', month: 'long', year: 'numeric'});
@@ -54,39 +52,28 @@ const TaroAnswerPage = () => {
             formattedDate
           }
         </AstrologerCard>
-
-
         <div className={s.flexContainer}>
-
           <div className={s.leftPart}>
-
             <Header20 classname={s.title}>Ваша ситуация:</Header20>
             <Text16 classname={s.text}>
               {answer.situation_description}
             </Text16>
-
             <Header20 classname={s.title}>Ваш вопрос:</Header20>
             <Text16 classname={s.text}>
               {answer.user_question}
             </Text16>
-
           </div>
-
           <div className={s.rightPart}>
-
-            {/*<Header20 classname={s.title}>Выпавший расклад:</Header20>*/}
-
             <div className={s.resultWrapper}>
               <img className={s.resultImg} src={"https://my.aspectum.app/" + answer.svg_url} alt="result"/>
             </div>
           </div>
         </div>
-        
         <Header20 classname={s.answerTitle}>Трактовка расклада:</Header20>
         <Text16 classname={s.text}>
           {
             allButLast.map((paragraph, i) => {
-              const innerParagraphs = paragraph.split("\r\n");              
+              const innerParagraphs = paragraph.split("\r\n");
               return (
                 <div className={s.par} key={i}>
                   {
@@ -103,15 +90,10 @@ const TaroAnswerPage = () => {
             })
           }
         </Text16>
-        
-        
         <QuoteBlock>
           {
-            
-            
-             answerParagraphs[answerParagraphs.length-1]
+            answerParagraphs[answerParagraphs.length - 1]
           }
-          
         </QuoteBlock>
       </div>
     </div>

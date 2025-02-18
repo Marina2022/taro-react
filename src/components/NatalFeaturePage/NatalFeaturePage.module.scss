@@ -23,9 +23,7 @@
   }
 }
 
-.textBlock {
-  
-  
+.textBlock {   
   
   @include xs {
     padding-inline: 4px !important;
@@ -44,7 +42,6 @@
     margin-top: 20px;
   }
 }
-
 
 .textTitle {
   margin-bottom: 20px;

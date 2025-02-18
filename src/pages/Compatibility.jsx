@@ -1,7 +1,7 @@
-import CompatibilityPage from "@/components/CompatibilityPage/CompatibilityPage.jsx";
+import CompatibilitySelect from "@/components/CompatibilityPage/CompatibilitySelect/CompatibilitySelect.jsx";
 
 const Compatibility = () => {
-  return <CompatibilityPage />
+  return <CompatibilitySelect />
 };
 
 export default Compatibility;

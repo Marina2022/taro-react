@@ -195,8 +195,6 @@ const CompatibilityOrder = () => {
     }, 0)
   }
 
-  
-
   return (
     <div className={s.compatOrder}>
       <div className="container">

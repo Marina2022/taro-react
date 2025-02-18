@@ -7,8 +7,7 @@ import axiosInstance from "@/api/axiosInstance.js";
 
 const ConfirmEmailPopup = ({setConfirmedEmailPopupOpen}) => {
 
-  const {user} = useAuthContext()
-  
+  const {user} = useAuthContext()  
   const [send, setSend] = useState(false)
 
   useEffect(() => {
@@ -51,37 +50,26 @@ const ConfirmEmailPopup = ({setConfirmedEmailPopupOpen}) => {
       } catch (err) {
         console.log(err)
       }  
-    }   
-    
-    
-    
-    
+    }
   }
   
   return (
     <div className={s.underlay} onClick={handleUnderlayClick}>
       <div className={s.popup} ref={popupRef}>
-
         {
           !send && <p className={s.pleaseConfirm}>
             Подтвердите, пожалуйста, email, чтобы воспользоваться данной услугой
           </p>
-        }
-              
-
+        }              
         {
           send && <div className={s.isSend}>Ссылка для подтверждения отправлена на ваш имейл</div>
-        }
-
-        
+        }        
         <div className={s.bottom}>
         {
           !send && <p className={s.repeat}>
             Если вы не получили письмо с подтверждением, вы можете запросить его повторно
           </p>
         }
-        
-
         {
           <Button classname={s.btn} onClick={submitHandler}>
             {
@@ -90,7 +78,6 @@ const ConfirmEmailPopup = ({setConfirmedEmailPopupOpen}) => {
             }
           </Button> 
         }
-
         </div>
       </div>
     </div>
