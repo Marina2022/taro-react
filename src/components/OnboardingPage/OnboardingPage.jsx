@@ -10,10 +10,12 @@ import Step4 from "@/components/OnboardingPage/Step4/Step4.jsx";
 import BirthdayPlacePopup from "@/components/OnboardingPage/BirthdayPlacePopup/BirthdayPlacePopup.jsx";
 import Step5 from "@/components/OnboardingPage/Step5/Step5.jsx";
 import {useAuthContext} from "@/contexts/authContext.jsx";
+import {useAppContext} from "@/contexts/appContext.jsx";
 
 const OnboardingPage = () => {
 
   const {user, setUser, setIsUserLoading, setNatalChartCreated, isUserLoading} = useAuthContext()
+  
   const [step, setStep] = useState(user ? 5 : 1)
   const [onboardingCountries, setOnboardingCountries] = useState([])
   const [selectedCountry, setSelectedCountry] = useState({value: 20, label: 'Российская Федерация'})
@@ -40,6 +42,11 @@ const OnboardingPage = () => {
 
   const [popupOpened, setPopupOpened] = useState(false)
 
+  const {    
+    setIsDayLoading,
+    setDayQuality
+  } = useAppContext()
+  
   useEffect(() => {
     // запрос на страны - только один раз в самом начале
     fetch("https://my.aspectum.app/api/countries")
@@ -73,6 +80,24 @@ const OnboardingPage = () => {
   
   if (onboardingCountries.length === 0) return null
 
+
+  const getDay = async () => {
+    const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    const currentTime = new Date().toISOString();
+    const payload = {
+      now_dt: currentTime, timezone: timeZone
+    }
+    try {
+      setIsDayLoading(true)
+      const result = await axiosInstance.post('api/energy/day/', payload)
+      setDayQuality(result.data.day_quality)
+    } catch (err) {
+      console.log(err)
+    } finally {
+      setIsDayLoading(false)
+    }
+  }
+  
   const buildNatalMap = async () => {
     try {
       const result = await axiosInstance('/api/build/')
@@ -82,6 +107,7 @@ const OnboardingPage = () => {
 
         setTimeout(() => {
           fetchUserProfile()
+          getDay()
         }, 30000)
 
       } else {

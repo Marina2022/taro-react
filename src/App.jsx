@@ -17,13 +17,16 @@ import AstrologerAnswer from "@/pages/AstrologerAnswer.jsx";
 import AskTaro from "@/pages/AskTaro.jsx";
 import AskTaroOrderPage from "@/components/AskTaroOrderPage/AskTaroOrderPage.jsx";
 import axiosInstance from "@/api/axiosInstance.js";
-import TaroAnswerPage from "@/components/TaroAnswerPage/TaroAnswerPage.jsx";
 import CompatibilitySelect from "@/components/CompatibilityPage/CompatibilitySelect/CompatibilitySelect.jsx";
 import CompatibilityResult from "@/components/CompatibilityPage/CompatibilityResult/CompatibilityResult.jsx";
 import CompatibilityOrder from "@/components/CompatibilityPage/CompatibilityOrder/CompatibilityOrder.jsx";
 import CompatibilityQuestion from "@/components/CompatibilityPage/CompatibilityQuestion/CompatibilityQuestion.jsx";
 import CompatibilityAnswer from "@/components/CompatibilityPage/CompatibilityAnswer/CompatibilityAnswer.jsx";
 import Messages from "@/pages/Messages.jsx";
+import Subscription from "@/pages/Subscription.jsx";
+import Settings from "@/pages/Settings.jsx";
+import TaroAnswer from "@/pages/TaroAnswer.jsx";
+import Login from "@/pages/Login.jsx";
 
 function App() {
 
@@ -35,7 +38,6 @@ function App() {
   } = useAuthContext()
 
   const {
-
     setTarotLayouts,
     setAreTarotLayoutsLoading,
     setIsDayLoading,
@@ -102,13 +104,13 @@ function App() {
     getDay()
   }, [])
 
-
   return (
     <>
       <Router>
         <ScrollToTop/>
         <Routes>
           <Route path='/onboarding' element={<Onboarding/>}/>
+          <Route path='/login' element={<Login/>}/>
           <Route path='/system' element={<System/>}/>                    
           <Route element={<ProtectedRoute><MainLayout/></ProtectedRoute>}>
             <Route path='/' index element={<Home/>}/>
@@ -117,7 +119,7 @@ function App() {
             <Route path='/day-energy' element={<Today/>}/>
             <Route path='/ask-tarot' element={<AskTaro/>}/>
             <Route path='/ask-tarot/:order' element={<AskTaroOrderPage/>}/>
-            <Route path='/tarot-answer/:id' element={<TaroAnswerPage/>}/>
+            <Route path='/tarot-answer/:id' element={<TaroAnswer/>}/>
             <Route path='/messages' element={<Messages/>}/>
             <Route path='/natal' element={<Natal/>}>
               <Route path='/natal' index element={<Chart/>}/>
@@ -125,9 +127,11 @@ function App() {
             </Route>
             <Route path='/compatibility/select' index element={<CompatibilitySelect/>}/>
             <Route path='/compatibility/order' element={<CompatibilityOrder/>}/>
-            <Route path='/compatibility/question/:id/:theme' index element={<CompatibilityQuestion/>}/>
-            <Route path='/compatibility/answer/:id/:theme' index element={<CompatibilityAnswer/>}/>
-            <Route path='/compatibility/result/:id' index element={<CompatibilityResult/>}/>            
+            <Route path='/compatibility/question/:id/:theme' element={<CompatibilityQuestion/>}/>
+            <Route path='/compatibility/answer/:id/:theme' element={<CompatibilityAnswer/>}/>
+            <Route path='/compatibility/result/:id' element={<CompatibilityResult/>}/>            
+            <Route path='/settings' element={<Settings/>}/>            
+            <Route path='/subscription' element={<Subscription/>}/>            
             <Route path='*' element={<div className='container'>Not found</div>}/>
           </Route>
         </Routes>

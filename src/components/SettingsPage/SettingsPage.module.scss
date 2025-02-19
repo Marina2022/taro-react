@@ -1,19 +1,31 @@
 @use '@/assets/styles/mixins' as *;
 
-.sectionButton {
-  align-items: center;
-  width: calc(100% + 48px);
-  padding: 24px;
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-  position: relative;
-  text-align: left;
-  color: inherit; /* Наследуем цвет */
-  transition: background-color 0.3s ease;
-  margin-left: -24px;
-  border-radius: 16px;
+.settings {
+  padding-bottom: 110px;
+  margin-top: -48px;
+
+  @include xs {
+    margin-top: -43px;
+  }
+}
+
+.mainTitle {
+  text-align: center;
+  margin-bottom: 42px;
+
+  @include m {
+    font-size: 22px;
+  }
+
+  @include xs {
+    font-size: 16px;
+  }
+}
+
+.propertyCard {  
   display: flex;
+  gap: 12px;
+  align-items: flex-start;
   background-color: #4d2e52;
   border-radius: 12px;
   padding: 16px;
@@ -22,6 +34,45 @@
   overflow: hidden;
   transition: background-color 0.3s ease;
   box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.2);
+  font-size: 16px;
+
+  @include xs{
+    font-size: 14px;
+    padding: 12px;
+  }  
+}
+
+.label {
+  font-weight: 600;
+}
+
+.value {
+  color: rgb(255 255 255/.8);
+}
+
+.actionButton {
+  align-items: center;
+  width: 100%;
+  padding: 24px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  text-align: left;
+  transition: background-color 0.3s ease;  
+  border-radius: 16px;
+  display: flex;
+  background-color: #4d2e52;
+  border-radius: 12px;
+  padding: 16px;
+  padding-block: 20px;
+  margin-bottom: 16px;
+  position: relative;
+  overflow: hidden;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.2);
+  font-weight: 600;
+  font-size: 18px;
 
   &:hover {
     background-color: rgba(255, 185, 76, 0.16);
@@ -36,29 +87,10 @@
       background-color: transparent;
     }
   }
-}
 
-.disabled {
-  
-  cursor: auto;
-  background-color: transparent;
-
-  &:hover {
-    background-color: transparent;
-  }
-}
-
-.listItemIcon {
-  width: 45px;
-  height: 45px;
-  background-color: rgba(255, 185, 76, 0.1);
-  border-radius: 50%;
-  margin-right: 14px;
-
-  img {
-    width: 45px;
-    height: 45px;
-    transform: scale(1.2);
+  @include xs{
+    font-size: 16px;
+    padding: 12px;
   }
 }
 
@@ -79,20 +111,26 @@
   }
 }
 
-.buttonNameLocked {
-  opacity: .8;
+.buttons {
+  margin-top: 60px;
 }
 
+.modalDelete {
+  width: 530px!important;
+  padding: 32px!important;
 
-.clockIcon {
-  width: 20px;
-  height: 20px;
-  margin-left: auto;  
+  @include xs {
+    width: 90vw!important;
+    padding: 20px!important;
+  }
 }
 
-.readyIcon {
-  width: 20px;
-  height: 20px;
-  fill: #FFB94C;
-  margin-left: auto;
+.modalPassword {
+  width: 440px!important;
+  padding: 32px!important;
+
+  @include xs {
+    width: 90vw!important;
+    padding: 20px!important;
+  }
 }

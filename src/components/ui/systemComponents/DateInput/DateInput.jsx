@@ -4,10 +4,6 @@ const DateInput = ({label, day, setDay, month, setMonth, year, setYear, autofocu
   
   const birthInputRef = useRef()
   
-  // useEffect(()=>{
-  //   if (autofocus) birthInputRef.current.focus()
-  // }, [])
-  
   return (
     <div className={classname}>
       <label className={s.onboardingLabels} htmlFor="birth-month">

@@ -22,15 +22,6 @@ const ConfirmEmailPopup = ({setConfirmedEmailPopupOpen}) => {
     return () => document.removeEventListener("keydown", handleKeyDown);
   }, []);
 
-  
-  // через 30сек попап закроется сам 
-  
-  // useEffect(()=>{
-  //   setTimeout(()=>{
-  //     setConfirmedEmailPopupOpen(false)
-  //   }, 1000 * 30 * 1)
-  // })
-
   const popupRef = useRef()
   const handleUnderlayClick = (e) => {
     if (!popupRef.current.contains(e.target)) {

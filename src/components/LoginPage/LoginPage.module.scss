@@ -1,0 +1,89 @@
+@use '@/assets/styles/mixins' as *;
+
+.loginContainer {
+  width: 375px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-height: 92vh;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+
+  @include xs {
+    width: 90vw;
+  }
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgb(255 255 255/0.3);
+  border-radius: 20px;
+  padding: 20px;
+  height: 444px;
+  align-items: center;
+  
+}
+
+.header {
+  color: #fff;
+  font-family: Inter;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 32px;
+  margin: 0;
+  margin-bottom: 20px;
+}
+
+.text {
+  opacity: .8;
+  margin-bottom: 20px; 
+  text-align: center;
+}
+
+.forgotBtn {
+  color: rgb(255 255 255/.8);
+  text-decoration: underline;
+  align-self: flex-start;
+  font-size: 14px;
+}
+
+.inputGroup {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.submitBtn {
+  margin-top: auto;
+}
+
+.popupContent {
+  //padding: 20px;
+  display: flex;
+  flex-direction: column;
+  
+}
+
+.popupText {
+  opacity: .8;
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.OkBtn {
+  margin-top: auto;
+}
+
+.popup {
+  min-height: unset;
+  padding: 32px;
+  width: 460px;
+
+  @include xs {   
+    width: 90vw;
+    padding: 20px;    
+  }
+}

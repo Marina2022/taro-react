@@ -1,9 +1,11 @@
 import s from './InputGroup.module.scss';
 
-const InputGroup = ({label, value, setValue, placeholder, classname='', autofocus=false}) => {
+const InputGroup = ({label, value, setValue, placeholder, classname='', autofocus=false, ...props}) => {
   return (
     <div className={classname}>
-      <label className={s.inputLabel}>{label}</label>
+      {
+        label && <label className={s.inputLabel}>{label}</label>
+      }
       <input
         type="text"
         className={s.textInput}
@@ -11,6 +13,7 @@ const InputGroup = ({label, value, setValue, placeholder, classname='', autofocu
         value={value}
         onChange={(e)=>setValue(e.target.value)}
         autoFocus={autofocus}
+        {...props}
       />
     </div>
   );

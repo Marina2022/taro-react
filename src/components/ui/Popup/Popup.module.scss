@@ -1,0 +1,111 @@
+@use '@/assets/styles/mixins' as *;
+
+.underlay {
+  position: fixed;
+  z-index: 3;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #00000040;
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+}
+
+.popup {
+  align-items: center;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%) translateY(-50%);
+  width: 530px;
+  min-height: 350px;
+  border-radius: 20px;
+  background: #421f47;
+  display: flex;
+  flex-direction: column;
+  padding: 40px;
+
+  @include xs {
+    top: 20px;
+    transform: translateX(-50%) translateY(0);
+    width: 90vw;
+    padding: 20px;
+    min-height: 300px;
+  }
+}
+
+.btn {
+  margin-top: 20px;
+  width: 100%;
+}
+
+.text {
+  text-align: center;
+}
+
+.pleaseConfirm {
+  font-size: 22px;
+  margin-bottom: 18px;
+  line-height: 1.5;
+  text-align: center;
+
+  @include xs {
+    font-size: 16px;
+    line-height: 1.4;
+  }
+}
+
+.hello {
+  margin-bottom: 32px;
+  line-height: 1.5;
+  text-align: center;
+  font-size: 18px;
+
+  @include xs {
+    font-size: 14px;
+    line-height: 1.4;
+  }
+}
+
+.popupParagraph {
+  margin-block: 25px;
+  line-height: 1.5;
+  text-align: center;
+
+  @include xs {
+    font-size: 14px;
+    line-height: 1.4;
+  }
+}
+
+.repeat {
+  opacity: .8;
+  margin-bottom: 16px;
+  line-height: 1.5;
+  text-align: center;
+  margin-top: auto;
+
+  @include xs {
+    margin-bottom: 6px;
+    font-size: 14px;
+    line-height: 1.4;
+  }
+}
+
+.bottom {
+  margin-top: auto;
+  width: 100%;
+}
+
+.isSend {
+  font-size: 20px;
+  margin-block: 64px;
+  line-height: 1.5;
+  text-align: center;
+
+  @include xs {
+    font-size: 16px;
+    line-height: 1.4;
+  }
+}

@@ -1,5 +1,5 @@
 import s from './Header.module.scss';
-import {useLocation, useNavigate} from "react-router-dom";
+import {Link, useLocation, useNavigate} from "react-router-dom";
 import {useAuthContext} from "@/contexts/authContext.jsx";
 import React from "react";
 
@@ -24,7 +24,7 @@ const Header = () => {
           {
             location.pathname !== '/' && <button onClick={backButtonHandler} className={s.backButton}></button>
           }
-          <button className={s.settingsBtn}></button>
+          <Link to="settings" className={s.settingsBtn}></Link>
         </nav>
       </div>
     </header>

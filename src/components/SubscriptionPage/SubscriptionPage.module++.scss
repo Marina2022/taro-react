@@ -1,0 +1,64 @@
+@use '@/assets/styles/mixins' as *;
+
+.subscription {
+  padding-bottom: 110px;
+  margin-top: -48px;
+
+  @include xs {
+    margin-top: -43px;
+  }
+}
+
+.mainTitle {
+  text-align: center;
+  margin-bottom: 42px;
+
+  @include m {
+    font-size: 22px;
+  }
+
+  @include xs {
+    font-size: 16px;
+  }
+}
+
+.title {
+  margin-bottom: 40px;
+}
+
+.subtitle {
+  margin-bottom: 16px;
+  margin-top: 40px;
+  
+}
+
+.priceRow {
+  margin-top: auto;
+
+  opacity: .8;
+  margin-bottom: 24px;
+}
+
+.btn {
+
+  width: 300px;
+}
+
+//.subscriptionBlock {
+//  display: flex;
+//  flex-direction: column;
+//  width: 100%;
+//  text-align: center;
+//  background-color: #4d2e52;
+//  border-radius: 12px;
+//  padding: 20px;
+//  position: relative;
+//  overflow: hidden;
+//  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.2);
+//  height: 240px;
+//}
+
+//.wrapper {
+//  display: flex;
+//  gap: 20px;
+//}

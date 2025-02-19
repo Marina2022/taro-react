@@ -1,5 +1,6 @@
 import s from './ButtonWithBeak.module.scss';
 import {Link} from "react-router-dom";
+
 const ButtonWithBeak = ({title, description, number, classname='', href, img, onClick=()=>{}}) => {
   
   if (href) return (

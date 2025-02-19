@@ -1,0 +1,1 @@
+export const landingURL = 'https://aspectum.app/'

@@ -124,7 +124,7 @@ const BirthdayPlacePopup = ({
   }
 
   return (
-    <div className={s.underlay} onClick={handleUnderlayClick}>
+    <div className={s.underlay} onMouseDown={handleUnderlayClick}>
       <div className={s.popup} ref={cityPopupRef}>
         <input
           type="text"

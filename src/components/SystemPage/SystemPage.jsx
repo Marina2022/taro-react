@@ -27,7 +27,7 @@ import RingChart from "@/components/ui/systemComponents/RingChart/RingChart.jsx"
 import InputLabel from "@/components/ui/systemComponents/InputLabel/InputLabel.jsx";
 import TextArea from "@/components/ui/systemComponents/TextArea/TextArea.jsx";
 import MagicCard from "@/components/ui/MagicCard/MagicCard.jsx";
-
+import img from '@/assets/img/home/messages.png'
 const SystemPage = () => {
 
   const [inputValue, setInputValue] = useState('')
@@ -54,10 +54,6 @@ const SystemPage = () => {
   return (
     <div className={s.systemContainer}>
    
-      <div className={s.magicCardWrapper}>
-      <MagicCard/>
-      </div>
-
       {/*Заголовки*/}
       <Header24>Заголовок 24</Header24>
       <div style={{height: 20}}></div>
@@ -223,6 +219,7 @@ const SystemPage = () => {
         title="Заголовок"
         description="Описание"
         number={2}
+        img={img}
       />
 
       <div style={{height: 20}}></div>
