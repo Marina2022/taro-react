@@ -11,14 +11,12 @@ import MiniSpinner from "@/components/ui/miniSpinner/MiniSpinner.jsx";
 
 const PasswordModalContent = ({setPasswordModalOpen}) => {
 
-
   const [oldPass, setOldPass] = useState('')
   const [newPass, setNewPass] = useState('')
   const [confirmPass, setConfirmPass] = useState('')
-
   const [errorMessage, setErrorMessage] = useState('')
   const [sending, setSending] = useState('')
-
+  
   const {resetUser} = useAuthContext()
   const navigate = useNavigate()
   const saveHandler = async () => {
@@ -34,13 +32,11 @@ const PasswordModalContent = ({setPasswordModalOpen}) => {
 
     try {
       setSending(true)
-
       const resp = await axiosInstance.post('api/pwdchange/', {
         new_password: newPass,
         new_password_confirm: confirmPass,
         old_password: oldPass
       })
-
       navigate('/login')
 
     } catch (err) {
@@ -49,33 +45,23 @@ const PasswordModalContent = ({setPasswordModalOpen}) => {
     } finally {
       setSending(false)
     }
-
   }
-
   const handleFocus = () => {
     setErrorMessage('')
   }
 
-  // Старый пароль указан неверно  
-
-
   return (
     <div className={s.wrapper}>
       <Header20 classname={s.title}>Изменить пароль</Header20>
-
       <div className={s.inputs}>
         <InputGroup type="password" value={oldPass} setValue={setOldPass} autofocus placeholder="Старый пароль"/>
         <InputGroup type="password" value={newPass} setValue={setNewPass} placeholder="Новый пароль" onFocus={handleFocus}/>
         <InputGroup type="password" value={confirmPass} setValue={setConfirmPass} placeholder="Подтверждение нового пароля"
                     onFocus={handleFocus}/>
-
         {
           errorMessage && <div className={s.notMatch}>{errorMessage}</div>
         }
-
       </div>
-
-
       <div className={s.buttons}>
         <Button onClick={saveHandler}>
           {

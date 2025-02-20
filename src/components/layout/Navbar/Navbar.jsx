@@ -1,5 +1,6 @@
 import s from './Navbar.module.scss';
 import {Link, useLocation} from "react-router-dom";
+
 const Navbar = () => {
   const location = useLocation()
   const path = location.pathname
@@ -32,13 +33,13 @@ const Navbar = () => {
               </g>
             </svg>
           </span>
-          <span className={s.tabText}>Раздел1</span>
+          <span className={s.tabText}>Главная</span>
           {
             path === '/' && <div className={s.tabIndicator}></div>
           }
         </Link>
 
-        <Link to="/page-1" className={path === '/page-1' ? s.tabButtonActive : s.tabButton}>
+        <Link to="/ask-astrologer" className={path === '/ask-astrologer' ? s.tabButtonActive : s.tabButton}>
           <span className={s.tabIcon}
           >
             <svg
@@ -64,46 +65,34 @@ const Navbar = () => {
               </g>
             </svg>
           </span>
-          <span className={s.tabText}>Раздел2</span>
+          <span className={s.tabText}>Астролог</span>
           {
-            path === '/page-1' && <div className={s.tabIndicator}></div>
+            path === '/ask-astrologer' && <div className={s.tabIndicator}></div>
           }
         </Link>
 
-        <Link to="/page-2" className={path === '/page-2' ? s.tabButtonActive : s.tabButton}>
+        <Link to="/ask-tarot" className={path === '/ask-tarot' ? s.tabButtonActive : s.tabButton}>
           <span className={s.tabIcon}>
-            <svg
-              version="1.1"
-              xmlns="http://www.w3.org/2000/svg"
-              xmlnsXlink="http://www.w3.org/1999/xlink"
-              width="32.6367"
-              height="22.0898"
-            >
-              <g>
-                <rect
-                  height="22.0898"
-                  opacity="0"
-                  width="32.6367"
-                  x="0"
-                  y="0"
-                />
-                <path
-                  d="M15.0352 22.0898L29.7539 22.0898C31.7109 22.0898 32.6367 21.5039 32.6367 20.2148C32.6367 17.1445 28.7578 12.7031 22.3945 12.7031C16.043 12.7031 12.1641 17.1445 12.1641 20.2148C12.1641 21.5039 13.0898 22.0898 15.0352 22.0898ZM14.4727 20.3203C14.168 20.3203 14.0508 20.2383 14.0508 19.9922C14.0508 18.0703 17.0273 14.4727 22.3945 14.4727C27.7734 14.4727 30.75 18.0703 30.75 19.9922C30.75 20.2383 30.6211 20.3203 30.3164 20.3203ZM22.4062 11.25C25.1953 11.25 27.4688 8.76562 27.4688 5.74219C27.4688 2.74219 25.207 0.386719 22.4062 0.386719C19.6172 0.386719 17.332 2.78906 17.3438 5.76562C17.3555 8.77734 19.6172 11.25 22.4062 11.25ZM22.4062 9.48047C20.6953 9.48047 19.2305 7.83984 19.2305 5.76562C19.2188 3.72656 20.6602 2.15625 22.4062 2.15625C24.1523 2.15625 25.582 3.70312 25.582 5.74219C25.582 7.81641 24.1289 9.48047 22.4062 9.48047ZM2.37891 22.0898L11.5781 22.0898C11.0156 21.7734 10.5938 21.0703 10.6758 20.3555L2.09766 20.3555C1.85156 20.3555 1.74609 20.2617 1.74609 20.0391C1.74609 17.1328 5.0625 14.4141 8.89453 14.4141C10.3594 14.4141 11.6953 14.7656 12.832 15.4336C13.1953 14.9648 13.6289 14.5547 14.1562 14.1914C12.6445 13.1953 10.8281 12.6797 8.89453 12.6797C3.98438 12.6797 0 16.2422 0 20.1445C0 21.4453 0.796875 22.0898 2.37891 22.0898ZM8.90625 11.3438C11.3203 11.3438 13.3008 9.17578 13.3008 6.51562C13.3008 3.91406 11.3438 1.81641 8.90625 1.81641C6.49219 1.81641 4.5 3.94922 4.51172 6.53906C4.51172 9.1875 6.49219 11.3438 8.90625 11.3438ZM8.90625 9.59766C7.46484 9.59766 6.25781 8.22656 6.25781 6.53906C6.25781 4.88672 7.45312 3.5625 8.90625 3.5625C10.3828 3.5625 11.5664 4.86328 11.5664 6.51562C11.5664 8.22656 10.3477 9.59766 8.90625 9.59766Z"
-                  fill="currentColor"
-                  fillOpacity="0.85"
-                />
-              </g>
-            </svg>
+                        
+            <svg xmlns="http://www.w3.org/2000/svg"
+                 fill="currentColor"
+                 stroke="currentColor"
+                 width={32}
+                 height={32}
+                 viewBox="0 0 640 512">
+                 <path
+                  d="M51.8 160.4c-3.7 2.1-4.9 6.8-2.8 10.5l167 289.3c2.1 3.7 6.8 4.9 10.5 2.8L419.4 351.6c3.7-2.1 4.9-6.8 2.8-10.5L255.2 51.8c-2.1-3.7-6.8-4.9-10.5-2.8L51.8 160.4zM7.5 194.9c-15.4-26.6-6.3-60.7 20.4-76.1L220.7 7.5c26.6-15.4 60.7-6.3 76.1 20.4l167 289.3c15.4 26.6 6.2 60.7-20.4 76.1L250.5 504.5c-26.6 15.4-60.7 6.2-76.1-20.4L7.5 194.9zm451.9 226c41.9-24.2 56.3-77.8 32.1-119.8L354.7 64.2c1.7-.2 3.5-.2 5.3-.2H584c30.9 0 56 25.1 56 56V456c0 30.9-25.1 56-56 56H360c-13.7 0-26.2-4.9-35.9-13l135.3-78.1z"/>
+            </svg>            
           </span>
-          <span className={s.tabText}>Раздел3</span>
+          <span className={s.tabText}>Таро</span>
 
           {
-            path === '/page-2' && <div className={s.tabIndicator}></div>
+            path === '/ask-tarot' && <div className={s.tabIndicator}></div>
           }
 
         </Link>
 
-        <Link to="/page-3" className={path === '/page-3' ? s.tabButtonActive : s.tabButton}>
+        <Link to="/compatibility/select" className={path === '/compatibility/select' ? s.tabButtonActive : s.tabButton}>
           <span className={s.tabIcon}
           >
             <svg
@@ -129,9 +118,9 @@ const Navbar = () => {
               </g>
             </svg>
           </span>
-          <span className={s.tabText}>Раздел4</span>
+          <span className={s.tabText}>Совместимость</span>
           {
-            path === '/page-3' && <div className={s.tabIndicator}></div>
+            path === '/compatibility/select' && <div className={s.tabIndicator}></div>
           }
         </Link>
       </nav>

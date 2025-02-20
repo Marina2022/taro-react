@@ -107,8 +107,6 @@ function App() {
       }
     }
 
-
-
     fetchUserProfile()
     getTarotLayouts()
     
