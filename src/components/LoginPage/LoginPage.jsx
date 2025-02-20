@@ -96,18 +96,14 @@ const LoginPage = () => {
             sending ? <MiniSpinner/> : "Войти"
           }
           </Button>
-
         </div>
-
       </div>
       {
         popupOpen && <Popup classname={s.popup} setOpen={setPopupOpen}>
         <div className={s.popupContent}>
           <Text16 classname={s.popupText}>Если пользователь с данным email существует, то инструкции по восстановлению пароля отправлены на указанный email</Text16>
-          <Button classname={s.OkBtn} onClick={()=>setPopupOpen(false)}>Ok</Button>
-          
-        </div>
-        
+          <Button classname={s.OkBtn} onClick={()=>setPopupOpen(false)}>Ok</Button>          
+        </div>        
         </Popup>
       }
     </>

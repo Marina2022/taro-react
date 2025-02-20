@@ -1,0 +1,94 @@
+@use '@/assets/styles/mixins' as *;
+
+.link {
+  text-decoration: underline;
+  color: #fff;
+  color: #ffb94c;
+}
+
+.loginContainer {
+  width: 540px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-height: 92vh;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+
+  @include xs {
+    width: 90vw;    
+  }
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgb(255 255 255/0.3);
+  border-radius: 20px;
+  padding: 32px;
+  min-height: 334px;  
+  align-items: center;
+  
+  @include xs {
+    padding: 20px;
+  }
+}
+
+.header {
+  color: #fff;
+  font-family: Inter;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 32px;
+  margin: 0;
+  margin-bottom: 30px;
+  margin-top: 6px;
+  
+  @include xs {
+    font-size: 20px;
+    text-align: center;
+  }
+}
+
+.text {
+  opacity: .8;
+  margin-bottom: 20px;
+  text-align: center;
+  line-height: 1.5;
+}
+
+
+.toMainBtn {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  font-size: 16px;
+  font-weight: 600;
+  height: 56px;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  text-align: center;
+  font-family: "Inter", sans-serif;
+  transition: background-color 0.2s, color 0.3s;
+  border-radius: 12px;
+  backdrop-filter: blur(3px);
+  background-color: #ffb94c;
+  color: #2f1b40;
+  border: none;
+  user-select: none;
+  margin-top: 24px;
+
+  &:hover {
+    background-color: #ff9a2b; /* Немного темнее на hover для основного цвета */
+  }
+
+  &:active {
+    background-color: #cc7a23; /* еще немного темнее на active для основного цвета */
+  }
+}

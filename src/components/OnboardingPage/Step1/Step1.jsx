@@ -4,8 +4,11 @@ import DateInput from "@/components/ui/systemComponents/DateInput/DateInput.jsx"
 import {useState} from "react";
 import TimeInput from "@/components/ui/systemComponents/TimeInput/TimeInput.jsx";
 import {daysInMonth} from "@/utils.js";
+import {useNavigate} from "react-router-dom";
 
-const Step1 = ({setStep, day, setDay, month, setMonth, year, setYear, time, setTime, dontKnowTime, setDontKnowTime}) => {     
+const Step1 = ({setStep, day, setDay, month, setMonth, year, setYear, time, setTime, dontKnowTime, setDontKnowTime}) => {
+  
+  const navigate = useNavigate()
   const handleClick = ()=>{
     
     if (!month) {
@@ -46,6 +49,10 @@ const Step1 = ({setStep, day, setDay, month, setMonth, year, setYear, time, setT
     setStep(2)
   }
   
+  const handleEnterLogin = () => {
+    navigate('/login')
+  }
+  
   return (
     <>
       <div className={s.controlsBlock}>
@@ -70,6 +77,7 @@ const Step1 = ({setStep, day, setDay, month, setMonth, year, setYear, time, setT
       </div>
       <div className={s.stepsButtons}>
         <Button onClick={handleClick} classname={s.btn}>Далее</Button>
+        <Button classname={s.alreadyIs} onClick={ handleEnterLogin}>У меня уже есть аккаунт</Button>
       </div>
     </>
   );

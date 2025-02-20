@@ -186,8 +186,6 @@ const OnboardingPage = () => {
     }
   }
 
-  // if (isUserLoading) return null
-
   return (
     <div className={step !== 5 ? s.onboarding : s.onboardingFinal}>
 
