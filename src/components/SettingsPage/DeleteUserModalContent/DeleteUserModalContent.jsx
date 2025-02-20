@@ -12,14 +12,14 @@ const DeleteUserModalContent = ({setDeleteUserModalOpen}) => {
 
   const [sending, setSending] = useState(false)
   
-  const {resetUser} = useAuthContext()
+  const {setUser} = useAuthContext()
   const navigate = useNavigate()
   const handleDelete = async () => {
 
     try {
       setSending(true)
       const resp = await axiosInstance.post('https://my.aspectum.app/api/deluser/')
-      await resetUser()      
+      await setUser(null)      
       navigate('/deleted')
       
     } catch (err) {
