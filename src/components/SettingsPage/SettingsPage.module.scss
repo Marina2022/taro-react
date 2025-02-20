@@ -113,6 +113,10 @@
 
 .buttons {
   margin-top: 60px;
+  
+  @include xs {
+    margin-top: 40px;
+  }
 }
 
 .modalDelete {
