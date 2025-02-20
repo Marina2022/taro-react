@@ -8,6 +8,7 @@ import {useAuthContext} from "@/contexts/authContext.jsx";
 import MiniSpinner from "@/components/ui/miniSpinner/MiniSpinner.jsx";
 import Popup from "@/components/ui/Popup/Popup.jsx";
 import Text16 from "@/components/ui/systemComponents/Text16/Text16.jsx";
+import {useAppContext} from "@/contexts/appContext.jsx";
 
 const LoginPage = () => {
 
@@ -19,6 +20,27 @@ const LoginPage = () => {
   const navigate = useNavigate()
 
   const {resetUser} = useAuthContext()
+
+  const {    
+    setIsDayLoading,
+    setDayQuality
+  } = useAppContext()
+  const getDay = async () => {
+    const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    const currentTime = new Date().toISOString();
+    const payload = {
+      now_dt: currentTime, timezone: timeZone
+    }
+    try {
+      setIsDayLoading(true)
+      const result = await axiosInstance.post('api/energy/day/', payload)
+      setDayQuality(result.data.day_quality)
+    } catch (err) {
+      console.log(err)
+    } finally {
+      setIsDayLoading(false)
+    }
+  }
 
   const handleSubmit = async () => {
     const emailRegex = /^[a-zA-Z0-9._+-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*\.[a-zA-Z]{2,}$/;
@@ -38,6 +60,7 @@ const LoginPage = () => {
       if (resp.data.status === 'Login successful') {
         localStorage.setItem('natalChartCreated', true)
         await resetUser()
+        await getDay()
         navigate('/')
       } else {
         throw new Error('Произошла ошибка')
@@ -53,6 +76,7 @@ const LoginPage = () => {
     }
   }
 
+  
 
   const handleForgot = async () => {
     
@@ -68,10 +92,12 @@ const LoginPage = () => {
       
       if (resp.status === 200) {
         await resetUser()
+        
         setPopupOpen(true)
       }
 
-    } catch {
+    } catch(err) {
+      console.log(err)
 
     } finally {
       setSendingForgot(false)
