@@ -15,9 +15,9 @@ const NatalFeaturePage = () => {
   const {feature} = useParams()
   const [data, setData] = useState(null)
   const [dataIsLoading, setDataIsLoading] = useState(true)
-  const [error, setError] = useState(null)  
+  const [error, setError] = useState(null)
   const location = useLocation()
-  
+
   useEffect(() => {
     const getData = async () => {
       try {
@@ -33,7 +33,7 @@ const NatalFeaturePage = () => {
     }
 
     getData()
-    
+
   }, [location]);
 
   if (dataIsLoading) return <Spinner/>
@@ -50,12 +50,10 @@ const NatalFeaturePage = () => {
               return (
                 <TextBlock key={i} classname={s.textBlock}>
                   <div className={s.headerBlock}>
-
                     <div className={s.imgWrapper}>
-                    <img className={s.iconImg} src={`https://my.aspectum.app/${text.icon}`} alt="icon"/>
+                      <img className={s.iconImg} src={`https://my.aspectum.app/${text.icon}`} alt="icon"/>
                     </div>
-                  <Header20 classname={s.textTitle}>{text.header}</Header20>
-
+                    <Header20 classname={s.textTitle}>{text.header}</Header20>
                   </div>
                   <div>
                     {
@@ -69,7 +67,7 @@ const NatalFeaturePage = () => {
             })
           }
         </div>
-        <AdditionalNavButtons sections={data.sections} />
+        <AdditionalNavButtons sections={data.sections}/>
       </div>
     </div>
   );
