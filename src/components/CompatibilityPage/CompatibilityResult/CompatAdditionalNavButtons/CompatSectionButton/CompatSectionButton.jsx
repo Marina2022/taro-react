@@ -2,6 +2,7 @@ import s from './CompatSectionButton.module.scss';
 import {useNavigate} from "react-router-dom";
 import {BsExclamationCircle} from "react-icons/bs";
 import axiosInstance from "@/api/axiosInstance.js";
+import React from "react";
 
 const CompatSectionButton = ({section, userId}) => {
 
@@ -12,14 +13,12 @@ const CompatSectionButton = ({section, userId}) => {
     if (section.completed) {     
       if (!section.is_read) {        
         axiosInstance.post('api/orders/set-read/', {order_id: section.order_id})        
-      }
-      
+      }      
       navigate(`/compatibility/answer/${userId}/${section.followup_name}`)
       return
     }
 
-    if (!section.completed && !section.in_progress ) {
-      
+    if (!section.completed && !section.in_progress ) {      
       navigate(`/compatibility/question/${userId}/${section.followup_name}`, {state: {questions: section.questions, name: section.name}})
       return
     }
@@ -29,6 +28,11 @@ const CompatSectionButton = ({section, userId}) => {
     <li
       style={{backgroundColor: section.completed ? 'rgba(255, 185, 76, 0.16)' : ''}}
       className={`${s.sectionButton}  ${section.in_progress ? s.disabled : null}`} onClick={clickHandler}>
+
+      <div className={s.imgWrapper}>
+        <img className={s.iconImg} src={`https://my.aspectum.app/${section.icon}`} alt="icon"/>
+      </div>
+      
       <span
         style={{opacity: section.in_progress ? .5 : 1}}
         className={s.buttonName}>{section.name}

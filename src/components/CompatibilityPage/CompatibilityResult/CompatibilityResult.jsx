@@ -59,15 +59,15 @@ const CompatibilityResult = () => {
         <CompatibilityCharts biorhythms={result.biorhythms}/>
 
         {
-          sinastry.length > 0 && <CompatibilityResultText pars={sinastry} title="Синастрия"/>
+          sinastry.length > 0 && <CompatibilityResultText pars={sinastry} title="Синастрия" icon="https://my.aspectum.app/api/icon/stars/" />
         }
 
         {
-          matches.length > 0 && <CompatibilityResultText pars={matches} title="Сочетания"/>
+          matches.length > 0 && <CompatibilityResultText pars={matches} title="Сочетания" icon="https://my.aspectum.app/api/icon/check-double/"/>
         }
 
         {
-          dissonances.length > 0 && <CompatibilityResultText pars={dissonances} title="Диссонансы"/>
+          dissonances.length > 0 && <CompatibilityResultText pars={dissonances} title="Диссонансы" icon="https://my.aspectum.app/api/icon/not-equal/"/>
         }
 
         <div className={s.nowWeCan}>Теперь, когда мы рассчитали взаимное влияние двух натальных карт, можно ответить на

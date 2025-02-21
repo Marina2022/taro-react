@@ -76,7 +76,6 @@ function App() {
           setUser(user)          
           const natalChartCreated = localStorage.getItem('natalChartCreated')
 
-          console.log(user)
           if (user) {
             getDay()
           }

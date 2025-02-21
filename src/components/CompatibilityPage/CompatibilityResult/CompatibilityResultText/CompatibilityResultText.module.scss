@@ -1,3 +1,5 @@
+@use '@/assets/styles/mixins' as *;
+
 .textBlock {
   margin-top: 40px;
   margin-bottom: 24px;
@@ -12,7 +14,41 @@
 }
 
 .title {
-  margin-bottom: 24px;
+  //margin-bottom: 24px;
 }
 
 
+
+
+
+.imgWrapper {
+  width: 42px;
+  height: 42px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  padding: 2px;
+
+  @include xs {
+    width: 36px;
+    height: 36px;
+  }
+}
+
+.iconImg {
+  max-width: 50%;
+}
+
+
+.headerWrapper {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  margin-bottom: 24px;
+
+  @include xs {
+    margin-bottom: 24px;
+  }
+}

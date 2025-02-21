@@ -96,3 +96,26 @@
   fill: #FFB94C;
   margin-left: auto;
 }
+
+
+
+.imgWrapper {
+  width: 42px;
+  height: 42px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  padding: 2px;
+  margin-right: 16px;
+
+  @include xs {
+    width: 36px;
+    height: 36px;
+  }
+}
+
+.iconImg {
+  max-width: 50%;
+}

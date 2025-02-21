@@ -14,7 +14,16 @@ const Activity = ({activity}) => {
 
   return (
     <li className={s.activity}>
-      <Header20 classname={s.title}>{activity.name}</Header20>
+
+      <div className={s.headerWrapper}>
+
+        <div className={s.imgWrapper}>
+          <img className={s.iconImg} src={`https://my.aspectum.app${activity.icon}`}  alt="icon"/>
+        </div>
+        <Header20 classname={s.title}>{activity.name}</Header20>
+      </div>
+
+
       <div className={s.recommended}>
         <h4 className={s.recommendedSubtitle}>Рекомендуемые занятия:</h4>
         <div className={s.row}>
