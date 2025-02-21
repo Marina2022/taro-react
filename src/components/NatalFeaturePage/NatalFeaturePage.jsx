@@ -49,7 +49,14 @@ const NatalFeaturePage = () => {
             data.texts.map((text, i) => {
               return (
                 <TextBlock key={i} classname={s.textBlock}>
+                  <div className={s.headerBlock}>
+
+                    <div className={s.imgWrapper}>
+                    <img className={s.iconImg} src={`https://my.aspectum.app/${text.icon}`} alt="icon"/>
+                    </div>
                   <Header20 classname={s.textTitle}>{text.header}</Header20>
+
+                  </div>
                   <div>
                     {
                       text.text.split('\n').map((item, ind) => {
